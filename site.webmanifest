@@ -1,8 +1,11 @@
 {
-  "name": "Wasilah",
+  "name": "Wasilah Bangladesh",
   "short_name": "Wasilah",
+  "description": "Islamic companion app for Muslims in Bangladesh with prayer times, Quran, Hadith, Qibla, duas, and BDT Zakat.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#004B49",
   "theme_color": "#004B49",
   "icons": [

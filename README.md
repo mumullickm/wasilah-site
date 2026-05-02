@@ -1,6 +1,6 @@
 # Wasilah Website
 
-Static one-page landing website for `wasilah.site`.
+Static one-page landing website for `wasilah.site`, positioned for Bangladesh search discovery.
 
 Repository: <https://github.com/mumullickm/wasilah-site>
 
@@ -11,6 +11,21 @@ Repository: <https://github.com/mumullickm/wasilah-site>
 - `script.js` - English/Bangla copy switcher and app-store link handling.
 - `CNAME` - custom domain for GitHub Pages.
 - `robots.txt`, `sitemap.xml`, `site.webmanifest` - publishing support files.
+- `Facebook_Cover_Page.jpg` - social cover asset for Wasilah campaign pages.
+
+## SEO Target
+
+Primary Bangladesh search themes:
+
+- Wasilah Bangladesh
+- Islamic app Bangladesh
+- prayer times Bangladesh and Adhan app Bangladesh
+- Bangla Quran app and Hadith app Bangla
+- Qibla compass Bangladesh
+- Zakat calculator BDT
+- Ramadan app Bangladesh
+
+The page includes canonical and alternate language tags, Open Graph/Twitter metadata, Bangladesh geo metadata, MobileApplication schema, FAQ schema, sitemap hreflang entries, and bilingual English/Bangla page copy.
 
 ## Add App Store Links
 
@@ -66,3 +81,5 @@ After DNS resolves, return to `Settings > Pages` and enable `Enforce HTTPS` if G
 - Test the English/Bangla switch, all navigation links, store buttons, and `https://wasilah.site/?download=app`.
 - Replace placeholder launch text once the app is live.
 - Submit the site URL in Google Search Console after launch.
+- Submit the sitemap URL `https://wasilah.site/sitemap.xml` in Google Search Console.
+- Use the included `Facebook_Cover_Page.jpg` for launch posts and Bangladesh-focused campaign pages.
