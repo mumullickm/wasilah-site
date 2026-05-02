@@ -164,6 +164,43 @@ function smartRedirect() {
   }
 }
 
+function initScrollReveals() {
+  const targets = document.querySelectorAll(
+    ".section-copy, .feature-card, .seo-grid article, .spiritual-inner, .faq-list details, .site-footer > *"
+  );
+
+  if (!targets.length) return;
+
+  document.body.classList.add("motion-ready");
+
+  targets.forEach((target, index) => {
+    target.classList.add("reveal");
+    target.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 70}ms`);
+  });
+
+  if (!("IntersectionObserver" in window)) {
+    targets.forEach((target) => target.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      rootMargin: "0px 0px -12% 0px",
+      threshold: 0.12
+    }
+  );
+
+  targets.forEach((target) => observer.observe(target));
+}
+
 document.querySelectorAll(".lang-option").forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
 });
@@ -171,3 +208,4 @@ document.querySelectorAll(".lang-option").forEach((button) => {
 setLanguage(localStorage.getItem("wasilah-lang") || "en");
 applyStoreLinks();
 smartRedirect();
+initScrollReveals();
