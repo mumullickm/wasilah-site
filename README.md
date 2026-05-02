@@ -2,6 +2,8 @@
 
 Static one-page landing website for `wasilah.site`.
 
+Repository: <https://github.com/mumullickm/wasilah-site>
+
 ## Files
 
 - `index.html` - page markup and SEO metadata.
@@ -33,6 +35,24 @@ The URL `https://wasilah.site/?download=app` will then send Android visitors to 
 6. Enable HTTPS after GitHub finishes DNS and certificate checks.
 
 For the domain, GitHub Pages supports an apex domain like `wasilah.site` and recommends also configuring the `www` subdomain in DNS.
+
+## DNS Records
+
+Set these records at the DNS provider for `wasilah.site`:
+
+| Type | Name | Value |
+| --- | --- | --- |
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| AAAA | @ | 2606:50c0:8000::153 |
+| AAAA | @ | 2606:50c0:8001::153 |
+| AAAA | @ | 2606:50c0:8002::153 |
+| AAAA | @ | 2606:50c0:8003::153 |
+| CNAME | www | mumullickm.github.io |
+
+After DNS resolves, return to `Settings > Pages` and enable `Enforce HTTPS` if GitHub has not enabled it automatically.
 
 ## Publishing Checklist
 
