@@ -27,6 +27,10 @@ Primary Bangladesh search themes:
 
 The page includes canonical and alternate language tags, Open Graph/Twitter metadata, Bangladesh geo metadata, MobileApplication schema, FAQ schema, sitemap hreflang entries, and bilingual English/Bangla page copy.
 
+## License
+
+This website is licensed under the MIT License. See `LICENSE` for details.
+
 ## Add App Store Links
 
 When the mobile apps are published, edit `script.js`:
