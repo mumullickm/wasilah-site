@@ -46,8 +46,9 @@ img {
   left: 0;
   right: 0;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto auto;
   align-items: center;
+  justify-content: space-between;
   gap: 34px;
   width: min(1160px, calc(100% - 32px));
   margin: 0 auto;
@@ -70,23 +71,6 @@ img {
 .brand-logotype {
   width: 198px;
   height: auto;
-}
-
-.nav-links {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  font-size: 0.92rem;
-  font-weight: 700;
-}
-
-.nav-links a {
-  text-decoration: none;
-  opacity: 0.88;
-}
-
-.nav-links a:hover {
-  opacity: 1;
 }
 
 .language-switch {
@@ -174,8 +158,7 @@ h1 {
   font-weight: 700;
 }
 
-.store-actions,
-.download-actions {
+.store-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -217,8 +200,7 @@ h1 {
 }
 
 .section-copy h2,
-.spiritual-inner h2,
-.download-copy h2 {
+.spiritual-inner h2 {
   margin: 0;
   color: var(--green);
   font-size: clamp(2rem, 5vw, 4rem);
@@ -244,7 +226,7 @@ h1 {
 
 .feature-card p,
 .spiritual-inner p,
-.download-copy p {
+.spiritual-inner p {
   margin: 0;
   color: var(--muted);
 }
@@ -301,39 +283,6 @@ h1 {
   font-size: 1.1rem;
 }
 
-.download-section {
-  width: min(1160px, calc(100% - 32px));
-  margin: 0 auto 80px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 28px;
-  align-items: center;
-  padding: 44px;
-  color: #ffffff;
-  background: var(--gold-gradient);
-}
-
-.download-copy h2 {
-  color: var(--green);
-  max-width: 760px;
-}
-
-.download-copy .section-label {
-  color: var(--green);
-}
-
-.download-copy p {
-  max-width: 680px;
-  margin-top: 12px;
-  color: rgba(0, 47, 45, 0.78);
-  font-weight: 700;
-}
-
-.download-actions {
-  margin-top: 0;
-  justify-content: flex-end;
-}
-
 .site-footer {
   display: flex;
   align-items: center;
@@ -370,27 +319,14 @@ h1 {
 }
 
 @media (max-width: 880px) {
-  .site-header {
-    grid-template-columns: 1fr auto;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
   .hero {
     min-height: auto;
     padding-top: 148px;
     background-position: 70% center;
   }
 
-  .feature-grid,
-  .download-section {
+  .feature-grid {
     grid-template-columns: 1fr;
-  }
-
-  .download-actions {
-    justify-content: flex-start;
   }
 }
 
@@ -452,12 +388,6 @@ h1 {
 
   .spiritual-band {
     padding: 72px 16px;
-  }
-
-  .download-section {
-    width: calc(100% - 24px);
-    padding: 28px;
-    margin-bottom: 52px;
   }
 
   .site-footer {

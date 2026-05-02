@@ -5,8 +5,6 @@ const STORE_LINKS = {
 
 const copy = {
   en: {
-    navFeatures: "Features",
-    navDownload: "Download",
     heroEyebrow: "For Deen, Dunia & Akhira",
     heroLead:
       "A calm Islamic companion for everyday salah, Quran, Hadith, Qibla, Zakat, and remembrance. Built for everyday worship, open to the global Ummah.",
@@ -30,14 +28,9 @@ const copy = {
     spiritualTitle: "Technology should make worship easier, not noisier.",
     spiritualText:
       "Wasilah is designed to support simple daily consistency: pray on time, return to the Quran, learn from Hadith, give with intention, and keep Allah in remembrance.",
-    downloadLabel: "Coming to mobile",
-    downloadTitle: "Download Wasilah when it launches.",
-    downloadText: "App Store and Google Play links will appear here as soon as the app is published.",
     footerText: "Deen, Dunia & Akhira."
   },
   bn: {
-    navFeatures: "ফিচার",
-    navDownload: "ডাউনলোড",
     heroEyebrow: "দীন, দুনিয়া ও আখিরাতের জন্য",
     heroLead:
       "সালাহ, কুরআন, হাদিস, কিবলা, যাকাত ও দৈনন্দিন যিকিরের জন্য একটি শান্ত ইসলামিক সহচর। দৈনন্দিন ইবাদতের জন্য তৈরি, বিশ্ব উম্মাহর জন্য উন্মুক্ত।",
@@ -61,9 +54,6 @@ const copy = {
     spiritualTitle: "টেকনোলজি ইবাদতকে সহজ করুক, ব্যস্ত নয়।",
     spiritualText:
       "ওয়াসিলাহ দৈনন্দিন ধারাবাহিকতায় সহায়তা করার জন্য তৈরি: সময়মতো নামাজ, কুরআনে ফেরা, হাদিস থেকে শেখা, নিয়তসহ দান এবং আল্লাহর স্মরণ।",
-    downloadLabel: "মোবাইলে আসছে",
-    downloadTitle: "লঞ্চ হলে ওয়াসিলাহ ডাউনলোড করুন।",
-    downloadText: "অ্যাপ প্রকাশিত হওয়ার সঙ্গে সঙ্গে App Store ও Google Play লিংক এখানে যুক্ত হবে।",
     footerText: "দীন, দুনিয়া ও আখিরাত।"
   }
 };
@@ -91,9 +81,7 @@ function setLanguage(lang) {
 function applyStoreLinks() {
   const links = [
     ["app-store-link", STORE_LINKS.appStore],
-    ["app-store-link-bottom", STORE_LINKS.appStore],
-    ["play-store-link", STORE_LINKS.googlePlay],
-    ["play-store-link-bottom", STORE_LINKS.googlePlay]
+    ["play-store-link", STORE_LINKS.googlePlay]
   ];
 
   links.forEach(([id, url]) => {
@@ -108,7 +96,7 @@ function applyStoreLinks() {
       return;
     }
 
-    anchor.href = "#download";
+    anchor.href = "#top";
     anchor.classList.add("is-muted");
   });
 }
