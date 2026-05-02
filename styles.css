@@ -1,5 +1,7 @@
 :root {
-  --green: #004b49;
+  --deep-green: #004b49;
+  --green: #007572;
+  --icon-gold: #f1d592;
   --gold-dark: #c3922e;
   --gold: #eb9d29;
   --gold-mid: #eed688;
@@ -7,11 +9,12 @@
   --cream: #faf1ba;
   --ivory: #fffbcc;
   --paper: #ffffff;
-  --ink: #004b49;
-  --muted: rgba(0, 75, 73, 0.74);
-  --line: rgba(195, 146, 46, 0.38);
-  --shadow: 0 24px 70px rgba(0, 75, 73, 0.18);
-  --gold-gradient: linear-gradient(135deg, #c3922e 0%, #fffbcc 49%, #faf1ba 54%, #efd98e 64%, #eed688 65%, #eb9d29 85%, #c3922e 100%);
+  --ink: #ffffff;
+  --muted: rgba(255, 255, 255, 0.75);
+  --line: rgba(255, 255, 255, 0.18);
+  --shadow: 0 28px 80px rgba(0, 37, 35, 0.3);
+  --page-gradient: linear-gradient(180deg, #004b49 0%, #005955 48%, #007572 100%);
+  --card-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.06));
 }
 
 * {
@@ -26,9 +29,17 @@ body {
   margin: 0;
   min-width: 320px;
   color: var(--ink);
-  background: var(--ivory);
+  background: var(--page-gradient);
+  background-attachment: fixed;
   font-family: Inter, "Noto Sans Bengali", "Hind Siliguri", "Segoe UI", system-ui, -apple-system, sans-serif;
   line-height: 1.6;
+}
+
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 a {
@@ -67,20 +78,22 @@ img {
 .brand-icon {
   width: 51px;
   height: 51px;
+  filter: drop-shadow(0 10px 18px rgba(0, 61, 58, 0.2));
 }
 
 .brand-logotype {
   width: 198px;
   height: auto;
+  filter: drop-shadow(0 10px 18px rgba(0, 61, 58, 0.32));
 }
 
 .language-switch {
   display: inline-flex;
   gap: 2px;
   padding: 4px;
-  border: 1px solid rgba(255, 251, 204, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.26);
   border-radius: 999px;
-  background: rgba(0, 75, 73, 0.34);
+  background: rgba(0, 75, 73, 0.54);
   backdrop-filter: blur(16px);
 }
 
@@ -97,8 +110,8 @@ img {
 }
 
 .lang-option.is-active {
-  color: var(--green);
-  background: var(--ivory);
+  color: var(--deep-green);
+  background: #ffffff;
 }
 
 .hero {
@@ -110,7 +123,8 @@ img {
   padding: 154px 24px 76px;
   color: #ffffff;
   background:
-    linear-gradient(90deg, rgba(0, 75, 73, 0.94) 0%, rgba(0, 75, 73, 0.76) 42%, rgba(0, 75, 73, 0.24) 100%),
+    linear-gradient(180deg, rgba(0, 75, 73, 0.94) 0%, rgba(0, 89, 85, 0.84) 48%, rgba(0, 117, 114, 0.74) 100%),
+    linear-gradient(90deg, rgba(0, 75, 73, 0.94) 0%, rgba(0, 75, 73, 0.68) 44%, rgba(0, 117, 114, 0.18) 100%),
     url("Slider.png") right center / cover no-repeat;
 }
 
@@ -122,7 +136,7 @@ img {
 .eyebrow,
 .section-label {
   margin: 0 0 12px;
-  color: var(--ivory);
+  color: rgba(255, 255, 255, 0.76);
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0;
@@ -154,7 +168,7 @@ h1 {
 .hero-bn {
   max-width: 620px;
   margin: 16px 0 0;
-  color: var(--ivory);
+  color: rgba(255, 255, 255, 0.86);
   font-size: clamp(1rem, 2vw, 1.22rem);
   font-weight: 700;
 }
@@ -204,7 +218,7 @@ h1 {
 .section-copy h2,
 .spiritual-inner h2 {
   margin: 0;
-  color: var(--green);
+  color: #ffffff;
   font-size: clamp(2rem, 5vw, 4rem);
   line-height: 1.04;
   letter-spacing: 0;
@@ -216,13 +230,15 @@ h1 {
 
 .feature-card {
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 18px 48px rgba(0, 47, 45, 0.08);
+  border-radius: 38px;
+  background: var(--card-gradient);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
 }
 
 .feature-card h3 {
   margin: 0 0 8px;
-  color: var(--green);
+  color: #ffffff;
   font-size: 1.25rem;
 }
 
@@ -260,14 +276,27 @@ h1 {
 }
 
 .feature-mark {
-  width: 48px;
-  height: 48px;
+  width: 68px;
+  height: 68px;
   display: grid;
   place-items: center;
   margin-bottom: 26px;
-  color: var(--green);
-  background: var(--gold-gradient);
-  font-weight: 950;
+  color: var(--icon-gold);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 26px;
+  background: rgba(0, 75, 73, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 18px 38px rgba(0, 37, 35, 0.2);
+}
+
+.feature-mark svg,
+.seo-icon svg {
+  width: 34px;
+  height: 34px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .seo-grid {
@@ -280,8 +309,10 @@ h1 {
 .seo-grid article,
 .faq-list details {
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 18px 48px rgba(0, 47, 45, 0.07);
+  border-radius: 36px;
+  background: var(--card-gradient);
+  box-shadow: 0 24px 66px rgba(0, 37, 35, 0.24);
+  backdrop-filter: blur(18px);
 }
 
 .seo-grid article {
@@ -289,9 +320,22 @@ h1 {
   padding: 26px;
 }
 
+.seo-icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+  color: var(--icon-gold);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  background: rgba(0, 75, 73, 0.46);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
 .seo-grid h3 {
   margin: 0 0 10px;
-  color: var(--green);
+  color: #ffffff;
   font-size: 1.18rem;
 }
 
@@ -305,7 +349,8 @@ h1 {
   padding: 96px 24px;
   color: #ffffff;
   background:
-    linear-gradient(90deg, rgba(0, 75, 73, 0.95), rgba(0, 75, 73, 0.82)),
+    linear-gradient(180deg, rgba(0, 75, 73, 0.96), rgba(0, 117, 114, 0.96)),
+    linear-gradient(90deg, rgba(0, 75, 73, 0.92), rgba(0, 117, 114, 0.78)),
     url("Slider.png") center / cover no-repeat;
 }
 
@@ -341,7 +386,7 @@ h1 {
 }
 
 .faq-list summary {
-  color: var(--green);
+  color: #ffffff;
   font-size: 1.06rem;
   font-weight: 900;
   cursor: pointer;
@@ -361,7 +406,7 @@ h1 {
   padding: 34px max(16px, calc((100% - 1160px) / 2)) 44px;
   border-top: 0;
   color: #ffffff;
-  background: var(--green);
+  background: linear-gradient(180deg, var(--deep-green), #003f3d);
 }
 
 .footer-brand {
@@ -391,7 +436,7 @@ h1 {
 }
 
 .site-footer a {
-  color: var(--ivory);
+  color: #ffffff;
   font-weight: 900;
   text-decoration: none;
 }
@@ -458,7 +503,7 @@ h1 {
   .hero {
     padding: 108px 16px 52px;
     background:
-      linear-gradient(90deg, rgba(0, 75, 73, 0.96) 0%, rgba(0, 75, 73, 0.82) 100%),
+      linear-gradient(180deg, rgba(0, 75, 73, 0.96) 0%, rgba(0, 89, 85, 0.9) 44%, rgba(0, 117, 114, 0.78) 100%),
       url("Slider.png") 68% center / cover no-repeat;
   }
 

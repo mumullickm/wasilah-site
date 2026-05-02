@@ -7,7 +7,7 @@ Repository: <https://github.com/mumullickm/wasilah-site>
 ## Files
 
 - `index.html` - page markup and SEO metadata.
-- `styles.css` - responsive visual design using Wasilah green `#004B49`.
+- `styles.css` - responsive visual design using the Wasilah green vertical gradient.
 - `script.js` - English/Bangla copy switcher and app-store link handling.
 - `CNAME` - custom domain for GitHub Pages.
 - `robots.txt`, `sitemap.xml`, `site.webmanifest` - publishing support files.
