@@ -11,3 +11,4 @@ wasilah_logo.svg
 # Local editor/runtime noise.
 node_modules/
 .env
+Wasilah_offline.html

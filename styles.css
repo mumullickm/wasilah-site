@@ -24,6 +24,7 @@ html {
 
 body {
   margin: 0;
+  min-width: 320px;
   color: var(--ink);
   background: var(--ivory);
   font-family: Inter, "Noto Sans Bengali", "Hind Siliguri", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -181,6 +182,7 @@ h1 {
 
 .store-button:hover {
   box-shadow: none;
+  opacity: 0.9;
 }
 
 .store-button.is-muted {
@@ -312,6 +314,16 @@ h1 {
   font-weight: 700;
 }
 
+.footer-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.9rem;
+}
+
 .site-footer a {
   color: var(--ivory);
   font-weight: 900;
@@ -319,6 +331,10 @@ h1 {
 }
 
 @media (max-width: 880px) {
+  .site-header {
+    padding-top: 24px;
+  }
+
   .hero {
     min-height: auto;
     padding-top: 148px;
@@ -328,52 +344,76 @@ h1 {
   .feature-grid {
     grid-template-columns: 1fr;
   }
+
+  .section-copy.narrow {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 620px) {
   .site-header {
     width: calc(100% - 24px);
-    gap: 12px;
-    padding-top: 20px;
+    gap: 10px;
+    padding-top: 16px;
   }
 
   .brand {
-    gap: 8px;
+    gap: 7px;
+    min-width: 0;
   }
 
   .brand-icon {
-    width: 42px;
-    height: 42px;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 auto;
   }
 
   .brand-logotype {
-    width: 141px;
+    width: clamp(112px, 36vw, 132px);
   }
 
   .language-switch {
+    flex: 0 0 auto;
+    gap: 1px;
     padding: 3px;
   }
 
   .lang-option {
-    min-width: 46px;
-    min-height: 34px;
-    font-size: 0.86rem;
+    min-width: 42px;
+    min-height: 32px;
+    padding: 0 8px;
+    font-size: 0.84rem;
   }
 
   .hero {
-    padding: 126px 16px 56px;
+    padding: 108px 16px 52px;
     background:
       linear-gradient(90deg, rgba(0, 75, 73, 0.96) 0%, rgba(0, 75, 73, 0.82) 100%),
       url("Slider.png") 68% center / cover no-repeat;
   }
 
   h1 {
-    font-size: clamp(3.2rem, 19vw, 5.2rem);
+    font-size: clamp(3rem, 18vw, 4.9rem);
+  }
+
+  .hero-lede {
+    margin-top: 18px;
+    font-size: 1.02rem;
+  }
+
+  .hero-bn {
+    font-size: 1rem;
+  }
+
+  .store-actions {
+    gap: 10px;
+    margin-top: 26px;
   }
 
   .store-button {
     width: 100%;
-    max-width: 220px;
+    max-width: 204px;
+    min-height: 58px;
   }
 
   .section {
@@ -383,7 +423,11 @@ h1 {
 
   .feature-card {
     min-height: 210px;
-    padding: 24px;
+    padding: 22px;
+  }
+
+  .feature-grid {
+    gap: 12px;
   }
 
   .spiritual-band {
@@ -394,5 +438,24 @@ h1 {
     flex-direction: column;
     align-items: flex-start;
     padding: 30px 16px 36px;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-logotype {
+    width: 104px;
+  }
+
+  .lang-option {
+    min-width: 38px;
+    padding: 0 7px;
+  }
+
+  .hero {
+    padding-top: 100px;
+  }
+
+  h1 {
+    font-size: clamp(2.7rem, 17vw, 3.6rem);
   }
 }
