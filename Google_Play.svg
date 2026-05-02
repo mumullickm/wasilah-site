@@ -36,9 +36,9 @@
       }
 
       .st8 {
-        stroke: #39b54a;
+        stroke: none;
         stroke-miterlimit: 10;
-        stroke-width: 2px;
+        stroke-width: 0;
       }
     </style>
     <clipPath id="clippath">

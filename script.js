@@ -6,25 +6,12 @@ const STORE_LINKS = {
 const copy = {
   en: {
     navFeatures: "Features",
-    navMission: "Mission",
     navDownload: "Download",
     heroEyebrow: "For Deen, Dunia & Akhira",
     heroLead:
-      "A calm Islamic companion for everyday salah, Quran, Hadith, Qibla, Zakat, and remembrance. Built Bengali-first, open to the global Ummah.",
+      "A calm Islamic companion for everyday salah, Quran, Hadith, Qibla, Zakat, and remembrance. Built for everyday worship, open to the global Ummah.",
     appStoreKicker: "Download on the",
     playStoreKicker: "Get it on",
-    stripQuran: "Quran access",
-    stripZakat: "Zakat calculation",
-    stripPrayerStrong: "Local",
-    stripPrayer: "Prayer times",
-    missionLabel: "The purpose",
-    missionTitle: "Dawah through daily Islamic practice.",
-    deenTitle: "Deen",
-    deenText: "Prayer, Quran, Hadith, duas, and reminders that keep worship close throughout the day.",
-    duniaTitle: "Dunia",
-    duniaText: "Practical guidance for time, charity, habits, and responsibility in everyday life.",
-    akhiraTitle: "Akhira",
-    akhiraText: "A gentle path of remembrance, accountability, and preparation for what comes after this life.",
     featuresLabel: "Inside the app",
     featuresTitle: "Everything essential, gathered in one place.",
     featurePrayerTitle: "Prayer Times & Adhan",
@@ -43,36 +30,19 @@ const copy = {
     spiritualTitle: "Technology should make worship easier, not noisier.",
     spiritualText:
       "Wasilah is designed to support simple daily consistency: pray on time, return to the Quran, learn from Hadith, give with intention, and keep Allah in remembrance.",
-    audienceLabel: "Built from Bangladesh",
-    audienceTitle: "Bengali-first, welcoming to Muslims everywhere.",
-    audienceText:
-      "Wasilah speaks naturally to Bangladeshi Muslims while keeping the interface and content clear for an international audience.",
     downloadLabel: "Coming to mobile",
     downloadTitle: "Download Wasilah when it launches.",
     downloadText: "App Store and Google Play links will appear here as soon as the app is published.",
-    footerText: "Deen, Dunia & Akhira. Dawah through daily Islamic practice."
+    footerText: "Deen, Dunia & Akhira."
   },
   bn: {
     navFeatures: "ফিচার",
-    navMission: "উদ্দেশ্য",
     navDownload: "ডাউনলোড",
     heroEyebrow: "দীন, দুনিয়া ও আখিরাতের জন্য",
     heroLead:
-      "সালাহ, কুরআন, হাদিস, কিবলা, যাকাত ও দৈনন্দিন যিকিরের জন্য একটি শান্ত ইসলামিক সহচর। বাংলা-প্রথম, বিশ্ব উম্মাহর জন্য উন্মুক্ত।",
+      "সালাহ, কুরআন, হাদিস, কিবলা, যাকাত ও দৈনন্দিন যিকিরের জন্য একটি শান্ত ইসলামিক সহচর। দৈনন্দিন ইবাদতের জন্য তৈরি, বিশ্ব উম্মাহর জন্য উন্মুক্ত।",
     appStoreKicker: "ডাউনলোড করুন",
     playStoreKicker: "পাওয়া যাবে",
-    stripQuran: "কুরআন অ্যাক্সেস",
-    stripZakat: "যাকাত হিসাব",
-    stripPrayerStrong: "লোকাল",
-    stripPrayer: "নামাজের সময়",
-    missionLabel: "উদ্দেশ্য",
-    missionTitle: "দৈনন্দিন আমলের মাধ্যমে দাওয়াহ।",
-    deenTitle: "দীন",
-    deenText: "নামাজ, কুরআন, হাদিস, দুয়া ও রিমাইন্ডার যেন ইবাদত সারাদিন কাছে থাকে।",
-    duniaTitle: "দুনিয়া",
-    duniaText: "সময়, দান, অভ্যাস ও দৈনন্দিন দায়িত্বের জন্য বাস্তবসম্মত সহায়তা।",
-    akhiraTitle: "আখিরাত",
-    akhiraText: "যিকির, আত্মসমালোচনা ও পরকালের প্রস্তুতির জন্য কোমল একটি পথ।",
     featuresLabel: "অ্যাপের ভেতরে",
     featuresTitle: "প্রয়োজনীয় সবকিছু এক জায়গায়।",
     featurePrayerTitle: "নামাজের সময় ও আযান",
@@ -91,14 +61,10 @@ const copy = {
     spiritualTitle: "টেকনোলজি ইবাদতকে সহজ করুক, ব্যস্ত নয়।",
     spiritualText:
       "ওয়াসিলাহ দৈনন্দিন ধারাবাহিকতায় সহায়তা করার জন্য তৈরি: সময়মতো নামাজ, কুরআনে ফেরা, হাদিস থেকে শেখা, নিয়তসহ দান এবং আল্লাহর স্মরণ।",
-    audienceLabel: "বাংলাদেশ থেকে নির্মিত",
-    audienceTitle: "বাংলা-প্রথম, সব দেশের মুসলিমদের জন্য স্বাগত।",
-    audienceText:
-      "ওয়াসিলাহ বাংলাদেশি মুসলিমদের ভাষা ও প্রয়োজনকে গুরুত্ব দেয়, একই সঙ্গে আন্তর্জাতিক ব্যবহারকারীদের জন্য পরিষ্কার অভিজ্ঞতা রাখে।",
     downloadLabel: "মোবাইলে আসছে",
     downloadTitle: "লঞ্চ হলে ওয়াসিলাহ ডাউনলোড করুন।",
     downloadText: "অ্যাপ প্রকাশিত হওয়ার সঙ্গে সঙ্গে App Store ও Google Play লিংক এখানে যুক্ত হবে।",
-    footerText: "দীন, দুনিয়া ও আখিরাত। দৈনন্দিন আমলের মাধ্যমে দাওয়াহ।"
+    footerText: "দীন, দুনিয়া ও আখিরাত।"
   }
 };
 
