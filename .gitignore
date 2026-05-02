@@ -1,0 +1,13 @@
+# Source brand files that are not required by the GitHub Pages website.
+*.ai
+*.pdf
+FB_DP.jpg
+wasilah_icon.svg
+wasilah_logo.svg
+
+# macOS metadata.
+.DS_Store
+
+# Local editor/runtime noise.
+node_modules/
+.env

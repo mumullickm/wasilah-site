@@ -1,0 +1,15 @@
+{
+  "name": "Wasilah",
+  "short_name": "Wasilah",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#004B49",
+  "theme_color": "#004B49",
+  "icons": [
+    {
+      "src": "/wasilah_icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}
