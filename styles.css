@@ -475,8 +475,7 @@ h1 {
 .site-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 18px;
+  justify-content: center;
   width: 100%;
   margin: 0;
   padding: 34px max(16px, calc((100% - 1160px) / 2)) 44px;
@@ -494,32 +493,6 @@ h1 {
 .footer-brand img {
   width: 144px;
   height: auto;
-}
-
-.site-footer p {
-  margin: 0;
-  font-weight: 700;
-}
-
-.footer-copy {
-  display: grid;
-  gap: 4px;
-}
-
-.copyright {
-  color: rgba(255, 255, 255, 0.76);
-  font-size: 0.9rem;
-}
-
-.site-footer a {
-  color: #ffffff;
-  font-weight: 900;
-  text-decoration: none;
-  transition: color 200ms ease;
-}
-
-.site-footer a:hover {
-  color: var(--icon-gold);
 }
 
 .motion-ready .reveal {
@@ -710,8 +683,6 @@ h1 {
   }
 
   .site-footer {
-    flex-direction: column;
-    align-items: flex-start;
     padding: 30px 16px 36px;
   }
 }

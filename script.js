@@ -51,8 +51,7 @@ const copy = {
       "Wasilah brings Arabic, English, and Bangla access together so Bengali-speaking Muslims can learn and reflect in one place.",
     faqZakatQuestion: "Can Wasilah calculate Zakat in BDT?",
     faqZakatAnswer:
-      "Yes. The Zakat calculator is built around Bangladeshi Taka for cash, gold, savings, business assets, and liabilities.",
-    footerText: "Deen, Dunia & Akhira."
+      "Yes. The Zakat calculator is built around Bangladeshi Taka for cash, gold, savings, business assets, and liabilities."
   },
   bn: {
     heroEyebrow: "দীন, দুনিয়া ও আখিরাতের জন্য",
@@ -101,8 +100,7 @@ const copy = {
       "ওয়াসিলাহ আরবি, ইংরেজি ও বাংলা অ্যাক্সেস একত্র করে, যাতে বাংলাভাষী মুসলিমরা এক জায়গায় শিখতে ও চিন্তা করতে পারেন।",
     faqZakatQuestion: "ওয়াসিলাহ কি BDT-তে যাকাত হিসাব করতে পারে?",
     faqZakatAnswer:
-      "হ্যাঁ। নগদ, সোনা, সঞ্চয়, ব্যবসায়িক সম্পদ ও দায়ের জন্য যাকাত ক্যালকুলেটর বাংলাদেশি টাকা কেন্দ্রিক।",
-    footerText: "দীন, দুনিয়া ও আখিরাত।"
+      "হ্যাঁ। নগদ, সোনা, সঞ্চয়, ব্যবসায়িক সম্পদ ও দায়ের জন্য যাকাত ক্যালকুলেটর বাংলাদেশি টাকা কেন্দ্রিক।"
   }
 };
 
