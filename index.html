@@ -81,10 +81,13 @@
             "audienceType": "Muslims in Bangladesh and Bengali-speaking Muslims worldwide"
           },
           "featureList": [
-            "Prayer times and Adhan reminders",
+            "Dynamic Bangladesh prayer times",
             "Qibla direction",
-            "Quran in Arabic, English, and Bangla",
+            "Quran reader starting with Arabic, English, and Bangla",
             "Hadith in Arabic, English, and Bangla",
+            "99 Names of Allah in Arabic, English, and Bangla",
+            "Duas in Arabic, English, and Bangla",
+            "Hajj and Umrah guide",
             "Zakat calculator in BDT",
             "Duas and daily remembrance",
             "Ramadan and Hijri calendar support"
@@ -203,6 +206,16 @@
         <path d="M28 36l6-16 6 16"/>
         <path d="M31 30h6"/>
       </symbol>
+      <symbol id="icon-kaaba" viewBox="0 0 48 48">
+        <path d="M10 17h28v23H10z"/>
+        <path d="M10 17l5-7h28l-5 7"/>
+        <path d="M16 26h16"/>
+        <path d="M16 33h16"/>
+        <path d="M32 17l5-7"/>
+      </symbol>
+      <symbol id="icon-star" viewBox="0 0 48 48">
+        <path d="m24 6 4.8 11.2 12.2 1.1-9.2 8 2.7 11.9L24 31.9l-10.5 6.3 2.7-11.9-9.2-8 12.2-1.1L24 6Z"/>
+      </symbol>
     </svg>
 
     <header class="site-header" aria-label="Primary navigation">
@@ -278,35 +291,116 @@
             <h3 data-i18n="featureDuaTitle">Duas & Remembrance</h3>
             <p data-i18n="featureDuaText">Daily adhkar and supplications for morning, evening, travel, family, and more.</p>
           </article>
+          <article class="feature-card">
+            <div class="feature-mark"><svg><use href="#icon-star"></use></svg></div>
+            <h3 data-i18n="featureNamesTitle">99 Names of Allah</h3>
+            <p data-i18n="featureNamesText">Arabic names with English and Bangla meanings for reflection and learning.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-mark"><svg><use href="#icon-kaaba"></use></svg></div>
+            <h3 data-i18n="featureHajjTitle">Hajj & Umrah Guide</h3>
+            <p data-i18n="featureHajjText">Clear step-by-step guidance for Ihram, Tawaf, Sa'i, Mina, Arafat, and more.</p>
+          </article>
         </div>
       </section>
 
-      <section class="section bangladesh-section" id="bangladesh" aria-labelledby="bangladesh-title">
+      <section class="section worship-section" id="worship" aria-labelledby="worship-title">
         <div class="section-copy narrow">
-          <p class="section-label" data-i18n="bangladeshLabel">Built for Bangladesh</p>
-          <h2 id="bangladesh-title" data-i18n="bangladeshTitle">Bangla-first worship tools for daily Muslim life.</h2>
-          <p data-i18n="bangladeshText">
-            Wasilah focuses on what Muslims in Bangladesh search for every day: accurate salah support,
-            Adhan reminders, Qibla direction, Bangla Quran and Hadith access, Ramadan routines, duas,
-            Hijri dates, and Zakat calculation in Bangladeshi Taka.
+          <p class="section-label" data-i18n="worshipLabel">Live worship tools</p>
+          <h2 id="worship-title" data-i18n="worshipTitle">A dynamic website experience, shaped like the Wasilah app.</h2>
+          <p data-i18n="worshipText">
+            Scroll through focused website segments for Bangladesh salah times, Quran reading, Allah's names, duas, and Hajj or Umrah guidance.
           </p>
         </div>
 
-        <div class="seo-grid" aria-label="Wasilah Bangladesh highlights">
-          <article>
-            <div class="seo-icon"><svg><use href="#icon-bangladesh"></use></svg></div>
-            <h3 data-i18n="bdPrayerTitle">Prayer Times Bangladesh</h3>
-            <p data-i18n="bdPrayerText">Support for local salah schedules across Dhaka, Chattogram, Sylhet, Rajshahi, Khulna, Barishal, Rangpur, Mymensingh, and more.</p>
+        <nav class="segment-nav" aria-label="Wasilah website sections">
+          <a href="#salah-segment" data-i18n="segmentSalah">Salah</a>
+          <a href="#quran-segment" data-i18n="segmentQuran">Quran</a>
+          <a href="#names-segment" data-i18n="segmentNames">99 Names</a>
+          <a href="#dua-segment" data-i18n="segmentDua">Duas</a>
+          <a href="#guide-segment" data-i18n="segmentGuide">Hajj & Umrah</a>
+        </nav>
+
+        <div class="worship-grid">
+          <article class="worship-panel salah-panel" id="salah-segment">
+            <div class="panel-head">
+              <div class="feature-mark"><svg><use href="#icon-prayer"></use></svg></div>
+              <div>
+                <p class="panel-kicker" data-i18n="salahKicker">Asia/Dhaka time</p>
+                <h3 data-i18n="salahTitle">Salah Time</h3>
+              </div>
+            </div>
+            <div class="salah-controls">
+              <label for="city-select" data-i18n="cityLabel">City</label>
+              <select id="city-select" aria-label="Select city"></select>
+              <button class="utility-button" id="geo-button" type="button" data-i18n="geoButton">Use Location</button>
+            </div>
+            <div class="next-prayer" aria-live="polite">
+              <span data-i18n="nextPrayerLabel">Next prayer</span>
+              <strong id="next-prayer-name">Fajr</strong>
+              <time id="next-prayer-time">--:--</time>
+            </div>
+            <div class="salah-times" id="salah-times" aria-label="Prayer times"></div>
           </article>
-          <article>
-            <div class="seo-icon"><svg><use href="#icon-language"></use></svg></div>
-            <h3 data-i18n="bdBanglaTitle">Bangla Islamic Learning</h3>
-            <p data-i18n="bdBanglaText">Arabic source text with English and Bangla access for Quran, Hadith, duas, and everyday Islamic guidance.</p>
+
+          <article class="worship-panel quran-panel" id="quran-segment">
+            <div class="panel-head">
+              <div class="feature-mark"><svg><use href="#icon-quran"></use></svg></div>
+              <div>
+                <p class="panel-kicker" data-i18n="quranKicker">Quran reader</p>
+                <h3 data-i18n="quranReaderTitle">Quran</h3>
+              </div>
+            </div>
+            <div class="reader-controls">
+              <select id="quran-surah" aria-label="Select Quran passage"></select>
+              <div class="language-pills" aria-label="Quran languages">
+                <span>عربي</span>
+                <span>English</span>
+                <span>বাংলা</span>
+              </div>
+            </div>
+            <div class="quran-reader" id="quran-reader"></div>
           </article>
-          <article>
-            <div class="seo-icon"><svg><use href="#icon-zakat"></use></svg></div>
-            <h3 data-i18n="bdZakatTitle">BDT Zakat Calculator</h3>
-            <p data-i18n="bdZakatText">Calculate Zakat in Bangladeshi Taka with common local asset categories, liabilities, gold, silver, savings, and business wealth.</p>
+
+          <article class="worship-panel names-panel" id="names-segment">
+            <div class="panel-head">
+              <div class="feature-mark"><svg><use href="#icon-star"></use></svg></div>
+              <div>
+                <p class="panel-kicker" data-i18n="namesKicker">Asmaul Husna</p>
+                <h3 data-i18n="namesTitle">99 Names of Allah</h3>
+              </div>
+            </div>
+            <input class="panel-search" id="names-search" type="search" data-i18n-placeholder="namesSearch" placeholder="Search a name or meaning" aria-label="Search 99 Names of Allah">
+            <div class="names-list" id="names-list" aria-label="99 Names of Allah"></div>
+          </article>
+
+          <article class="worship-panel dua-panel" id="dua-segment">
+            <div class="panel-head">
+              <div class="feature-mark"><svg><use href="#icon-dua"></use></svg></div>
+              <div>
+                <p class="panel-kicker" data-i18n="duaKicker">Supplications</p>
+                <h3 data-i18n="duaTitle">Duas</h3>
+              </div>
+            </div>
+            <div class="reader-controls">
+              <select id="dua-select" aria-label="Select dua"></select>
+            </div>
+            <div class="dua-reader" id="dua-reader"></div>
+          </article>
+
+          <article class="worship-panel guide-panel" id="guide-segment">
+            <div class="panel-head">
+              <div class="feature-mark"><svg><use href="#icon-kaaba"></use></svg></div>
+              <div>
+                <p class="panel-kicker" data-i18n="guideKicker">Pilgrimage</p>
+                <h3 data-i18n="guideTitle">Hajj & Umrah Guide</h3>
+              </div>
+            </div>
+            <div class="guide-tabs" role="tablist" aria-label="Guide type">
+              <button class="guide-tab is-active" type="button" data-guide="umrah" data-i18n="umrahTab">Umrah</button>
+              <button class="guide-tab" type="button" data-guide="hajj" data-i18n="hajjTab">Hajj</button>
+            </div>
+            <ol class="guide-list" id="guide-list"></ol>
           </article>
         </div>
       </section>

@@ -3,6 +3,261 @@ const STORE_LINKS = {
   googlePlay: ""
 };
 
+const PRAYER_API_BASE = "https://api.aladhan.com/v1";
+const QURAN_API_BASE = "https://api.alquran.cloud/v1";
+const QURAN_EDITIONS = ["quran-uthmani", "en.asad", "bn.bengali"];
+
+const CITIES = [
+  { name: "Dhaka", bn: "ঢাকা", lat: 23.8103, lng: 90.4125, tz: 6 },
+  { name: "Chattogram", bn: "চট্টগ্রাম", lat: 22.3569, lng: 91.7832, tz: 6 },
+  { name: "Sylhet", bn: "সিলেট", lat: 24.8949, lng: 91.8687, tz: 6 },
+  { name: "Rajshahi", bn: "রাজশাহী", lat: 24.3745, lng: 88.6042, tz: 6 },
+  { name: "Khulna", bn: "খুলনা", lat: 22.8456, lng: 89.5403, tz: 6 },
+  { name: "Barishal", bn: "বরিশাল", lat: 22.701, lng: 90.3535, tz: 6 },
+  { name: "Rangpur", bn: "রংপুর", lat: 25.7439, lng: 89.2752, tz: 6 },
+  { name: "Mymensingh", bn: "ময়মনসিংহ", lat: 24.7471, lng: 90.4203, tz: 6 }
+];
+
+let currentLanguage = "en";
+let currentCoords = CITIES[0];
+let currentQuranLanguage = "ar";
+let currentGuide = "umrah";
+let quranSurahs = [];
+let quranCache = new Map();
+
+const QURAN_LIBRARY = [
+  {
+    id: "fatihah",
+    title: { en: "Al-Fatihah", bn: "সূরা আল-ফাতিহা" },
+    verses: [
+      {
+        n: 1,
+        ar: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+        en: "In the name of Allah, the Most Compassionate, the Most Merciful.",
+        bn: "পরম করুণাময়, পরম দয়ালু আল্লাহর নামে।"
+      },
+      {
+        n: 2,
+        ar: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+        en: "All praise belongs to Allah, Lord of all worlds.",
+        bn: "সব প্রশংসা আল্লাহর, যিনি সকল জগতের প্রতিপালক।"
+      },
+      {
+        n: 3,
+        ar: "الرَّحْمَٰنِ الرَّحِيمِ",
+        en: "The Most Compassionate, the Most Merciful.",
+        bn: "পরম করুণাময়, পরম দয়ালু।"
+      },
+      {
+        n: 4,
+        ar: "مَالِكِ يَوْمِ الدِّينِ",
+        en: "Master of the Day of Judgment.",
+        bn: "প্রতিদান দিবসের মালিক।"
+      },
+      {
+        n: 5,
+        ar: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+        en: "You alone we worship, and You alone we ask for help.",
+        bn: "আমরা শুধু আপনারই ইবাদত করি এবং শুধু আপনার কাছেই সাহায্য চাই।"
+      },
+      {
+        n: 6,
+        ar: "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
+        en: "Guide us to the straight path.",
+        bn: "আমাদের সরল পথে পরিচালিত করুন।"
+      },
+      {
+        n: 7,
+        ar: "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+        en: "The path of those You have blessed, not of those who earned anger, nor of those who went astray.",
+        bn: "তাদের পথ, যাদের আপনি অনুগ্রহ করেছেন; তাদের পথ নয় যারা ক্রোধভাজন, এবং যারা পথভ্রষ্ট।"
+      }
+    ]
+  },
+  {
+    id: "ikhlas",
+    title: { en: "Al-Ikhlas", bn: "সূরা আল-ইখলাস" },
+    verses: [
+      { n: 1, ar: "قُلْ هُوَ اللَّهُ أَحَدٌ", en: "Say: He is Allah, One.", bn: "বলুন: তিনি আল্লাহ, এক।" },
+      { n: 2, ar: "اللَّهُ الصَّمَدُ", en: "Allah, the Eternal Refuge.", bn: "আল্লাহ অমুখাপেক্ষী আশ্রয়।" },
+      { n: 3, ar: "لَمْ يَلِدْ وَلَمْ يُولَدْ", en: "He neither begets nor is born.", bn: "তিনি কাউকে জন্ম দেননি, এবং তাঁকেও জন্ম দেওয়া হয়নি।" },
+      { n: 4, ar: "وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ", en: "And none is comparable to Him.", bn: "আর তাঁর সমতুল্য কেউ নেই।" }
+    ]
+  },
+  {
+    id: "falaq",
+    title: { en: "Al-Falaq", bn: "সূরা আল-ফালাক" },
+    verses: [
+      { n: 1, ar: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ", en: "Say: I seek refuge in the Lord of daybreak.", bn: "বলুন: আমি আশ্রয় চাই প্রভাতের রবের কাছে।" },
+      { n: 2, ar: "مِن شَرِّ مَا خَلَقَ", en: "From the harm of what He created.", bn: "তিনি যা সৃষ্টি করেছেন তার অনিষ্ট থেকে।" },
+      { n: 3, ar: "وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ", en: "From the harm of darkness when it settles.", bn: "অন্ধকার নেমে এলে তার অনিষ্ট থেকে।" },
+      { n: 4, ar: "وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ", en: "From the harm of those who blow on knots.", bn: "গিঁটে ফুঁকদানকারীদের অনিষ্ট থেকে।" },
+      { n: 5, ar: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ", en: "And from the harm of the envier when he envies.", bn: "আর হিংসুকের অনিষ্ট থেকে, যখন সে হিংসা করে।" }
+    ]
+  }
+];
+
+const DUAS = [
+  {
+    id: "morning",
+    title: { en: "Morning remembrance", bn: "সকালের যিকির" },
+    ar: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ",
+    en: "We have entered morning, and all dominion belongs to Allah.",
+    bn: "আমরা সকালে উপনীত হয়েছি, আর সমস্ত রাজত্ব আল্লাহর।"
+  },
+  {
+    id: "evening",
+    title: { en: "Evening remembrance", bn: "সন্ধ্যার যিকির" },
+    ar: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ",
+    en: "We have entered evening, and all dominion belongs to Allah.",
+    bn: "আমরা সন্ধ্যায় উপনীত হয়েছি, আর সমস্ত রাজত্ব আল্লাহর।"
+  },
+  {
+    id: "knowledge",
+    title: { en: "Increase in knowledge", bn: "জ্ঞান বৃদ্ধির দুয়া" },
+    ar: "رَبِّ زِدْنِي عِلْمًا",
+    en: "My Lord, increase me in knowledge.",
+    bn: "হে আমার রব, আমাকে জ্ঞানে বৃদ্ধি করুন।"
+  },
+  {
+    id: "parents",
+    title: { en: "For parents", bn: "মা-বাবার জন্য" },
+    ar: "رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+    en: "My Lord, have mercy on them as they raised me when I was small.",
+    bn: "হে আমার রব, তারা যেমন শৈশবে আমাকে লালন করেছেন, তেমনি তাদের প্রতি দয়া করুন।"
+  },
+  {
+    id: "travel",
+    title: { en: "Travel", bn: "সফর" },
+    ar: "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ",
+    en: "Glory be to the One who made this available to us, though we could not have controlled it.",
+    bn: "পবিত্র তিনি, যিনি এটি আমাদের অধীন করেছেন; আমরা নিজেরা তা করতে সক্ষম ছিলাম না।"
+  }
+];
+
+const GUIDE_STEPS = {
+  umrah: [
+    { en: "Enter Ihram", bn: "ইহরাম বাঁধুন", textEn: "Make intention, recite talbiyah, and observe the Ihram restrictions.", textBn: "নিয়ত করুন, তালবিয়াহ পড়ুন এবং ইহরামের বিধিনিষেধ মানুন।" },
+    { en: "Tawaf", bn: "তাওয়াফ", textEn: "Circle the Kaaba seven times with calm focus and dua.", textBn: "শান্ত মনোযোগ ও দুয়ার সঙ্গে কাবা সাতবার প্রদক্ষিণ করুন।" },
+    { en: "Pray two rak'ah", bn: "দুই রাকাত নামাজ", textEn: "Pray after Tawaf where possible without blocking others.", textBn: "অন্যকে বাধা না দিয়ে সম্ভব হলে তাওয়াফের পর দুই রাকাত নামাজ পড়ুন।" },
+    { en: "Sa'i", bn: "সাঈ", textEn: "Walk seven rounds between Safa and Marwah.", textBn: "সাফা ও মারওয়ার মাঝে সাত চক্কর সম্পন্ন করুন।" },
+    { en: "Halq or Taqsir", bn: "হালক বা তাকসির", textEn: "Shave or trim the hair to complete Umrah.", textBn: "চুল মুণ্ডন বা ছাঁটার মাধ্যমে উমরাহ সম্পন্ন করুন।" }
+  ],
+  hajj: [
+    { en: "Ihram and Mina", bn: "ইহরাম ও মিনা", textEn: "Enter Ihram and spend the first Hajj day in Mina.", textBn: "ইহরাম বেঁধে হজ্জের প্রথম দিন মিনায় অবস্থান করুন।" },
+    { en: "Arafat", bn: "আরাফাত", textEn: "Stand at Arafat with dua and repentance; this is the heart of Hajj.", textBn: "দুয়া ও তাওবার সঙ্গে আরাফাতে অবস্থান করুন; এটিই হজ্জের মূল।" },
+    { en: "Muzdalifah", bn: "মুযদালিফা", textEn: "Spend the night, pray, and collect pebbles.", textBn: "রাত কাটান, নামাজ পড়ুন এবং কংকর সংগ্রহ করুন।" },
+    { en: "Ramy and sacrifice", bn: "রামি ও কুরবানি", textEn: "Stone the Jamrah, complete sacrifice, then shave or trim.", textBn: "জামরায় কংকর নিক্ষেপ, কুরবানি, তারপর চুল মুণ্ডন বা ছাঁটা সম্পন্ন করুন।" },
+    { en: "Tawaf al-Ifadah", bn: "তাওয়াফে ইফাদা", textEn: "Return to Makkah for Tawaf al-Ifadah and Sa'i if required.", textBn: "তাওয়াফে ইফাদা এবং প্রয়োজন হলে সাঈর জন্য মক্কায় ফিরুন।" },
+    { en: "Farewell Tawaf", bn: "বিদায়ী তাওয়াফ", textEn: "Complete Tawaf al-Wada before leaving Makkah.", textBn: "মক্কা ত্যাগের আগে তাওয়াফে বিদা সম্পন্ন করুন।" }
+  ]
+};
+
+const NAMES = [
+  "الرَّحْمَن|Ar-Rahman|The Most Compassionate|পরম করুণাময়",
+  "الرَّحِيم|Ar-Rahim|The Most Merciful|পরম দয়ালু",
+  "المَلِك|Al-Malik|The Sovereign|সর্বময় অধিপতি",
+  "القُدُّوس|Al-Quddus|The Most Holy|পরম পবিত্র",
+  "السَّلَام|As-Salam|The Source of Peace|শান্তির উৎস",
+  "المُؤْمِن|Al-Mu'min|The Giver of Faith|নিরাপত্তাদাতা",
+  "المُهَيْمِن|Al-Muhaymin|The Guardian|রক্ষক",
+  "العَزِيز|Al-Aziz|The Almighty|পরাক্রমশালী",
+  "الجَبَّار|Al-Jabbar|The Compeller|মহাশক্তিধর",
+  "المُتَكَبِّر|Al-Mutakabbir|The Supremely Great|শ্রেষ্ঠ মহিমান্বিত",
+  "الخَالِق|Al-Khaliq|The Creator|সৃষ্টিকর্তা",
+  "البَارِئ|Al-Bari|The Originator|উদ্ভাবনকারী",
+  "المُصَوِّر|Al-Musawwir|The Fashioner|আকৃতিদানকারী",
+  "الغَفَّار|Al-Ghaffar|The Great Forgiver|মহাক্ষমাশীল",
+  "القَهَّار|Al-Qahhar|The Subduer|পরাভূতকারী",
+  "الوَهَّاب|Al-Wahhab|The Bestower|অকৃপণ দাতা",
+  "الرَّزَّاق|Ar-Razzaq|The Provider|রিযিকদাতা",
+  "الفَتَّاح|Al-Fattah|The Opener|উন্মুক্তকারী",
+  "العَلِيم|Al-Alim|The All-Knowing|সর্বজ্ঞ",
+  "القَابِض|Al-Qabid|The Withholder|সংকোচনকারী",
+  "البَاسِط|Al-Basit|The Expander|প্রশস্তকারী",
+  "الخَافِض|Al-Khafid|The Abaser|অবনতকারী",
+  "الرَّافِع|Ar-Rafi|The Exalter|উন্নীতকারী",
+  "المُعِزّ|Al-Mu'izz|The Honorer|সম্মানদাতা",
+  "المُذِلّ|Al-Mudhill|The Humiliator|লাঞ্ছনাদাতা",
+  "السَّمِيع|As-Sami|The All-Hearing|সর্বশ্রোতা",
+  "البَصِير|Al-Basir|The All-Seeing|সর্বদ্রষ্টা",
+  "الحَكَم|Al-Hakam|The Judge|বিচারক",
+  "العَدْل|Al-Adl|The Just|ন্যায়পরায়ণ",
+  "اللَّطِيف|Al-Latif|The Subtle|সূক্ষ্মদর্শী",
+  "الخَبِير|Al-Khabir|The All-Aware|সর্বজ্ঞাত",
+  "الحَلِيم|Al-Halim|The Forbearing|সহনশীল",
+  "العَظِيم|Al-Azim|The Magnificent|মহামহিম",
+  "الغَفُور|Al-Ghafur|The Forgiving|ক্ষমাশীল",
+  "الشَّكُور|Ash-Shakur|The Appreciative|কৃতজ্ঞতার প্রতিদানকারী",
+  "العَلِيّ|Al-Ali|The Most High|সর্বোচ্চ",
+  "الكَبِير|Al-Kabir|The Most Great|সুমহান",
+  "الحَفِيظ|Al-Hafiz|The Preserver|সংরক্ষণকারী",
+  "المُقِيت|Al-Muqit|The Sustainer|জীবিকাদাতা",
+  "الحَسِيب|Al-Hasib|The Reckoner|হিসাবগ্রহণকারী",
+  "الجَلِيل|Al-Jalil|The Majestic|মহিমান্বিত",
+  "الكَرِيم|Al-Karim|The Generous|মহাদাতা",
+  "الرَّقِيب|Ar-Raqib|The Watchful|পর্যবেক্ষক",
+  "المُجِيب|Al-Mujib|The Responsive|সাড়া দানকারী",
+  "الوَاسِع|Al-Wasi|The All-Encompassing|সর্বব্যাপী",
+  "الحَكِيم|Al-Hakim|The Wise|প্রজ্ঞাময়",
+  "الوَدُود|Al-Wadud|The Loving|স্নেহশীল",
+  "المَجِيد|Al-Majid|The Glorious|গৌরবময়",
+  "البَاعِث|Al-Ba'ith|The Resurrector|পুনরুত্থানকারী",
+  "الشَّهِيد|Ash-Shahid|The Witness|সাক্ষী",
+  "الحَقّ|Al-Haqq|The Truth|সত্য",
+  "الوَكِيل|Al-Wakil|The Trustee|ভরসাস্থল",
+  "القَوِيّ|Al-Qawiyy|The Strong|শক্তিশালী",
+  "المَتِين|Al-Matin|The Firm|সুদৃঢ়",
+  "الوَلِيّ|Al-Wali|The Protecting Friend|অভিভাবক",
+  "الحَمِيد|Al-Hamid|The Praiseworthy|প্রশংসিত",
+  "المُحْصِي|Al-Muhsi|The Counter|গণনাকারী",
+  "المُبْدِئ|Al-Mubdi|The Initiator|আরম্ভকারী",
+  "المُعِيد|Al-Mu'id|The Restorer|পুনরায় সৃষ্টিকারী",
+  "المُحْيِي|Al-Muhyi|The Giver of Life|জীবনদাতা",
+  "المُمِيت|Al-Mumit|The Giver of Death|মৃত্যুদাতা",
+  "الحَيّ|Al-Hayy|The Ever-Living|চিরঞ্জীব",
+  "القَيُّوم|Al-Qayyum|The Sustainer of All|চিরস্থায়ী ধারক",
+  "الوَاجِد|Al-Wajid|The Finder|প্রাপ্তিকারী",
+  "المَاجِد|Al-Majid|The Noble|মর্যাদাময়",
+  "الوَاحِد|Al-Wahid|The One|একক",
+  "الأَحَد|Al-Ahad|The Unique One|অনন্য এক",
+  "الصَّمَد|As-Samad|The Eternal Refuge|অমুখাপেক্ষী আশ্রয়",
+  "القَادِر|Al-Qadir|The Able|ক্ষমতাবান",
+  "المُقْتَدِر|Al-Muqtadir|The Powerful|পূর্ণ ক্ষমতাশালী",
+  "المُقَدِّم|Al-Muqaddim|The Advancer|অগ্রসরকারী",
+  "المُؤَخِّر|Al-Mu'akhkhir|The Delayer|পশ্চাতে রাখেন যিনি",
+  "الأَوَّل|Al-Awwal|The First|প্রথম",
+  "الآخِر|Al-Akhir|The Last|শেষ",
+  "الظَّاهِر|Az-Zahir|The Manifest|প্রকাশ্য",
+  "البَاطِن|Al-Batin|The Hidden|গুপ্ত",
+  "الوَالِي|Al-Wali|The Governor|পরিচালনাকারী",
+  "المُتَعَالِي|Al-Muta'ali|The Most Exalted|অতি উচ্চ",
+  "البَرّ|Al-Barr|The Source of Goodness|কল্যাণময়",
+  "التَّوَّاب|At-Tawwab|The Accepter of Repentance|তাওবা গ্রহণকারী",
+  "المُنْتَقِم|Al-Muntaqim|The Avenger|প্রতিশোধ গ্রহণকারী",
+  "العَفُوّ|Al-Afuww|The Pardoner|মার্জনাকারী",
+  "الرَّؤُوف|Ar-Ra'uf|The Kind|অতিশয় স্নেহশীল",
+  "مَالِكُ المُلْك|Malik al-Mulk|Master of the Kingdom|সাম্রাজ্যের মালিক",
+  "ذُو الجَلَالِ وَالإِكْرَام|Dhul-Jalali wal-Ikram|Lord of Majesty and Honor|মহিমা ও সম্মানের অধিকারী",
+  "المُقْسِط|Al-Muqsit|The Equitable|ন্যায়বণ্টনকারী",
+  "الجَامِع|Al-Jami|The Gatherer|সমবেতকারী",
+  "الغَنِيّ|Al-Ghani|The Self-Sufficient|অমুখাপেক্ষী ধনী",
+  "المُغْنِي|Al-Mughni|The Enricher|অভাবমোচনকারী",
+  "المَانِع|Al-Mani|The Preventer|নিবারণকারী",
+  "الضَّار|Ad-Darr|The Distresser|ক্ষতির নিয়ন্ত্রক",
+  "النَّافِع|An-Nafi|The Benefactor|উপকারকারী",
+  "النُّور|An-Nur|The Light|আলো",
+  "الهَادِي|Al-Hadi|The Guide|পথপ্রদর্শক",
+  "البَدِيع|Al-Badi|The Originator|অনন্য স্রষ্টা",
+  "البَاقِي|Al-Baqi|The Everlasting|চিরস্থায়ী",
+  "الوَارِث|Al-Warith|The Inheritor|উত্তরাধিকারী",
+  "الرَّشِيد|Ar-Rashid|The Guide to Rightness|সঠিক পথপ্রদর্শক",
+  "الصَّبُور|As-Sabur|The Patient|ধৈর্যশীল"
+].map((value, index) => {
+  const [ar, transliteration, en, bn] = value.split("|");
+  return { index: index + 1, ar, transliteration, en, bn };
+});
+
 const copy = {
   en: {
     heroEyebrow: "For Deen, Dunia & Akhira",
@@ -13,30 +268,52 @@ const copy = {
     featuresLabel: "Inside the app",
     featuresTitle: "Everything essential, gathered in one place.",
     featurePrayerTitle: "Prayer Times & Adhan",
-    featurePrayerText: "Location-aware salah times and reminders for Fajr through Isha.",
+    featurePrayerText: "Bangladesh city prayer times shown in Asia/Dhaka time.",
     featureQiblaTitle: "Qibla Direction",
     featureQiblaText: "A simple compass experience for finding the direction of the Kaaba.",
     featureQuranTitle: "Quran in Arabic, English & Bangla",
-    featureQuranText: "Read the Quran with translations for Bengali and international audiences.",
+    featureQuranText: "Read Quran passages in Arabic, English, and Bangla inside the website.",
     featureHadithTitle: "Hadith in Arabic, English & Bangla",
     featureHadithText: "Hadith collections presented for learning, reflection, and Bengali readers.",
     featureZakatTitle: "Zakat Calculator in BDT",
     featureZakatText: "Calculate zakat using Bangladeshi Taka across cash, gold, savings, and liabilities.",
     featureDuaTitle: "Duas & Remembrance",
     featureDuaText: "Daily adhkar and supplications for morning, evening, travel, family, and more.",
-    bangladeshLabel: "Built for Bangladesh",
-    bangladeshTitle: "Bangla-first worship tools for daily Muslim life.",
-    bangladeshText:
-      "Wasilah focuses on what Muslims in Bangladesh search for every day: accurate salah support, Adhan reminders, Qibla direction, Bangla Quran and Hadith access, Ramadan routines, duas, Hijri dates, and Zakat calculation in Bangladeshi Taka.",
-    bdPrayerTitle: "Prayer Times Bangladesh",
-    bdPrayerText:
-      "Support for local salah schedules across Dhaka, Chattogram, Sylhet, Rajshahi, Khulna, Barishal, Rangpur, Mymensingh, and more.",
-    bdBanglaTitle: "Bangla Islamic Learning",
-    bdBanglaText:
-      "Arabic source text with English and Bangla access for Quran, Hadith, duas, and everyday Islamic guidance.",
-    bdZakatTitle: "BDT Zakat Calculator",
-    bdZakatText:
-      "Calculate Zakat in Bangladeshi Taka with common local asset categories, liabilities, gold, silver, savings, and business wealth.",
+    featureNamesTitle: "99 Names of Allah",
+    featureNamesText: "Arabic names with English and Bangla meanings for reflection and learning.",
+    featureHajjTitle: "Hajj & Umrah Guide",
+    featureHajjText: "Clear step-by-step guidance for Ihram, Tawaf, Sa'i, Mina, Arafat, and more.",
+    worshipLabel: "Live worship tools",
+    worshipTitle: "A dynamic website experience, shaped like the Wasilah app.",
+    worshipText:
+      "Scroll through focused website segments for Bangladesh salah times, Quran reading, Allah's names, duas, and Hajj or Umrah guidance.",
+    segmentSalah: "Salah",
+    segmentQuran: "Quran",
+    segmentNames: "99 Names",
+    segmentDua: "Duas",
+    segmentGuide: "Hajj & Umrah",
+    salahKicker: "Asia/Dhaka time",
+    salahTitle: "Salah Time",
+    cityLabel: "City",
+    geoButton: "Use Location",
+    nextPrayerLabel: "Next prayer",
+    loadingPrayer: "Loading Bangladesh prayer times...",
+    prayerApiReady: "",
+    prayerApiFallback: "Showing estimated prayer times.",
+    quranKicker: "Quran reader",
+    quranReaderTitle: "Quran",
+    loadingQuran: "Loading Quran...",
+    quranApiReady: "",
+    quranApiFallback: "Showing starter Quran text.",
+    namesKicker: "Asmaul Husna",
+    namesTitle: "99 Names of Allah",
+    namesSearch: "Search a name or meaning",
+    duaKicker: "Supplications",
+    duaTitle: "Duas",
+    guideKicker: "Pilgrimage",
+    guideTitle: "Hajj & Umrah Guide",
+    umrahTab: "Umrah",
+    hajjTab: "Hajj",
     spiritualLabel: "A quiet reminder",
     spiritualTitle: "Technology should make worship easier, not noisier.",
     spiritualText:
@@ -62,30 +339,52 @@ const copy = {
     featuresLabel: "অ্যাপের ভেতরে",
     featuresTitle: "প্রয়োজনীয় সবকিছু এক জায়গায়।",
     featurePrayerTitle: "নামাজের সময় ও আযান",
-    featurePrayerText: "ফজর থেকে এশা পর্যন্ত লোকেশনভিত্তিক সালাহ সময় ও রিমাইন্ডার।",
+    featurePrayerText: "Asia/Dhaka সময়ে বাংলাদেশের শহরগুলোর সালাহ সময়।",
     featureQiblaTitle: "কিবলার দিক",
     featureQiblaText: "কাবার দিক খুঁজে পাওয়ার জন্য সহজ কম্পাস অভিজ্ঞতা।",
     featureQuranTitle: "আরবি, ইংরেজি ও বাংলায় কুরআন",
-    featureQuranText: "বাংলাভাষী ও আন্তর্জাতিক পাঠকের জন্য অনুবাদসহ কুরআন পড়ুন।",
+    featureQuranText: "ওয়েবসাইটের ভেতরেই আরবি, ইংরেজি ও বাংলায় কুরআন পাঠ পড়ুন।",
     featureHadithTitle: "আরবি, ইংরেজি ও বাংলায় হাদিস",
     featureHadithText: "শেখা, চিন্তা ও বাংলাভাষী পাঠকের জন্য হাদিস সংগ্রহ।",
     featureZakatTitle: "BDT যাকাত ক্যালকুলেটর",
     featureZakatText: "নগদ, সোনা, সঞ্চয় ও দায় বিবেচনায় বাংলাদেশি টাকায় যাকাত হিসাব করুন।",
     featureDuaTitle: "দুয়া ও যিকির",
     featureDuaText: "সকাল, সন্ধ্যা, সফর, পরিবারসহ নানা উপলক্ষের দৈনন্দিন আযকার ও দুয়া।",
-    bangladeshLabel: "বাংলাদেশের জন্য",
-    bangladeshTitle: "দৈনন্দিন মুসলিম জীবনের জন্য বাংলা-প্রথম ইবাদত টুলস।",
-    bangladeshText:
-      "বাংলাদেশের মুসলিমরা প্রতিদিন যা খোঁজেন, ওয়াসিলাহ সেগুলোতেই মনোযোগ দেয়: নামাজের সহায়তা, আযান রিমাইন্ডার, কিবলার দিক, বাংলা কুরআন ও হাদিস, রমাদান রুটিন, দুয়া, হিজরি তারিখ এবং বাংলাদেশি টাকায় যাকাত হিসাব।",
-    bdPrayerTitle: "বাংলাদেশের নামাজের সময়",
-    bdPrayerText:
-      "ঢাকা, চট্টগ্রাম, সিলেট, রাজশাহী, খুলনা, বরিশাল, রংপুর, ময়মনসিংহসহ সারা দেশের স্থানীয় সালাহ সময়ের সহায়তা।",
-    bdBanglaTitle: "বাংলা ইসলামিক শিক্ষা",
-    bdBanglaText:
-      "কুরআন, হাদিস, দুয়া ও দৈনন্দিন ইসলামিক নির্দেশনার জন্য আরবি মূল পাঠের সঙ্গে ইংরেজি ও বাংলা অ্যাক্সেস।",
-    bdZakatTitle: "BDT যাকাত ক্যালকুলেটর",
-    bdZakatText:
-      "নগদ, সোনা, রুপা, সঞ্চয়, ব্যবসায়িক সম্পদ ও দায় বিবেচনায় বাংলাদেশি টাকায় যাকাত হিসাব করুন।",
+    featureNamesTitle: "আল্লাহর ৯৯ নাম",
+    featureNamesText: "চিন্তা ও শেখার জন্য আরবি নামের সঙ্গে ইংরেজি ও বাংলা অর্থ।",
+    featureHajjTitle: "হজ্জ ও উমরাহ গাইড",
+    featureHajjText: "ইহরাম, তাওয়াফ, সাঈ, মিনা, আরাফাতসহ ধাপে ধাপে পরিষ্কার গাইড।",
+    worshipLabel: "লাইভ ইবাদত টুলস",
+    worshipTitle: "ওয়াসিলাহ অ্যাপের মতো একটি ডাইনামিক ওয়েব অভিজ্ঞতা।",
+    worshipText:
+      "বাংলাদেশের নামাজের সময়, কুরআন পাঠ, আল্লাহর নাম, দুয়া এবং হজ্জ বা উমরাহ নির্দেশনা স্ক্রলভিত্তিক ওয়েবসাইট সেগমেন্টে দেখুন।",
+    segmentSalah: "নামাজ",
+    segmentQuran: "কুরআন",
+    segmentNames: "৯৯ নাম",
+    segmentDua: "দুয়া",
+    segmentGuide: "হজ্জ ও উমরাহ",
+    salahKicker: "Asia/Dhaka সময়",
+    salahTitle: "নামাজের সময়",
+    cityLabel: "শহর",
+    geoButton: "লোকেশন ব্যবহার",
+    nextPrayerLabel: "পরবর্তী নামাজ",
+    loadingPrayer: "বাংলাদেশের নামাজের সময় লোড হচ্ছে...",
+    prayerApiReady: "",
+    prayerApiFallback: "আনুমানিক নামাজের সময় দেখানো হচ্ছে।",
+    quranKicker: "কুরআন রিডার",
+    quranReaderTitle: "কুরআন",
+    loadingQuran: "কুরআন লোড হচ্ছে...",
+    quranApiReady: "",
+    quranApiFallback: "স্টার্টার কুরআন পাঠ দেখানো হচ্ছে।",
+    namesKicker: "আসমাউল হুসনা",
+    namesTitle: "আল্লাহর ৯৯ নাম",
+    namesSearch: "নাম বা অর্থ খুঁজুন",
+    duaKicker: "দুয়াসমূহ",
+    duaTitle: "দুয়া",
+    guideKicker: "হজ্জ ও উমরাহ",
+    guideTitle: "হজ্জ ও উমরাহ গাইড",
+    umrahTab: "উমরাহ",
+    hajjTab: "হজ্জ",
     spiritualLabel: "একটি নীরব স্মরণ",
     spiritualTitle: "টেকনোলজি ইবাদতকে সহজ করুক, ব্যস্ত নয়।",
     spiritualText:
@@ -106,12 +405,20 @@ const copy = {
 
 function setLanguage(lang) {
   const dictionary = copy[lang] || copy.en;
+  currentLanguage = copy[lang] ? lang : "en";
   document.documentElement.lang = lang === "bn" ? "bn" : "en";
 
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     const key = node.dataset.i18n;
     if (dictionary[key]) {
       node.textContent = dictionary[key];
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
+    const key = node.dataset.i18nPlaceholder;
+    if (dictionary[key]) {
+      node.setAttribute("placeholder", dictionary[key]);
     }
   });
 
@@ -122,6 +429,14 @@ function setLanguage(lang) {
   });
 
   localStorage.setItem("wasilah-lang", lang);
+  populateCitySelect();
+  populateQuranSelect();
+  populateDuaSelect();
+  renderSalahTimes();
+  renderQuran();
+  renderNames();
+  renderDua();
+  renderGuide();
 }
 
 function applyStoreLinks() {
@@ -162,9 +477,372 @@ function smartRedirect() {
   }
 }
 
+function toRadians(value) {
+  return (value * Math.PI) / 180;
+}
+
+function toDegrees(value) {
+  return (value * 180) / Math.PI;
+}
+
+function dayOfYear(date) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  return Math.floor((date - start) / 86400000);
+}
+
+function solarPosition(date) {
+  const gamma = (2 * Math.PI / 365) * (dayOfYear(date) - 1 + 0.5);
+  const equation =
+    229.18 *
+    (0.000075 +
+      0.001868 * Math.cos(gamma) -
+      0.032077 * Math.sin(gamma) -
+      0.014615 * Math.cos(2 * gamma) -
+      0.040849 * Math.sin(2 * gamma));
+  const declination =
+    0.006918 -
+    0.399912 * Math.cos(gamma) +
+    0.070257 * Math.sin(gamma) -
+    0.006758 * Math.cos(2 * gamma) +
+    0.000907 * Math.sin(2 * gamma) -
+    0.002697 * Math.cos(3 * gamma) +
+    0.00148 * Math.sin(3 * gamma);
+
+  return { equation, declination: toDegrees(declination) };
+}
+
+function hourAngle(latitude, declination, zenith) {
+  const lat = toRadians(latitude);
+  const dec = toRadians(declination);
+  const zen = toRadians(zenith);
+  const value = (Math.cos(zen) - Math.sin(lat) * Math.sin(dec)) / (Math.cos(lat) * Math.cos(dec));
+  return toDegrees(Math.acos(Math.min(Math.max(value, -1), 1)));
+}
+
+function minutesToTime(totalMinutes) {
+  const rounded = Math.round(totalMinutes);
+  const minutesInDay = ((rounded % 1440) + 1440) % 1440;
+  const hours = Math.floor(minutesInDay / 60);
+  const minutes = minutesInDay % 60;
+  const suffix = hours >= 12 ? "PM" : "AM";
+  const hour12 = hours % 12 || 12;
+  return `${hour12}:${String(minutes).padStart(2, "0")} ${suffix}`;
+}
+
+function parseTimeToMinutes(time) {
+  const clean = String(time).replace(/\s*\(.+\)\s*/g, "").trim();
+  const [hour, minute] = clean.split(":").map(Number);
+  return hour * 60 + minute;
+}
+
+function getBangladeshDateParts() {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Asia/Dhaka",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23"
+  }).formatToParts(new Date());
+
+  return Object.fromEntries(parts.filter((part) => part.type !== "literal").map((part) => [part.type, part.value]));
+}
+
+function getBangladeshDatePath() {
+  const parts = getBangladeshDateParts();
+  return `${parts.day}-${parts.month}-${parts.year}`;
+}
+
+function getBangladeshNowMinutes() {
+  const parts = getBangladeshDateParts();
+  return Number(parts.hour) * 60 + Number(parts.minute);
+}
+
+function updateStatus(id, key, isError = false) {
+  const node = document.getElementById(id);
+  if (!node) return;
+
+  node.textContent = copy[currentLanguage]?.[key] || copy.en[key] || "";
+  node.classList.toggle("is-error", isError);
+}
+
+async function fetchJSON(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Request failed with ${response.status}`);
+  }
+  return response.json();
+}
+
+function calculatePrayerTimes(date, coords) {
+  const { equation, declination } = solarPosition(date);
+  const noon = 720 - 4 * coords.lng - equation + coords.tz * 60;
+  const sunriseAngle = hourAngle(coords.lat, declination, 90.833) * 4;
+  const fajrAngle = hourAngle(coords.lat, declination, 108) * 4;
+  const ishaAngle = hourAngle(coords.lat, declination, 108) * 4;
+  const asrAltitude = toDegrees(Math.atan(1 / (1 + Math.tan(Math.abs(toRadians(coords.lat - declination))))));
+  const asrAngle = hourAngle(coords.lat, declination, 90 - asrAltitude) * 4;
+
+  return [
+    { key: "Fajr", bn: "ফজর", minutes: noon - fajrAngle },
+    { key: "Sunrise", bn: "সূর্যোদয়", minutes: noon - sunriseAngle },
+    { key: "Dhuhr", bn: "যোহর", minutes: noon + 2 },
+    { key: "Asr", bn: "আসর", minutes: noon + asrAngle },
+    { key: "Maghrib", bn: "মাগরিব", minutes: noon + sunriseAngle },
+    { key: "Isha", bn: "এশা", minutes: noon + ishaAngle }
+  ];
+}
+
+function getNextPrayer(times) {
+  const currentMinutes = getBangladeshNowMinutes();
+  return times.find((time) => time.key !== "Sunrise" && time.minutes > currentMinutes) || times[0];
+}
+
+function populateCitySelect() {
+  const select = document.getElementById("city-select");
+  if (!select) return;
+
+  const previous = select.value || currentCoords.name;
+  select.innerHTML = CITIES.map((city) => {
+    const label = currentLanguage === "bn" ? city.bn : city.name;
+    return `<option value="${city.name}">${label}</option>`;
+  }).join("");
+  select.value = CITIES.some((city) => city.name === previous) ? previous : currentCoords.name;
+}
+
+function normalizePrayerTimes(timings) {
+  return [
+    { key: "Fajr", bn: "ফজর", value: timings.Fajr },
+    { key: "Sunrise", bn: "সূর্যোদয়", value: timings.Sunrise },
+    { key: "Dhuhr", bn: "যোহর", value: timings.Dhuhr },
+    { key: "Asr", bn: "আসর", value: timings.Asr },
+    { key: "Maghrib", bn: "মাগরিব", value: timings.Maghrib },
+    { key: "Isha", bn: "এশা", value: timings.Isha }
+  ].map((time) => ({
+    ...time,
+    value: String(time.value).replace(/\s*\(.+\)\s*/g, "").trim(),
+    minutes: parseTimeToMinutes(time.value)
+  }));
+}
+
+async function fetchPrayerTimes() {
+  const params = new URLSearchParams({
+    latitude: currentCoords.lat,
+    longitude: currentCoords.lng,
+    method: "1",
+    school: "1",
+    timezonestring: "Asia/Dhaka"
+  });
+  const url = `${PRAYER_API_BASE}/timings/${getBangladeshDatePath()}?${params.toString()}`;
+  const result = await fetchJSON(url);
+  return normalizePrayerTimes(result.data.timings);
+}
+
+function renderPrayerRows(times) {
+  const container = document.getElementById("salah-times");
+  if (!container) return;
+
+  const next = getNextPrayer(times);
+  const nextName = document.getElementById("next-prayer-name");
+  const nextTime = document.getElementById("next-prayer-time");
+
+  if (nextName) nextName.textContent = currentLanguage === "bn" ? next.bn : next.key;
+  if (nextTime) nextTime.textContent = next.value || minutesToTime(next.minutes);
+
+  container.innerHTML = times.map((time) => {
+    const label = currentLanguage === "bn" ? time.bn : time.key;
+    return `<div class="time-row"><strong>${label}</strong><span>${time.value || minutesToTime(time.minutes)}</span></div>`;
+  }).join("");
+}
+
+async function renderSalahTimes() {
+  const container = document.getElementById("salah-times");
+  if (!container) return;
+
+  updateStatus("salah-status", "loadingPrayer");
+
+  try {
+    const times = await fetchPrayerTimes();
+    renderPrayerRows(times);
+    updateStatus("salah-status", "prayerApiReady");
+  } catch (error) {
+    const fallback = calculatePrayerTimes(new Date(), currentCoords).map((time) => ({
+      ...time,
+      value: minutesToTime(time.minutes)
+    }));
+    renderPrayerRows(fallback);
+    updateStatus("salah-status", "prayerApiFallback", true);
+  }
+}
+
+function fallbackSurahs() {
+  return QURAN_LIBRARY.map((surah, index) => ({
+    number: index === 0 ? 1 : index === 1 ? 112 : 113,
+    englishName: surah.title.en,
+    name: surah.title.bn
+  }));
+}
+
+function populateQuranSelect() {
+  const select = document.getElementById("quran-surah");
+  if (!select) return;
+
+  const source = quranSurahs.length ? quranSurahs : fallbackSurahs();
+  const previous = select.value || String(source[0].number);
+  select.innerHTML = source.map((surah) => {
+    const label = currentLanguage === "bn" ? `${surah.number}. ${surah.name}` : `${surah.number}. ${surah.englishName}`;
+    return `<option value="${surah.number}">${label}</option>`;
+  }).join("");
+  select.value = source.some((surah) => String(surah.number) === previous) ? previous : String(source[0].number);
+}
+
+async function loadSurahList() {
+  if (quranSurahs.length) return;
+
+  try {
+    const result = await fetchJSON(`${QURAN_API_BASE}/surah`);
+    quranSurahs = result.data || [];
+    populateQuranSelect();
+  } catch (error) {
+    quranSurahs = fallbackSurahs();
+    populateQuranSelect();
+  }
+}
+
+function fallbackQuranResponse(surahNumber) {
+  const fallback = QURAN_LIBRARY.find((surah) => {
+    return (surahNumber === 1 && surah.id === "fatihah") || (surahNumber === 112 && surah.id === "ikhlas") || (surahNumber === 113 && surah.id === "falaq");
+  }) || QURAN_LIBRARY[0];
+
+  return fallback.verses.map((verse) => ({
+    n: verse.n,
+    ar: verse.ar,
+    en: verse.en,
+    bn: verse.bn
+  }));
+}
+
+async function fetchQuranSurah(surahNumber) {
+  if (quranCache.has(surahNumber)) return quranCache.get(surahNumber);
+
+  const url = `${QURAN_API_BASE}/surah/${surahNumber}/editions/${QURAN_EDITIONS.join(",")}`;
+  const result = await fetchJSON(url);
+  const [arabic, english, bangla] = result.data;
+  const verses = arabic.ayahs.map((ayah, index) => ({
+    n: ayah.numberInSurah,
+    ar: ayah.text,
+    en: english.ayahs[index]?.text || "",
+    bn: bangla.ayahs[index]?.text || ""
+  }));
+  quranCache.set(surahNumber, verses);
+  return verses;
+}
+
+async function renderQuran() {
+  const select = document.getElementById("quran-surah");
+  const reader = document.getElementById("quran-reader");
+  if (!select || !reader) return;
+
+  updateStatus("quran-status", "loadingQuran");
+  const surahNumber = Number(select.value || 1);
+
+  try {
+    await loadSurahList();
+    const verses = await fetchQuranSurah(surahNumber);
+    renderQuranVerses(verses);
+    updateStatus("quran-status", "quranApiReady");
+  } catch (error) {
+    renderQuranVerses(fallbackQuranResponse(surahNumber));
+    updateStatus("quran-status", "quranApiFallback", true);
+  }
+}
+
+function renderQuranVerses(verses) {
+  const reader = document.getElementById("quran-reader");
+  if (!reader) return;
+
+  reader.innerHTML = verses.map((verse) => {
+    return `
+      <div class="verse">
+        <span class="verse-number">${verse.n}</span>
+        <p class="verse-text verse-arabic" lang="ar" dir="rtl">${verse.ar}</p>
+        <p class="verse-translation"><strong>English</strong><br>${verse.en}</p>
+        <p class="verse-translation" lang="bn"><strong>বাংলা</strong><br>${verse.bn}</p>
+      </div>
+    `;
+  }).join("");
+}
+
+function renderNames() {
+  const container = document.getElementById("names-list");
+  const search = document.getElementById("names-search");
+  if (!container) return;
+
+  const query = (search?.value || "").trim().toLowerCase();
+  const matches = NAMES.filter((name) => {
+    const haystack = `${name.ar} ${name.transliteration} ${name.en} ${name.bn}`.toLowerCase();
+    return !query || haystack.includes(query);
+  });
+
+  container.innerHTML = matches.map((name) => {
+    const meaning = currentLanguage === "bn" ? name.bn : name.en;
+    return `
+      <div class="name-row">
+        <b>${name.index}</b>
+        <span>
+          <span class="name-arabic" lang="ar" dir="rtl">${name.ar}</span>
+          <strong>${name.transliteration}</strong>
+          <span>${meaning}</span>
+        </span>
+      </div>
+    `;
+  }).join("");
+}
+
+function populateDuaSelect() {
+  const select = document.getElementById("dua-select");
+  if (!select) return;
+
+  const previous = select.value || DUAS[0].id;
+  select.innerHTML = DUAS.map((dua) => {
+    const label = currentLanguage === "bn" ? dua.title.bn : dua.title.en;
+    return `<option value="${dua.id}">${label}</option>`;
+  }).join("");
+  select.value = DUAS.some((dua) => dua.id === previous) ? previous : DUAS[0].id;
+}
+
+function renderDua() {
+  const select = document.getElementById("dua-select");
+  const reader = document.getElementById("dua-reader");
+  if (!select || !reader) return;
+
+  const dua = DUAS.find((item) => item.id === select.value) || DUAS[0];
+  const title = currentLanguage === "bn" ? dua.title.bn : dua.title.en;
+  const meaning = currentLanguage === "bn" ? dua.bn : dua.en;
+  reader.innerHTML = `
+    <div class="dua-block">
+      <strong>${title}</strong>
+      <p class="dua-arabic" lang="ar" dir="rtl">${dua.ar}</p>
+      <p class="dua-meaning">${meaning}</p>
+    </div>
+  `;
+}
+
+function renderGuide() {
+  const list = document.getElementById("guide-list");
+  if (!list) return;
+
+  list.innerHTML = GUIDE_STEPS[currentGuide].map((step) => {
+    const title = currentLanguage === "bn" ? step.bn : step.en;
+    const text = currentLanguage === "bn" ? step.textBn : step.textEn;
+    return `<li><strong>${title}</strong><p>${text}</p></li>`;
+  }).join("");
+}
+
 function initScrollReveals() {
   const targets = document.querySelectorAll(
-    ".section-copy, .feature-card, .seo-grid article, .spiritual-inner, .faq-list details, .site-footer > *"
+    ".section-copy, .feature-card, .worship-panel, .seo-grid article, .spiritual-inner, .faq-list details, .site-footer > *"
   );
 
   if (!targets.length) return;
@@ -203,7 +881,57 @@ document.querySelectorAll(".lang-option").forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
 });
 
+document.getElementById("city-select")?.addEventListener("change", (event) => {
+  currentCoords = CITIES.find((city) => city.name === event.target.value) || CITIES[0];
+  renderSalahTimes();
+});
+
+document.getElementById("geo-button")?.addEventListener("click", () => {
+  if (!navigator.geolocation) return;
+
+  navigator.geolocation.getCurrentPosition((position) => {
+    currentCoords = {
+      name: "Current location",
+      bn: "বর্তমান লোকেশন",
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+      tz: -new Date().getTimezoneOffset() / 60
+    };
+    renderSalahTimes();
+  });
+});
+
+document.getElementById("quran-surah")?.addEventListener("change", renderQuran);
+
+document.querySelectorAll(".reader-lang").forEach((button) => {
+  button.addEventListener("click", () => {
+    currentQuranLanguage = button.dataset.readerLang;
+    document.querySelectorAll(".reader-lang").forEach((item) => {
+      const active = item === button;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+    renderQuran();
+  });
+});
+
+document.getElementById("names-search")?.addEventListener("input", renderNames);
+document.getElementById("dua-select")?.addEventListener("change", renderDua);
+
+document.querySelectorAll(".guide-tab").forEach((button) => {
+  button.addEventListener("click", () => {
+    currentGuide = button.dataset.guide;
+    document.querySelectorAll(".guide-tab").forEach((item) => {
+      const active = item === button;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-selected", String(active));
+    });
+    renderGuide();
+  });
+});
+
 setLanguage(localStorage.getItem("wasilah-lang") || "en");
 applyStoreLinks();
 smartRedirect();
 initScrollReveals();
+setInterval(renderSalahTimes, 60000);
