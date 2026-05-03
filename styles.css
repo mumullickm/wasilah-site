@@ -393,7 +393,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 12px;
-  align-items: start;
+  align-items: stretch;
   margin-top: 12px;
 }
 
@@ -446,6 +446,7 @@ h1 {
   backdrop-filter: blur(18px);
   padding: 18px;
   min-width: 0;
+  height: 100%;
 }
 
 .salah-panel {
@@ -457,11 +458,11 @@ h1 {
 }
 
 .names-panel {
-  grid-column: span 5;
+  grid-column: span 4;
 }
 
 .dua-panel {
-  grid-column: span 3;
+  grid-column: span 4;
 }
 
 .guide-panel {
