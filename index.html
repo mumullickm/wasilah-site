@@ -50,7 +50,7 @@
     >
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://wasilah.site/Slider.png">
-    <link rel="stylesheet" href="styles.css?v=robust-20260504">
+    <link rel="stylesheet" href="styles.css?v=trim-20260504">
 
     <script type="application/ld+json">
       [
@@ -242,18 +242,9 @@
         <path d="M12 19V5"/>
         <path d="m5 12 7-7 7 7"/>
       </symbol>
-      <symbol id="icon-mail" viewBox="0 0 24 24">
-        <rect x="3" y="5" width="18" height="14" rx="2"/>
-        <path d="m3 7 9 6 9-6"/>
-      </symbol>
       <symbol id="icon-shield" viewBox="0 0 24 24">
         <path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6l-8-3Z"/>
         <path d="m9 12 2 2 4-4"/>
-      </symbol>
-      <symbol id="icon-rocket" viewBox="0 0 24 24">
-        <path d="M14 4c4 0 6 2 6 6-2 0-4 2-6 4l-4 4-4-4 4-4c2-2 4-4 6-4Z"/>
-        <circle cx="15" cy="9" r="1.5"/>
-        <path d="M6 14c-2 1-3 3-3 6 3 0 5-1 6-3"/>
       </symbol>
     </svg>
 
@@ -289,15 +280,11 @@
             দীন, দুনিয়া ও আখিরাতের পথে একটি বিশ্বস্ত সহযাত্রা।
           </p>
 
-          <p id="coming-soon-badge" class="coming-soon-badge" data-i18n="comingSoonBadge">
-            Apps launching soon — bookmark wasilah.site
-          </p>
-
           <div class="store-actions" aria-label="App download links">
-            <a class="store-button" id="app-store-link" href="#status" aria-label="Download on the App Store">
+            <a class="store-button" id="app-store-link" href="#top" aria-label="Download on the App Store">
               <img class="store-badge" src="App_Store.svg" alt="Download on the App Store" width="206" height="62" loading="lazy">
             </a>
-            <a class="store-button" id="play-store-link" href="#status" aria-label="Get it on Google Play">
+            <a class="store-button" id="play-store-link" href="#top" aria-label="Get it on Google Play">
               <img class="store-badge" src="Google_Play.svg" alt="Get it on Google Play" width="206" height="62" loading="lazy">
             </a>
           </div>
@@ -478,26 +465,9 @@
         </div>
       </section>
 
-      <section class="section trust-section" id="trust" aria-label="Trust and information">
+      <section class="section trust-section" id="trust" aria-label="Privacy">
         <div class="trust-grid">
-          <article class="footer-card" id="status">
-            <div class="footer-card-mark"><svg><use href="#icon-rocket"></use></svg></div>
-            <p class="section-label" data-i18n="statusLabel">Status</p>
-            <h2 data-i18n="statusTitle">App launch status</h2>
-            <p data-i18n="statusText">We are in private build with launch partners. Public iOS and Android builds are next.</p>
-            <dl class="status-list">
-              <div>
-                <dt data-i18n="statusBuild">Current build</dt>
-                <dd data-i18n="statusBuildValue">Internal preview</dd>
-              </div>
-              <div>
-                <dt data-i18n="statusEta">Public launch</dt>
-                <dd data-i18n="statusEtaValue">2026 — coming soon</dd>
-              </div>
-            </dl>
-          </article>
-
-          <article class="footer-card" id="privacy">
+          <article class="footer-card footer-card--wide" id="privacy">
             <div class="footer-card-mark"><svg><use href="#icon-shield"></use></svg></div>
             <p class="section-label" data-i18n="privacyLabel">Privacy</p>
             <h2 data-i18n="privacyTitle">Privacy first</h2>
@@ -508,14 +478,7 @@
               <li data-i18n="privacyBullet3">Anonymous analytics (Google Analytics) help us improve the site. Your IP is anonymised.</li>
               <li data-i18n="privacyBullet4">Email us anytime to ask what data we hold or to request deletion.</li>
             </ul>
-          </article>
-
-          <article class="footer-card" id="contact">
-            <div class="footer-card-mark"><svg><use href="#icon-mail"></use></svg></div>
-            <p class="section-label" data-i18n="contactLabel">Contact</p>
-            <h2 data-i18n="contactTitle">Get in touch</h2>
-            <p data-i18n="contactText">Have feedback, partnership ideas, or a feature request? We read every message.</p>
-            <a class="contact-link" href="mailto:hello@wasilah.site" data-i18n="contactEmail">hello@wasilah.site</a>
+            <a class="contact-link contact-link--inline" href="mailto:hello@wasilah.site">hello@wasilah.site</a>
           </article>
         </div>
       </section>
@@ -533,7 +496,6 @@
           <a href="#worship" data-i18n="footerNavWorship">Worship tools</a>
           <a href="#faq" data-i18n="footerNavFaq">FAQ</a>
           <a href="#privacy" data-i18n="footerNavPrivacy">Privacy</a>
-          <a href="#contact" data-i18n="footerNavContact">Contact</a>
         </nav>
       </div>
       <div class="footer-bottom">
@@ -546,6 +508,6 @@
       <svg aria-hidden="true"><use href="#icon-arrow-up"></use></svg>
     </button>
 
-    <script src="script.js?v=robust-20260504" defer></script>
+    <script src="script.js?v=trim-20260504" defer></script>
   </body>
 </html>

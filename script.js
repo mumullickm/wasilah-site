@@ -274,7 +274,6 @@ const copy = {
       "A Bangladesh-ready Islamic companion for everyday salah, Quran, Hadith, Qibla, BDT Zakat, Ramadan, duas, and remembrance.",
     appStoreKicker: "Download on the",
     playStoreKicker: "Get it on",
-    comingSoonBadge: "Apps launching soon — bookmark wasilah.site",
     featuresLabel: "Inside the app",
     featuresTitle: "Everything essential, in four simple sections.",
     featurePrayerTitle: "Prayer, Adhan & Qibla",
@@ -349,15 +348,6 @@ const copy = {
     faqCostQuestion: "Will Wasilah be free?",
     faqCostAnswer:
       "Yes. Wasilah will be free to download and use for everyday worship support, with no ads in the prayer or Quran experience.",
-    aboutLabel: "About",
-    aboutTitle: "Built quietly, for daily worship.",
-    aboutText:
-      "Wasilah is an independent Islamic companion project. We are focused on a clean, fast, ad-free experience that respects your privacy and your worship.",
-    contactLabel: "Contact",
-    contactTitle: "Get in touch",
-    contactText:
-      "Have feedback, partnership ideas, or a feature request? We read every message.",
-    contactEmail: "hello@wasilah.site",
     privacyLabel: "Privacy",
     privacyTitle: "Privacy first",
     privacyText:
@@ -366,13 +356,6 @@ const copy = {
     privacyBullet2: "Location is requested only when you press \"Use Location,\" and used only to compute prayer times in your browser.",
     privacyBullet3: "Anonymous analytics (Google Analytics) help us improve the site. Your IP is anonymised.",
     privacyBullet4: "Email us anytime to ask what data we hold or to request deletion.",
-    statusLabel: "Status",
-    statusTitle: "App launch status",
-    statusText: "We are in private build with launch partners. Public iOS and Android builds are next.",
-    statusBuild: "Current build",
-    statusBuildValue: "Internal preview",
-    statusEta: "Public launch",
-    statusEtaValue: "2026 — coming soon",
     backToTop: "Back to top",
     footerTagline: "An Islamic companion for Bangladesh — and Bengali-speaking Muslims everywhere.",
     footerNavTitle: "Explore",
@@ -380,7 +363,6 @@ const copy = {
     footerNavWorship: "Worship tools",
     footerNavFaq: "FAQ",
     footerNavPrivacy: "Privacy",
-    footerNavContact: "Contact",
     footerLegal: "© 2026 Wasilah. All rights reserved.",
     footerMadeIn: "Made with care for the Ummah."
   },
@@ -390,7 +372,6 @@ const copy = {
       "সালাহ, কুরআন, হাদিস, কিবলা, যাকাত ও দৈনন্দিন যিকিরের জন্য একটি শান্ত ইসলামিক সহচর। দৈনন্দিন ইবাদতের জন্য তৈরি, বিশ্ব উম্মাহর জন্য উন্মুক্ত।",
     appStoreKicker: "ডাউনলোড করুন",
     playStoreKicker: "পাওয়া যাবে",
-    comingSoonBadge: "অ্যাপ শীঘ্রই আসছে — wasilah.site বুকমার্ক করুন",
     featuresLabel: "অ্যাপের ভেতরে",
     featuresTitle: "প্রয়োজনীয় সবকিছু চারটি সহজ অংশে।",
     featurePrayerTitle: "নামাজ, আযান ও কিবলা",
@@ -465,15 +446,6 @@ const copy = {
     faqCostQuestion: "ওয়াসিলাহ কি বিনামূল্যে?",
     faqCostAnswer:
       "হ্যাঁ। ওয়াসিলাহ ডাউনলোড ও ব্যবহার বিনামূল্যে; নামাজ ও কুরআন অংশে কোনো বিজ্ঞাপন থাকবে না।",
-    aboutLabel: "সম্পর্কে",
-    aboutTitle: "নীরবে তৈরি, দৈনন্দিন ইবাদতের জন্য।",
-    aboutText:
-      "ওয়াসিলাহ একটি স্বাধীন ইসলামিক সহচর প্রকল্প। আপনার গোপনীয়তা ও ইবাদতের সম্মান রেখে দ্রুত, পরিচ্ছন্ন ও বিজ্ঞাপনমুক্ত অভিজ্ঞতা আমাদের লক্ষ্য।",
-    contactLabel: "যোগাযোগ",
-    contactTitle: "যোগাযোগ করুন",
-    contactText:
-      "মতামত, পার্টনারশিপ আইডিয়া বা ফিচার অনুরোধ আছে? প্রতিটি বার্তা আমরা পড়ি।",
-    contactEmail: "hello@wasilah.site",
     privacyLabel: "গোপনীয়তা",
     privacyTitle: "গোপনীয়তা প্রথমে",
     privacyText:
@@ -482,13 +454,6 @@ const copy = {
     privacyBullet2: "আপনি \"লোকেশন ব্যবহার\" চাপলে শুধু তখনই লোকেশন চাওয়া হয়, এবং তা ব্রাউজারে নামাজের সময় হিসাবে ব্যবহৃত হয়।",
     privacyBullet3: "অজ্ঞাতনামা অ্যানালিটিক্স (Google Analytics) সাইট উন্নত করতে সহায়তা করে। IP অজ্ঞাতনামা।",
     privacyBullet4: "আমরা কী ডেটা রাখি বা মুছে ফেলতে চান, যেকোনো সময় ইমেইল করুন।",
-    statusLabel: "স্ট্যাটাস",
-    statusTitle: "অ্যাপ লঞ্চ স্ট্যাটাস",
-    statusText: "আমরা লঞ্চ পার্টনারদের সঙ্গে প্রাইভেট বিল্ডে আছি। iOS ও Android পাবলিক বিল্ড পরবর্তী।",
-    statusBuild: "বর্তমান বিল্ড",
-    statusBuildValue: "ইন্টারনাল প্রিভিউ",
-    statusEta: "পাবলিক লঞ্চ",
-    statusEtaValue: "২০২৬ — শীঘ্রই",
     backToTop: "উপরে ফিরুন",
     footerTagline: "বাংলাদেশের জন্য — এবং সর্বত্র বাংলাভাষী মুসলিমদের জন্য একটি ইসলামিক সহচর।",
     footerNavTitle: "ঘুরে দেখুন",
@@ -496,7 +461,6 @@ const copy = {
     footerNavWorship: "ইবাদত টুল",
     footerNavFaq: "FAQ",
     footerNavPrivacy: "গোপনীয়তা",
-    footerNavContact: "যোগাযোগ",
     footerLegal: "© ২০২৬ ওয়াসিলাহ। সর্বস্বত্ব সংরক্ষিত।",
     footerMadeIn: "উম্মাহর জন্য যত্নে তৈরি।"
   }
@@ -572,8 +536,6 @@ function applyStoreLinks() {
     ["play-store-link", STORE_LINKS.googlePlay]
   ];
 
-  let anyLive = false;
-
   links.forEach(([id, url]) => {
     const anchor = document.getElementById(id);
     if (!anchor) return;
@@ -584,19 +546,15 @@ function applyStoreLinks() {
       anchor.removeAttribute("aria-disabled");
       anchor.target = "_blank";
       anchor.rel = "noopener";
-      anyLive = true;
       return;
     }
 
-    anchor.href = "#status";
+    anchor.href = "#top";
     anchor.classList.add("is-muted");
     anchor.setAttribute("aria-disabled", "true");
     anchor.removeAttribute("target");
     anchor.removeAttribute("rel");
   });
-
-  const banner = document.getElementById("coming-soon-badge");
-  if (banner) banner.hidden = anyLive;
 }
 
 function smartRedirect() {
