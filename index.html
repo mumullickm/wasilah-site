@@ -1,22 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TQ85L336');</script>
-    <!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5342W4HQSG"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-5342W4HQSG');
-    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Wasilah Bangladesh | Islamic App for Prayer Times, Quran, Hadith, Qibla & BDT Zakat</title>
@@ -34,6 +18,7 @@
     <meta name="geo.placename" content="Bangladesh">
     <meta name="language" content="English, Bangla, Arabic">
     <meta name="theme-color" content="#004B49">
+    <meta name="color-scheme" content="dark light">
     <link rel="canonical" href="https://wasilah.site/">
     <link rel="alternate" href="https://wasilah.site/" hreflang="en-BD">
     <link rel="alternate" href="https://wasilah.site/" hreflang="bn-BD">
@@ -41,6 +26,12 @@
     <link rel="icon" href="wasilah_icon_wobg.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="wasilah_icon.png">
     <link rel="manifest" href="site.webmanifest">
+
+    <link rel="preload" as="image" href="Slider.png" fetchpriority="high">
+    <link rel="preconnect" href="https://api.aladhan.com" crossorigin>
+    <link rel="preconnect" href="https://api.alquran.cloud" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
     <meta property="og:title" content="Wasilah Bangladesh | Deen, Dunia & Akhira">
     <meta
       property="og:description"
@@ -59,9 +50,31 @@
     >
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://wasilah.site/Slider.png">
-    <link rel="stylesheet" href="styles.css?v=motion-20260502">
+    <link rel="stylesheet" href="styles.css?v=robust-20260504">
+
     <script type="application/ld+json">
       [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Wasilah",
+          "url": "https://wasilah.site/",
+          "logo": "https://wasilah.site/wasilah_icon.png",
+          "email": "hello@wasilah.site",
+          "areaServed": {"@type": "Country", "name": "Bangladesh"}
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Wasilah",
+          "url": "https://wasilah.site/",
+          "inLanguage": ["en", "bn", "ar"],
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://wasilah.site/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
         {
           "@context": "https://schema.org",
           "@type": "MobileApplication",
@@ -72,10 +85,7 @@
           "operatingSystem": "iOS, Android",
           "description": "A Bangladesh-ready Islamic companion app for local prayer times, Adhan, Qibla, Quran, Hadith, BDT Zakat, duas, and daily reminders.",
           "inLanguage": ["en", "bn", "ar"],
-          "areaServed": {
-            "@type": "Country",
-            "name": "Bangladesh"
-          },
+          "areaServed": {"@type": "Country", "name": "Bangladesh"},
           "audience": {
             "@type": "Audience",
             "audienceType": "Muslims in Bangladesh and Bengali-speaking Muslims worldwide"
@@ -94,11 +104,7 @@
           ],
           "image": "https://wasilah.site/Slider.png",
           "screenshot": "https://wasilah.site/Slider.png",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "BDT"
-          },
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BDT"},
           "publisher": {
             "@type": "Organization",
             "name": "Wasilah",
@@ -113,37 +119,53 @@
             {
               "@type": "Question",
               "name": "Is Wasilah made for Muslims in Bangladesh?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. Wasilah is designed for Bangladesh with Bangla support, BDT Zakat calculation, local prayer time needs, Qibla direction, Quran, Hadith, duas, and remembrance tools."
-              }
+              "acceptedAnswer": {"@type": "Answer", "text": "Yes. Wasilah is designed for Bangladesh with Bangla support, BDT Zakat calculation, local prayer time needs, Qibla direction, Quran, Hadith, duas, and remembrance tools."}
             },
             {
               "@type": "Question",
               "name": "Does Wasilah include Quran and Hadith in Bangla?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Wasilah is planned around Arabic, English, and Bangla access for Quran and Hadith so Bengali-speaking Muslims can keep core Islamic learning in one place."
-              }
+              "acceptedAnswer": {"@type": "Answer", "text": "Wasilah is planned around Arabic, English, and Bangla access for Quran and Hadith so Bengali-speaking Muslims can keep core Islamic learning in one place."}
             },
             {
               "@type": "Question",
               "name": "Can Wasilah calculate Zakat in Bangladeshi Taka?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. Wasilah presents Zakat calculation in BDT for cash, gold, savings, business assets, and liabilities."
-              }
+              "acceptedAnswer": {"@type": "Answer", "text": "Yes. Wasilah presents Zakat calculation in BDT for cash, gold, savings, business assets, and liabilities."}
+            },
+            {
+              "@type": "Question",
+              "name": "When is the app launching?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Wasilah is preparing for an early Bangladesh launch on iOS and Android. Bookmark wasilah.site to be the first to know."}
+            },
+            {
+              "@type": "Question",
+              "name": "Will Wasilah be free?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Yes. Wasilah will be free to download and use, with no ads in the prayer or Quran experience."}
             }
           ]
         }
       ]
     </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TQ85L336');</script>
+    <!-- End Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5342W4HQSG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5342W4HQSG', { 'anonymize_ip': true });
+    </script>
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
+    <a class="skip-link" href="#top">Skip to main content</a>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQ85L336"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+
     <svg class="icon-sprite" aria-hidden="true" focusable="false">
       <symbol id="icon-prayer" viewBox="0 0 48 48">
         <path d="M10 39h28"/>
@@ -216,17 +238,41 @@
       <symbol id="icon-star" viewBox="0 0 48 48">
         <path d="m24 6 4.8 11.2 12.2 1.1-9.2 8 2.7 11.9L24 31.9l-10.5 6.3 2.7-11.9-9.2-8 12.2-1.1L24 6Z"/>
       </symbol>
+      <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+        <path d="M12 19V5"/>
+        <path d="m5 12 7-7 7 7"/>
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2"/>
+        <path d="m3 7 9 6 9-6"/>
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6l-8-3Z"/>
+        <path d="m9 12 2 2 4-4"/>
+      </symbol>
+      <symbol id="icon-rocket" viewBox="0 0 24 24">
+        <path d="M14 4c4 0 6 2 6 6-2 0-4 2-6 4l-4 4-4-4 4-4c2-2 4-4 6-4Z"/>
+        <circle cx="15" cy="9" r="1.5"/>
+        <path d="M6 14c-2 1-3 3-3 6 3 0 5-1 6-3"/>
+      </symbol>
     </svg>
 
     <header class="site-header" aria-label="Primary navigation">
       <a class="brand" href="#top" aria-label="Wasilah home">
-        <img class="brand-icon" src="wasilah_icon_wobg.svg" alt="">
-        <img class="brand-logotype" src="wasilah_logo_wobg.svg" alt="Wasilah">
+        <img class="brand-icon" src="wasilah_icon_wobg.svg" alt="" width="51" height="51">
+        <img class="brand-logotype" src="wasilah_logo_wobg.svg" alt="Wasilah" width="198" height="44">
       </a>
 
-      <div class="language-switch" role="group" aria-label="Language">
-        <button class="lang-option is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
-        <button class="lang-option" type="button" data-lang="bn" aria-pressed="false">বাংলা</button>
+      <div class="header-actions">
+        <nav class="header-nav" aria-label="Section links">
+          <a href="#features" data-i18n="footerNavFeatures">Features</a>
+          <a href="#worship" data-i18n="footerNavWorship">Worship tools</a>
+          <a href="#faq" data-i18n="footerNavFaq">FAQ</a>
+        </nav>
+        <div class="language-switch" role="group" aria-label="Language">
+          <button class="lang-option is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-option" type="button" data-lang="bn" aria-pressed="false">বাংলা</button>
+        </div>
       </div>
     </header>
 
@@ -243,12 +289,16 @@
             দীন, দুনিয়া ও আখিরাতের পথে একটি বিশ্বস্ত সহযাত্রা।
           </p>
 
+          <p id="coming-soon-badge" class="coming-soon-badge" data-i18n="comingSoonBadge">
+            Apps launching soon — bookmark wasilah.site
+          </p>
+
           <div class="store-actions" aria-label="App download links">
-            <a class="store-button" id="app-store-link" href="#top" aria-label="Download on the App Store">
-              <img class="store-badge" src="App_Store.svg" alt="Download on the App Store">
+            <a class="store-button" id="app-store-link" href="#status" aria-label="Download on the App Store">
+              <img class="store-badge" src="App_Store.svg" alt="Download on the App Store" width="206" height="62" loading="lazy">
             </a>
-            <a class="store-button" id="play-store-link" href="#top" aria-label="Get it on Google Play">
-              <img class="store-badge" src="Google_Play.svg" alt="Get it on Google Play">
+            <a class="store-button" id="play-store-link" href="#status" aria-label="Get it on Google Play">
+              <img class="store-badge" src="Google_Play.svg" alt="Get it on Google Play" width="206" height="62" loading="lazy">
             </a>
           </div>
         </div>
@@ -321,6 +371,7 @@
               <time id="next-prayer-time">--:--</time>
             </div>
             <div class="salah-times" id="salah-times" aria-label="Prayer times"></div>
+            <p id="salah-status" class="panel-status" role="status" hidden></p>
           </article>
 
           <article class="worship-panel quran-panel" id="quran-segment">
@@ -340,6 +391,7 @@
               </div>
             </div>
             <div class="quran-reader" id="quran-reader"></div>
+            <p id="quran-status" class="panel-status" role="status" hidden></p>
           </article>
 
           <article class="worship-panel names-panel" id="names-segment">
@@ -377,8 +429,8 @@
               </div>
             </div>
             <div class="guide-tabs" role="tablist" aria-label="Guide type">
-              <button class="guide-tab is-active" type="button" data-guide="umrah" data-i18n="umrahTab">Umrah</button>
-              <button class="guide-tab" type="button" data-guide="hajj" data-i18n="hajjTab">Hajj</button>
+              <button class="guide-tab is-active" type="button" data-guide="umrah" data-i18n="umrahTab" role="tab" aria-selected="true">Umrah</button>
+              <button class="guide-tab" type="button" data-guide="hajj" data-i18n="hajjTab" role="tab" aria-selected="false">Hajj</button>
             </div>
             <ol class="guide-list" id="guide-list"></ol>
           </article>
@@ -415,17 +467,85 @@
             <summary data-i18n="faqZakatQuestion">Can Wasilah calculate Zakat in BDT?</summary>
             <p data-i18n="faqZakatAnswer">Yes. The Zakat calculator is built around Bangladeshi Taka for cash, gold, savings, business assets, and liabilities.</p>
           </details>
+          <details>
+            <summary data-i18n="faqLaunchQuestion">When is the app launching?</summary>
+            <p data-i18n="faqLaunchAnswer">Wasilah is preparing for an early Bangladesh launch on iOS and Android. Bookmark wasilah.site and you'll be the first to know.</p>
+          </details>
+          <details>
+            <summary data-i18n="faqCostQuestion">Will Wasilah be free?</summary>
+            <p data-i18n="faqCostAnswer">Yes. Wasilah will be free to download and use, with no ads in the prayer or Quran experience.</p>
+          </details>
         </div>
       </section>
 
+      <section class="section trust-section" id="trust" aria-label="Trust and information">
+        <div class="trust-grid">
+          <article class="footer-card" id="status">
+            <div class="footer-card-mark"><svg><use href="#icon-rocket"></use></svg></div>
+            <p class="section-label" data-i18n="statusLabel">Status</p>
+            <h2 data-i18n="statusTitle">App launch status</h2>
+            <p data-i18n="statusText">We are in private build with launch partners. Public iOS and Android builds are next.</p>
+            <dl class="status-list">
+              <div>
+                <dt data-i18n="statusBuild">Current build</dt>
+                <dd data-i18n="statusBuildValue">Internal preview</dd>
+              </div>
+              <div>
+                <dt data-i18n="statusEta">Public launch</dt>
+                <dd data-i18n="statusEtaValue">2026 — coming soon</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="footer-card" id="privacy">
+            <div class="footer-card-mark"><svg><use href="#icon-shield"></use></svg></div>
+            <p class="section-label" data-i18n="privacyLabel">Privacy</p>
+            <h2 data-i18n="privacyTitle">Privacy first</h2>
+            <p data-i18n="privacyText">Wasilah does not require an account to use this website. We do not sell or share personal data. Anonymous analytics help us understand how the site is used.</p>
+            <ul class="privacy-list">
+              <li data-i18n="privacyBullet1">No account or sign-in required to use the site or app.</li>
+              <li data-i18n="privacyBullet2">Location is requested only when you press "Use Location," and used only to compute prayer times in your browser.</li>
+              <li data-i18n="privacyBullet3">Anonymous analytics (Google Analytics) help us improve the site. Your IP is anonymised.</li>
+              <li data-i18n="privacyBullet4">Email us anytime to ask what data we hold or to request deletion.</li>
+            </ul>
+          </article>
+
+          <article class="footer-card" id="contact">
+            <div class="footer-card-mark"><svg><use href="#icon-mail"></use></svg></div>
+            <p class="section-label" data-i18n="contactLabel">Contact</p>
+            <h2 data-i18n="contactTitle">Get in touch</h2>
+            <p data-i18n="contactText">Have feedback, partnership ideas, or a feature request? We read every message.</p>
+            <a class="contact-link" href="mailto:hello@wasilah.site" data-i18n="contactEmail">hello@wasilah.site</a>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-      <a class="footer-brand" href="#top" aria-label="Wasilah home">
-        <img src="wasilah_logo_wobg.svg" alt="Wasilah">
-      </a>
+      <div class="footer-top">
+        <a class="footer-brand" href="#top" aria-label="Wasilah home">
+          <img src="wasilah_logo_wobg.svg" alt="Wasilah" width="144" height="32">
+        </a>
+        <p class="footer-tagline" data-i18n="footerTagline">An Islamic companion for Bangladesh — and Bengali-speaking Muslims everywhere.</p>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <p class="footer-nav-title" data-i18n="footerNavTitle">Explore</p>
+          <a href="#features" data-i18n="footerNavFeatures">Features</a>
+          <a href="#worship" data-i18n="footerNavWorship">Worship tools</a>
+          <a href="#faq" data-i18n="footerNavFaq">FAQ</a>
+          <a href="#privacy" data-i18n="footerNavPrivacy">Privacy</a>
+          <a href="#contact" data-i18n="footerNavContact">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footerLegal">© 2026 Wasilah. All rights reserved.</span>
+        <span data-i18n="footerMadeIn">Made with care for the Ummah.</span>
+      </div>
     </footer>
 
-    <script src="script.js?v=motion-20260502" defer></script>
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top" data-i18n-aria-label="backToTop">
+      <svg aria-hidden="true"><use href="#icon-arrow-up"></use></svg>
+    </button>
+
+    <script src="script.js?v=robust-20260504" defer></script>
   </body>
 </html>

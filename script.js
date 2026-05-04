@@ -7,6 +7,13 @@ const PRAYER_API_BASE = "https://api.aladhan.com/v1";
 const QURAN_API_BASE = "https://api.alquran.cloud/v1";
 const QURAN_EDITIONS = ["quran-uthmani", "en.asad", "bn.bengali"];
 
+const FETCH_TIMEOUT_MS = 8000;
+const PRAYER_REFRESH_MS = 10 * 60 * 1000;
+const NEXT_PRAYER_TICK_MS = 30 * 1000;
+const SURAH_CACHE_KEY = "wasilah-surahs-v1";
+const PRAYER_CACHE_KEY = "wasilah-prayer-cache-v1";
+const PRAYER_CACHE_TTL_MS = 6 * 60 * 60 * 1000;
+
 const CITIES = [
   { name: "Dhaka", bn: "ঢাকা", lat: 23.8103, lng: 90.4125, tz: 6 },
   { name: "Chattogram", bn: "চট্টগ্রাম", lat: 22.3569, lng: 91.7832, tz: 6 },
@@ -24,6 +31,8 @@ let currentQuranLanguage = "ar";
 let currentGuide = "umrah";
 let quranSurahs = [];
 let quranCache = new Map();
+let lastPrayerTimes = null;
+let prayerRefreshTimer = null;
 
 const QURAN_LIBRARY = [
   {
@@ -265,6 +274,7 @@ const copy = {
       "A Bangladesh-ready Islamic companion for everyday salah, Quran, Hadith, Qibla, BDT Zakat, Ramadan, duas, and remembrance.",
     appStoreKicker: "Download on the",
     playStoreKicker: "Get it on",
+    comingSoonBadge: "Apps launching soon — bookmark wasilah.site",
     featuresLabel: "Inside the app",
     featuresTitle: "Everything essential, in four simple sections.",
     featurePrayerTitle: "Prayer, Adhan & Qibla",
@@ -296,15 +306,19 @@ const copy = {
     salahTitle: "Salah Time",
     cityLabel: "City",
     geoButton: "Use Location",
+    geoLocating: "Locating...",
+    geoDenied: "Location permission denied — pick a city instead.",
+    geoUnavailable: "Location unavailable — pick a city instead.",
+    geoUnsupported: "Geolocation isn't supported in this browser.",
     nextPrayerLabel: "Next prayer",
-    loadingPrayer: "Loading Bangladesh prayer times...",
-    prayerApiReady: "",
-    prayerApiFallback: "Showing estimated prayer times.",
+    loadingPrayer: "Loading prayer times...",
+    prayerApiReady: "Showing live prayer times.",
+    prayerApiFallback: "Offline — showing estimated prayer times.",
     quranKicker: "Quran reader",
     quranReaderTitle: "Quran",
     loadingQuran: "Loading Quran...",
     quranApiReady: "",
-    quranApiFallback: "Showing starter Quran text.",
+    quranApiFallback: "Offline — showing starter Quran text.",
     namesKicker: "Asmaul Husna",
     namesTitle: "99 Names of Allah",
     namesSearch: "Search a name or meaning",
@@ -328,7 +342,47 @@ const copy = {
       "Wasilah brings Arabic, English, and Bangla access together so Bengali-speaking Muslims can learn and reflect in one place.",
     faqZakatQuestion: "Can Wasilah calculate Zakat in BDT?",
     faqZakatAnswer:
-      "Yes. The Zakat calculator is built around Bangladeshi Taka for cash, gold, savings, business assets, and liabilities."
+      "Yes. The Zakat calculator is built around Bangladeshi Taka for cash, gold, savings, business assets, and liabilities.",
+    faqLaunchQuestion: "When is the app launching?",
+    faqLaunchAnswer:
+      "Wasilah is preparing for an early Bangladesh launch on iOS and Android. Bookmark wasilah.site and you'll be the first to know.",
+    faqCostQuestion: "Will Wasilah be free?",
+    faqCostAnswer:
+      "Yes. Wasilah will be free to download and use for everyday worship support, with no ads in the prayer or Quran experience.",
+    aboutLabel: "About",
+    aboutTitle: "Built quietly, for daily worship.",
+    aboutText:
+      "Wasilah is an independent Islamic companion project. We are focused on a clean, fast, ad-free experience that respects your privacy and your worship.",
+    contactLabel: "Contact",
+    contactTitle: "Get in touch",
+    contactText:
+      "Have feedback, partnership ideas, or a feature request? We read every message.",
+    contactEmail: "hello@wasilah.site",
+    privacyLabel: "Privacy",
+    privacyTitle: "Privacy first",
+    privacyText:
+      "Wasilah does not require an account to use this website. We do not sell or share personal data. Anonymous analytics help us understand how the site is used.",
+    privacyBullet1: "No account or sign-in required to use the site or app.",
+    privacyBullet2: "Location is requested only when you press \"Use Location,\" and used only to compute prayer times in your browser.",
+    privacyBullet3: "Anonymous analytics (Google Analytics) help us improve the site. Your IP is anonymised.",
+    privacyBullet4: "Email us anytime to ask what data we hold or to request deletion.",
+    statusLabel: "Status",
+    statusTitle: "App launch status",
+    statusText: "We are in private build with launch partners. Public iOS and Android builds are next.",
+    statusBuild: "Current build",
+    statusBuildValue: "Internal preview",
+    statusEta: "Public launch",
+    statusEtaValue: "2026 — coming soon",
+    backToTop: "Back to top",
+    footerTagline: "An Islamic companion for Bangladesh — and Bengali-speaking Muslims everywhere.",
+    footerNavTitle: "Explore",
+    footerNavFeatures: "Features",
+    footerNavWorship: "Worship tools",
+    footerNavFaq: "FAQ",
+    footerNavPrivacy: "Privacy",
+    footerNavContact: "Contact",
+    footerLegal: "© 2026 Wasilah. All rights reserved.",
+    footerMadeIn: "Made with care for the Ummah."
   },
   bn: {
     heroEyebrow: "দীন, দুনিয়া ও আখিরাতের জন্য",
@@ -336,6 +390,7 @@ const copy = {
       "সালাহ, কুরআন, হাদিস, কিবলা, যাকাত ও দৈনন্দিন যিকিরের জন্য একটি শান্ত ইসলামিক সহচর। দৈনন্দিন ইবাদতের জন্য তৈরি, বিশ্ব উম্মাহর জন্য উন্মুক্ত।",
     appStoreKicker: "ডাউনলোড করুন",
     playStoreKicker: "পাওয়া যাবে",
+    comingSoonBadge: "অ্যাপ শীঘ্রই আসছে — wasilah.site বুকমার্ক করুন",
     featuresLabel: "অ্যাপের ভেতরে",
     featuresTitle: "প্রয়োজনীয় সবকিছু চারটি সহজ অংশে।",
     featurePrayerTitle: "নামাজ, আযান ও কিবলা",
@@ -367,15 +422,19 @@ const copy = {
     salahTitle: "নামাজের সময়",
     cityLabel: "শহর",
     geoButton: "লোকেশন ব্যবহার",
+    geoLocating: "লোকেশন খুঁজছি...",
+    geoDenied: "লোকেশন অনুমতি দেওয়া হয়নি — শহর নির্বাচন করুন।",
+    geoUnavailable: "লোকেশন পাওয়া যায়নি — শহর নির্বাচন করুন।",
+    geoUnsupported: "এই ব্রাউজারে জিও-লোকেশন সমর্থিত নয়।",
     nextPrayerLabel: "পরবর্তী নামাজ",
-    loadingPrayer: "বাংলাদেশের নামাজের সময় লোড হচ্ছে...",
-    prayerApiReady: "",
-    prayerApiFallback: "আনুমানিক নামাজের সময় দেখানো হচ্ছে।",
+    loadingPrayer: "নামাজের সময় লোড হচ্ছে...",
+    prayerApiReady: "লাইভ নামাজের সময় দেখানো হচ্ছে।",
+    prayerApiFallback: "অফলাইন — আনুমানিক সময় দেখানো হচ্ছে।",
     quranKicker: "কুরআন রিডার",
     quranReaderTitle: "কুরআন",
     loadingQuran: "কুরআন লোড হচ্ছে...",
     quranApiReady: "",
-    quranApiFallback: "স্টার্টার কুরআন পাঠ দেখানো হচ্ছে।",
+    quranApiFallback: "অফলাইন — স্টার্টার কুরআন পাঠ দেখানো হচ্ছে।",
     namesKicker: "আসমাউল হুসনা",
     namesTitle: "আল্লাহর ৯৯ নাম",
     namesSearch: "নাম বা অর্থ খুঁজুন",
@@ -399,40 +458,108 @@ const copy = {
       "ওয়াসিলাহ আরবি, ইংরেজি ও বাংলা অ্যাক্সেস একত্র করে, যাতে বাংলাভাষী মুসলিমরা এক জায়গায় শিখতে ও চিন্তা করতে পারেন।",
     faqZakatQuestion: "ওয়াসিলাহ কি BDT-তে যাকাত হিসাব করতে পারে?",
     faqZakatAnswer:
-      "হ্যাঁ। নগদ, সোনা, সঞ্চয়, ব্যবসায়িক সম্পদ ও দায়ের জন্য যাকাত ক্যালকুলেটর বাংলাদেশি টাকা কেন্দ্রিক।"
+      "হ্যাঁ। নগদ, সোনা, সঞ্চয়, ব্যবসায়িক সম্পদ ও দায়ের জন্য যাকাত ক্যালকুলেটর বাংলাদেশি টাকা কেন্দ্রিক।",
+    faqLaunchQuestion: "অ্যাপ কখন আসবে?",
+    faqLaunchAnswer:
+      "ওয়াসিলাহ iOS এবং Android-এ বাংলাদেশে শীঘ্রই চালু হচ্ছে। wasilah.site বুকমার্ক করুন — আপনি প্রথমেই জানবেন।",
+    faqCostQuestion: "ওয়াসিলাহ কি বিনামূল্যে?",
+    faqCostAnswer:
+      "হ্যাঁ। ওয়াসিলাহ ডাউনলোড ও ব্যবহার বিনামূল্যে; নামাজ ও কুরআন অংশে কোনো বিজ্ঞাপন থাকবে না।",
+    aboutLabel: "সম্পর্কে",
+    aboutTitle: "নীরবে তৈরি, দৈনন্দিন ইবাদতের জন্য।",
+    aboutText:
+      "ওয়াসিলাহ একটি স্বাধীন ইসলামিক সহচর প্রকল্প। আপনার গোপনীয়তা ও ইবাদতের সম্মান রেখে দ্রুত, পরিচ্ছন্ন ও বিজ্ঞাপনমুক্ত অভিজ্ঞতা আমাদের লক্ষ্য।",
+    contactLabel: "যোগাযোগ",
+    contactTitle: "যোগাযোগ করুন",
+    contactText:
+      "মতামত, পার্টনারশিপ আইডিয়া বা ফিচার অনুরোধ আছে? প্রতিটি বার্তা আমরা পড়ি।",
+    contactEmail: "hello@wasilah.site",
+    privacyLabel: "গোপনীয়তা",
+    privacyTitle: "গোপনীয়তা প্রথমে",
+    privacyText:
+      "এই ওয়েবসাইট ব্যবহারের জন্য কোনো অ্যাকাউন্ট লাগে না। আমরা ব্যক্তিগত তথ্য বিক্রি বা ভাগ করি না। অজ্ঞাতনামা অ্যানালিটিক্স ব্যবহার বুঝতে সাহায্য করে।",
+    privacyBullet1: "সাইট বা অ্যাপ ব্যবহারের জন্য কোনো অ্যাকাউন্ট লাগে না।",
+    privacyBullet2: "আপনি \"লোকেশন ব্যবহার\" চাপলে শুধু তখনই লোকেশন চাওয়া হয়, এবং তা ব্রাউজারে নামাজের সময় হিসাবে ব্যবহৃত হয়।",
+    privacyBullet3: "অজ্ঞাতনামা অ্যানালিটিক্স (Google Analytics) সাইট উন্নত করতে সহায়তা করে। IP অজ্ঞাতনামা।",
+    privacyBullet4: "আমরা কী ডেটা রাখি বা মুছে ফেলতে চান, যেকোনো সময় ইমেইল করুন।",
+    statusLabel: "স্ট্যাটাস",
+    statusTitle: "অ্যাপ লঞ্চ স্ট্যাটাস",
+    statusText: "আমরা লঞ্চ পার্টনারদের সঙ্গে প্রাইভেট বিল্ডে আছি। iOS ও Android পাবলিক বিল্ড পরবর্তী।",
+    statusBuild: "বর্তমান বিল্ড",
+    statusBuildValue: "ইন্টারনাল প্রিভিউ",
+    statusEta: "পাবলিক লঞ্চ",
+    statusEtaValue: "২০২৬ — শীঘ্রই",
+    backToTop: "উপরে ফিরুন",
+    footerTagline: "বাংলাদেশের জন্য — এবং সর্বত্র বাংলাভাষী মুসলিমদের জন্য একটি ইসলামিক সহচর।",
+    footerNavTitle: "ঘুরে দেখুন",
+    footerNavFeatures: "ফিচার",
+    footerNavWorship: "ইবাদত টুল",
+    footerNavFaq: "FAQ",
+    footerNavPrivacy: "গোপনীয়তা",
+    footerNavContact: "যোগাযোগ",
+    footerLegal: "© ২০২৬ ওয়াসিলাহ। সর্বস্বত্ব সংরক্ষিত।",
+    footerMadeIn: "উম্মাহর জন্য যত্নে তৈরি।"
   }
 };
 
+function t(key) {
+  return copy[currentLanguage]?.[key] ?? copy.en[key] ?? "";
+}
+
+function safeStorage(action, key, value) {
+  try {
+    if (action === "get") return localStorage.getItem(key);
+    if (action === "set") return localStorage.setItem(key, value);
+    if (action === "remove") return localStorage.removeItem(key);
+  } catch (_) {
+    return null;
+  }
+}
+
 function setLanguage(lang) {
-  const dictionary = copy[lang] || copy.en;
-  currentLanguage = copy[lang] ? lang : "en";
-  document.documentElement.lang = lang === "bn" ? "bn" : "en";
+  const next = copy[lang] ? lang : "en";
+  currentLanguage = next;
+  document.documentElement.lang = next === "bn" ? "bn" : "en";
 
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     const key = node.dataset.i18n;
-    if (dictionary[key]) {
-      node.textContent = dictionary[key];
-    }
+    const value = t(key);
+    if (value) node.textContent = value;
   });
 
   document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
     const key = node.dataset.i18nPlaceholder;
-    if (dictionary[key]) {
-      node.setAttribute("placeholder", dictionary[key]);
-    }
+    const value = t(key);
+    if (value) node.setAttribute("placeholder", value);
+  });
+
+  document.querySelectorAll("[data-i18n-aria-label]").forEach((node) => {
+    const key = node.dataset.i18nAriaLabel;
+    const value = t(key);
+    if (value) node.setAttribute("aria-label", value);
+  });
+
+  document.querySelectorAll("[data-i18n-href]").forEach((node) => {
+    const key = node.dataset.i18nHref;
+    const value = t(key);
+    if (value) node.setAttribute("href", value.includes("@") ? `mailto:${value}` : value);
   });
 
   document.querySelectorAll(".lang-option").forEach((button) => {
-    const active = button.dataset.lang === lang;
+    const active = button.dataset.lang === next;
     button.classList.toggle("is-active", active);
     button.setAttribute("aria-pressed", String(active));
   });
 
-  localStorage.setItem("wasilah-lang", lang);
+  safeStorage("set", "wasilah-lang", next);
   populateCitySelect();
   populateQuranSelect();
   populateDuaSelect();
-  renderSalahTimes();
+  if (lastPrayerTimes) {
+    renderPrayerRows(lastPrayerTimes);
+  } else {
+    renderSalahTimes();
+  }
   renderQuran();
   renderNames();
   renderDua();
@@ -445,6 +572,8 @@ function applyStoreLinks() {
     ["play-store-link", STORE_LINKS.googlePlay]
   ];
 
+  let anyLive = false;
+
   links.forEach(([id, url]) => {
     const anchor = document.getElementById(id);
     if (!anchor) return;
@@ -452,14 +581,22 @@ function applyStoreLinks() {
     if (url) {
       anchor.href = url;
       anchor.classList.remove("is-muted");
+      anchor.removeAttribute("aria-disabled");
       anchor.target = "_blank";
       anchor.rel = "noopener";
+      anyLive = true;
       return;
     }
 
-    anchor.href = "#top";
+    anchor.href = "#status";
     anchor.classList.add("is-muted");
+    anchor.setAttribute("aria-disabled", "true");
+    anchor.removeAttribute("target");
+    anchor.removeAttribute("rel");
   });
+
+  const banner = document.getElementById("coming-soon-badge");
+  if (banner) banner.hidden = anyLive;
 }
 
 function smartRedirect() {
@@ -559,20 +696,27 @@ function getBangladeshNowMinutes() {
   return Number(parts.hour) * 60 + Number(parts.minute);
 }
 
-function updateStatus(id, key, isError = false) {
+function setStatus(id, key, kind = "info") {
   const node = document.getElementById(id);
   if (!node) return;
-
-  node.textContent = copy[currentLanguage]?.[key] || copy.en[key] || "";
-  node.classList.toggle("is-error", isError);
+  const text = key ? t(key) : "";
+  node.textContent = text;
+  node.dataset.kind = kind;
+  node.hidden = !text;
 }
 
-async function fetchJSON(url) {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Request failed with ${response.status}`);
+async function fetchJSON(url, options = {}) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), options.timeout || FETCH_TIMEOUT_MS);
+  try {
+    const response = await fetch(url, { signal: controller.signal });
+    if (!response.ok) {
+      throw new Error(`Request failed with ${response.status}`);
+    }
+    return await response.json();
+  } finally {
+    clearTimeout(timer);
   }
-  return response.json();
 }
 
 function calculatePrayerTimes(date, coords) {
@@ -604,11 +748,24 @@ function populateCitySelect() {
   if (!select) return;
 
   const previous = select.value || currentCoords.name;
-  select.innerHTML = CITIES.map((city) => {
-    const label = currentLanguage === "bn" ? city.bn : city.name;
-    return `<option value="${city.name}">${label}</option>`;
-  }).join("");
-  select.value = CITIES.some((city) => city.name === previous) ? previous : currentCoords.name;
+  select.innerHTML = "";
+
+  CITIES.forEach((city) => {
+    const option = document.createElement("option");
+    option.value = city.name;
+    option.textContent = currentLanguage === "bn" ? city.bn : city.name;
+    select.appendChild(option);
+  });
+
+  if (currentCoords.name === "Current location") {
+    const option = document.createElement("option");
+    option.value = "__current";
+    option.textContent = currentLanguage === "bn" ? "বর্তমান লোকেশন" : "Current location";
+    option.selected = true;
+    select.appendChild(option);
+  } else {
+    select.value = CITIES.some((city) => city.name === previous) ? previous : currentCoords.name;
+  }
 }
 
 function normalizePrayerTimes(timings) {
@@ -626,16 +783,46 @@ function normalizePrayerTimes(timings) {
   }));
 }
 
-async function fetchPrayerTimes() {
+function loadCachedPrayer(coords) {
+  try {
+    const raw = safeStorage("get", PRAYER_CACHE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || parsed.coordsKey !== `${coords.lat},${coords.lng}`) return null;
+    if (Date.now() - parsed.savedAt > PRAYER_CACHE_TTL_MS) return null;
+    if (parsed.datePath !== getBangladeshDatePath()) return null;
+    return parsed.times;
+  } catch (_) {
+    return null;
+  }
+}
+
+function saveCachedPrayer(coords, times) {
+  try {
+    safeStorage(
+      "set",
+      PRAYER_CACHE_KEY,
+      JSON.stringify({
+        coordsKey: `${coords.lat},${coords.lng}`,
+        datePath: getBangladeshDatePath(),
+        savedAt: Date.now(),
+        times
+      })
+    );
+  } catch (_) {}
+}
+
+async function fetchPrayerTimes(coords) {
   const params = new URLSearchParams({
-    latitude: currentCoords.lat,
-    longitude: currentCoords.lng,
+    latitude: coords.lat,
+    longitude: coords.lng,
     method: "1",
     school: "1",
     timezonestring: "Asia/Dhaka"
   });
   const url = `${PRAYER_API_BASE}/timings/${getBangladeshDatePath()}?${params.toString()}`;
   const result = await fetchJSON(url);
+  if (!result?.data?.timings) throw new Error("Malformed prayer response");
   return normalizePrayerTimes(result.data.timings);
 }
 
@@ -650,29 +837,52 @@ function renderPrayerRows(times) {
   if (nextName) nextName.textContent = currentLanguage === "bn" ? next.bn : next.key;
   if (nextTime) nextTime.textContent = next.value || minutesToTime(next.minutes);
 
-  container.innerHTML = times.map((time) => {
-    const label = currentLanguage === "bn" ? time.bn : time.key;
-    return `<div class="time-row"><strong>${label}</strong><span>${time.value || minutesToTime(time.minutes)}</span></div>`;
-  }).join("");
+  container.innerHTML = "";
+  times.forEach((time) => {
+    const row = document.createElement("div");
+    row.className = "time-row";
+    const label = document.createElement("strong");
+    label.textContent = currentLanguage === "bn" ? time.bn : time.key;
+    const value = document.createElement("span");
+    value.textContent = time.value || minutesToTime(time.minutes);
+    row.append(label, value);
+    container.appendChild(row);
+  });
 }
 
 async function renderSalahTimes() {
   const container = document.getElementById("salah-times");
   if (!container) return;
 
-  updateStatus("salah-status", "loadingPrayer");
+  setStatus("salah-status", "loadingPrayer", "loading");
+  container.classList.add("is-loading");
+
+  const cached = loadCachedPrayer(currentCoords);
+  if (cached) {
+    lastPrayerTimes = cached;
+    renderPrayerRows(cached);
+    setStatus("salah-status", "prayerApiReady", "ok");
+    container.classList.remove("is-loading");
+  }
 
   try {
-    const times = await fetchPrayerTimes();
+    const times = await fetchPrayerTimes(currentCoords);
+    lastPrayerTimes = times;
+    saveCachedPrayer(currentCoords, times);
     renderPrayerRows(times);
-    updateStatus("salah-status", "prayerApiReady");
+    setStatus("salah-status", "prayerApiReady", "ok");
   } catch (error) {
-    const fallback = calculatePrayerTimes(new Date(), currentCoords).map((time) => ({
-      ...time,
-      value: minutesToTime(time.minutes)
-    }));
-    renderPrayerRows(fallback);
-    updateStatus("salah-status", "prayerApiFallback", true);
+    if (!cached) {
+      const fallback = calculatePrayerTimes(new Date(), currentCoords).map((time) => ({
+        ...time,
+        value: minutesToTime(time.minutes)
+      }));
+      lastPrayerTimes = fallback;
+      renderPrayerRows(fallback);
+    }
+    setStatus("salah-status", "prayerApiFallback", "warn");
+  } finally {
+    container.classList.remove("is-loading");
   }
 }
 
@@ -690,23 +900,44 @@ function populateQuranSelect() {
 
   const source = quranSurahs.length ? quranSurahs : fallbackSurahs();
   const previous = select.value || String(source[0].number);
-  select.innerHTML = source.map((surah) => {
-    const label = currentLanguage === "bn" ? `${surah.number}. ${surah.name}` : `${surah.number}. ${surah.englishName}`;
-    return `<option value="${surah.number}">${label}</option>`;
-  }).join("");
+  select.innerHTML = "";
+  source.forEach((surah) => {
+    const option = document.createElement("option");
+    option.value = surah.number;
+    option.textContent = currentLanguage === "bn"
+      ? `${surah.number}. ${surah.name}`
+      : `${surah.number}. ${surah.englishName}`;
+    select.appendChild(option);
+  });
   select.value = source.some((surah) => String(surah.number) === previous) ? previous : String(source[0].number);
 }
 
 async function loadSurahList() {
   if (quranSurahs.length) return;
 
+  const cached = safeStorage("get", SURAH_CACHE_KEY);
+  if (cached) {
+    try {
+      const parsed = JSON.parse(cached);
+      if (Array.isArray(parsed) && parsed.length) {
+        quranSurahs = parsed;
+        populateQuranSelect();
+      }
+    } catch (_) {}
+  }
+
   try {
     const result = await fetchJSON(`${QURAN_API_BASE}/surah`);
-    quranSurahs = result.data || [];
-    populateQuranSelect();
-  } catch (error) {
-    quranSurahs = fallbackSurahs();
-    populateQuranSelect();
+    if (Array.isArray(result?.data) && result.data.length) {
+      quranSurahs = result.data;
+      safeStorage("set", SURAH_CACHE_KEY, JSON.stringify(result.data));
+      populateQuranSelect();
+    }
+  } catch (_) {
+    if (!quranSurahs.length) {
+      quranSurahs = fallbackSurahs();
+      populateQuranSelect();
+    }
   }
 }
 
@@ -728,6 +959,7 @@ async function fetchQuranSurah(surahNumber) {
 
   const url = `${QURAN_API_BASE}/surah/${surahNumber}/editions/${QURAN_EDITIONS.join(",")}`;
   const result = await fetchJSON(url);
+  if (!Array.isArray(result?.data) || result.data.length < 3) throw new Error("Malformed Quran response");
   const [arabic, english, bangla] = result.data;
   const verses = arabic.ayahs.map((ayah, index) => ({
     n: ayah.numberInSurah,
@@ -744,17 +976,20 @@ async function renderQuran() {
   const reader = document.getElementById("quran-reader");
   if (!select || !reader) return;
 
-  updateStatus("quran-status", "loadingQuran");
+  setStatus("quran-status", "loadingQuran", "loading");
+  reader.classList.add("is-loading");
   const surahNumber = Number(select.value || 1);
 
   try {
     await loadSurahList();
     const verses = await fetchQuranSurah(surahNumber);
     renderQuranVerses(verses);
-    updateStatus("quran-status", "quranApiReady");
+    setStatus("quran-status", "quranApiReady", "ok");
   } catch (error) {
     renderQuranVerses(fallbackQuranResponse(surahNumber));
-    updateStatus("quran-status", "quranApiFallback", true);
+    setStatus("quran-status", "quranApiFallback", "warn");
+  } finally {
+    reader.classList.remove("is-loading");
   }
 }
 
@@ -762,16 +997,35 @@ function renderQuranVerses(verses) {
   const reader = document.getElementById("quran-reader");
   if (!reader) return;
 
-  reader.innerHTML = verses.map((verse) => {
-    return `
-      <div class="verse">
-        <span class="verse-number">${verse.n}</span>
-        <p class="verse-text verse-arabic" lang="ar" dir="rtl">${verse.ar}</p>
-        <p class="verse-translation"><strong>English</strong><br>${verse.en}</p>
-        <p class="verse-translation" lang="bn"><strong>বাংলা</strong><br>${verse.bn}</p>
-      </div>
-    `;
-  }).join("");
+  reader.innerHTML = "";
+  verses.forEach((verse) => {
+    const wrap = document.createElement("div");
+    wrap.className = "verse";
+
+    const num = document.createElement("span");
+    num.className = "verse-number";
+    num.textContent = verse.n;
+
+    const arabic = document.createElement("p");
+    arabic.className = "verse-text verse-arabic";
+    arabic.lang = "ar";
+    arabic.dir = "rtl";
+    arabic.textContent = verse.ar;
+
+    const english = document.createElement("p");
+    english.className = "verse-translation";
+    english.innerHTML = "<strong>English</strong><br>";
+    english.appendChild(document.createTextNode(verse.en));
+
+    const bangla = document.createElement("p");
+    bangla.className = "verse-translation";
+    bangla.lang = "bn";
+    bangla.innerHTML = "<strong>বাংলা</strong><br>";
+    bangla.appendChild(document.createTextNode(verse.bn));
+
+    wrap.append(num, arabic, english, bangla);
+    reader.appendChild(wrap);
+  });
 }
 
 function renderNames() {
@@ -785,19 +1039,39 @@ function renderNames() {
     return !query || haystack.includes(query);
   });
 
-  container.innerHTML = matches.map((name) => {
-    const meaning = currentLanguage === "bn" ? name.bn : name.en;
-    return `
-      <div class="name-row">
-        <b>${name.index}</b>
-        <span>
-          <span class="name-arabic" lang="ar" dir="rtl">${name.ar}</span>
-          <strong>${name.transliteration}</strong>
-          <span>${meaning}</span>
-        </span>
-      </div>
-    `;
-  }).join("");
+  container.innerHTML = "";
+  matches.forEach((name) => {
+    const row = document.createElement("div");
+    row.className = "name-row";
+
+    const idx = document.createElement("b");
+    idx.textContent = name.index;
+
+    const body = document.createElement("span");
+
+    const arabic = document.createElement("span");
+    arabic.className = "name-arabic";
+    arabic.lang = "ar";
+    arabic.dir = "rtl";
+    arabic.textContent = name.ar;
+
+    const trans = document.createElement("strong");
+    trans.textContent = name.transliteration;
+
+    const meaning = document.createElement("span");
+    meaning.textContent = currentLanguage === "bn" ? name.bn : name.en;
+
+    body.append(arabic, trans, meaning);
+    row.append(idx, body);
+    container.appendChild(row);
+  });
+
+  if (!matches.length) {
+    const empty = document.createElement("div");
+    empty.className = "name-empty";
+    empty.textContent = currentLanguage === "bn" ? "কোনো নাম মেলেনি।" : "No names match your search.";
+    container.appendChild(empty);
+  }
 }
 
 function populateDuaSelect() {
@@ -805,10 +1079,13 @@ function populateDuaSelect() {
   if (!select) return;
 
   const previous = select.value || DUAS[0].id;
-  select.innerHTML = DUAS.map((dua) => {
-    const label = currentLanguage === "bn" ? dua.title.bn : dua.title.en;
-    return `<option value="${dua.id}">${label}</option>`;
-  }).join("");
+  select.innerHTML = "";
+  DUAS.forEach((dua) => {
+    const option = document.createElement("option");
+    option.value = dua.id;
+    option.textContent = currentLanguage === "bn" ? dua.title.bn : dua.title.en;
+    select.appendChild(option);
+  });
   select.value = DUAS.some((dua) => dua.id === previous) ? previous : DUAS[0].id;
 }
 
@@ -818,31 +1095,46 @@ function renderDua() {
   if (!select || !reader) return;
 
   const dua = DUAS.find((item) => item.id === select.value) || DUAS[0];
-  const title = currentLanguage === "bn" ? dua.title.bn : dua.title.en;
-  const meaning = currentLanguage === "bn" ? dua.bn : dua.en;
-  reader.innerHTML = `
-    <div class="dua-block">
-      <strong>${title}</strong>
-      <p class="dua-arabic" lang="ar" dir="rtl">${dua.ar}</p>
-      <p class="dua-meaning">${meaning}</p>
-    </div>
-  `;
+  reader.innerHTML = "";
+  const block = document.createElement("div");
+  block.className = "dua-block";
+
+  const title = document.createElement("strong");
+  title.textContent = currentLanguage === "bn" ? dua.title.bn : dua.title.en;
+
+  const arabic = document.createElement("p");
+  arabic.className = "dua-arabic";
+  arabic.lang = "ar";
+  arabic.dir = "rtl";
+  arabic.textContent = dua.ar;
+
+  const meaning = document.createElement("p");
+  meaning.className = "dua-meaning";
+  meaning.textContent = currentLanguage === "bn" ? dua.bn : dua.en;
+
+  block.append(title, arabic, meaning);
+  reader.appendChild(block);
 }
 
 function renderGuide() {
   const list = document.getElementById("guide-list");
   if (!list) return;
 
-  list.innerHTML = GUIDE_STEPS[currentGuide].map((step) => {
-    const title = currentLanguage === "bn" ? step.bn : step.en;
-    const text = currentLanguage === "bn" ? step.textBn : step.textEn;
-    return `<li><strong>${title}</strong><p>${text}</p></li>`;
-  }).join("");
+  list.innerHTML = "";
+  GUIDE_STEPS[currentGuide].forEach((step) => {
+    const item = document.createElement("li");
+    const title = document.createElement("strong");
+    title.textContent = currentLanguage === "bn" ? step.bn : step.en;
+    const text = document.createElement("p");
+    text.textContent = currentLanguage === "bn" ? step.textBn : step.textEn;
+    item.append(title, text);
+    list.appendChild(item);
+  });
 }
 
 function initScrollReveals() {
   const targets = document.querySelectorAll(
-    ".section-copy, .feature-card, .worship-panel, .seo-grid article, .spiritual-inner, .faq-list details, .site-footer > *"
+    ".section-copy, .feature-card, .worship-panel, .seo-grid article, .spiritual-inner, .faq-list details, .footer-card, .site-footer > *"
   );
 
   if (!targets.length) return;
@@ -863,18 +1155,82 @@ function initScrollReveals() {
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-
         entry.target.classList.add("is-visible");
         observer.unobserve(entry.target);
       });
     },
-    {
-      rootMargin: "0px 0px -12% 0px",
-      threshold: 0.12
-    }
+    { rootMargin: "0px 0px -12% 0px", threshold: 0.12 }
   );
 
   targets.forEach((target) => observer.observe(target));
+}
+
+function initStickyHeader() {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+
+  let ticking = false;
+  const update = () => {
+    header.classList.toggle("is-scrolled", window.scrollY > 24);
+    ticking = false;
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    },
+    { passive: true }
+  );
+
+  update();
+}
+
+function initBackToTop() {
+  const button = document.getElementById("back-to-top");
+  if (!button) return;
+
+  let ticking = false;
+  const update = () => {
+    button.classList.toggle("is-visible", window.scrollY > 600);
+    ticking = false;
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    },
+    { passive: true }
+  );
+
+  button.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  update();
+}
+
+function initYearStamp() {
+  document.querySelectorAll("[data-year]").forEach((node) => {
+    node.textContent = String(new Date().getFullYear());
+  });
+}
+
+function schedulePrayerRefresh() {
+  if (prayerRefreshTimer) clearInterval(prayerRefreshTimer);
+  prayerRefreshTimer = setInterval(() => {
+    if (lastPrayerTimes) {
+      renderPrayerRows(lastPrayerTimes);
+    }
+  }, NEXT_PRAYER_TICK_MS);
+  setInterval(() => {
+    renderSalahTimes();
+  }, PRAYER_REFRESH_MS);
 }
 
 document.querySelectorAll(".lang-option").forEach((button) => {
@@ -882,23 +1238,46 @@ document.querySelectorAll(".lang-option").forEach((button) => {
 });
 
 document.getElementById("city-select")?.addEventListener("change", (event) => {
-  currentCoords = CITIES.find((city) => city.name === event.target.value) || CITIES[0];
+  const value = event.target.value;
+  if (value === "__current") return;
+  currentCoords = CITIES.find((city) => city.name === value) || CITIES[0];
   renderSalahTimes();
 });
 
-document.getElementById("geo-button")?.addEventListener("click", () => {
-  if (!navigator.geolocation) return;
+document.getElementById("geo-button")?.addEventListener("click", (event) => {
+  const button = event.currentTarget;
+  if (!navigator.geolocation) {
+    setStatus("salah-status", "geoUnsupported", "warn");
+    return;
+  }
 
-  navigator.geolocation.getCurrentPosition((position) => {
-    currentCoords = {
-      name: "Current location",
-      bn: "বর্তমান লোকেশন",
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-      tz: -new Date().getTimezoneOffset() / 60
-    };
-    renderSalahTimes();
-  });
+  const originalLabel = button.textContent;
+  button.disabled = true;
+  button.textContent = t("geoLocating");
+  setStatus("salah-status", "geoLocating", "loading");
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      currentCoords = {
+        name: "Current location",
+        bn: "বর্তমান লোকেশন",
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+        tz: -new Date().getTimezoneOffset() / 60
+      };
+      populateCitySelect();
+      button.disabled = false;
+      button.textContent = originalLabel || t("geoButton");
+      renderSalahTimes();
+    },
+    (err) => {
+      const key = err && err.code === err.PERMISSION_DENIED ? "geoDenied" : "geoUnavailable";
+      setStatus("salah-status", key, "warn");
+      button.disabled = false;
+      button.textContent = originalLabel || t("geoButton");
+    },
+    { timeout: 8000, maximumAge: 5 * 60 * 1000 }
+  );
 });
 
 document.getElementById("quran-surah")?.addEventListener("change", renderQuran);
@@ -930,8 +1309,11 @@ document.querySelectorAll(".guide-tab").forEach((button) => {
   });
 });
 
-setLanguage(localStorage.getItem("wasilah-lang") || "en");
+setLanguage(safeStorage("get", "wasilah-lang") || "en");
 applyStoreLinks();
 smartRedirect();
 initScrollReveals();
-setInterval(renderSalahTimes, 60000);
+initStickyHeader();
+initBackToTop();
+initYearStamp();
+schedulePrayerRefresh();

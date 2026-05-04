@@ -8,11 +8,38 @@
   "orientation": "portrait",
   "background_color": "#004B49",
   "theme_color": "#004B49",
+  "lang": "en-BD",
+  "dir": "ltr",
+  "categories": ["lifestyle", "education", "religion", "books", "reference"],
   "icons": [
     {
-      "src": "/wasilah_icon.png",
+      "src": "wasilah_icon_wobg.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "wasilah_icon.png",
       "sizes": "1024x1024",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Prayer times",
+      "short_name": "Salah",
+      "url": "/#salah-segment"
+    },
+    {
+      "name": "Quran",
+      "short_name": "Quran",
+      "url": "/#quran-segment"
+    },
+    {
+      "name": "99 Names of Allah",
+      "short_name": "99 Names",
+      "url": "/#names-segment"
     }
   ]
 }
