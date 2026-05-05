@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Request data deletion — Wasilah</title>
+    <meta name="description" content="How to request deletion of any data Wasilah holds about you. Wasilah is privacy-first; most data deletes when you uninstall the app.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#004B49">
+    <link rel="canonical" href="https://wasilah.site/delete-data">
+    <link rel="icon" href="/wasilah_icon_wobg.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/wasilah_icon.png">
+    <meta property="og:title" content="Request data deletion — Wasilah">
+    <meta property="og:description" content="Steps to request deletion of any data Wasilah holds about you.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://wasilah.site/delete-data">
+    <meta property="og:image" content="https://wasilah.site/Slider.png">
+    <link rel="stylesheet" href="/styles.css?v=trim-20260504">
+    <style>
+      .legal-page { padding: 140px 0 120px; }
+      .legal-shell { max-width: 760px; margin: 0 auto; padding: 0 max(20px, 4vw); }
+      .legal-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-mid); font-weight: 600; margin: 0 0 14px; }
+      .legal-shell h1 { font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif; font-size: clamp(40px, 5vw, 56px); line-height: 1.05; font-weight: 500; color: #fff; margin: 0 0 18px; letter-spacing: -0.01em; }
+      .legal-meta { color: var(--muted); font-size: 14.5px; line-height: 1.7; border-left: 2px solid var(--gold); padding: 6px 0 6px 16px; margin: 0 0 48px; }
+      .legal-meta strong { color: #fff; font-weight: 600; }
+      .legal-shell h2 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 26px; line-height: 1.2; font-weight: 500; color: var(--gold-mid); margin: 56px 0 14px; letter-spacing: -0.005em; }
+      .legal-shell h3 { font-size: 17px; font-weight: 600; color: #fff; margin: 28px 0 10px; }
+      .legal-shell p, .legal-shell li { color: rgba(255, 255, 255, 0.86); font-size: 16px; line-height: 1.75; }
+      .legal-shell p { margin: 0 0 16px; }
+      .legal-shell ul, .legal-shell ol { margin: 0 0 22px; padding-left: 22px; }
+      .legal-shell li { margin-bottom: 10px; }
+      .legal-shell strong { color: #fff; font-weight: 600; }
+      .legal-shell em { color: rgba(255, 255, 255, 0.78); }
+      .legal-shell a { color: var(--gold-mid); text-decoration: underline; text-decoration-color: rgba(241, 213, 146, 0.35); text-underline-offset: 3px; }
+      .legal-shell a:hover { text-decoration-color: var(--gold-mid); }
+      .legal-table-wrap { overflow-x: auto; margin: 8px 0 28px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.12); }
+      .legal-shell table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+      .legal-shell th, .legal-shell td { text-align: left; padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); vertical-align: top; color: rgba(255, 255, 255, 0.86); }
+      .legal-shell th { background: rgba(0, 0, 0, 0.18); color: var(--gold-mid); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+      .legal-shell tr:last-child td { border-bottom: none; }
+      .legal-callout { background: rgba(241, 213, 146, 0.08); border: 1px solid rgba(241, 213, 146, 0.18); border-left: 3px solid var(--gold); padding: 18px 22px; border-radius: 8px; margin: 22px 0 28px; }
+      .legal-callout p:last-child { margin-bottom: 0; }
+      .legal-back { display: inline-flex; align-items: center; gap: 8px; color: var(--gold-mid); text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 32px; }
+      .legal-back:hover { color: #fff; }
+      .legal-back::before { content: "←"; font-size: 16px; }
+      .legal-step { background: rgba(255, 255, 255, 0.04); border-radius: 10px; padding: 22px 26px; margin: 14px 0; border: 1px solid rgba(255, 255, 255, 0.08); }
+      .legal-step h3 { margin-top: 0; }
+    </style>
+  </head>
+  <body>
+    <main class="legal-page">
+      <div class="legal-shell">
+        <a class="legal-back" href="/">Back to Wasilah</a>
+        <p class="legal-eyebrow">Wasilah · Data Deletion</p>
+        <h1>Request data deletion</h1>
+        <div class="legal-meta">
+          <strong>App:</strong> Wasilah · <strong>Developer:</strong> Miraz Mullick (Aykiz Intelligence)<br>
+          <strong>Package:</strong> site.wasilah.wasilah<br>
+          <strong>Last updated:</strong> 5 May 2026
+        </div>
+
+        <p>Wasilah is privacy-first: we do not require an account, and we collect only the minimum data needed to deliver prayer times, Quran audio, Qibla direction, and notifications. This page explains exactly how to delete any data we hold about you.</p>
+
+        <div class="legal-callout">
+          <p><strong>The simplest method.</strong> Uninstalling Wasilah from your device:</p>
+          <ul>
+            <li>Deletes all locally-stored data (preferences, downloaded audio, bookmarks, cached prayer times)</li>
+            <li>Invalidates your Firebase Cloud Messaging push token, so we can no longer notify your device</li>
+            <li>Stops new analytics and crash data from being sent</li>
+          </ul>
+          <p>For the residual data that remains on Google's Firebase servers (crash reports, anonymous analytics events), follow the steps below.</p>
+        </div>
+
+        <h2>What we hold and where it lives</h2>
+        <div class="legal-table-wrap">
+          <table>
+            <tr><th>Data type</th><th>Where it is stored</th><th>Default retention</th></tr>
+            <tr><td>App preferences, bookmarks, cached audio</td><td>Locally on your device only</td><td>Until uninstall</td></tr>
+            <tr><td>Crash reports</td><td>Google Firebase Crashlytics</td><td>90 days</td></tr>
+            <tr><td>Anonymous analytics events (screen views, sessions, app version)</td><td>Google Firebase Analytics</td><td>Up to 14 months</td></tr>
+            <tr><td>Push notification token (FCM)</td><td>Google Firebase Cloud Messaging</td><td>Until you uninstall the app or revoke notification permission</td></tr>
+            <tr><td>Location coordinates</td><td>Sent to AlAdhan API to compute prayer times. Not stored by us.</td><td>Not retained</td></tr>
+          </table>
+        </div>
+        <p>We do <strong>not</strong> hold names, email addresses, phone numbers, contacts, photos, payment information, or any account credentials.</p>
+
+        <h2>How to request deletion — step by step</h2>
+
+        <div class="legal-step">
+          <h3>Step 1 — Uninstall the app</h3>
+          <p>Long-press the Wasilah icon on your home screen and choose <strong>Uninstall</strong> (Android) or <strong>Remove App → Delete App</strong> (iOS). This deletes all on-device data and invalidates your push token.</p>
+        </div>
+
+        <div class="legal-step">
+          <h3>Step 2 — Email us to delete server-side data</h3>
+          <p>To request deletion of crash reports and analytics data held by Google Firebase, email us at:</p>
+          <p><strong>privacy@wasilah.site</strong></p>
+          <p>Include in your email:</p>
+          <ul>
+            <li>The subject line "<em>Data deletion request</em>"</li>
+            <li>The approximate date you last used the app</li>
+            <li>Your device model and operating system version (helps us identify the relevant records)</li>
+            <li><em>(Optional)</em> Your Firebase Installation ID, if you have it. The app does not show this to you, so leave blank if not applicable.</li>
+          </ul>
+          <p>We will action your request within <strong>30 days</strong> and confirm by email when the deletion is complete.</p>
+        </div>
+
+        <div class="legal-step">
+          <h3>Step 3 — Verification</h3>
+          <p>Because Wasilah does not collect names, emails, or other identifiers, server-side records are pseudonymous. To confirm we have deleted your records, we will reply to the email address you wrote from with a confirmation note and a description of what was deleted.</p>
+        </div>
+
+        <h2>What gets deleted, and what is kept</h2>
+        <p><strong>Deleted on request:</strong></p>
+        <ul>
+          <li>Crash reports tied to your installation in Firebase Crashlytics</li>
+          <li>Analytics events tied to your installation in Firebase Analytics</li>
+          <li>FCM push tokens associated with your installation</li>
+        </ul>
+        <p><strong>Retained (anonymised, with no link to you):</strong></p>
+        <ul>
+          <li>Aggregate analytics summaries — for example, "1,200 users opened the Quran reader this week". These contain no identifier that points back to your device.</li>
+          <li>Server logs from third-party services (Google Firebase, IslamicNetwork's AlAdhan API, IslamicNetwork's audio CDN) which are governed by those providers' own retention policies.</li>
+        </ul>
+
+        <h2>Direct deletion via Google</h2>
+        <p>For data held by Google Firebase, you may also contact Google directly to exercise your rights. See <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> and the privacy controls available through your Google account.</p>
+
+        <h2>Questions</h2>
+        <p>If anything is unclear, or you want to verify our process before sending a request, please write to <strong>privacy@wasilah.site</strong>. Read our full <a href="/privacy/">Privacy Policy</a> for the complete picture of what we collect and why.</p>
+
+        <p style="margin-top: 64px; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.6); font-size: 13.5px; line-height: 1.7; font-style: italic;">This page is provided to fulfil Google Play's data-deletion-link disclosure requirement. It is not legal advice. Wasilah follows the practices described here in good faith.</p>
+      </div>
+    </main>
+  </body>
+</html>
