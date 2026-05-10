@@ -1320,6 +1320,7 @@ select option {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   width: min(1160px, 100%);
   margin: 0 auto;
