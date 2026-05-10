@@ -1316,6 +1316,44 @@ select option {
   color: var(--icon-gold);
 }
 
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  width: min(1160px, 100%);
+  margin: 0 auto;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms var(--motion-ease);
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+  color: var(--deep-green);
+  background: var(--icon-gold);
+  border-color: var(--icon-gold);
+  transform: translateY(-1px);
+}
+
+.footer-social-link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  stroke: none;
+}
+
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
