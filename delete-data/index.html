@@ -56,7 +56,7 @@
         <div class="legal-meta">
           <strong>App:</strong> Wasilah · <strong>Developer:</strong> Miraz Mullick (Aykiz Intelligence)<br>
           <strong>Package:</strong> site.wasilah.wasilah<br>
-          <strong>Last updated:</strong> 5 May 2026
+          <strong>Last updated:</strong> 15 May 2026
         </div>
 
         <p>Wasilah is privacy-first: we do not require an account, and we collect only the minimum data needed to deliver prayer times, Quran audio, Qibla direction, and notifications. This page explains exactly how to delete any data we hold about you.</p>
@@ -66,9 +66,9 @@
           <ul>
             <li>Deletes all locally-stored data (preferences, downloaded audio, bookmarks, cached prayer times)</li>
             <li>Invalidates your Firebase Cloud Messaging push token, so we can no longer notify your device</li>
-            <li>Stops new analytics and crash data from being sent</li>
+            <li>Stops new crash diagnostic data from being sent</li>
           </ul>
-          <p>For the residual data that remains on Google's Firebase servers (crash reports, anonymous analytics events), follow the steps below.</p>
+          <p>For the residual data that remains on Google's Firebase servers (crash reports), follow the steps below.</p>
         </div>
 
         <h2>What we hold and where it lives</h2>
@@ -77,7 +77,6 @@
             <tr><th>Data type</th><th>Where it is stored</th><th>Default retention</th></tr>
             <tr><td>App preferences, bookmarks, cached audio</td><td>Locally on your device only</td><td>Until uninstall</td></tr>
             <tr><td>Crash reports</td><td>Google Firebase Crashlytics</td><td>90 days</td></tr>
-            <tr><td>Anonymous analytics events (screen views, sessions, app version)</td><td>Google Firebase Analytics</td><td>Up to 14 months</td></tr>
             <tr><td>Push notification token (FCM)</td><td>Google Firebase Cloud Messaging</td><td>Until you uninstall the app or revoke notification permission</td></tr>
             <tr><td>Location coordinates</td><td>Sent to AlAdhan API to compute prayer times. Not stored by us.</td><td>Not retained</td></tr>
           </table>
@@ -93,7 +92,7 @@
 
         <div class="legal-step">
           <h3>Step 2 — Email us to delete server-side data</h3>
-          <p>To request deletion of crash reports and analytics data held by Google Firebase, email us at:</p>
+          <p>To request deletion of crash reports held by Google Firebase, email us at:</p>
           <p><strong>privacy@wasilah.site</strong></p>
           <p>Include in your email:</p>
           <ul>
@@ -114,12 +113,10 @@
         <p><strong>Deleted on request:</strong></p>
         <ul>
           <li>Crash reports tied to your installation in Firebase Crashlytics</li>
-          <li>Analytics events tied to your installation in Firebase Analytics</li>
           <li>FCM push tokens associated with your installation</li>
         </ul>
         <p><strong>Retained (anonymised, with no link to you):</strong></p>
         <ul>
-          <li>Aggregate analytics summaries — for example, "1,200 users opened the Quran reader this week". These contain no identifier that points back to your device.</li>
           <li>Server logs from third-party services (Google Firebase, IslamicNetwork's AlAdhan API, IslamicNetwork's audio CDN) which are governed by those providers' own retention policies.</li>
         </ul>
 

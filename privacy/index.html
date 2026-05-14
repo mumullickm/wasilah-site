@@ -147,8 +147,8 @@
         <p class="legal-eyebrow">Wasilah · Legal</p>
         <h1>Privacy Policy</h1>
         <div class="legal-meta">
-          <strong>Effective date:</strong> 5 May 2026<br>
-          <strong>Last updated:</strong> 5 May 2026<br>
+          <strong>Effective date:</strong> 15 May 2026<br>
+          <strong>Last updated:</strong> 15 May 2026<br>
           <strong>App:</strong> Wasilah · <strong>Package:</strong> site.wasilah.wasilah<br>
           <strong>Operator:</strong> Miraz Mullick (sole developer, "<em>we</em>", "<em>us</em>", "<em>our</em>")<br>
           <strong>Website:</strong> https://wasilah.site
@@ -163,14 +163,14 @@
           <table>
             <tr><th>What we process</th><th>Why</th><th>Stored where</th></tr>
             <tr><td>Approximate or precise device location</td><td>To compute accurate prayer times and the Qibla direction for your location</td><td>On your device. Coordinates may be sent to the AlAdhan API to compute prayer times; not retained by us</td></tr>
-            <tr><td>Crash and stability data</td><td>To detect and fix bugs that crash the app</td><td>Google Firebase Crashlytics (servers operated by Google LLC)</td></tr>
-            <tr><td>App usage events (e.g. screens viewed, app version)</td><td>To understand how features are used so we can improve them</td><td>Google Firebase Analytics (servers operated by Google LLC)</td></tr>
+            <tr><td>Crash and stability data</td><td>To detect and fix bugs that crash the app</td><td>Google Firebase Crashlytics (servers operated by Google LLC). Can be disabled in-app via Settings → Diagnostics.</td></tr>
             <tr><td>Push notification token</td><td>To deliver prayer time reminders and important app updates</td><td>Google Firebase Cloud Messaging (servers operated by Google LLC)</td></tr>
             <tr><td>App preferences and downloaded content (e.g. bookmarks, settings)</td><td>To remember your settings between launches</td><td>Locally on your device only</td></tr>
           </table>
         </div>
         <div class="legal-callout">
           <p><strong>What we do not collect.</strong> We do not collect your name, email address, phone number, contacts, photos, payment information, or any account credentials. Wasilah does not require you to create an account.</p>
+          <p><strong>No tracking.</strong> Wasilah does not engage in tracking as defined by Apple. We do not use the IDFA, do not embed any advertising SDKs, do not share data with data brokers, and do not link data collected from this app to data collected from other apps or websites for advertising. The app's own <code>PrivacyInfo.xcprivacy</code> declares <code>NSPrivacyTracking=false</code>.</p>
         </div>
 
         <h2>3. Information we collect</h2>
@@ -195,26 +195,17 @@
           <li>An installation-specific identifier (Crashlytics Installation ID) used to group crashes from the same install. This is not your device's advertising ID and is reset if you uninstall and reinstall the app</li>
           <li>The state of the app at the time of crash (e.g. last screen viewed, breadcrumb logs)</li>
         </ul>
-        <p>This data is processed by Google LLC and is used solely to fix bugs.</p>
+        <p>This data is processed by Google LLC and is used solely to fix bugs. Per Firebase Crashlytics' own privacy manifest, Crashlytics does not perform tracking as defined by Apple. You can disable Crashlytics at any time inside the app under <strong>Settings → Diagnostics</strong>.</p>
 
-        <h3>3.4 Usage analytics (Firebase Analytics)</h3>
-        <p>Firebase Analytics collects standard, automatic events provided by the SDK, including:</p>
-        <ul>
-          <li>App opens, screen views, and session duration</li>
-          <li>App version, OS, country (derived from IP and not stored as IP)</li>
-          <li>A pseudonymous Firebase Installation ID</li>
-        </ul>
-        <p>We do not link these events to any identity. We use the aggregated data to understand which features are used and to improve the app.</p>
-
-        <h3>3.5 Push notifications (Firebase Cloud Messaging)</h3>
+        <h3>3.4 Push notifications (Firebase Cloud Messaging)</h3>
         <p>If you grant notification permission, the app registers a Firebase Cloud Messaging (FCM) token. This token allows us to send notifications such as prayer reminders, dhikr nudges, and occasional product announcements. The token is associated with your installation, not your identity. You can disable notifications at any time in the app's Settings or in your device's system settings.</p>
 
-        <h3>3.6 Network requests to third-party services</h3>
+        <h3>3.5 Network requests to third-party services</h3>
         <p>The app makes HTTPS requests to the following third-party services. These requests inherently expose your IP address, app version, and the request itself to the operator of that service:</p>
         <ul>
           <li><strong>AlAdhan API</strong> (<code>api.aladhan.com</code>) &mdash; to fetch prayer times. See <a href="https://aladhan.com/privacy-policy">aladhan.com/privacy-policy</a>.</li>
           <li><strong>islamic.network audio CDN</strong> (<code>cdn.islamic.network</code>) &mdash; to stream Quran recitation audio.</li>
-          <li><strong>Google Firebase</strong> (multiple endpoints under <code>firebaseio.com</code>, <code>googleapis.com</code>, etc.) &mdash; for the Crashlytics, Analytics, and Cloud Messaging functions described above.</li>
+          <li><strong>Google Firebase</strong> (multiple endpoints under <code>firebaseio.com</code>, <code>googleapis.com</code>, etc.) &mdash; for the Crashlytics and Cloud Messaging functions described above.</li>
         </ul>
 
         <h2>4. How we use your information</h2>
@@ -223,16 +214,15 @@
           <li>To stream Quran recitation audio</li>
           <li>To send prayer-time reminders and other notifications you have opted into</li>
           <li>To detect, diagnose, and fix bugs and crashes</li>
-          <li>To understand aggregate, anonymous usage patterns and improve features</li>
           <li>To comply with legal obligations</li>
         </ul>
-        <p>We do not use your data for advertising. Wasilah does not contain advertisements or third-party advertising SDKs.</p>
+        <p>We do not use your data for advertising. Wasilah does not contain advertisements, third-party advertising SDKs, or analytics SDKs. We do not perform user-level tracking.</p>
 
         <h2>5. Legal bases for processing</h2>
         <p>For users in the EEA, UK, and similar jurisdictions:</p>
         <ul>
           <li><strong>Performance of a contract / provision of the requested service</strong> &mdash; for processing your location to compute prayer times and Qibla direction, and for delivering Quran audio.</li>
-          <li><strong>Legitimate interests</strong> &mdash; for crash reporting and aggregate usage analytics, where our interest is in maintaining a stable and useful app and that interest does not override your rights and freedoms.</li>
+          <li><strong>Legitimate interests</strong> &mdash; for crash reporting, where our interest is in maintaining a stable and useful app and that interest does not override your rights and freedoms.</li>
           <li><strong>Consent</strong> &mdash; for push notifications and for accessing precise device location, granted via the operating system's permission prompt and revocable at any time.</li>
         </ul>
 
@@ -241,7 +231,7 @@
         <div class="legal-table-wrap">
           <table>
             <tr><th>Recipient</th><th>Role</th><th>Region</th></tr>
-            <tr><td>Google LLC (Firebase)</td><td>Crash reporting, analytics, push delivery</td><td>United States and other Google data centres</td></tr>
+            <tr><td>Google LLC (Firebase)</td><td>Crash reporting, push delivery</td><td>United States and other Google data centres</td></tr>
             <tr><td>IslamicNetwork (AlAdhan API)</td><td>Prayer time computation</td><td>Operated globally</td></tr>
             <tr><td>IslamicNetwork (islamic.network CDN)</td><td>Quran audio streaming</td><td>Operated globally</td></tr>
           </table>
@@ -255,7 +245,6 @@
         <ul>
           <li><strong>On-device data</strong> (preferences, downloaded audio, bookmarks) is retained until you uninstall the app or clear app storage.</li>
           <li><strong>Firebase Crashlytics</strong> retains crash reports for up to 90 days by default.</li>
-          <li><strong>Firebase Analytics</strong> retains user-level event data for up to 14 months by default; aggregate, non-identifiable reporting is retained indefinitely.</li>
           <li><strong>FCM tokens</strong> are retained for as long as the installation is active. Tokens are invalidated automatically when you uninstall the app.</li>
           <li><strong>Location coordinates</strong> sent to the AlAdhan API are not retained by us; AlAdhan's retention is governed by their privacy policy.</li>
         </ul>
@@ -275,7 +264,7 @@
           <li><strong>Right to lodge a complaint</strong> &mdash; with your local data protection authority.</li>
         </ul>
         <p>Because Wasilah does not collect names, emails, or other identifiers, the data we process is largely pseudonymous. To exercise any of these rights, contact us at the address in Section 14 and provide enough information for us to identify the relevant processing (e.g. your Firebase Installation ID if available, the approximate date of the event, and the device model). For data held by Firebase, you may also contact Google directly.</p>
-        <p>You can also delete most of the data we hold simply by uninstalling the app, which terminates the FCM token and stops new analytics and crash data from being sent.</p>
+        <p>You can also delete most of the data we hold simply by uninstalling the app, which terminates the FCM token and stops new crash diagnostic data from being sent.</p>
 
         <h2>11. Children's privacy</h2>
         <p>Wasilah is intended for general audiences and is suitable for users aged 13 and over. We do not knowingly collect personal data from children under the age of 13 (or the equivalent minimum age in your jurisdiction, such as 16 in some EEA countries). If you are a parent or guardian and you believe a child has provided personal data to us, please contact us at the address in Section 14 and we will take reasonable steps to delete the data.</p>
@@ -285,7 +274,7 @@
           <table>
             <tr><th>Permission</th><th>Why we request it</th></tr>
             <tr><td>Location (precise and approximate)</td><td>Compute prayer times and Qibla direction</td></tr>
-            <tr><td>Internet</td><td>Fetch prayer times, stream Quran audio, deliver crash and analytics data, receive push notifications</td></tr>
+            <tr><td>Internet</td><td>Fetch prayer times, stream Quran audio, deliver crash diagnostics, receive push notifications</td></tr>
             <tr><td>Post notifications</td><td>Show prayer-time and dhikr reminders</td></tr>
             <tr><td>Schedule exact alarms / Use exact alarms</td><td>Trigger prayer-time notifications at the precise time</td></tr>
             <tr><td>Receive boot completed</td><td>Re-arm scheduled prayer notifications after the device restarts</td></tr>
