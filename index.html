@@ -1,548 +1,1917 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wasilah Bangladesh | Islamic App for Prayer Times, Quran, Hadith, Qibla & BDT Zakat</title>
-    <meta
-      name="description"
-      content="Wasilah is a Bangladesh-ready Islamic companion app for local prayer times, Adhan, Qibla, Quran, Hadith, Bangla duas, Ramadan support, and Zakat calculation in BDT."
-    >
-    <meta
-      name="keywords"
-      content="Wasilah Bangladesh, Islamic app Bangladesh, prayer times Bangladesh, Adhan app Bangladesh, Bangla Quran app, Hadith app Bangla, Qibla compass Bangladesh, Zakat calculator BDT, Ramadan app Bangladesh, Muslim app Bangladesh"
-    >
-    <meta name="author" content="Wasilah">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <meta name="geo.region" content="BD">
-    <meta name="geo.placename" content="Bangladesh">
-    <meta name="language" content="English, Bangla, Arabic">
-    <meta name="theme-color" content="#004B49">
-    <meta name="color-scheme" content="dark light">
-    <link rel="canonical" href="https://wasilah.site/">
-    <link rel="alternate" href="https://wasilah.site/" hreflang="en-BD">
-    <link rel="alternate" href="https://wasilah.site/" hreflang="bn-BD">
-    <link rel="alternate" href="https://wasilah.site/" hreflang="x-default">
-    <link rel="icon" href="wasilah_icon_wobg.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="wasilah_icon.png">
-    <link rel="manifest" href="site.webmanifest">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wasilah Bangladesh | Islamic App for Prayer Times, Quran, Hadith, Qibla &amp; BDT Zakat</title>
+<meta name="description" content="Wasilah is a Bangladesh-ready Islamic companion app for local prayer times, Adhan, Qibla, Quran, Hadith, Bangla duas, Ramadan support, and Zakat calculation in BDT." />
+<meta name="keywords" content="Wasilah Bangladesh, Islamic app Bangladesh, prayer times Bangladesh, Adhan app Bangladesh, Bangla Quran app, Hadith app Bangla, Qibla compass Bangladesh, Zakat calculator BDT, Ramadan app Bangladesh, Muslim app Bangladesh" />
+<meta name="author" content="Wasilah" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="geo.region" content="BD" />
+<meta name="geo.placename" content="Bangladesh" />
+<meta name="language" content="English, Bangla, Arabic" />
+<meta name="theme-color" content="#004B49" />
+<meta name="color-scheme" content="dark" />
+<link rel="canonical" href="https://wasilah.site/" />
+<link rel="alternate" href="https://wasilah.site/" hreflang="en-BD" />
+<link rel="alternate" href="https://wasilah.site/" hreflang="bn-BD" />
+<link rel="alternate" href="https://wasilah.site/" hreflang="x-default" />
+<link rel="icon" href="wasilah_icon_wobg.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="wasilah_icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-    <link rel="preload" as="image" href="Slider.png" fetchpriority="high">
-    <link rel="preconnect" href="https://api.aladhan.com" crossorigin>
-    <link rel="preconnect" href="https://api.alquran.cloud" crossorigin>
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<meta property="og:title" content="Wasilah Bangladesh | Deen, Dunia &amp; Akhira" />
+<meta property="og:description" content="A Bangladesh-ready Islamic companion for prayer times, Adhan, Quran, Hadith, Qibla, BDT Zakat, duas, and daily remembrance." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://wasilah.site/" />
+<meta property="og:image" content="https://wasilah.site/Slider.png" />
+<meta property="og:image:alt" content="Wasilah Islamic companion app for Bangladesh" />
+<meta property="og:locale" content="en_BD" />
+<meta property="og:locale:alternate" content="bn_BD" />
+<meta name="twitter:title" content="Wasilah Bangladesh" />
+<meta name="twitter:description" content="Prayer times, Quran, Hadith, Qibla, duas, and BDT Zakat for Muslims in Bangladesh." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://wasilah.site/Slider.png" />
 
-    <meta property="og:title" content="Wasilah Bangladesh | Deen, Dunia & Akhira">
-    <meta
-      property="og:description"
-      content="A Bangladesh-ready Islamic companion for prayer times, Adhan, Quran, Hadith, Qibla, BDT Zakat, duas, and daily remembrance."
-    >
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wasilah.site/">
-    <meta property="og:image" content="https://wasilah.site/Slider.png">
-    <meta property="og:image:alt" content="Wasilah Islamic companion app for Bangladesh">
-    <meta property="og:locale" content="en_BD">
-    <meta property="og:locale:alternate" content="bn_BD">
-    <meta name="twitter:title" content="Wasilah Bangladesh">
-    <meta
-      name="twitter:description"
-      content="Prayer times, Quran, Hadith, Qibla, duas, and BDT Zakat for Muslims in Bangladesh."
-    >
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://wasilah.site/Slider.png">
-    <link rel="stylesheet" href="styles.css?v=social-20260510-2">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
 
-    <script type="application/ld+json">
-      [
-        {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "Wasilah",
-          "url": "https://wasilah.site/",
-          "logo": "https://wasilah.site/wasilah_icon.png",
-          "email": "hello@wasilah.site",
-          "areaServed": {"@type": "Country", "name": "Bangladesh"},
-          "sameAs": [
-            "https://www.facebook.com/wasilah.site",
-            "https://www.instagram.com/wasilah.site",
-            "https://www.linkedin.com/company/wasilah-site",
-            "https://www.tiktok.com/@wasilah.site"
-          ]
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Wasilah",
-          "url": "https://wasilah.site/",
-          "inLanguage": ["en", "bn", "ar"],
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://wasilah.site/?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "MobileApplication",
-          "name": "Wasilah",
-          "alternateName": "Wasilah Bangladesh",
-          "url": "https://wasilah.site/",
-          "applicationCategory": "LifestyleApplication",
-          "operatingSystem": "iOS, Android",
-          "description": "A Bangladesh-ready Islamic companion app for local prayer times, Adhan, Qibla, Quran, Hadith, BDT Zakat, duas, and daily reminders.",
-          "inLanguage": ["en", "bn", "ar"],
-          "areaServed": {"@type": "Country", "name": "Bangladesh"},
-          "audience": {
-            "@type": "Audience",
-            "audienceType": "Muslims in Bangladesh and Bengali-speaking Muslims worldwide"
-          },
-          "featureList": [
-            "Dynamic Bangladesh prayer times",
-            "Qibla direction",
-            "Quran reader starting with Arabic, English, and Bangla",
-            "Hadith in Arabic, English, and Bangla",
-            "99 Names of Allah in Arabic, English, and Bangla",
-            "Duas in Arabic, English, and Bangla",
-            "Hajj and Umrah guide",
-            "Zakat calculator in BDT",
-            "Duas and daily remembrance",
-            "Ramadan and Hijri calendar support"
-          ],
-          "image": "https://wasilah.site/Slider.png",
-          "screenshot": "https://wasilah.site/Slider.png",
-          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BDT"},
-          "publisher": {
-            "@type": "Organization",
-            "name": "Wasilah",
-            "url": "https://wasilah.site/",
-            "logo": "https://wasilah.site/wasilah_icon.png"
-          }
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Is Wasilah made for Muslims in Bangladesh?",
-              "acceptedAnswer": {"@type": "Answer", "text": "Yes. Wasilah is designed for Bangladesh with Bangla support, BDT Zakat calculation, local prayer time needs, Qibla direction, Quran, Hadith, duas, and remembrance tools."}
-            },
-            {
-              "@type": "Question",
-              "name": "Does Wasilah include Quran and Hadith in Bangla?",
-              "acceptedAnswer": {"@type": "Answer", "text": "Wasilah is planned around Arabic, English, and Bangla access for Quran and Hadith so Bengali-speaking Muslims can keep core Islamic learning in one place."}
-            },
-            {
-              "@type": "Question",
-              "name": "Can Wasilah calculate Zakat in Bangladeshi Taka?",
-              "acceptedAnswer": {"@type": "Answer", "text": "Yes. Wasilah presents Zakat calculation in BDT for cash, gold, savings, business assets, and liabilities."}
-            },
-            {
-              "@type": "Question",
-              "name": "When is the app launching?",
-              "acceptedAnswer": {"@type": "Answer", "text": "Wasilah is preparing for an early Bangladesh launch on iOS and Android. Bookmark wasilah.site to be the first to know."}
-            },
-            {
-              "@type": "Question",
-              "name": "Will Wasilah be free?",
-              "acceptedAnswer": {"@type": "Answer", "text": "Yes. Wasilah will be free to download and use, with no ads in the prayer or Quran experience."}
-            }
-          ]
-        }
-      ]
-    </script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Wasilah",
+    "url": "https://wasilah.site/",
+    "logo": "https://wasilah.site/wasilah_icon.png",
+    "email": "hello@wasilah.site",
+    "areaServed": {"@type": "Country", "name": "Bangladesh"},
+    "sameAs": [
+      "https://www.facebook.com/wasilah.site",
+      "https://www.instagram.com/wasilah.site",
+      "https://www.linkedin.com/company/wasilah-site",
+      "https://www.tiktok.com/@wasilah.site"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Wasilah",
+    "url": "https://wasilah.site/",
+    "inLanguage": ["en", "bn", "ar"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://wasilah.site/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Wasilah",
+    "alternateName": "Wasilah Bangladesh",
+    "url": "https://wasilah.site/",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "iOS, Android",
+    "description": "A Bangladesh-ready Islamic companion app for local prayer times, Adhan, Qibla, Quran, Hadith, BDT Zakat, duas, and daily reminders.",
+    "inLanguage": ["en", "bn", "ar"],
+    "areaServed": {"@type": "Country", "name": "Bangladesh"},
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Muslims in Bangladesh and Bengali-speaking Muslims worldwide"
+    },
+    "featureList": [
+      "Dynamic Bangladesh prayer times",
+      "Qibla direction",
+      "Quran reader starting with Arabic, English, and Bangla",
+      "Hadith in Arabic, English, and Bangla",
+      "99 Names of Allah in Arabic, English, and Bangla",
+      "Duas in Arabic, English, and Bangla",
+      "Hajj and Umrah guide",
+      "Zakat calculator in BDT",
+      "Duas and daily remembrance",
+      "Ramadan and Hijri calendar support"
+    ],
+    "image": "https://wasilah.site/Slider.png",
+    "screenshot": "https://wasilah.site/Slider.png",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BDT"},
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wasilah",
+      "url": "https://wasilah.site/",
+      "logo": "https://wasilah.site/wasilah_icon.png"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Wasilah made for Muslims in Bangladesh?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. Wasilah is built around Bangla support, BDT Zakat, local prayer needs, Qibla, Quran, Hadith, duas, and daily remembrance — for Bangladesh and Bengali-speaking Muslims everywhere."}
+      },
+      {
+        "@type": "Question",
+        "name": "Does Wasilah include Quran and Hadith in Bangla?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. Arabic, English, and Bangla are brought together, so Bengali-speaking Muslims can read, learn, and reflect in one place."}
+      },
+      {
+        "@type": "Question",
+        "name": "Can Wasilah calculate Zakat in Bangladeshi Taka?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Zakat calculator is built around the Bangladeshi Taka — cash, gold, savings, business assets, and liabilities."}
+      },
+      {
+        "@type": "Question",
+        "name": "When is the app launching?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Wasilah is preparing for an early Bangladesh launch on iOS and Android. Bookmark wasilah.site to be the first to know."}
+      },
+      {
+        "@type": "Question",
+        "name": "Will Wasilah be free?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. Free to download and use, with no ads in the prayer or Quran experience."}
+      }
+    ]
+  }
+]
+</script>
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TQ85L336');</script>
-    <!-- End Google Tag Manager -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-535522278"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-535522278', { 'anonymize_ip': true });
-    </script>
-  </head>
-  <body>
-    <a class="skip-link" href="#top">Skip to main content</a>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQ85L336"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TQ85L336');</script>
+<!-- End Google Tag Manager -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-535522278"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-535522278', { 'anonymize_ip': true });
+</script>
 
-    <svg class="icon-sprite" aria-hidden="true" focusable="false">
-      <symbol id="icon-prayer" viewBox="0 0 48 48">
-        <path d="M10 39h28"/>
-        <path d="M15 39V23c0-5.6 4-10.5 9-14 5 3.5 9 8.4 9 14v16"/>
-        <path d="M20 39v-9a4 4 0 0 1 8 0v9"/>
-        <path d="M38 39V25h4v14"/>
-        <path d="M36 25h8"/>
-        <path d="M24 9V5"/>
-        <path d="M20 15h8"/>
-      </symbol>
-      <symbol id="icon-compass" viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r="17"/>
-        <path d="m29.6 14.8-3.2 11.6-8 6.8 3.2-11.6 8-6.8Z"/>
-        <path d="M24 7v4"/>
-        <path d="M24 37v4"/>
-        <path d="M7 24h4"/>
-        <path d="M37 24h4"/>
-      </symbol>
-      <symbol id="icon-quran" viewBox="0 0 48 48">
-        <path d="M8 12.5c4-2.2 10.4-2.2 16 1.2 5.6-3.4 12-3.4 16-1.2v25c-4-2.2-10.4-2.2-16 1.2-5.6-3.4-12-3.4-16-1.2v-25Z"/>
-        <path d="M24 13.7v25"/>
-        <path d="M14 19h5"/>
-        <path d="M14 25h5"/>
-        <path d="M29 19h5"/>
-        <path d="M29 25h5"/>
-      </symbol>
-      <symbol id="icon-hadith" viewBox="0 0 48 48">
-        <path d="M13 10h22a3 3 0 0 1 3 3v25H16a5 5 0 0 1-5-5V12a2 2 0 0 1 2-2Z"/>
-        <path d="M16 38a5 5 0 0 1 0-10h22"/>
-        <path d="M18 17h14"/>
-        <path d="M18 23h10"/>
-        <path d="M31 10v12l-4-2.5-4 2.5V10"/>
-      </symbol>
-      <symbol id="icon-zakat" viewBox="0 0 48 48">
-        <rect x="11" y="7" width="26" height="34" rx="5"/>
-        <path d="M17 15h14"/>
-        <path d="M18 23h.1"/>
-        <path d="M24 23h.1"/>
-        <path d="M30 23h.1"/>
-        <path d="M18 30h.1"/>
-        <path d="M24 30h.1"/>
-        <path d="M30 30h.1"/>
-        <path d="M19 36h10"/>
-      </symbol>
-      <symbol id="icon-dua" viewBox="0 0 48 48">
-        <path d="M18 38c-4.5-4.8-7-10.5-7-16.8V13a3 3 0 0 1 6 0v8"/>
-        <path d="M30 38c4.5-4.8 7-10.5 7-16.8V13a3 3 0 0 0-6 0v8"/>
-        <path d="M18 22v-8a3 3 0 0 1 6 0v12"/>
-        <path d="M30 22v-8a3 3 0 0 0-6 0v12"/>
-        <path d="M24 32v9"/>
-      </symbol>
-      <symbol id="icon-bangladesh" viewBox="0 0 48 48">
-        <path d="M13 39V9h24v22H17"/>
-        <circle cx="25" cy="20" r="6"/>
-      </symbol>
-      <symbol id="icon-language" viewBox="0 0 48 48">
-        <path d="M8 12h18"/>
-        <path d="M17 12c-1.8 8.3-4.8 13.7-9 18"/>
-        <path d="M12 20c2.7 4.3 6.2 7.8 11 10"/>
-        <path d="M28 36l6-16 6 16"/>
-        <path d="M31 30h6"/>
-      </symbol>
-      <symbol id="icon-kaaba" viewBox="0 0 48 48">
-        <path d="M10 17h28v23H10z"/>
-        <path d="M10 17l5-7h28l-5 7"/>
-        <path d="M16 26h16"/>
-        <path d="M16 33h16"/>
-        <path d="M32 17l5-7"/>
-      </symbol>
-      <symbol id="icon-star" viewBox="0 0 48 48">
-        <path d="m24 6 4.8 11.2 12.2 1.1-9.2 8 2.7 11.9L24 31.9l-10.5 6.3 2.7-11.9-9.2-8 12.2-1.1L24 6Z"/>
-      </symbol>
-      <symbol id="icon-arrow-up" viewBox="0 0 24 24">
-        <path d="M12 19V5"/>
-        <path d="m5 12 7-7 7 7"/>
-      </symbol>
-      <symbol id="icon-shield" viewBox="0 0 24 24">
-        <path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6l-8-3Z"/>
-        <path d="m9 12 2 2 4-4"/>
-      </symbol>
-      <symbol id="icon-facebook" viewBox="0 0 24 24">
-        <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12Z"/>
-      </symbol>
-      <symbol id="icon-instagram" viewBox="0 0 24 24">
-        <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.86 5.86 0 0 0-2.13 1.38A5.86 5.86 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.74 1.46 1.38 2.13a5.86 5.86 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.86 5.86 0 0 0 2.13-1.38 5.86 5.86 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.86 5.86 0 0 0-1.38-2.13A5.86 5.86 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.41-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/>
-      </symbol>
-      <symbol id="icon-linkedin" viewBox="0 0 24 24">
-        <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45C23.21 24 24 23.23 24 22.28V1.72C24 .77 23.21 0 22.22 0Z"/>
-      </symbol>
-      <symbol id="icon-tiktok" viewBox="0 0 24 24">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.3 0 .58.05.85.13V9.4a6.34 6.34 0 0 0-5.89 10.1 6.34 6.34 0 0 0 10.86-4.43V8.84a8.16 8.16 0 0 0 4.77 1.52V6.93c-.13.01-.26.01-.48-.01a4.85 4.85 0 0 1 0-.23Z"/>
-      </symbol>
-    </svg>
+<style>
+  :root {
+    /* Brand palette */
+    --emerald: #004B49;
+    --emerald-deep: #003836;
+    --emerald-light: #006866;
+    --emerald-soft: #00605d;
+    --gold: #F1D592;
+    --gold-bright: #fbe3a8;
+    --gold-mute: rgba(241, 213, 146, 0.55);
+    --gold-faint: rgba(241, 213, 146, 0.18);
+    --gold-line: rgba(241, 213, 146, 0.22);
+    --line: rgba(241, 213, 146, 0.12);
+    --ink: #f1d592;
+    --ink-soft: rgba(241, 213, 146, 0.72);
+    --ink-mute: rgba(241, 213, 146, 0.5);
+    --r-body: 'Urbanist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --r-arabic: 'Amiri', 'Amiri Quran', serif;
+  }
 
-    <header class="site-header" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="Wasilah home">
-        <img class="brand-icon" src="wasilah_icon_wobg.svg" alt="" width="51" height="51">
-        <img class="brand-logotype" src="wasilah_logo_wobg.svg" alt="Wasilah" width="198" height="44">
-      </a>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--emerald);
+    color: var(--ink);
+    font-family: var(--r-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    position: relative;
+  }
 
-      <div class="header-actions">
-        <nav class="header-nav" aria-label="Section links">
-          <a href="#features" data-i18n="footerNavFeatures">Features</a>
-          <a href="#worship" data-i18n="footerNavWorship">Worship tools</a>
-          <a href="#faq" data-i18n="footerNavFaq">FAQ</a>
-        </nav>
-        <div class="language-switch" role="group" aria-label="Language">
-          <button class="lang-option is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
-          <button class="lang-option" type="button" data-lang="bn" aria-pressed="false">বাংলা</button>
-        </div>
+  /* Subtle ambient glow */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 0%, rgba(241, 213, 146, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 50% at 50% 100%, rgba(241, 213, 146, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body > * { position: relative; z-index: 1; }
+
+  ::selection { background: var(--gold); color: var(--emerald-deep); }
+  a { color: inherit; text-decoration: none; }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background: var(--gold);
+    color: var(--emerald-deep);
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 0 0 8px 0;
+  }
+  .skip-link:focus {
+    left: 0;
+  }
+
+  /* Official Wasilah brand icons — recolored to the gold token via mask */
+  .brand-ico {
+    display: inline-block;
+    background-color: var(--gold);
+    -webkit-mask: var(--ico) no-repeat center / contain;
+    mask: var(--ico) no-repeat center / contain;
+  }
+
+  /* ── Layout primitives ─────────────────────────────────── */
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+  .narrow { max-width: 720px; margin: 0 auto; padding: 0 32px; }
+
+  /* ── Top bar ─────────────────────────────────────────── */
+  header.site {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--r-body);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .brand-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.7;
+  }
+  .brand-ar {
+    font-family: var(--r-arabic);
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+  }
+  .nav-links a {
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-lang {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--gold-line);
+    border-radius: 999px;
+    padding: 2px;
+    font-size: 11px;
+  }
+  .nav-lang button {
+    background: none;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-family: inherit;
+    color: var(--ink-mute);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+  .nav-lang button.on {
+    background: var(--gold);
+    color: var(--emerald-deep);
+  }
+  @media (max-width: 720px) {
+    .nav-links a:not(.nav-lang) { display: none; }
+  }
+
+  /* ── Section rhythm ───────────────────────────────────── */
+  section {
+    padding: 120px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 720px) {
+    section { padding: 80px 0; }
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: inline-block;
+    font-weight: 500;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+    vertical-align: middle;
+    margin-right: 14px;
+    transform: translateY(-2px);
+  }
+
+  h1.display, h2.display {
+    font-family: var(--r-body);
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+  h1.display { font-size: clamp(48px, 8vw, 96px); }
+  h2.display { font-size: clamp(36px, 5vw, 56px); }
+  .display strong {
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .display .ar {
+    font-family: var(--r-arabic);
+    font-weight: 400;
+    color: var(--gold);
+    margin-left: 0.2em;
+  }
+
+  .lede {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    font-weight: 300;
+    max-width: 56ch;
+  }
+
+  /* ── Hero ─────────────────────────────────────────────── */
+  .hero {
+    padding: 80px 0 140px;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .hero .eyebrow {
+    margin-bottom: 36px;
+    color: var(--gold-mute);
+  }
+  .hero .eyebrow::before, .hero .eyebrow::after {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold-mute);
+    vertical-align: middle;
+    margin: 0 12px;
+    transform: translateY(-2px);
+  }
+  .hero .eyebrow::before { margin-right: 14px; margin-left: 0; }
+  .hero h1 {
+    margin-bottom: 36px;
+  }
+  .hero .arabic {
+    font-family: var(--r-arabic);
+    font-size: 30px;
+    color: var(--gold);
+    direction: rtl;
+    margin-bottom: 32px;
+    line-height: 1.4;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  .hero .lede {
+    margin: 0 auto 16px;
+    text-align: center;
+  }
+  .hero .bn {
+    font-family: var(--r-arabic);
+    font-size: 17px;
+    color: var(--gold-mute);
+    margin: 0 auto 52px;
+    max-width: 50ch;
+  }
+  .stores {
+    display: inline-flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+  }
+  .store-btn.primary {
+    background: var(--gold);
+    color: var(--emerald-deep);
+    border: 1px solid var(--gold);
+  }
+  .store-btn.ghost {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold-line);
+  }
+  .store-btn:hover {
+    transform: translateY(-1px);
+  }
+  .store-btn.primary:hover {
+    background: var(--gold-bright);
+    box-shadow: 0 8px 28px -8px rgba(241, 213, 146, 0.4);
+  }
+  .store-btn.ghost:hover {
+    border-color: var(--gold);
+    background: var(--gold-faint);
+  }
+
+  /* Hero phone illustration (matches actual app) */
+  .hero-phone-wrap {
+    margin: 96px auto 0;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-phone {
+    width: 280px;
+    height: 580px;
+    border-radius: 44px;
+    background: linear-gradient(160deg, #2a2826, #0a0908);
+    padding: 8px;
+    box-shadow:
+      0 100px 140px -50px rgba(0, 0, 0, 0.55),
+      0 40px 60px -20px rgba(0, 0, 0, 0.35),
+      0 0 0 0.5px rgba(241, 213, 146, 0.18),
+      0 0 80px -20px rgba(241, 213, 146, 0.12);
+    position: relative;
+  }
+  .hero-phone-screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 36px;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(241, 213, 146, 0.08) 0%, transparent 50%),
+      linear-gradient(180deg, var(--emerald) 0%, var(--emerald-deep) 100%);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 38px 18px 18px;
+  }
+  .hero-phone-island {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 96px;
+    height: 28px;
+    border-radius: 16px;
+    background: #000;
+  }
+  .hp-logo {
+    text-align: center;
+    margin: 12px 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .hp-logo-en {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+  }
+  .hp-logo-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.7;
+  }
+  .hp-logo-ar {
+    font-family: var(--r-arabic);
+    font-size: 18px;
+    color: var(--gold);
+  }
+  .hp-card {
+    background: linear-gradient(180deg, rgba(241,213,146,0.05) 0%, rgba(241,213,146,0.02) 100%);
+    border: 1px solid rgba(241,213,146,0.12);
+    border-radius: 20px;
+    padding: 16px;
+    box-shadow:
+      inset 0 1px 0 rgba(241,213,146,0.05),
+      0 0 40px -10px rgba(241,213,146,0.05);
+  }
+  .hp-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .hp-loc {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    color: var(--gold-mute);
+  }
+  .hp-sunrise {
+    background: var(--gold);
+    color: var(--emerald-deep);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 9px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .hp-greeting-ar {
+    font-family: var(--r-arabic);
+    direction: rtl;
+    color: var(--gold);
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+  .hp-greeting-en {
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .hp-date {
+    color: var(--gold-mute);
+    font-size: 9px;
+    margin-bottom: 12px;
+  }
+  .hp-next {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(241,213,146,0.1);
+    border-radius: 14px;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hp-next-lbl {
+    font-size: 8px;
+    color: var(--gold-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2px;
+  }
+  .hp-next-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .hp-next-name span {
+    font-family: var(--r-arabic);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--gold-mute);
+    margin-left: 3px;
+  }
+  .hp-next-time {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .hp-next-in {
+    font-size: 9px;
+    color: var(--gold-mute);
+    margin-top: 2px;
+    text-align: right;
+  }
+  .hp-section-label {
+    text-align: center;
+    font-size: 9px;
+    color: var(--gold-mute);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 18px 0 10px;
+  }
+  .hp-learn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .hp-learn-card {
+    background: linear-gradient(180deg, rgba(241,213,146,0.05) 0%, rgba(241,213,146,0.02) 100%);
+    border: 1px solid rgba(241,213,146,0.12);
+    border-radius: 14px;
+    padding: 14px 8px 12px;
+    text-align: center;
+  }
+  .hp-learn-icon {
+    height: 32px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hp-learn-title {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .hp-learn-desc {
+    color: var(--gold-mute);
+    font-size: 8px;
+    line-height: 1.3;
+  }
+  .hp-quick {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+  .hp-quick-tile {
+    background: linear-gradient(180deg, rgba(241,213,146,0.04) 0%, rgba(241,213,146,0.01) 100%);
+    border: 1px solid rgba(241,213,146,0.1);
+    border-radius: 12px;
+    padding: 10px 4px 8px;
+    text-align: center;
+  }
+  .hp-quick-icon {
+    height: 22px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hp-quick-name {
+    color: var(--gold);
+    font-size: 8px;
+    font-weight: 500;
+  }
+  .hp-tabbar {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(241,213,146,0.08);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .hp-tab {
+    text-align: center;
+  }
+  .hp-tab-icon {
+    height: 14px;
+    width: 14px;
+    margin: 0 auto 3px;
+  }
+  .hp-tab-name {
+    font-size: 7px;
+    color: var(--gold-mute);
+  }
+  .hp-tab.active { 
+    background: rgba(241,213,146,0.15);
+    border-radius: 999px;
+    padding: 4px 10px;
+  }
+  .hp-tab.active .hp-tab-name { color: var(--gold); font-weight: 600; }
+
+  /* ── Features ─────────────────────────────────────────── */
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 64px;
+  }
+  .feature {
+    padding: 40px 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .feature:nth-child(odd) { padding-right: 40px; }
+  .feature:nth-child(even) { padding-left: 40px; border-left: 1px solid var(--line); }
+  .feature:nth-child(1), .feature:nth-child(2) { border-top: none; padding-top: 0; }
+  @media (max-width: 720px) {
+    .features { grid-template-columns: 1fr; }
+    .feature, .feature:nth-child(odd), .feature:nth-child(even) {
+      padding: 32px 0;
+      border-left: none;
+      border-top: 1px solid var(--line);
+    }
+    .feature:nth-child(1) { border-top: none; padding-top: 0; }
+    .feature:nth-child(2) { border-top: 1px solid var(--line); }
+  }
+
+  .feature-num {
+    font-family: var(--r-body);
+    font-weight: 300;
+    font-size: 24px;
+    color: var(--gold);
+    line-height: 1;
+    padding-top: 4px;
+    letter-spacing: 0.05em;
+  }
+  .feature h3 {
+    font-family: var(--r-body);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+    line-height: 1.25;
+    color: var(--gold);
+  }
+  .feature p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── Worship tools ─────────────────────────────────────── */
+  .tool-tabs {
+    margin: 56px 0 32px;
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--line);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tool-tabs::-webkit-scrollbar { display: none; }
+  .tool-tab {
+    background: none;
+    border: none;
+    padding: 16px 24px 16px 0;
+    margin-right: 24px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-mute);
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .tool-tab.on {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .tool-tab:hover { color: var(--ink); }
+
+  .tool-panel {
+    display: none;
+    animation: fadeIn 0.4s ease;
+    min-height: 360px;
+  }
+  .tool-panel.on { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Salah panel */
+  .salah {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .salah { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .salah-now {
+    border-left: 1px solid var(--gold-line);
+    padding: 4px 0 4px 28px;
+  }
+  .salah-now .lbl {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--gold-mute);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .salah-now .next-name {
+    font-family: var(--r-body);
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .salah-now .next-name span {
+    font-family: var(--r-arabic);
+    font-size: 30px;
+    color: var(--gold-mute);
+    margin-left: 10px;
+    font-weight: 400;
+  }
+  .salah-now .next-time {
+    margin-top: 18px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .salah-now .next-time strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .salah-now .loc {
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--ink-mute);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .salah-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .salah-row {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    gap: 16px;
+  }
+  .salah-row:last-child { border-bottom: none; }
+  .salah-row.passed { color: var(--ink-mute); opacity: 0.6; }
+  .salah-row.now { color: var(--gold); }
+  .salah-row .idx {
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+  .salah-row.now .idx { color: var(--gold); }
+  .salah-row .nm {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .salah-row .nm small {
+    display: block;
+    font-family: var(--r-arabic);
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+  .salah-row .tm {
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+  .salah-row.now .tm { font-weight: 600; }
+
+  /* Quran panel */
+  .quran {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .quran { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .quran-header { text-align: left; }
+  .quran-header .verse-ref {
+    font-size: 11px;
+    color: var(--gold-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .quran-header h3 {
+    font-family: var(--r-body);
+    font-size: 38px;
+    font-weight: 200;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .quran-header h3 .ar {
+    font-family: var(--r-arabic);
+    font-weight: 400;
+    color: var(--gold);
+    display: block;
+    margin-top: 4px;
+    font-size: 32px;
+  }
+  .quran-tabs {
+    display: flex;
+    gap: 20px;
+    margin: 28px 0 0;
+    font-size: 11px;
+  }
+  .quran-tabs button {
+    background: none;
+    border: none;
+    padding: 6px 0;
+    font-family: inherit;
+    color: var(--ink-mute);
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+  }
+  .quran-tabs button.on {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .quran-body {
+    padding: 36px 32px;
+    background: linear-gradient(180deg, rgba(241,213,146,0.04) 0%, rgba(241,213,146,0.01) 100%);
+    border-radius: 4px;
+    border: 1px solid var(--gold-line);
+    position: relative;
+  }
+  .quran-body::before, .quran-body::after {
+    content: '';
+    position: absolute;
+    width: 20px; height: 20px;
+    border-color: var(--gold);
+  }
+  .quran-body::before {
+    top: -1px; left: -1px;
+    border-top: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+  }
+  .quran-body::after {
+    bottom: -1px; right: -1px;
+    border-bottom: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+  }
+  .quran-ar {
+    font-family: var(--r-arabic);
+    direction: rtl;
+    text-align: right;
+    font-size: 26px;
+    line-height: 2;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .quran-tr {
+    font-family: var(--r-body);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* 99 Names panel */
+  .names-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+  .name-item {
+    padding: 28px 20px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .name-item:hover { background: rgba(241,213,146,0.04); }
+  .name-item .n-no {
+    font-family: var(--r-body);
+    font-weight: 300;
+    font-size: 11px;
+    color: var(--gold-mute);
+    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+  }
+  .name-item .n-ar {
+    font-family: var(--r-arabic);
+    font-size: 26px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .name-item .n-tr {
+    font-family: var(--r-body);
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .name-item .n-en {
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-top: 4px;
+    font-weight: 300;
+  }
+
+  /* Duas panel */
+  .dua-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  @media (max-width: 720px) {
+    .dua-list { grid-template-columns: 1fr; }
+  }
+  .dua-row {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+    transition: padding 0.2s, background 0.2s;
+  }
+  .dua-row:nth-child(odd) { padding-right: 32px; border-right: 1px solid var(--line); }
+  .dua-row:nth-child(even) { padding-left: 32px; }
+  @media (max-width: 720px) {
+    .dua-row, .dua-row:nth-child(odd), .dua-row:nth-child(even) {
+      padding: 18px 0;
+      border-right: none;
+    }
+  }
+  .dua-row:hover .dua-arrow { color: var(--gold); transform: translateX(4px); }
+  .dua-title {
+    font-family: var(--r-body);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .dua-meta {
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-top: 4px;
+  }
+  .dua-meta .ar {
+    font-family: var(--r-arabic);
+    font-size: 13px;
+    margin-left: 4px;
+  }
+  .dua-arrow {
+    color: var(--ink-mute);
+    font-size: 18px;
+    transition: all 0.2s;
+  }
+
+  /* Hajj & Umrah */
+  .pilgrim-toggle {
+    display: inline-flex;
+    border: 1px solid var(--gold-line);
+    border-radius: 999px;
+    margin-bottom: 40px;
+    padding: 2px;
+  }
+  .pilgrim-toggle button {
+    background: none;
+    border: none;
+    padding: 8px 24px;
+    font-family: inherit;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-mute);
+    cursor: pointer;
+    border-radius: 999px;
+    transition: all 0.25s;
+    font-weight: 500;
+  }
+  .pilgrim-toggle button.on {
+    background: var(--gold);
+    color: var(--emerald-deep);
+  }
+  .pilgrim-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+  .pilgrim-step {
+    padding: 32px 24px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .ps-num {
+    font-family: var(--r-body);
+    font-weight: 200;
+    font-size: 40px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+  .ps-title {
+    font-family: var(--r-body);
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .ps-ar {
+    font-family: var(--r-arabic);
+    font-size: 15px;
+    color: var(--gold-mute);
+    margin-bottom: 12px;
+  }
+  .ps-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+
+  /* ── Quiet reminder ──────────────────────────────────── */
+  .reminder {
+    text-align: center;
+    padding: 140px 0;
+    background: var(--emerald-deep);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .reminder::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(241,213,146,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .reminder > div { position: relative; }
+  .reminder .arabic {
+    font-family: var(--r-arabic);
+    font-size: 36px;
+    color: var(--gold);
+    direction: rtl;
+    margin-bottom: 36px;
+    line-height: 1.5;
+  }
+  .reminder h2 {
+    max-width: 22ch;
+    margin: 0 auto 32px;
+  }
+  .reminder p {
+    max-width: 50ch;
+    margin: 0 auto;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+  .reminder .attr {
+    margin-top: 28px;
+    font-size: 12px;
+    color: var(--gold-mute);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ── FAQ ─────────────────────────────────────────────── */
+  .faq h2 { margin-bottom: 14px; }
+  .faq .lede { margin-bottom: 56px; }
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0;
+    cursor: pointer;
+    user-select: none;
+    gap: 24px;
+  }
+  .faq-q-text {
+    font-family: var(--r-body);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .faq-q-toggle {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--gold-line);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    flex-shrink: 0;
+    transition: all 0.25s;
+    font-size: 16px;
+    font-weight: 300;
+  }
+  .faq-item.open .faq-q-toggle {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--emerald-deep);
+    transform: rotate(45deg);
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s ease;
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .faq-item.open .faq-a {
+    max-height: 280px;
+    padding: 0 0 32px;
+  }
+
+  /* ── Privacy ─────────────────────────────────────────── */
+  .privacy h2 { margin-bottom: 22px; }
+  .privacy .lede { margin-bottom: 40px; }
+  .privacy ul {
+    list-style: none;
+    margin: 0 0 36px;
+  }
+  .privacy li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    line-height: 1.65;
+  }
+  .privacy li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 10px;
+    flex-shrink: 0;
+  }
+  .privacy-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+  }
+  .privacy-links a {
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold-line);
+    padding-bottom: 4px;
+    transition: border-color 0.2s;
+  }
+  .privacy-links a:hover { border-color: var(--gold); }
+
+  /* ── Footer ──────────────────────────────────────────── */
+  footer.site {
+    padding: 80px 0 48px;
+    background: var(--emerald-deep);
+    color: var(--ink);
+    border-bottom: none;
+  }
+  footer.site .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 720px) {
+    footer.site .wrap { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .footer-brand .brand-lockup { margin-bottom: 18px; }
+  .footer-brand p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 38ch;
+  }
+  .footer-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-col h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 14px;
+    color: var(--ink-soft);
+    padding: 6px 0;
+    transition: color 0.2s;
+    font-weight: 400;
+  }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 11px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .footer-social {
+    display: flex;
+    gap: 10px;
+  }
+  .footer-social a {
+    width: 34px; height: 34px;
+    border: 1px solid var(--gold-line);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .footer-social a:hover {
+    border-color: var(--gold);
+    background: var(--gold-faint);
+  }
+  .footer-social svg { width: 13px; height: 13px; fill: var(--gold); opacity: 0.7; }
+  .footer-social a:hover svg { opacity: 1; }
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQ85L336" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<a class="skip-link" href="#features">Skip to main content</a>
+<a id="top"></a>
+
+<!-- ════════ Top Bar ════════ -->
+<header class="site">
+  <div class="wrap nav">
+    <a href="#top" class="brand-lockup">
+      <span>Wasilah</span>
+      <span class="brand-dot"></span>
+      <span class="brand-ar">وسيلة</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#worship">Tools</a>
+      <a href="#faq">FAQ</a>
+      <div class="nav-lang">
+        <button class="on" data-lang="en">EN</button>
+        <button data-lang="bn">বাংলা</button>
       </div>
-    </header>
+    </nav>
+  </div>
+</header>
 
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow" data-i18n="heroEyebrow">For Deen, Dunia & Akhira</p>
-          <h1 id="hero-title">Wasilah</h1>
-          <p class="hero-lede" data-i18n="heroLead">
-            A Bangladesh-ready Islamic companion for everyday salah, Quran, Hadith, Qibla, BDT Zakat,
-            Ramadan, duas, and remembrance.
-          </p>
-          <p class="hero-bn">
-            দীন, দুনিয়া ও আখিরাতের পথে একটি বিশ্বস্ত সহযাত্রা।
-          </p>
+<!-- ════════ Hero ════════ -->
+<section class="hero" style="border-bottom:1px solid var(--line); padding-top:80px;">
+  <div class="narrow">
+    <span class="eyebrow">The Sophisticated Enabler</span>
+    <h1 class="display">We are <strong>the bridge.</strong><br>We are the means.</h1>
+    <p class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+    <p class="lede">Prayer times, Quran, Hadith, Qibla, duas, and BDT Zakat — shaped for Bangladesh and the Bengali-speaking ummah.</p>
+    <p class="bn">দীন, দুনিয়া ও আখিরাতের পথে একটি বিশ্বস্ত সহযাত্রা।</p>
+    <div class="stores">
+      <a href="#top" class="store-btn primary">
+        <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor"><path d="M11.6 8.5c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.5-2.9-1.5-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.7-.7-1.4 0-2.6.8-3.3 2-1.4 2.5-.4 6.1 1 8.1.7 1 1.5 2.1 2.5 2.1 1 0 1.4-.7 2.6-.7s1.6.7 2.7.7c1.1 0 1.8-1 2.5-2 .8-1.1 1.1-2.3 1.2-2.3-.1 0-2.3-.9-2.3-3.4zM9.7 2.7c.5-.7.9-1.7.8-2.7-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.9 2.6.9.1 1.9-.4 2.5-1.1z"/></svg>
+        App Store
+      </a>
+      <a href="#top" class="store-btn ghost">
+        <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor"><path d="M0.5 1.2v13.6c0 .4.2.7.5.9l7.1-7.7L1 .3c-.3.2-.5.5-.5.9zM10.4 5.5l-2-1.2L1.5 0c-.2 0-.4 0-.5.1l7.5 7.6 1.9-2.2zm3 2.5l-2-1.1-2.2 2.1 2.2 2.1 2-1.1c.4-.2.6-.6.6-1s-.3-.8-.6-1zM1 15.7c.1.1.3.1.5.1l6.9-4.3 2-1.2-1.9-2.2-7.5 7.6z"/></svg>
+        Google Play
+      </a>
+    </div>
 
-          <div class="store-actions" aria-label="App download links">
-            <a class="store-button" id="app-store-link" href="#top" aria-label="Download on the App Store">
-              <img class="store-badge" src="App_Store.svg" alt="Download on the App Store" width="206" height="62" loading="lazy">
-            </a>
-            <a class="store-button" id="play-store-link" href="#top" aria-label="Get it on Google Play">
-              <img class="store-badge" src="Google_Play.svg" alt="Get it on Google Play" width="206" height="62" loading="lazy">
-            </a>
+    <!-- Phone preview — matches actual app design -->
+    <div class="hero-phone-wrap">
+      <div class="hero-phone">
+        <div class="hero-phone-screen">
+          <div class="hero-phone-island"></div>
+
+          <!-- App logo -->
+          <div class="hp-logo">
+            <span class="hp-logo-en">Wasilah</span>
+            <span class="hp-logo-dot"></span>
+            <span class="hp-logo-ar">وسيلة</span>
+          </div>
+
+          <!-- Hero card -->
+          <div class="hp-card">
+            <div class="hp-card-top">
+              <div class="hp-loc">
+                <svg width="8" height="10" viewBox="0 0 8 10" fill="currentColor"><path d="M4 0C1.8 0 0 1.8 0 4c0 3 4 6 4 6s4-3 4-6c0-2.2-1.8-4-4-4zm0 5.5C3.2 5.5 2.5 4.8 2.5 4S3.2 2.5 4 2.5 5.5 3.2 5.5 4 4.8 5.5 4 5.5z"/></svg>
+                Dhaka
+              </div>
+              <div class="hp-sunrise">
+                <svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="4.5" cy="4.5" r="1.6"/><path d="M4.5 0v1.4M4.5 7.6V9M0 4.5h1.4M7.6 4.5H9M1.3 1.3l1 1M6.7 6.7l1 1M1.3 7.7l1-1M6.7 2.3l1-1" stroke-linecap="round"/></svg>
+                Sunrise 5:14
+              </div>
+            </div>
+            <p class="hp-greeting-ar">السَّلَامُ عَلَيْكُمْ</p>
+            <p class="hp-greeting-en">As-Salamu Alaikum</p>
+            <p class="hp-date">3 Dhū al-Ḥijjah 1447 · Wed, 20 May 2026</p>
+            <div class="hp-next">
+              <div>
+                <p class="hp-next-lbl">Next Prayer</p>
+                <p class="hp-next-name">Fajr<span>الفجر</span></p>
+              </div>
+              <div>
+                <p class="hp-next-time">03:50</p>
+                <p class="hp-next-in">in 3h 30m</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="hp-section-label">Learn</p>
+          <div class="hp-learn">
+            <div class="hp-learn-card">
+              <div class="hp-learn-icon">
+                <span class="brand-ico" style="--ico:url('icons/salah.svg');width:30px;height:30px"></span>
+              </div>
+              <p class="hp-learn-title">Learn Salah</p>
+              <p class="hp-learn-desc">Step-by-step prayer</p>
+            </div>
+            <div class="hp-learn-card">
+              <div class="hp-learn-icon">
+                <span class="brand-ico" style="--ico:url('icons/wudu.svg');width:30px;height:30px"></span>
+              </div>
+              <p class="hp-learn-title">Learn Wudu</p>
+              <p class="hp-learn-desc">Interactive ablution</p>
+            </div>
+          </div>
+
+          <p class="hp-section-label">Quick Access</p>
+          <div class="hp-quick">
+            <div class="hp-quick-tile">
+              <div class="hp-quick-icon"><span class="brand-ico" style="--ico:url('icons/quran.svg');width:20px;height:20px"></span></div>
+              <p class="hp-quick-name">Al-Quran</p>
+            </div>
+            <div class="hp-quick-tile">
+              <div class="hp-quick-icon"><span class="brand-ico" style="--ico:url('icons/dua.svg');width:20px;height:20px"></span></div>
+              <p class="hp-quick-name">Duas</p>
+            </div>
+            <div class="hp-quick-tile">
+              <div class="hp-quick-icon"><span class="brand-ico" style="--ico:url('icons/tasbeeh.svg');width:20px;height:20px"></span></div>
+              <p class="hp-quick-name">Tasbeeh</p>
+            </div>
+            <div class="hp-quick-tile">
+              <div class="hp-quick-icon"><span class="brand-ico" style="--ico:url('icons/allah.svg');width:20px;height:20px"></span></div>
+              <p class="hp-quick-name">99 Names</p>
+            </div>
+          </div>
+
+          <div class="hp-tabbar">
+            <div class="hp-tab active">
+              <p class="hp-tab-name">Home</p>
+            </div>
+            <div class="hp-tab"><p class="hp-tab-name">Quran</p></div>
+            <div class="hp-tab"><p class="hp-tab-name">Qibla</p></div>
+            <div class="hp-tab"><p class="hp-tab-name">Hadith</p></div>
+            <div class="hp-tab"><p class="hp-tab-name">More</p></div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section class="section feature-section" id="features" aria-labelledby="features-title">
-        <div class="section-copy narrow">
-          <p class="section-label" data-i18n="featuresLabel">Inside the app</p>
-          <h2 id="features-title" data-i18n="featuresTitle">Everything essential, in four simple sections.</h2>
+<!-- ════════ Features ════════ -->
+<section id="features">
+  <div class="wrap">
+    <span class="eyebrow">Inside the app</span>
+    <h2 class="display">Everything essential.<br><strong>Nothing more.</strong></h2>
+    <p class="lede" style="margin-top:28px;">Four quiet sections, designed to fit around your day — not to demand it.</p>
+
+    <div class="features">
+      <div class="feature">
+        <span class="feature-num">01</span>
+        <div>
+          <h3>Prayer, Adhan &amp; Qibla</h3>
+          <p>Accurate Bangladesh salah times, gentle adhan reminders, and the Qibla — always within reach.</p>
         </div>
-
-        <div class="feature-grid">
-          <article class="feature-card">
-            <div class="feature-mark"><svg><use href="#icon-prayer"></use></svg></div>
-            <h3 data-i18n="featurePrayerTitle">Prayer, Adhan & Qibla</h3>
-            <p data-i18n="featurePrayerText">Bangladesh salah times, adhan-ready moments, and Qibla direction.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-mark"><svg><use href="#icon-quran"></use></svg></div>
-            <h3 data-i18n="featureQuranTitle">Quran & Hadith</h3>
-            <p data-i18n="featureQuranText">Arabic, English, and Bangla reading for Quran and Hadith in one place.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-mark"><svg><use href="#icon-zakat"></use></svg></div>
-            <h3 data-i18n="featureZakatTitle">Zakat & 99 Names</h3>
-            <p data-i18n="featureZakatText">BDT zakat planning with the 99 Names of Allah in three languages.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-mark"><svg><use href="#icon-dua"></use></svg></div>
-            <h3 data-i18n="featureDuaTitle">Duas, Hajj & Umrah</h3>
-            <p data-i18n="featureDuaText">Daily duas with clear Hajj and Umrah guidance for quick reading.</p>
-          </article>
+      </div>
+      <div class="feature">
+        <span class="feature-num">02</span>
+        <div>
+          <h3>Quran &amp; Hadith</h3>
+          <p>Read in Arabic, English, and Bangla. One place to recite, reflect, and return.</p>
         </div>
-      </section>
+      </div>
+      <div class="feature">
+        <span class="feature-num">03</span>
+        <div>
+          <h3>Zakat &amp; 99 Names</h3>
+          <p>Plan your zakat in BDT, and learn the 99 Names of Allah in three languages.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-num">04</span>
+        <div>
+          <h3>Duas, Hajj &amp; Umrah</h3>
+          <p>Daily duas alongside clear, step-by-step guidance for Hajj and Umrah.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section class="section worship-section" id="worship" aria-labelledby="worship-title">
-        <div class="section-copy narrow">
-          <p class="section-label" data-i18n="worshipLabel">Live worship tools</p>
-          <h2 id="worship-title" data-i18n="worshipTitle">Live worship tools, ready in the browser.</h2>
-          <p data-i18n="worshipText">
-            Scroll through focused website segments for Bangladesh salah times, Quran reading, Allah's names, duas, and Hajj or Umrah guidance.
+<!-- ════════ Worship Tools ════════ -->
+<section id="worship">
+  <div class="wrap">
+    <span class="eyebrow">Live worship tools</span>
+    <h2 class="display">Try a moment of it,<br><strong>right here.</strong></h2>
+
+    <div class="tool-tabs">
+      <button class="tool-tab on" data-tool="salah">Salah</button>
+      <button class="tool-tab" data-tool="quran">Quran</button>
+      <button class="tool-tab" data-tool="names">99 Names</button>
+      <button class="tool-tab" data-tool="duas">Duas</button>
+      <button class="tool-tab" data-tool="pilgrim">Hajj &amp; Umrah</button>
+    </div>
+
+    <!-- Salah Panel -->
+    <div class="tool-panel on" id="panel-salah">
+      <div class="salah">
+        <div class="salah-now">
+          <p class="lbl">Next Prayer · Dhaka</p>
+          <p class="next-name">Fajr <span>الفجر</span></p>
+          <p class="next-time"><strong>03:50</strong> · in 3h 30m</p>
+          <p class="loc">
+            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"><path d="M4.5 0C2 0 0 2 0 4.5c0 3.5 4.5 6.5 4.5 6.5S9 8 9 4.5C9 2 7 0 4.5 0Zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3Z" fill="currentColor"/></svg>
+            Asia/Dhaka
           </p>
         </div>
-
-        <nav class="segment-nav" aria-label="Wasilah website sections">
-          <a href="#salah-segment" data-i18n="segmentSalah">Salah</a>
-          <a href="#quran-segment" data-i18n="segmentQuran">Quran</a>
-          <a href="#names-segment" data-i18n="segmentNames">99 Names</a>
-          <a href="#dua-segment" data-i18n="segmentDua">Duas</a>
-          <a href="#guide-segment" data-i18n="segmentGuide">Hajj & Umrah</a>
-        </nav>
-
-        <div class="worship-grid">
-          <article class="worship-panel salah-panel" id="salah-segment">
-            <div class="panel-head">
-              <div class="feature-mark"><svg><use href="#icon-prayer"></use></svg></div>
-              <div>
-                <p class="panel-kicker" data-i18n="salahKicker">Asia/Dhaka time</p>
-                <h3 data-i18n="salahTitle">Salah Time</h3>
-              </div>
-            </div>
-            <div class="salah-controls">
-              <label for="city-select" data-i18n="cityLabel">City</label>
-              <select id="city-select" aria-label="Select city"></select>
-              <button class="utility-button" id="geo-button" type="button" data-i18n="geoButton">Use Location</button>
-            </div>
-            <div class="next-prayer" aria-live="polite">
-              <span data-i18n="nextPrayerLabel">Next prayer</span>
-              <strong id="next-prayer-name">Fajr</strong>
-              <time id="next-prayer-time">--:--</time>
-            </div>
-            <div class="salah-times" id="salah-times" aria-label="Prayer times"></div>
-            <p id="salah-status" class="panel-status" role="status" hidden></p>
-          </article>
-
-          <article class="worship-panel quran-panel" id="quran-segment">
-            <div class="panel-head">
-              <div class="feature-mark"><svg><use href="#icon-quran"></use></svg></div>
-              <div>
-                <p class="panel-kicker" data-i18n="quranKicker">Quran reader</p>
-                <h3 data-i18n="quranReaderTitle">Quran</h3>
-              </div>
-            </div>
-            <div class="reader-controls">
-              <select id="quran-surah" aria-label="Select Quran passage"></select>
-              <div class="language-pills" aria-label="Quran languages">
-                <span>عربي</span>
-                <span>English</span>
-                <span>বাংলা</span>
-              </div>
-            </div>
-            <div class="quran-reader" id="quran-reader"></div>
-            <p id="quran-status" class="panel-status" role="status" hidden></p>
-          </article>
-
-          <article class="worship-panel names-panel" id="names-segment">
-            <div class="panel-head">
-              <div class="feature-mark"><svg><use href="#icon-star"></use></svg></div>
-              <div>
-                <p class="panel-kicker" data-i18n="namesKicker">Asmaul Husna</p>
-                <h3 data-i18n="namesTitle">99 Names of Allah</h3>
-              </div>
-            </div>
-            <input class="panel-search" id="names-search" type="search" data-i18n-placeholder="namesSearch" placeholder="Search a name or meaning" aria-label="Search 99 Names of Allah">
-            <div class="names-list" id="names-list" aria-label="99 Names of Allah"></div>
-          </article>
-
-          <article class="worship-panel dua-panel" id="dua-segment">
-            <div class="panel-head">
-              <div class="feature-mark"><svg><use href="#icon-dua"></use></svg></div>
-              <div>
-                <p class="panel-kicker" data-i18n="duaKicker">Supplications</p>
-                <h3 data-i18n="duaTitle">Duas</h3>
-              </div>
-            </div>
-            <div class="reader-controls">
-              <select id="dua-select" aria-label="Select dua"></select>
-            </div>
-            <div class="dua-reader" id="dua-reader"></div>
-          </article>
-
-          <article class="worship-panel guide-panel" id="guide-segment">
-            <div class="panel-head">
-              <div class="feature-mark"><svg><use href="#icon-kaaba"></use></svg></div>
-              <div>
-                <p class="panel-kicker" data-i18n="guideKicker">Pilgrimage</p>
-                <h3 data-i18n="guideTitle">Hajj & Umrah Guide</h3>
-              </div>
-            </div>
-            <div class="guide-tabs" role="tablist" aria-label="Guide type">
-              <button class="guide-tab is-active" type="button" data-guide="umrah" data-i18n="umrahTab" role="tab" aria-selected="true">Umrah</button>
-              <button class="guide-tab" type="button" data-guide="hajj" data-i18n="hajjTab" role="tab" aria-selected="false">Hajj</button>
-            </div>
-            <ol class="guide-list" id="guide-list"></ol>
-          </article>
+        <div class="salah-list">
+          <div class="salah-row now"><span class="idx">01</span><span class="nm">Fajr <small>الفجر</small></span><span class="tm">03:50</span></div>
+          <div class="salah-row"><span class="idx">02</span><span class="nm">Sunrise <small>الشروق</small></span><span class="tm">05:14</span></div>
+          <div class="salah-row"><span class="idx">03</span><span class="nm">Dhuhr <small>الظهر</small></span><span class="tm">12:02</span></div>
+          <div class="salah-row"><span class="idx">04</span><span class="nm">Asr <small>العصر</small></span><span class="tm">04:30</span></div>
+          <div class="salah-row"><span class="idx">05</span><span class="nm">Maghrib <small>المغرب</small></span><span class="tm">06:36</span></div>
+          <div class="salah-row"><span class="idx">06</span><span class="nm">Isha <small>العشاء</small></span><span class="tm">08:00</span></div>
         </div>
-      </section>
+      </div>
+    </div>
 
-      <section class="spiritual-band" aria-labelledby="spiritual-title">
-        <div class="spiritual-inner">
-          <p class="section-label" data-i18n="spiritualLabel">A quiet reminder</p>
-          <h2 id="spiritual-title" data-i18n="spiritualTitle">Technology should make worship easier, not noisier.</h2>
-          <p data-i18n="spiritualText">
-            Wasilah is designed to support simple daily consistency: pray on time, return to the Quran,
-            learn from Hadith, give with intention, and keep Allah in remembrance.
+    <!-- Quran Panel -->
+    <div class="tool-panel" id="panel-quran">
+      <div class="quran">
+        <div class="quran-header">
+          <p class="verse-ref">Al-Fatiha · 1:1–4</p>
+          <h3>The Opening<span class="ar">سورة الفاتحة</span></h3>
+          <div class="quran-tabs">
+            <button class="on">عربي</button>
+            <button>English</button>
+            <button>বাংলা</button>
+          </div>
+        </div>
+        <div class="quran-body">
+          <p class="quran-ar">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ۝<br>
+            الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۝<br>
+            الرَّحْمَٰنِ الرَّحِيمِ ۝<br>
+            مَالِكِ يَوْمِ الدِّينِ
           </p>
+          <p class="quran-tr">"In the name of Allah, the Entirely Merciful, the Especially Merciful. All praise is due to Allah, Lord of the worlds."</p>
         </div>
-      </section>
-
-      <section class="section faq-section" id="faq" aria-labelledby="faq-title">
-        <div class="section-copy narrow">
-          <p class="section-label" data-i18n="faqLabel">Questions</p>
-          <h2 id="faq-title" data-i18n="faqTitle">Wasilah Bangladesh FAQ</h2>
-        </div>
-
-        <div class="faq-list">
-          <details>
-            <summary data-i18n="faqBangladeshQuestion">Is Wasilah made for Muslims in Bangladesh?</summary>
-            <p data-i18n="faqBangladeshAnswer">Yes. Wasilah is designed around Bangla support, BDT Zakat, local prayer needs, Qibla, Quran, Hadith, duas, and daily remembrance.</p>
-          </details>
-          <details>
-            <summary data-i18n="faqLanguagesQuestion">Does Wasilah include Quran and Hadith in Bangla?</summary>
-            <p data-i18n="faqLanguagesAnswer">Wasilah brings Arabic, English, and Bangla access together so Bengali-speaking Muslims can learn and reflect in one place.</p>
-          </details>
-          <details>
-            <summary data-i18n="faqZakatQuestion">Can Wasilah calculate Zakat in BDT?</summary>
-            <p data-i18n="faqZakatAnswer">Yes. The Zakat calculator is built around Bangladeshi Taka for cash, gold, savings, business assets, and liabilities.</p>
-          </details>
-          <details>
-            <summary data-i18n="faqLaunchQuestion">When is the app launching?</summary>
-            <p data-i18n="faqLaunchAnswer">Wasilah is preparing for an early Bangladesh launch on iOS and Android. Bookmark wasilah.site and you'll be the first to know.</p>
-          </details>
-          <details>
-            <summary data-i18n="faqCostQuestion">Will Wasilah be free?</summary>
-            <p data-i18n="faqCostAnswer">Yes. Wasilah will be free to download and use, with no ads in the prayer or Quran experience.</p>
-          </details>
-        </div>
-      </section>
-
-      <section class="section trust-section" id="trust" aria-label="Privacy">
-        <div class="trust-grid">
-          <article class="footer-card footer-card--wide" id="privacy">
-            <div class="footer-card-mark"><svg><use href="#icon-shield"></use></svg></div>
-            <p class="section-label" data-i18n="privacyLabel">Privacy</p>
-            <h2 data-i18n="privacyTitle">Privacy first</h2>
-            <p data-i18n="privacyText">Wasilah does not require an account to use this website. We do not sell or share personal data. Anonymous analytics help us understand how the site is used.</p>
-            <ul class="privacy-list">
-              <li data-i18n="privacyBullet1">No account or sign-in required to use the site or app.</li>
-              <li data-i18n="privacyBullet2">Location is requested only when you press "Use Location," and used only to compute prayer times in your browser.</li>
-              <li data-i18n="privacyBullet3">Anonymous analytics (Google Analytics) help us improve the site. Your IP is anonymised.</li>
-              <li data-i18n="privacyBullet4">Email us anytime to ask what data we hold or to request deletion.</li>
-            </ul>
-            <a class="contact-link contact-link--inline" href="mailto:hello@wasilah.site">hello@wasilah.site</a>
-            <a class="contact-link contact-link--inline" href="/privacy/" data-i18n="privacyReadFull">Read full Privacy Policy →</a>
-            <a class="contact-link contact-link--inline" href="/terms/" data-i18n="privacyReadTerms">Read Terms &amp; Conditions →</a>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="footer-top">
-        <a class="footer-brand" href="#top" aria-label="Wasilah home">
-          <img src="wasilah_logo_wobg.svg" alt="Wasilah" width="144" height="32">
-        </a>
-        <p class="footer-tagline" data-i18n="footerTagline">An Islamic companion for Bangladesh — and Bengali-speaking Muslims everywhere.</p>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <p class="footer-nav-title" data-i18n="footerNavTitle">Explore</p>
-          <a href="#features" data-i18n="footerNavFeatures">Features</a>
-          <a href="#worship" data-i18n="footerNavWorship">Worship tools</a>
-          <a href="#faq" data-i18n="footerNavFaq">FAQ</a>
-          <a href="/privacy/" data-i18n="footerNavPrivacy">Privacy policy</a>
-          <a href="/terms/" data-i18n="footerNavTerms">Terms &amp; conditions</a>
-        </nav>
       </div>
-      <nav class="footer-social" aria-label="Wasilah on social media">
-        <a class="footer-social-link" href="https://www.facebook.com/wasilah.site" target="_blank" rel="noopener" aria-label="Wasilah on Facebook">
-          <svg aria-hidden="true"><use href="#icon-facebook"></use></svg>
-        </a>
-        <a class="footer-social-link" href="https://www.instagram.com/wasilah.site" target="_blank" rel="noopener" aria-label="Wasilah on Instagram">
-          <svg aria-hidden="true"><use href="#icon-instagram"></use></svg>
-        </a>
-        <a class="footer-social-link" href="https://www.linkedin.com/company/wasilah-site" target="_blank" rel="noopener" aria-label="Wasilah on LinkedIn">
-          <svg aria-hidden="true"><use href="#icon-linkedin"></use></svg>
-        </a>
-        <a class="footer-social-link" href="https://www.tiktok.com/@wasilah.site" target="_blank" rel="noopener" aria-label="Wasilah on TikTok">
-          <svg aria-hidden="true"><use href="#icon-tiktok"></use></svg>
-        </a>
-      </nav>
-      <div class="footer-bottom">
-        <span data-i18n="footerLegal">© 2026 Wasilah. All rights reserved.</span>
-        <span data-i18n="footerMadeIn">Made with care for the Ummah.</span>
+    </div>
+
+    <!-- 99 Names Panel -->
+    <div class="tool-panel" id="panel-names">
+      <div class="names-grid" id="names-grid"></div>
+    </div>
+
+    <!-- Duas Panel -->
+    <div class="tool-panel" id="panel-duas">
+      <div class="dua-list">
+        <div class="dua-row">
+          <div>
+            <p class="dua-title">Morning Adhkar</p>
+            <p class="dua-meta">12 supplications<span class="ar">أذكار الصباح</span></p>
+          </div>
+          <span class="dua-arrow">→</span>
+        </div>
+        <div class="dua-row">
+          <div>
+            <p class="dua-title">Evening Adhkar</p>
+            <p class="dua-meta">14 supplications<span class="ar">أذكار المساء</span></p>
+          </div>
+          <span class="dua-arrow">→</span>
+        </div>
+        <div class="dua-row">
+          <div>
+            <p class="dua-title">After Prayer</p>
+            <p class="dua-meta">8 supplications<span class="ar">أذكار بعد الصلاة</span></p>
+          </div>
+          <span class="dua-arrow">→</span>
+        </div>
+        <div class="dua-row">
+          <div>
+            <p class="dua-title">Before Sleep</p>
+            <p class="dua-meta">6 supplications<span class="ar">أذكار النوم</span></p>
+          </div>
+          <span class="dua-arrow">→</span>
+        </div>
+        <div class="dua-row">
+          <div>
+            <p class="dua-title">Quranic Duas</p>
+            <p class="dua-meta">20 supplications<span class="ar">أدعية قرآنية</span></p>
+          </div>
+          <span class="dua-arrow">→</span>
+        </div>
+        <div class="dua-row">
+          <div>
+            <p class="dua-title">Travel &amp; Protection</p>
+            <p class="dua-meta">15 supplications<span class="ar">أدعية الحصن</span></p>
+          </div>
+          <span class="dua-arrow">→</span>
+        </div>
       </div>
-    </footer>
+    </div>
 
-    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top" data-i18n-aria-label="backToTop">
-      <svg aria-hidden="true"><use href="#icon-arrow-up"></use></svg>
-    </button>
+    <!-- Hajj & Umrah Panel -->
+    <div class="tool-panel" id="panel-pilgrim">
+      <div class="pilgrim-toggle">
+        <button class="on" data-pil="umrah">Umrah</button>
+        <button data-pil="hajj">Hajj</button>
+      </div>
+      <div class="pilgrim-steps">
+        <div class="pilgrim-step">
+          <p class="ps-num">01</p>
+          <p class="ps-title">Ihram</p>
+          <p class="ps-ar">الإحرام</p>
+          <p class="ps-desc">Enter the state of Ihram at the Miqat. Make the intention, recite the Talbiyah.</p>
+        </div>
+        <div class="pilgrim-step">
+          <p class="ps-num">02</p>
+          <p class="ps-title">Tawaf</p>
+          <p class="ps-ar">الطواف</p>
+          <p class="ps-desc">Circumambulate the Kaaba seven times, beginning at the Black Stone.</p>
+        </div>
+        <div class="pilgrim-step">
+          <p class="ps-num">03</p>
+          <p class="ps-title">Sa'i</p>
+          <p class="ps-ar">السعي</p>
+          <p class="ps-desc">Walk seven times between Safa and Marwa, in the footsteps of Hajar (AS).</p>
+        </div>
+        <div class="pilgrim-step">
+          <p class="ps-num">04</p>
+          <p class="ps-title">Halq / Taqsir</p>
+          <p class="ps-ar">الحلق والتقصير</p>
+          <p class="ps-desc">Shave or shorten the hair, completing the rites of Umrah.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js?v=trim-20260504" defer></script>
-  </body>
+<!-- ════════ Quiet Reminder ════════ -->
+<section class="reminder">
+  <div class="narrow">
+    <p class="arabic">وَأَقِمِ الصَّلَاةَ لِذِكْرِي</p>
+    <h2 class="display">Technology should make worship <strong>easier</strong>,<br>not noisier.</h2>
+    <p>Pray on time. Return to the Quran. Learn from the Hadith. Give with intention. Keep Allah in remembrance — a little, every day.</p>
+    <p class="attr">— Ta-Ha 20:14</p>
+  </div>
+</section>
+
+<!-- ════════ FAQ ════════ -->
+<section id="faq" class="faq">
+  <div class="narrow">
+    <span class="eyebrow">Questions</span>
+    <h2 class="display">A few quiet answers.</h2>
+    <p class="lede">Everything we get asked most, in one place.</p>
+
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q">
+          <span class="faq-q-text">Is Wasilah made for Muslims in Bangladesh?</span>
+          <span class="faq-q-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Yes. Wasilah is built around Bangla support, BDT Zakat, local prayer needs, Qibla, Quran, Hadith, duas, and daily remembrance — for Bangladesh and Bengali-speaking Muslims everywhere.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">Does Wasilah include Quran and Hadith in Bangla?</span>
+          <span class="faq-q-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Yes. Arabic, English, and Bangla are brought together, so Bengali-speaking Muslims can read, learn, and reflect in one place.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">Can Wasilah calculate Zakat in BDT?</span>
+          <span class="faq-q-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Yes. The Zakat calculator is built around the Bangladeshi Taka — cash, gold, savings, business assets, and liabilities.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">When is the app launching?</span>
+          <span class="faq-q-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Wasilah is preparing for an early Bangladesh launch on iOS and Android. Bookmark <strong>wasilah.site</strong> and you'll be the first to know.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">Will Wasilah be free?</span>
+          <span class="faq-q-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Yes. Free to download and use — with no ads in the prayer or Quran experience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ Privacy ════════ -->
+<section class="privacy">
+  <div class="narrow">
+    <span class="eyebrow">Privacy</span>
+    <h2 class="display">Quiet, by default.</h2>
+    <p class="lede">Wasilah does not require an account. We do not sell or share personal data.</p>
+    <ul>
+      <li>No account or sign-in required to use the site or app.</li>
+      <li>Location is requested only when you press "Use Location," and used only to compute prayer times in your browser.</li>
+      <li>Anonymous analytics help us improve the site. Your IP is anonymised.</li>
+      <li>Email us anytime to ask what data we hold, or to request deletion.</li>
+    </ul>
+    <div class="privacy-links">
+      <a href="mailto:hello@wasilah.site">hello@wasilah.site</a>
+      <a href="https://wasilah.site/privacy/">Privacy Policy</a>
+      <a href="https://wasilah.site/terms/">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ Footer ════════ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-brand">
+      <a href="#top" class="brand-lockup">
+        <span>Wasilah</span>
+        <span class="brand-dot"></span>
+        <span class="brand-ar">وسيلة</span>
+      </a>
+      <p>The Sophisticated Enabler — bridging Deen, Dunia &amp; Akhira for Bangladesh and Bengali-speaking Muslims everywhere.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#features">Features</a>
+        <a href="#worship">Worship tools</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="https://wasilah.site/privacy/">Privacy</a>
+        <a href="https://wasilah.site/terms/">Terms</a>
+        <a href="mailto:hello@wasilah.site">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Wasilah · Made with care for the Ummah</span>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/wasilah.site" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.2 8.4 9.9V15h-2.5v-3h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.8l-.4 3h-2.4v6.9C18.3 21.2 22 17 22 12z"/></svg></a>
+      <a href="https://www.instagram.com/wasilah.site" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c-2.7 0-3 0-4.1.1-1.1 0-1.8.2-2.5.5-.7.3-1.3.6-1.9 1.2-.6.6-1 1.2-1.2 1.9-.3.7-.5 1.4-.5 2.5C2 9.3 2 9.6 2 12s0 2.7.1 3.8c0 1.1.2 1.8.5 2.5.3.7.6 1.3 1.2 1.9.6.6 1.2 1 1.9 1.2.7.3 1.4.4 2.5.5C9.3 22 9.6 22 12 22s2.7 0 3.8-.1c1.1 0 1.8-.2 2.5-.5.7-.3 1.3-.6 1.9-1.2.6-.6 1-1.2 1.2-1.9.3-.7.4-1.4.5-2.5.1-1.1.1-1.4.1-3.8s0-2.7-.1-3.8c0-1.1-.2-1.8-.5-2.5-.3-.7-.6-1.3-1.2-1.9-.6-.6-1.2-1-1.9-1.2-.7-.3-1.4-.5-2.5-.5C14.7 2 14.4 2 12 2zm0 1.8c2.7 0 3 0 4 .1 1 0 1.5.2 1.9.4.5.2.8.4 1.2.8.4.4.6.7.8 1.2.2.4.3.9.4 1.9 0 1.1.1 1.4.1 4s0 3-.1 4c0 1-.2 1.5-.4 1.9-.2.5-.4.8-.8 1.2-.4.4-.7.6-1.2.8-.4.1-.9.3-1.9.4-1.1 0-1.4.1-4 .1s-3 0-4-.1c-1 0-1.5-.2-1.9-.4-.5-.2-.8-.4-1.2-.8-.4-.4-.6-.7-.8-1.2-.2-.4-.3-.9-.4-1.9 0-1.1-.1-1.4-.1-4s0-3 .1-4c0-1 .2-1.5.4-1.9.2-.5.4-.8.8-1.2.4-.4.7-.6 1.2-.8.4-.2.9-.3 1.9-.4 1-.1 1.3-.1 4-.1zm0 3.1a5.1 5.1 0 100 10.2 5.1 5.1 0 000-10.2zm0 8.4a3.3 3.3 0 110-6.6 3.3 3.3 0 010 6.6zm6.5-8.6a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></svg></a>
+      <a href="https://www.linkedin.com/company/wasilah-site" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.3 18v-7.3H6V18h2.3zM7.1 9.7a1.3 1.3 0 100-2.6 1.3 1.3 0 000 2.6zM18 18v-4c0-2-1-3.1-2.6-3.1-1.2 0-1.8.7-2.1 1.2v-1H11V18h2.3v-4c0-.2 0-.4.1-.6.2-.4.5-.8 1.2-.8.8 0 1.1.6 1.1 1.5v3.9H18z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Tabs (worship tools) ──
+  document.querySelectorAll('.tool-tab').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.tool-tab').forEach(x => x.classList.remove('on'));
+      document.querySelectorAll('.tool-panel').forEach(x => x.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById('panel-' + t.dataset.tool).classList.add('on');
+    });
+  });
+
+  // ── FAQ accordion ──
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // ── Pilgrim toggle ──
+  document.querySelectorAll('.pilgrim-toggle button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.pilgrim-toggle button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+    });
+  });
+
+  // ── Lang toggle ──
+  document.querySelectorAll('.nav-lang button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.nav-lang button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+    });
+  });
+
+  // ── Quran tabs ──
+  document.querySelectorAll('.quran-tabs button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.quran-tabs button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+    });
+  });
+
+  // ── 99 Names grid ──
+  const names = [
+    { n:1, ar:'الرَّحْمَٰن', tr:'Ar-Rahman', en:'The Most Compassionate' },
+    { n:2, ar:'الرَّحِيم', tr:'Ar-Rahim', en:'The Most Merciful' },
+    { n:3, ar:'الْمَلِك', tr:'Al-Malik', en:'The King' },
+    { n:4, ar:'الْقُدُّوس', tr:'Al-Quddus', en:'The Most Pure' },
+    { n:5, ar:'السَّلَام', tr:'As-Salam', en:'The Source of Peace' },
+    { n:6, ar:'الْمُؤْمِن', tr:"Al-Mu'min", en:'The Granter of Security' },
+    { n:7, ar:'الْمُهَيْمِن', tr:'Al-Muhaymin', en:'The Guardian' },
+    { n:8, ar:'الْعَزِيز', tr:'Al-Aziz', en:'The Almighty' },
+    { n:9, ar:'الْجَبَّار', tr:'Al-Jabbar', en:'The Compeller' },
+    { n:10, ar:'الْخَالِق', tr:'Al-Khaliq', en:'The Creator' },
+    { n:11, ar:'الْغَفَّار', tr:'Al-Ghaffar', en:'The Ever-Forgiving' },
+    { n:12, ar:'الْوَهَّاب', tr:'Al-Wahhab', en:'The Bestower' },
+  ];
+  const grid = document.getElementById('names-grid');
+  if (grid) {
+    grid.innerHTML = names.map(n => `
+      <div class="name-item">
+        <div class="n-no">${n.n.toString().padStart(2,'0')}</div>
+        <div class="n-ar">${n.ar}</div>
+        <div class="n-tr">${n.tr}</div>
+        <div class="n-en">${n.en}</div>
+      </div>
+    `).join('');
+  }
+</script>
+</body>
 </html>
