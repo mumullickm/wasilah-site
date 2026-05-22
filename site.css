@@ -527,7 +527,12 @@ select { cursor: pointer; }
 .next-prayer strong { font-size: 1.3rem; font-weight: 700; color: #fff; }
 .next-prayer time { font-size: 1.3rem; font-weight: 700; color: var(--gold); margin-left: auto; font-variant-numeric: tabular-nums; }
 
-.salah-times { display: flex; flex-direction: column; }
+.salah-times {
+  display: flex;
+  flex-direction: column;
+  max-height: 320px;
+  overflow-y: auto;
+}
 .time-row {
   display: flex;
   justify-content: space-between;
@@ -550,7 +555,44 @@ select { cursor: pointer; }
   border-radius: var(--r-pill);
   padding: 3px 11px;
 }
-.quran-reader, .dua-reader { display: flex; flex-direction: column; gap: 14px; }
+.quran-reader, .dua-reader {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 392px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Silent scrollers - thin, quiet gold scrollbar for the worship panels */
+.salah-times,
+.quran-reader,
+.dua-reader,
+.names-list {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(241, 213, 146, 0.3) transparent;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+.salah-times::-webkit-scrollbar,
+.quran-reader::-webkit-scrollbar,
+.dua-reader::-webkit-scrollbar,
+.names-list::-webkit-scrollbar { width: 6px; }
+.salah-times::-webkit-scrollbar-thumb,
+.quran-reader::-webkit-scrollbar-thumb,
+.dua-reader::-webkit-scrollbar-thumb,
+.names-list::-webkit-scrollbar-thumb {
+  background: rgba(241, 213, 146, 0.24);
+  border-radius: 999px;
+}
+.salah-times:hover::-webkit-scrollbar-thumb,
+.quran-reader:hover::-webkit-scrollbar-thumb,
+.dua-reader:hover::-webkit-scrollbar-thumb,
+.names-list:hover::-webkit-scrollbar-thumb { background: rgba(241, 213, 146, 0.42); }
+.salah-times::-webkit-scrollbar-track,
+.quran-reader::-webkit-scrollbar-track,
+.dua-reader::-webkit-scrollbar-track,
+.names-list::-webkit-scrollbar-track { background: transparent; }
 .verse, .dua-block {
   padding: 16px 18px;
   background: rgba(0, 0, 0, 0.2);
