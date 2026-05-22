@@ -342,9 +342,9 @@ const copy = {
     faqZakatQuestion: "Can Wasilah calculate Zakat in BDT?",
     faqZakatAnswer:
       "Yes. The Zakat calculator is built around Bangladeshi Taka for cash, gold, savings, business assets, and liabilities.",
-    faqLaunchQuestion: "When is the app launching?",
+    faqLaunchQuestion: "Is Wasilah available to download now?",
     faqLaunchAnswer:
-      "Wasilah is preparing for an early Bangladesh launch on iOS and Android. Bookmark wasilah.site and you'll be the first to know.",
+      "Yes. Wasilah is live and free on Google Play right now. The iPhone version is on the way. Tap Get it on Google Play above, or search Wasilah on the Play Store.",
     faqCostQuestion: "Will Wasilah be free?",
     faqCostAnswer:
       "Yes. Wasilah will be free to download and use for everyday worship support, with no ads in the prayer or Quran experience.",
@@ -440,9 +440,9 @@ const copy = {
     faqZakatQuestion: "ওয়াসিলাহ কি BDT-তে যাকাত হিসাব করতে পারে?",
     faqZakatAnswer:
       "হ্যাঁ। নগদ, সোনা, সঞ্চয়, ব্যবসায়িক সম্পদ ও দায়ের জন্য যাকাত ক্যালকুলেটর বাংলাদেশি টাকা কেন্দ্রিক।",
-    faqLaunchQuestion: "অ্যাপ কখন আসবে?",
+    faqLaunchQuestion: "ওয়াসিলাহ কি এখন ডাউনলোড করা যাবে?",
     faqLaunchAnswer:
-      "ওয়াসিলাহ iOS এবং Android-এ বাংলাদেশে শীঘ্রই চালু হচ্ছে। wasilah.site বুকমার্ক করুন — আপনি প্রথমেই জানবেন।",
+      "হ্যাঁ। ওয়াসিলাহ এখন Google Play-তে বিনামূল্যে পাওয়া যাচ্ছে। iPhone সংস্করণ শীঘ্রই আসছে। উপরে Get it on Google Play-তে ট্যাপ করুন, অথবা Play Store-এ Wasilah সার্চ করুন।",
     faqCostQuestion: "ওয়াসিলাহ কি বিনামূল্যে?",
     faqCostAnswer:
       "হ্যাঁ। ওয়াসিলাহ ডাউনলোড ও ব্যবহার বিনামূল্যে; নামাজ ও কুরআন অংশে কোনো বিজ্ঞাপন থাকবে না।",
@@ -1092,7 +1092,7 @@ function renderGuide() {
 
 function initScrollReveals() {
   const targets = document.querySelectorAll(
-    ".section-copy, .feature-card, .worship-panel, .seo-grid article, .spiritual-inner, .faq-list details, .footer-card, .site-footer > *"
+    ".section-copy, .section-head, .feature-card, .tour-row, .worship-panel, .reason-card, .seo-grid article, .spiritual-inner, .faq-list details, .footer-card, .site-footer > *"
   );
 
   if (!targets.length) return;
