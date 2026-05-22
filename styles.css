@@ -440,11 +440,8 @@ h1 {
 .seo-icon svg {
   width: 27px;
   height: 27px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  fill: currentColor;
+  stroke: none;
   transition: transform 320ms var(--motion-ease);
 }
 
