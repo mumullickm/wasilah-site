@@ -332,7 +332,7 @@ const copy = {
     spiritualText:
       "Wasilah is designed to support simple daily consistency: pray on time, return to the Quran, learn from Hadith, give with intention, and keep Allah in remembrance.",
     faqLabel: "Questions",
-    faqTitle: "Wasilah Bangladesh FAQ",
+    faqTitle: "Common questions",
     faqBangladeshQuestion: "Is Wasilah made for Muslims in Bangladesh?",
     faqBangladeshAnswer:
       "Yes. Wasilah is designed around Bangla support, BDT Zakat, local prayer needs, Qibla, Quran, Hadith, duas, and daily remembrance.",
@@ -430,7 +430,7 @@ const copy = {
     spiritualText:
       "ওয়াসিলাহ দৈনন্দিন ধারাবাহিকতায় সহায়তা করার জন্য তৈরি: সময়মতো নামাজ, কুরআনে ফেরা, হাদিস থেকে শেখা, নিয়তসহ দান এবং আল্লাহর স্মরণ।",
     faqLabel: "প্রশ্ন",
-    faqTitle: "ওয়াসিলাহ বাংলাদেশ FAQ",
+    faqTitle: "সাধারণ প্রশ্ন",
     faqBangladeshQuestion: "ওয়াসিলাহ কি বাংলাদেশের মুসলিমদের জন্য তৈরি?",
     faqBangladeshAnswer:
       "হ্যাঁ। বাংলা সাপোর্ট, BDT যাকাত, স্থানীয় নামাজের প্রয়োজন, কিবলা, কুরআন, হাদিস, দুয়া ও দৈনন্দিন যিকিরকে কেন্দ্র করে ওয়াসিলাহ তৈরি।",
