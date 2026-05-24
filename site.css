@@ -308,20 +308,66 @@ img { display: block; max-width: 100%; }
 
 /* ---- Device frame ----------------------------------------- */
 .hero-device { display: flex; justify-content: center; }
+/* iPhone 17 Pro Max front-view mockup, Apple-product-photo style.
+   The Pro line moved from titanium to aluminum: a more uniform,
+   neutral graphite-grey bezel without the strong polish highlight.
+   The app screenshots already include the iOS status bar and the
+   Dynamic Island, so the frame just provides the bezel and the thin
+   black ring around the display. */
 .device {
   position: relative;
-  width: 100%;
-  max-width: 286px;
+  width: 286px;
+  max-width: 100%;
+  aspect-ratio: 0.477;
   padding: 9px;
-  background: linear-gradient(155deg, #2a2826, #100f0e 60%);
-  border-radius: 44px;
-  box-shadow: var(--shadow-device), 0 0 0 1px rgba(241, 213, 146, 0.12);
+  background:
+    linear-gradient(145deg,
+      #9d9d98 0%,
+      #898984 28%,
+      #74746f 52%,
+      #5e5e59 76%,
+      #4a4a45 100%);
+  border-radius: 52px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.1),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.28),
+    0 60px 110px -32px rgba(0, 0, 0, 0.7),
+    0 18px 36px -12px rgba(0, 0, 0, 0.5);
+}
+.device::before {
+  /* Action button + volume up/down cluster on the left edge */
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 16%;
+  width: 2.5px;
+  height: 26%;
+  border-radius: 1.5px 0 0 1.5px;
+  background: linear-gradient(90deg, #2e2e2f 0%, #4f4f50 55%, #232325 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.device::after {
+  /* Power button on the right edge */
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 24%;
+  width: 2.5px;
+  height: 13%;
+  border-radius: 0 1.5px 1.5px 0;
+  background: linear-gradient(270deg, #2e2e2f 0%, #4f4f50 55%, #232325 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 .device img {
   width: 100%;
-  height: auto;
-  border-radius: 35px;
+  height: 100%;
+  border-radius: 43px;
+  object-fit: cover;
   display: block;
+  background: #000;
+  /* Thin black bezel ring between the aluminum frame and the display, like real iPhones. */
+  box-shadow: 0 0 0 1.5px #000;
 }
 /* The iOS screenshots already include their own Dynamic Island in the status bar,
    so we do not draw a CSS one on top (it would double up and look wrong). */
@@ -990,7 +1036,8 @@ select { cursor: pointer; }
   position: relative;
 }
 .hero-device-cinematic .device--hero {
-  max-width: 340px;
+  width: 340px;
+  max-width: 100%;
   animation: none;
 }
 .hero-device-cinematic::after {
@@ -1103,7 +1150,7 @@ select { cursor: pointer; }
 }
 .cinema-bn { margin-top: 14px; color: var(--gold-deep); font-size: 1.02rem; max-width: 44ch; }
 .cinema-device { display: flex; justify-content: center; position: relative; }
-.cinema-device .device { max-width: 320px; }
+.cinema-device .device { width: 320px; max-width: 100%; }
 .cinema-device::after {
   content: "";
   position: absolute;
@@ -1155,3 +1202,11 @@ select { cursor: pointer; }
   .subnav-cta { padding: 6px 12px; font-size: 0.78rem; }
   .hero-device-cinematic .device--hero { max-width: 260px; }
 }
+
+/* When the BN toggle is active, the inline Bangla accent lines under
+   English copy become redundant (data-i18n already translates the
+   main copy into Bangla). Hide them to avoid duplication. */
+html[lang="bn"] .hero-bn,
+html[lang="bn"] .cinema-bn,
+html[lang="bn"] .tour-bn,
+html[lang="bn"] .reason-bn { display: none; }
