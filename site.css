@@ -1209,4 +1209,65 @@ select { cursor: pointer; }
 html[lang="bn"] .hero-bn,
 html[lang="bn"] .cinema-bn,
 html[lang="bn"] .tour-bn,
-html[lang="bn"] .reason-bn { display: none; }
+html[lang="bn"] .reason-bn,
+html[lang="bn"] .share-bn { display: none; }
+
+/* ---- Share Wasilah section (sadaqah jariyah viral loop) -------- */
+.share-section {
+  border-top: 1px solid var(--line-soft);
+  background: radial-gradient(70% 60% at 50% 0%, rgba(241, 213, 146, 0.1), transparent 70%);
+}
+.share-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.share-inner h2 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #fff;
+  margin: 14px 0 22px;
+}
+.share-lede {
+  color: var(--ink-dim);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  max-width: 50ch;
+  margin: 0 auto;
+}
+.share-bn {
+  margin: 14px auto 0;
+  color: var(--gold-deep);
+  font-size: 1.02rem;
+  max-width: 50ch;
+}
+.share-actions {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border-radius: var(--r-pill);
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 1px solid var(--card-border);
+  background: rgba(241, 213, 146, 0.07);
+  color: var(--ink);
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease), border-color 0.2s;
+}
+.share-btn:hover { background: rgba(241, 213, 146, 0.15); transform: translateY(-1px); border-color: var(--gold-deep); }
+.share-btn--whatsapp { color: #fff; }
+.share-btn--whatsapp:hover { background: #1ea64a; border-color: #1ea64a; color: #fff; }
+.share-btn--facebook { color: #fff; }
+.share-btn--facebook:hover { background: #1877f2; border-color: #1877f2; color: #fff; }
+.share-btn.is-copied { background: var(--gold); color: var(--emerald-900); border-color: var(--gold); }

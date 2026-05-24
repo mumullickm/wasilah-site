@@ -1325,3 +1325,23 @@ initStickyHeader();
 initBackToTop();
 initYearStamp();
 schedulePrayerRefresh();
+
+// Copy-link share button. Falls back gracefully if clipboard API is unavailable.
+document.querySelectorAll('[data-share="copy"]').forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const text = btn.dataset.copyText || window.location.href;
+    const label = btn.querySelector(".copy-label");
+    const original = label ? label.textContent : "";
+    try {
+      await navigator.clipboard.writeText(text);
+      btn.classList.add("is-copied");
+      if (label) label.textContent = currentLanguage === "bn" ? "কপি হয়েছে" : "Copied!";
+    } catch {
+      if (label) label.textContent = currentLanguage === "bn" ? "কপি করুন: " + text : "Copy: " + text;
+    }
+    setTimeout(() => {
+      btn.classList.remove("is-copied");
+      if (label) label.textContent = original;
+    }, 2200);
+  });
+});
