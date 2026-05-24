@@ -1092,7 +1092,7 @@ function renderGuide() {
 
 function initScrollReveals() {
   const targets = document.querySelectorAll(
-    ".section-copy, .section-head, .feature-card, .tour-row, .worship-panel, .reason-card, .seo-grid article, .spiritual-inner, .faq-list details, .footer-card, .site-footer > *"
+    ".section-copy, .section-head, .feature-card, .cinema-text, .cinema-device, .worship-panel, .reason-card, .seo-grid article, .spiritual-inner, .faq-list details, .footer-card, .site-footer > *"
   );
 
   if (!targets.length) return;
