@@ -27,7 +27,7 @@
     <link rel="apple-touch-icon" href="wasilah_icon.png">
     <link rel="manifest" href="site.webmanifest">
 
-    <link rel="preload" as="image" href="app/home.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="wasilah_icon_wobg.svg" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://api.aladhan.com" crossorigin>
@@ -53,7 +53,7 @@
     >
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://wasilah.site/Slider.png">
-    <link rel="stylesheet" href="site.css?v=share-20260525e">
+    <link rel="stylesheet" href="site.css?v=litniche-20260603">
 
     <script type="application/ld+json">
       [
@@ -91,7 +91,7 @@
           "alternateName": "Wasilah Bangladesh",
           "url": "https://wasilah.site/",
           "applicationCategory": "LifestyleApplication",
-          "operatingSystem": "iOS, Android",
+          "operatingSystem": "Android",
           "description": "A Bangladesh-ready Islamic companion app for local prayer times, Adhan, Qibla, Quran, Hadith, BDT Zakat, duas, and daily reminders.",
           "inLanguage": ["en", "bn", "ar"],
           "areaServed": {"@type": "Country", "name": "Bangladesh"},
@@ -143,7 +143,7 @@
             {
               "@type": "Question",
               "name": "Is Wasilah available to download now?",
-              "acceptedAnswer": {"@type": "Answer", "text": "Yes. Wasilah is live and free on Google Play. The iOS version is on the way. Download it from wasilah.site or search Wasilah on Google Play."}
+              "acceptedAnswer": {"@type": "Answer", "text": "Yes. Wasilah is live and free on Google Play. Install it on any Android phone from wasilah.site or by searching Wasilah on Google Play."}
             },
             {
               "@type": "Question",
@@ -174,6 +174,7 @@
     <a class="skip-link" href="#top">Skip to main content</a>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQ85L336"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 
     <svg class="icon-sprite" aria-hidden="true" focusable="false">
       <symbol id="icon-prayer" viewBox="0 0 512 512">
@@ -264,11 +265,10 @@
 
       <div class="header-actions">
         <nav class="header-nav" aria-label="Wasilah sections">
-          <a href="#salah" data-i18n="navSalah">Salah</a>
-          <a href="#quran" data-i18n="navQuran">Quran</a>
-          <a href="#qibla" data-i18n="navQibla">Qibla</a>
-          <a href="#hadith" data-i18n="navHadith">Hadith</a>
+          <a href="#features" data-i18n="footerNavFeatures">Features</a>
+          <a href="#screens" data-i18n="navScreens">Screens</a>
           <a href="#worship" data-i18n="navTryIt">Try it</a>
+          <a href="#why" data-i18n="navWhy">Why Wasilah</a>
           <a href="#faq" data-i18n="footerNavFaq">FAQ</a>
         </nav>
         <div class="language-switch" role="group" aria-label="Language">
@@ -280,20 +280,20 @@
     </header>
 
     <main id="top">
-      <section class="hero hero--cinematic" aria-labelledby="hero-title">
+      <section class="hero hero--niche" aria-labelledby="hero-title">
+        <div class="hero-niche" aria-hidden="true">
+          <span class="niche-lamp"></span>
+          <img class="niche-mark" src="wasilah_icon_wobg.svg" alt="" width="200" height="200" fetchpriority="high">
+        </div>
         <div class="hero-stage">
-          <p class="hero-status"><span class="status-dot" aria-hidden="true"></span> <span data-i18n="heroV3Status">Live now on Google Play · Free forever</span></p>
+          <p class="hero-bismillah" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
           <h1 id="hero-title" class="hero-display" data-i18n="heroV3Title">Stay close to Allah.</h1>
-          <p class="hero-tagline" data-i18n="heroV3Tagline">Every single day. In Bangla, English and Arabic.</p>
-          <p class="hero-bn" lang="bn">প্রতিদিন আল্লাহর সাথে, বাংলা, ইংরেজি ও আরবিতে।</p>
+          <p class="hero-tagline" data-i18n="heroV3Tagline">Prayer times, Quran, Hadith and Qibla. Free, in Bangla, English and Arabic. Works offline.</p>
+          <p class="hero-bn" lang="bn">নামাজের সময়, কুরআন, হাদিস ও কিবলা। বিনামূল্যে, অফলাইনেও।</p>
           <div class="hero-cta-row">
-            <a class="store-button" id="play-store-link" href="#top" aria-label="Get Wasilah on Google Play">
+            <a class="store-button" id="play-store-link" href="https://play.google.com/store/apps/details?id=site.wasilah.wasilah" target="_blank" rel="noopener" aria-label="Get Wasilah on Google Play">
               <img class="store-badge" src="Google_Play.svg?v=20260523" alt="Get it on Google Play" width="200" height="60">
             </a>
-            <span class="store-button store-button--soon" role="img" aria-label="Wasilah for iPhone is coming soon">
-              <img class="store-badge" src="App_Store.svg" alt="" width="200" height="60">
-              <span class="soon-tag">Soon</span>
-            </span>
           </div>
           <ul class="trust-strip" aria-label="What makes Wasilah different">
             <li data-i18n="trustFree">Free forever</li>
@@ -302,58 +302,39 @@
             <li data-i18n="trustOffline">Works offline</li>
           </ul>
         </div>
-        <div class="hero-device-cinematic">
-          <div class="device device--hero">
-            <img src="app/home.jpg" alt="The Wasilah app home screen" width="700" height="1521" fetchpriority="high">
-          </div>
+        <a class="hero-scroll-cue" href="#features" aria-label="Scroll to explore Wasilah">
+          <span data-i18n="scrollCue">Scroll</span><span class="cue-line" aria-hidden="true"></span>
+        </a>
+      </section>
+
+      <section class="trust-bar" aria-label="Why you can trust Wasilah">
+        <div class="trust-bar-inner">
+          <a class="trust-bar-item" href="https://play.google.com/store/apps/details?id=site.wasilah.wasilah" target="_blank" rel="noopener">
+            <span class="tb-star" aria-hidden="true">★</span>
+            <span data-i18n="tbLivePlay">Live on Google Play</span>
+          </a>
+          <p class="trust-bar-item trust-bar-promise">
+            <strong data-i18n="tbSadaqahLead">Sadaqah jāriyah.</strong>
+            <span data-i18n="tbSadaqahText">Never monetized. No ads, no sign-up, no data sold. A promise, not a pricing tier.</span>
+          </p>
         </div>
       </section>
 
-      <section id="salah" class="cinema" aria-labelledby="cinema-salah-h">
-        <div class="cinema-text">
-          <p class="cinema-eyebrow" data-i18n="cinemaSalahEyebrow">Prayer Times</p>
-          <h2 id="cinema-salah-h" class="cinema-h" data-i18n="cinemaSalahH">Never miss a Fajr.</h2>
-          <p class="cinema-body" data-i18n="cinemaSalahBody">Accurate Fajr to Isha for your city, with the next prayer always in view and a gentle countdown so you are never caught off guard.</p>
-          <p class="cinema-bn" lang="bn">আপনার শহরের জন্য নির্ভুল নামাজের সময়।</p>
+      <section class="section learn-section" id="learn" aria-labelledby="learn-title">
+        <div class="section-copy narrow">
+          <p class="section-label" data-i18n="learnLabel">Learn to worship</p>
+          <h2 id="learn-title" data-i18n="learnTitle">New to Salah? Wasilah teaches you, step by step.</h2>
+          <p data-i18n="learnText">The full method of every prayer, and of wudu, taught clearly in Bangla, Arabic and English. The two guides at the heart of Wasilah.</p>
         </div>
-        <div class="cinema-device">
-          <div class="device"><img src="app/prayer.jpg" alt="Wasilah prayer times screen" width="700" height="1521" loading="lazy"></div>
-        </div>
-      </section>
-
-      <section id="quran" class="cinema cinema--flip" aria-labelledby="cinema-quran-h">
-        <div class="cinema-text">
-          <p class="cinema-eyebrow" data-i18n="cinemaQuranEyebrow">The Quran</p>
-          <h2 id="cinema-quran-h" class="cinema-h" data-i18n="cinemaQuranH">Three languages, side by side.</h2>
-          <p class="cinema-body" data-i18n="cinemaQuranBody">Read every ayah in Arabic, English and Bangla together. Beautiful typography, clear translation, nothing in the way of reflection.</p>
-          <p class="cinema-bn" lang="bn">আরবি, ইংরেজি ও বাংলায় একসাথে কুরআন পড়ুন।</p>
-        </div>
-        <div class="cinema-device">
-          <div class="device"><img src="app/quran.jpg" alt="Wasilah Quran reader" width="700" height="1521" loading="lazy"></div>
-        </div>
-      </section>
-
-      <section id="qibla" class="cinema" aria-labelledby="cinema-qibla-h">
-        <div class="cinema-text">
-          <p class="cinema-eyebrow" data-i18n="cinemaQiblaEyebrow">Qibla</p>
-          <h2 id="cinema-qibla-h" class="cinema-h" data-i18n="cinemaQiblaH">The right direction, always.</h2>
-          <p class="cinema-body" data-i18n="cinemaQiblaBody">A calm, accurate compass that points to the Kaaba from any city, so you can face the right way with confidence.</p>
-          <p class="cinema-bn" lang="bn">যেকোনো জায়গা থেকে কিবলা খুঁজে নিন।</p>
-        </div>
-        <div class="cinema-device">
-          <div class="device"><img src="app/qibla.jpg" alt="Wasilah Qibla compass" width="700" height="1521" loading="lazy"></div>
-        </div>
-      </section>
-
-      <section id="hadith" class="cinema cinema--flip" aria-labelledby="cinema-hadith-h">
-        <div class="cinema-text">
-          <p class="cinema-eyebrow" data-i18n="cinemaHadithEyebrow">Hadith</p>
-          <h2 id="cinema-hadith-h" class="cinema-h" data-i18n="cinemaHadithH">A hadith to carry through your day.</h2>
-          <p class="cinema-body" data-i18n="cinemaHadithBody">Authentic narrations, curated and easy to read, so a little knowledge and a little reminder are always within reach.</p>
-          <p class="cinema-bn" lang="bn">প্রতিদিনের জন্য একটি করে হাদিস।</p>
-        </div>
-        <div class="cinema-device">
-          <div class="device"><img src="app/hadith.jpg" alt="Wasilah hadith screen" width="700" height="1521" loading="lazy"></div>
+        <div class="learn-grid">
+          <figure class="learn-shot">
+            <img class="app-shot" src="app/salah.jpg?v=android-20260604b" alt="Wasilah step-by-step Salah guide" width="783" height="1600" loading="lazy">
+            <figcaption><span class="gallery-eyebrow" data-i18n="learnSalahEyebrow">Salah Guide</span><em data-i18n="learnSalahCap">Every prayer, step by step.</em></figcaption>
+          </figure>
+          <figure class="learn-shot">
+            <img class="app-shot" src="app/wudu.jpg?v=android-20260604b" alt="Wasilah step-by-step Wudu guide" width="783" height="1600" loading="lazy">
+            <figcaption><span class="gallery-eyebrow" data-i18n="learnWuduEyebrow">Wudu Guide</span><em data-i18n="learnWuduCap">Ablution, the right way.</em></figcaption>
+          </figure>
         </div>
       </section>
 
@@ -384,6 +365,31 @@
             <h3 data-i18n="featureDuaTitle">Duas, Hajj & Umrah</h3>
             <p data-i18n="featureDuaText">Daily duas with clear Hajj and Umrah guidance for quick reading.</p>
           </article>
+        </div>
+      </section>
+
+      <section class="section gallery-section" id="screens" aria-labelledby="gallery-title">
+        <div class="section-copy narrow">
+          <p class="section-label" data-i18n="galleryLabel">A look inside</p>
+          <h2 id="gallery-title" data-i18n="galleryTitle">Calm, clear, and made to be read.</h2>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-shot">
+            <img class="app-shot" src="app/prayer.jpg?v=android-20260604b" alt="Wasilah prayer times screen" width="783" height="1600" loading="lazy">
+            <figcaption><span class="gallery-eyebrow" data-i18n="cinemaSalahEyebrow">Prayer Times</span><em data-i18n="cinemaSalahH">Never miss a Fajr.</em></figcaption>
+          </figure>
+          <figure class="gallery-shot">
+            <img class="app-shot" src="app/quran.jpg?v=android-20260604" alt="Wasilah Quran reader" width="783" height="1600" loading="lazy">
+            <figcaption><span class="gallery-eyebrow" data-i18n="cinemaQuranEyebrow">The Quran</span><em data-i18n="cinemaQuranH">Three languages, side by side.</em></figcaption>
+          </figure>
+          <figure class="gallery-shot">
+            <img class="app-shot" src="app/qibla.jpg?v=android-20260604" alt="Wasilah Qibla compass" width="783" height="1600" loading="lazy">
+            <figcaption><span class="gallery-eyebrow" data-i18n="cinemaQiblaEyebrow">Qibla</span><em data-i18n="cinemaQiblaH">The right direction, always.</em></figcaption>
+          </figure>
+          <figure class="gallery-shot">
+            <img class="app-shot" src="app/hadith.jpg?v=android-20260604" alt="Wasilah hadith screen" width="783" height="1600" loading="lazy">
+            <figcaption><span class="gallery-eyebrow" data-i18n="cinemaHadithEyebrow">Hadith</span><em data-i18n="cinemaHadithH">A hadith to carry through your day.</em></figcaption>
+          </figure>
         </div>
       </section>
 
@@ -490,11 +496,18 @@
         </div>
       </section>
 
+      <section class="demo-cta" aria-label="Get the app">
+        <p class="demo-cta-text" data-i18n="demoCtaText">Liked using it here? The full app does all of this offline, on your phone.</p>
+        <a class="store-button" href="https://play.google.com/store/apps/details?id=site.wasilah.wasilah" target="_blank" rel="noopener" aria-label="Get Wasilah on Google Play">
+          <img class="store-badge" src="Google_Play.svg?v=20260523" alt="Get it on Google Play" width="200" height="60">
+        </a>
+      </section>
+
       <section class="section reasons" id="why" aria-labelledby="reasons-title">
         <div class="section-head">
-          <p class="section-label">Why Wasilah</p>
-          <h2 id="reasons-title">Made for Bangladesh, not adapted for it.</h2>
-          <p class="section-sub">Most Islamic apps treat Bangla as an afterthought. Wasilah is built around it.</p>
+          <p class="section-label" data-i18n="reasonsLabel">Why Wasilah</p>
+          <h2 id="reasons-title" data-i18n="reasonsTitle">Made for Bangladesh, not adapted for it.</h2>
+          <p class="section-sub" data-i18n="reasonsSub">Most Islamic apps treat Bangla as an afterthought. Wasilah is built around it.</p>
         </div>
         <div class="reason-grid">
           <article class="reason-card">
@@ -517,25 +530,12 @@
         </div>
       </section>
 
-      <section class="spiritual-band" aria-labelledby="spiritual-title">
-        <div class="spiritual-inner">
-          <p class="section-label" data-i18n="spiritualLabel">A quiet reminder</p>
-          <h2 id="spiritual-title" data-i18n="spiritualTitle">Technology should make worship easier, not noisier.</h2>
-          <p data-i18n="spiritualText">
-            Wasilah is designed to support simple daily consistency: pray on time, return to the Quran,
-            learn from Hadith, give with intention, and keep Allah in remembrance.
-          </p>
-        </div>
-      </section>
-
-      <section class="section share-section" id="share" aria-labelledby="share-title">
-        <div class="share-inner">
-          <p class="section-label">Share</p>
-          <h2 id="share-title">Share Wasilah.</h2>
-          <p class="share-lede">
-            If Wasilah is useful for you, share it with someone it might help.
-          </p>
-          <p class="share-bn" lang="bn">যাঁর কাজে লাগবে, তাঁর সাথে শেয়ার করুন।</p>
+      <section class="section ethos-section" id="share" aria-labelledby="ethos-title">
+        <div class="ethos-inner">
+          <p class="section-label" data-i18n="ethosLabel">Sadaqah jāriyah</p>
+          <h2 id="ethos-title" data-i18n="ethosTitle">Share it, and the reward continues.</h2>
+          <p class="ethos-text" data-i18n="ethosText">Wasilah is built as a continuing charity. Whoever prays on time, returns to the Quran, or finds the qibla through it carries a reward that keeps giving, for them and for whoever passed it on. If it helps you, share it.</p>
+          <p class="ethos-bn" lang="bn">যাঁর কাজে লাগবে, তাঁর সাথে শেয়ার করুন।</p>
           <div class="share-actions">
             <a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Assalamu%20Alaikum.%20%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B7%E0%A7%80%20%E0%A6%AE%E0%A7%81%E0%A6%B8%E0%A6%B2%E0%A6%BF%E0%A6%AE%E0%A6%A6%E0%A7%87%E0%A6%B0%20%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF%20%E0%A6%8F%E0%A6%95%E0%A6%9F%E0%A6%BF%20%E0%A6%87%E0%A6%B8%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A6%BF%E0%A6%95%20%E0%A6%85%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%3A%20Wasilah.%20%E0%A6%A8%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%9C%E0%A7%87%E0%A6%B0%20%E0%A6%B8%E0%A6%AE%E0%A6%AF%E0%A6%BC%2C%20%E0%A6%95%E0%A7%81%E0%A6%B0%E0%A6%86%E0%A6%A8%2C%20%E0%A6%B9%E0%A6%BE%E0%A6%A6%E0%A6%BF%E0%A6%B8%2C%20%E0%A6%95%E0%A6%BF%E0%A6%AC%E0%A6%B2%E0%A6%BE%20%E0%A6%93%20%E0%A6%AF%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A4%2C%20%E0%A6%B8%E0%A6%AC%E0%A6%87%20%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A5%A4%20%E0%A6%AC%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%AE%E0%A7%82%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A7%87%E0%A5%A4%20%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A7%8D%E0%A6%9E%E0%A6%BE%E0%A6%AA%E0%A6%A8%20%E0%A6%A8%E0%A7%87%E0%A6%87%E0%A5%A4%20%0Ahttps%3A%2F%2Fwasilah.site%2Fget" target="_blank" rel="noopener" data-share="whatsapp">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1s-1.2-.4-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.6-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5 4.5.7.3 1.2.5 1.7.6.7.2 1.3.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.7.4 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
@@ -573,12 +573,12 @@
             <p data-i18n="faqZakatAnswer">Yes. The Zakat calculator is built around Bangladeshi Taka for cash, gold, savings, business assets, and liabilities.</p>
           </details>
           <details>
-            <summary data-i18n="faqLaunchQuestion">When is the app launching?</summary>
-            <p data-i18n="faqLaunchAnswer">Wasilah is preparing for an early Bangladesh launch on iOS and Android. Bookmark wasilah.site and you'll be the first to know.</p>
+            <summary data-i18n="faqLaunchQuestion">Is Wasilah available now?</summary>
+            <p data-i18n="faqLaunchAnswer">Yes. Wasilah is live now on Google Play, free to install on any Android phone.</p>
           </details>
           <details>
-            <summary data-i18n="faqCostQuestion">Will Wasilah be free?</summary>
-            <p data-i18n="faqCostAnswer">Yes. Wasilah will be free to download and use, with no ads in the prayer or Quran experience.</p>
+            <summary data-i18n="faqCostQuestion">Will Wasilah always be free?</summary>
+            <p data-i18n="faqCostAnswer">Yes. Wasilah is free to download and use, with no ads and no sign-up. It is sadaqah jariyah and will never be monetized.</p>
           </details>
         </div>
       </section>
@@ -643,7 +643,7 @@
       <svg aria-hidden="true"><use href="#icon-arrow-up"></use></svg>
     </button>
 
-    <script src="script.js?v=share-20260525e" defer></script>
+    <script src="script.js?v=litniche-20260603" defer></script>
 
     <!-- Eid al-Adha 1447 greeting. Self-disables after 2026-05-29 00:00 Dhaka (2026-05-28 18:00 UTC). Remove this whole block after the window closes. -->
     <style>
