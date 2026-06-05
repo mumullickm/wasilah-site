@@ -1197,7 +1197,20 @@ html[lang="bn"] .share-bn { display: none; }
    Lit Niche hero + restructured sections (2026-06-03)
    ============================================================ */
 
-/* ---- Hero: a still gold mark resting in a breathing lamp of light ---- */
+/* ---- Hero: a procedural girih light field behind the calling words ---- */
+.hero-webgl {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 900ms var(--ease);
+}
+.hero-webgl.is-live { opacity: 1; }
+
 .hero.hero--niche {
   position: relative;
   min-height: 100svh;
@@ -1208,36 +1221,6 @@ html[lang="bn"] .share-bn { display: none; }
   text-align: center;
   gap: 0;
   padding: clamp(104px, 15vh, 172px) clamp(24px, 4vw, 56px) clamp(72px, 12vh, 120px);
-}
-.hero-niche {
-  position: relative;
-  width: clamp(190px, 30vw, 248px);
-  height: clamp(190px, 30vw, 248px);
-  display: grid;
-  place-items: center;
-  margin-bottom: clamp(18px, 4vh, 34px);
-}
-.niche-lamp {
-  position: absolute;
-  inset: -64px;
-  border-radius: 50%;
-  background: radial-gradient(circle,
-    rgba(249, 233, 191, 0.34) 0%,
-    rgba(241, 213, 146, 0.16) 30%,
-    rgba(216, 185, 116, 0.05) 55%,
-    transparent 70%);
-  filter: blur(6px);
-  animation: nicheBreathe 14s var(--ease) infinite;
-}
-.niche-mark {
-  position: relative;
-  width: clamp(150px, 24vw, 200px);
-  height: auto;
-  filter: drop-shadow(0 8px 34px rgba(0, 0, 0, 0.45));
-}
-@keyframes nicheBreathe {
-  0%, 100% { opacity: 0.82; transform: scale(1); }
-  50%      { opacity: 1;    transform: scale(1.035); }
 }
 .hero-bismillah {
   font-family: var(--font-ar);
@@ -1263,6 +1246,9 @@ html[lang="bn"] .share-bn { display: none; }
 .hero--niche .hero-bn { margin-top: 10px; max-width: 50ch; }
 .hero--niche .hero-cta-row { margin-top: 32px; justify-content: center; }
 .hero--niche .trust-strip { margin-top: 26px; justify-content: center; gap: 10px 26px; }
+@media (min-width: 761px) {
+  .hero--niche .store-button .store-badge { height: 70px; }
+}
 
 /* scroll cue (its styling previously lived in the engine stylesheet) */
 .hero-scroll-cue {

@@ -27,7 +27,6 @@
     <link rel="apple-touch-icon" href="wasilah_icon.png">
     <link rel="manifest" href="site.webmanifest">
 
-    <link rel="preload" as="image" href="wasilah_icon_wobg.svg" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://api.aladhan.com" crossorigin>
@@ -53,7 +52,7 @@
     >
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://wasilah.site/Slider.png">
-    <link rel="stylesheet" href="site.css?v=litniche-20260603">
+    <link rel="stylesheet" href="site.css?v=girih-20260606">
 
     <script type="application/ld+json">
       [
@@ -293,10 +292,7 @@
 
     <main id="top">
       <section class="hero hero--niche" aria-labelledby="hero-title">
-        <div class="hero-niche" aria-hidden="true">
-          <span class="niche-lamp"></span>
-          <img class="niche-mark" src="wasilah_icon_wobg.svg" alt="" width="200" height="200" fetchpriority="high">
-        </div>
+        <canvas class="hero-webgl" aria-hidden="true"></canvas>
         <div class="hero-stage">
           <p class="hero-bismillah" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
           <h1 id="hero-title" class="hero-display" data-i18n="heroV3Title">Stay close to Allah.</h1>
@@ -657,6 +653,7 @@
     </button>
 
     <script src="script.js?v=litniche-20260603" defer></script>
+    <script src="hero-webgl.js?v=girih-20260606" defer></script>
 
     <!-- Eid al-Adha 1447 greeting. Self-disables after 2026-05-29 00:00 Dhaka (2026-05-28 18:00 UTC). Remove this whole block after the window closes. -->
     <style>
