@@ -1,6 +1,6 @@
 const STORE_LINKS = {
-  appStore: "",
-  googlePlay: "https://play.google.com/store/apps/details?id=site.wasilah.wasilah"
+  appStore: "/ios",
+  googlePlay: "/android"
 };
 
 const PRAYER_API_BASE = "https://api.aladhan.com/v1";
