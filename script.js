@@ -273,7 +273,7 @@ const copy = {
     heroV3Title: "Stay close to Allah.",
     heroV3Tagline: "Prayer times, Quran, Hadith and Qibla. Free, in Bangla, English and Arabic. Works offline.",
     scrollCue: "Scroll",
-    tbLivePlay: "Live on Google Play",
+    tbLivePlay: "Live on the App Store & Google Play",
     tbSadaqahLead: "Sadaqah jāriyah.",
     tbSadaqahText: "Never monetized. No ads, no sign-up, no data sold. A promise, not a pricing tier.",
     learnLabel: "Learn to worship",
@@ -391,7 +391,7 @@ const copy = {
       "Yes. The Zakat calculator is built around Bangladeshi Taka for cash, gold, savings, business assets, and liabilities.",
     faqLaunchQuestion: "Is Wasilah available now?",
     faqLaunchAnswer:
-      "Yes. Wasilah is live now on Google Play, free to install on any Android phone. Tap Get it on Google Play above, or search Wasilah on the Play Store.",
+      "Yes. Wasilah is live now on the App Store and Google Play, free to install on any iPhone, iPad, or Android phone. Tap a store button above, or search Wasilah on the App Store or Google Play.",
     faqCostQuestion: "Will Wasilah always be free?",
     faqCostAnswer:
       "Yes. Wasilah is free to download and use, with no ads and no sign-up. It is sadaqah jariyah and will never be monetized.",
@@ -418,7 +418,7 @@ const copy = {
     heroV3Title: "আল্লাহর সান্নিধ্যে থাকুন।",
     heroV3Tagline: "নামাজের সময়, কুরআন, হাদিস ও কিবলা। বিনামূল্যে, বাংলা, ইংরেজি ও আরবিতে। অফলাইনেও চলে।",
     scrollCue: "স্ক্রল করুন",
-    tbLivePlay: "Google Play-তে এখন",
+    tbLivePlay: "App Store ও Google Play-তে এখন",
     tbSadaqahLead: "সাদাকা জারিয়া।",
     tbSadaqahText: "কখনো বাণিজ্যিক নয়। কোনো বিজ্ঞাপন, সাইন-আপ বা তথ্য বিক্রি নেই। এটি প্রতিশ্রুতি, কোনো মূল্যস্তর নয়।",
     learnLabel: "ইবাদত শিখুন",
@@ -536,7 +536,7 @@ const copy = {
       "হ্যাঁ। নগদ, সোনা, সঞ্চয়, ব্যবসায়িক সম্পদ ও দায়ের জন্য যাকাত ক্যালকুলেটর বাংলাদেশি টাকা কেন্দ্রিক।",
     faqLaunchQuestion: "ওয়াসিলাহ কি এখন পাওয়া যাচ্ছে?",
     faqLaunchAnswer:
-      "হ্যাঁ। ওয়াসিলাহ এখন Google Play-তে বিনামূল্যে পাওয়া যাচ্ছে, যেকোনো অ্যান্ড্রয়েড ফোনে ইনস্টল করা যায়। উপরে Get it on Google Play-তে ট্যাপ করুন, অথবা Play Store-এ Wasilah সার্চ করুন।",
+      "হ্যাঁ। ওয়াসিলাহ এখন App Store ও Google Play-তে বিনামূল্যে পাওয়া যাচ্ছে, যেকোনো আইফোন, আইপ্যাড বা অ্যান্ড্রয়েড ফোনে ইনস্টল করা যায়। উপরে যেকোনো স্টোর বাটনে ট্যাপ করুন, অথবা App Store বা Play Store-এ Wasilah সার্চ করুন।",
     faqCostQuestion: "ওয়াসিলাহ কি সবসময় বিনামূল্যে থাকবে?",
     faqCostAnswer:
       "হ্যাঁ। ওয়াসিলাহ ডাউনলোড ও ব্যবহার বিনামূল্যে, কোনো বিজ্ঞাপন বা সাইন-আপ নেই। এটি সাদাকা জারিয়া, কখনো বাণিজ্যিক করা হবে না।",
