@@ -3,23 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Get Wasilah on Google Play</title>
-<meta name="description" content="Download Wasilah from Google Play. Prayer times, Quran, Hadith, Qibla and Zakat in Bangla. Free. No ads. Made for Bangladesh.">
+<title>Get Wasilah on the App Store &amp; Google Play</title>
+<meta name="description" content="Download Wasilah on the App Store or Google Play. Prayer times, Quran, Hadith, Qibla and Zakat in Bangla. Free. No ads. Made for Bangladesh.">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#004B49">
 
-<meta http-equiv="refresh" content="0; url=https://play.google.com/store/apps/details?id=site.wasilah.wasilah">
-<link rel="canonical" href="https://play.google.com/store/apps/details?id=site.wasilah.wasilah">
+<link rel="canonical" href="https://wasilah.site/">
 
 <meta property="og:title" content="Wasilah - Islamic app for Bangladesh">
-<meta property="og:description" content="Prayer times, Quran, Hadith, Qibla and Zakat in Bangla. Free. No ads.">
+<meta property="og:description" content="Prayer times, Quran, Hadith, Qibla and Zakat in Bangla. Free. No ads. On iPhone and Android.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://wasilah.site/">
-<meta property="og:image" content="https://wasilah.site/Slider.png">
+<meta property="og:image" content="https://wasilah.site/og-wasilah.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Wasilah - Islamic app for Bangladesh">
-<meta name="twitter:description" content="Prayer times, Quran, Hadith, Qibla and Zakat in Bangla. Free. No ads.">
-<meta name="twitter:image" content="https://wasilah.site/Slider.png">
+<meta name="twitter:description" content="Prayer times, Quran, Hadith, Qibla and Zakat in Bangla. Free. No ads. On iPhone and Android.">
+<meta name="twitter:image" content="https://wasilah.site/og-wasilah.jpg">
 
 <link rel="icon" href="/wasilah_icon_wobg.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/wasilah_icon.png">
@@ -62,6 +61,7 @@
     line-height: 1.6;
     font-size: 0.95rem;
   }
+  .stores { display: flex; flex-direction: column; gap: 14px; align-items: center; }
   a.cta {
     display: inline-block;
     padding: 14px 26px;
@@ -71,8 +71,11 @@
     border-radius: 999px;
     text-decoration: none;
     transition: background 0.2s, transform 0.2s;
+    min-width: 220px;
   }
+  a.cta.alt { background: transparent; color: #f1d592; border: 1px solid rgba(241, 213, 146, 0.5); }
   a.cta:hover { background: #f9e9bf; transform: translateY(-1px); }
+  a.cta.alt:hover { background: rgba(241, 213, 146, 0.1); }
   .spinner {
     width: 36px;
     height: 36px;
@@ -89,15 +92,38 @@
 <main class="wrap">
   <p class="brand">Wasilah</p>
   <div class="spinner" aria-hidden="true"></div>
-  <h1>Opening Google Play&hellip;</h1>
-  <p>If you are not redirected automatically, tap the button below to open Wasilah on Google Play.</p>
-  <a class="cta" href="https://play.google.com/store/apps/details?id=site.wasilah.wasilah">Get it on Google Play</a>
+  <h1 id="heading">Opening your store&hellip;</h1>
+  <p>If you are not redirected automatically, choose your store below.</p>
+  <div class="stores">
+    <a class="cta" id="primary" href="https://play.google.com/store/apps/details?id=site.wasilah.wasilah">Get it on Google Play</a>
+    <a class="cta alt" id="secondary" href="https://apps.apple.com/app/id6767919573">Download on the App Store</a>
+  </div>
 </main>
 <script>
-  // Backup redirect in case meta refresh is blocked
-  setTimeout(function () {
-    window.location.replace("https://play.google.com/store/apps/details?id=site.wasilah.wasilah");
-  }, 50);
+  (function () {
+    var APP_STORE = "https://apps.apple.com/app/id6767919573";
+    var PLAY = "https://play.google.com/store/apps/details?id=site.wasilah.wasilah";
+    var ua = navigator.userAgent || "";
+    var isApple = /iPhone|iPad|iPod|Macintosh/i.test(ua) && !/Android/i.test(ua);
+
+    var primary = document.getElementById("primary");
+    var secondary = document.getElementById("secondary");
+    var heading = document.getElementById("heading");
+
+    if (isApple) {
+      heading.textContent = "Opening the App Store…";
+      primary.textContent = "Download on the App Store";
+      primary.href = APP_STORE;
+      secondary.textContent = "Get it on Google Play";
+      secondary.href = PLAY;
+    } else {
+      heading.textContent = "Opening Google Play…";
+    }
+
+    setTimeout(function () {
+      window.location.replace(isApple ? APP_STORE : PLAY);
+    }, 50);
+  })();
 </script>
 </body>
 </html>
