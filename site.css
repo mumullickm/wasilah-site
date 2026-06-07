@@ -1363,3 +1363,26 @@ html[lang="bn"] .share-bn { display: none; }
 .learn-shot figcaption { display: flex; flex-direction: column; gap: 4px; text-align: center; }
 .learn-shot em { font-style: normal; color: #fff; font-weight: 600; font-size: 1.05rem; line-height: 1.25; }
 @media (max-width: 560px) { .learn-grid { grid-template-columns: 1fr; max-width: 320px; gap: 36px; } }
+
+/* App Store screenshot strip (added 2026-06-07) */
+.appstore-section { overflow: hidden; }
+.appstore-strip {
+  list-style: none;
+  margin: 2.4rem 0 0;
+  padding: 0.5rem clamp(1rem, 6vw, 5rem) 1.5rem;
+  display: flex;
+  gap: 1.15rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.appstore-strip::-webkit-scrollbar { display: none; }
+.appstore-strip li { flex: 0 0 auto; scroll-snap-align: center; margin: 0; }
+.appstore-strip img {
+  height: clamp(380px, 56vh, 560px);
+  width: auto;
+  display: block;
+  border-radius: 24px;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.4);
+}
