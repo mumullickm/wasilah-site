@@ -61,21 +61,10 @@
     line-height: 1.6;
     font-size: 0.95rem;
   }
-  .stores { display: flex; flex-direction: column; gap: 14px; align-items: center; }
-  a.cta {
-    display: inline-block;
-    padding: 14px 26px;
-    background: #f1d592;
-    color: #003836;
-    font-weight: 700;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-    min-width: 220px;
-  }
-  a.cta.alt { background: transparent; color: #f1d592; border: 1px solid rgba(241, 213, 146, 0.5); }
-  a.cta:hover { background: #f9e9bf; transform: translateY(-1px); }
-  a.cta.alt:hover { background: rgba(241, 213, 146, 0.1); }
+  .stores { display: flex; flex-wrap: wrap; gap: 14px 16px; align-items: center; justify-content: center; }
+  .store-button { display: inline-block; transition: transform 0.2s; }
+  .store-button:hover { transform: translateY(-2px); }
+  .store-button img { height: 58px; width: auto; display: block; }
   .spinner {
     width: 36px;
     height: 36px;
@@ -91,12 +80,16 @@
 <body>
 <main class="wrap">
   <p class="brand">Wasilah</p>
-  <div class="spinner" aria-hidden="true"></div>
-  <h1 id="heading">Opening your store&hellip;</h1>
-  <p>If you are not redirected automatically, choose your store below.</p>
+  <div class="spinner" id="spinner" aria-hidden="true"></div>
+  <h1 id="heading">Get Wasilah</h1>
+  <p id="subhead">Free, no ads, no tracking. Choose your store below.</p>
   <div class="stores">
-    <a class="cta" id="primary" href="https://play.google.com/store/apps/details?id=site.wasilah.wasilah">Get it on Google Play</a>
-    <a class="cta alt" id="secondary" href="https://apps.apple.com/app/id6767919573">Download on the App Store</a>
+    <a class="store-button" id="ios-link" href="https://apps.apple.com/app/id6767919573" aria-label="Download Wasilah on the App Store">
+      <img src="/App_Store.svg?v=20260606b" alt="Download on the App Store" width="200" height="60">
+    </a>
+    <a class="store-button" id="android-link" href="https://play.google.com/store/apps/details?id=site.wasilah.wasilah" aria-label="Get Wasilah on Google Play">
+      <img src="/Google_Play.svg?v=20260606b" alt="Get it on Google Play" width="200" height="60">
+    </a>
   </div>
 </main>
 <script>
@@ -104,25 +97,33 @@
     var APP_STORE = "https://apps.apple.com/app/id6767919573";
     var PLAY = "https://play.google.com/store/apps/details?id=site.wasilah.wasilah";
     var ua = navigator.userAgent || "";
-    var isApple = /iPhone|iPad|iPod|Macintosh/i.test(ua) && !/Android/i.test(ua);
 
-    var primary = document.getElementById("primary");
-    var secondary = document.getElementById("secondary");
+    // Only treat genuine phones/tablets as a single-store target. A Mac, PC or
+    // any desktop browser sees both stores and chooses - never a silent redirect.
+    var isiOS = /iPhone|iPad|iPod/i.test(ua) ||
+      (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1); // iPadOS reports as Mac
+    var isAndroid = /Android/i.test(ua);
+
+    var iosLink = document.getElementById("ios-link");
+    var androidLink = document.getElementById("android-link");
     var heading = document.getElementById("heading");
+    var subhead = document.getElementById("subhead");
+    var spinner = document.getElementById("spinner");
+    var stores = iosLink.parentNode;
 
-    if (isApple) {
+    if (isiOS && !isAndroid) {
       heading.textContent = "Opening the App Store…";
-      primary.textContent = "Download on the App Store";
-      primary.href = APP_STORE;
-      secondary.textContent = "Get it on Google Play";
-      secondary.href = PLAY;
-    } else {
+      subhead.textContent = "Not redirected? Tap below.";
+      setTimeout(function () { window.location.replace(APP_STORE); }, 50);
+    } else if (isAndroid) {
       heading.textContent = "Opening Google Play…";
+      subhead.textContent = "Not redirected? Tap below.";
+      stores.insertBefore(androidLink, iosLink); // surface Play first for Android
+      setTimeout(function () { window.location.replace(PLAY); }, 50);
+    } else {
+      // Desktop: no auto-redirect. Show both badges and let the visitor pick.
+      spinner.style.display = "none";
     }
-
-    setTimeout(function () {
-      window.location.replace(isApple ? APP_STORE : PLAY);
-    }, 50);
   })();
 </script>
 </body>

@@ -3,101 +3,326 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Get Wasilah on the App Store</title>
-<meta name="description" content="Download Wasilah on the App Store. Prayer times, Quran, Hadith, Qibla and Zakat in Bangla. Free. No ads. Made for Bangladesh.">
-<meta name="robots" content="noindex, follow">
+<title>Wasilah for iPhone - Prayer Times, Quran &amp; Qibla in Bangla on the App Store</title>
+<meta name="description" content="Wasilah on the App Store: accurate Bangladesh prayer times, the full Quran with Bangla translation, Hadith, Qibla, Zakat and duas. Designed for iPhone. Free, no ads, no tracking, works offline.">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#004B49">
 
-<meta http-equiv="refresh" content="0; url=https://apps.apple.com/app/id6767919573">
-<link rel="canonical" href="https://apps.apple.com/app/id6767919573">
+<link rel="canonical" href="https://wasilah.site/ios">
 
-<meta property="og:title" content="Wasilah - Islamic app for Bangladesh">
-<meta property="og:description" content="Prayer times, Quran, Hadith, Qibla and Zakat in Bangla. Free. No ads.">
+<meta property="og:title" content="Wasilah for iPhone - Islamic prayer times, Quran and Qibla in Bangla">
+<meta property="og:description" content="Accurate Bangladesh prayer times, the full Quran with Bangla translation, Hadith, Qibla, Zakat and duas. Designed for iPhone. Free, no ads, works offline.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://wasilah.site/">
-<meta property="og:image" content="https://wasilah.site/Slider.png">
+<meta property="og:url" content="https://wasilah.site/ios">
+<meta property="og:image" content="https://wasilah.site/og-wasilah.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Wasilah - Islamic app for Bangladesh">
-<meta name="twitter:description" content="Prayer times, Quran, Hadith, Qibla and Zakat in Bangla. Free. No ads.">
-<meta name="twitter:image" content="https://wasilah.site/Slider.png">
+<meta name="twitter:title" content="Wasilah for iPhone - Prayer times, Quran and Qibla in Bangla">
+<meta name="twitter:description" content="Accurate Bangladesh prayer times, the full Quran with Bangla translation, Hadith, Qibla, Zakat and duas. Free, no ads, works offline.">
+<meta name="twitter:image" content="https://wasilah.site/og-wasilah.jpg">
 
 <link rel="icon" href="/wasilah_icon_wobg.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/wasilah_icon.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600&family=Amiri&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css">
+
 <style>
-  :root { color-scheme: dark; }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 32px;
-    text-align: center;
-    background:
-      radial-gradient(ellipse 60% 30% at 50% 0%, rgba(241, 213, 146, 0.14), transparent 70%),
-      linear-gradient(180deg, #004B49, #002e2c);
-    color: #eef1ea;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  .pg { max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); }
+  .pg-breadcrumb { font-size: 0.82rem; color: var(--ink-faint); padding: 22px 0 0; }
+  .pg-breadcrumb a { color: var(--ink-dim); text-underline-offset: 2px; }
+  .pg-breadcrumb a:hover { color: var(--gold); }
+
+  .pg-hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(28px, 5vw, 72px);
+    align-items: center; padding: clamp(36px, 6vw, 80px) 0 clamp(28px, 4vw, 56px); }
+  .pg-eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 0.74rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .pg-eyebrow svg { width: 15px; height: 15px; fill: currentColor; }
+  .pg-h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.08; font-weight: 800; letter-spacing: -0.02em;
+    color: #fff; margin-bottom: 20px; }
+  .pg-h1 .accent { color: var(--gold); }
+  .pg-lede { font-size: clamp(1.04rem, 1.7vw, 1.22rem); color: var(--ink-dim); max-width: 36ch; margin-bottom: 30px; }
+  .pg-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 22px; }
+  .store-badge img { height: 56px; width: auto; transition: transform 0.2s var(--ease); }
+  .store-badge:hover img { transform: translateY(-2px); }
+  .pg-altlink { font-size: 0.92rem; color: var(--ink-dim); text-underline-offset: 3px; text-decoration: underline; }
+  .pg-altlink:hover { color: var(--gold); }
+  .pg-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .pg-pill { font-size: 0.8rem; font-weight: 600; color: var(--ink-dim); background: var(--card);
+    border: 1px solid var(--card-border); padding: 7px 14px; border-radius: var(--r-pill); }
+
+  .pg-device { justify-self: center; position: relative; }
+  .pg-device img { width: clamp(220px, 26vw, 300px); border-radius: 40px;
+    border: 1px solid var(--card-border); box-shadow: var(--shadow-device); }
+  .pg-device::after { content: ""; position: absolute; inset: -14% -22% auto -22%; height: 60%;
+    background: radial-gradient(ellipse at 50% 0%, rgba(241,213,146,0.22), transparent 70%); z-index: -1; }
+
+  .pg-prose { max-width: 72ch; margin: 0 auto; padding: clamp(28px, 4vw, 48px) 0; }
+  .pg-prose h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: #fff; letter-spacing: -0.01em;
+    margin: 44px 0 16px; }
+  .pg-prose h2:first-child { margin-top: 0; }
+  .pg-prose h3 { font-size: 1.18rem; font-weight: 700; color: var(--gold); margin: 30px 0 10px; }
+  .pg-prose p { color: var(--ink-dim); margin-bottom: 18px; font-size: 1.03rem; line-height: 1.8; }
+  .pg-prose p .lead-in { color: var(--ink); font-weight: 600; }
+  .pg-prose a { color: var(--gold); text-underline-offset: 2px; text-decoration: underline; }
+  .pg-arabic { font-family: var(--font-ar); font-size: 1.3rem; color: var(--gold-bright); direction: rtl; }
+
+  .pg-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(248px, 1fr)); gap: 16px;
+    padding: clamp(20px, 3vw, 36px) 0; }
+  .feat { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--r-md);
+    padding: 24px; transition: border-color 0.25s var(--ease), transform 0.25s var(--ease); }
+  .feat:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .feat-icon { width: 30px; height: 30px; background: var(--gold); margin-bottom: 14px;
+    -webkit-mask: var(--ic) center / contain no-repeat; mask: var(--ic) center / contain no-repeat; }
+  .feat h3 { font-size: 1.06rem; font-weight: 700; color: #fff; margin-bottom: 7px; }
+  .feat p { font-size: 0.93rem; color: var(--ink-dim); line-height: 1.6; }
+
+  .pg-section-head { text-align: center; max-width: 60ch; margin: 0 auto clamp(8px, 2vw, 20px); }
+  .pg-section-head .section-label { color: var(--gold); font-size: 0.74rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase; }
+  .pg-section-head h2 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); font-weight: 800; color: #fff;
+    letter-spacing: -0.02em; margin: 10px 0 12px; }
+  .pg-section-head p { color: var(--ink-dim); }
+
+  .pg-faq { max-width: 72ch; margin: 0 auto; padding: clamp(20px, 3vw, 36px) 0; }
+  .pg-faq details { border-bottom: 1px solid var(--line); padding: 4px 0; }
+  .pg-faq summary { cursor: pointer; list-style: none; padding: 18px 36px 18px 0; position: relative;
+    font-weight: 700; font-size: 1.05rem; color: #fff; }
+  .pg-faq summary::-webkit-details-marker { display: none; }
+  .pg-faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font-size: 1.5rem;
+    color: var(--gold); transition: transform 0.2s var(--ease); }
+  .pg-faq details[open] summary::after { transform: rotate(45deg); }
+  .pg-faq details p { color: var(--ink-dim); padding: 0 0 20px; line-height: 1.75; }
+
+  .pg-cta { text-align: center; padding: clamp(48px, 7vw, 96px) 0; }
+  .pg-cta h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: #fff; letter-spacing: -0.02em;
+    max-width: 18ch; margin: 0 auto 16px; }
+  .pg-cta p { color: var(--ink-dim); max-width: 44ch; margin: 0 auto 30px; }
+  .pg-cta .pg-actions { justify-content: center; }
+
+  .pg-divider { height: 1px; background: var(--line); max-width: var(--wrap); margin: 0 auto; }
+
+  @media (max-width: 760px) {
+    .pg-hero { grid-template-columns: 1fr; text-align: center; padding-top: 24px; }
+    .pg-eyebrow, .pg-actions, .pg-meta { justify-content: center; }
+    .pg-lede { margin-left: auto; margin-right: auto; }
+    .pg-device { order: -1; }
+    .pg-device img { width: clamp(200px, 60vw, 250px); }
   }
-  .wrap { max-width: 420px; }
-  .brand {
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: #f1d592;
-    margin-bottom: 32px;
-  }
-  h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin: 0 0 16px;
-    line-height: 1.3;
-  }
-  p {
-    color: rgba(241, 213, 146, 0.7);
-    margin: 0 0 28px;
-    line-height: 1.6;
-    font-size: 0.95rem;
-  }
-  a.cta {
-    display: inline-block;
-    padding: 14px 26px;
-    background: #f1d592;
-    color: #003836;
-    font-weight: 700;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-  }
-  a.cta:hover { background: #f9e9bf; transform: translateY(-1px); }
-  .spinner {
-    width: 36px;
-    height: 36px;
-    border: 3px solid rgba(241, 213, 146, 0.2);
-    border-top-color: #f1d592;
-    border-radius: 50%;
-    margin: 0 auto 24px;
-    animation: spin 1s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Wasilah",
+      "operatingSystem": "iOS 13.0 or later",
+      "applicationCategory": "LifestyleApplication",
+      "description": "Wasilah is a Bangla-first Islamic companion for iPhone: accurate Bangladesh prayer times, the full Quran with Bangla and English translation, Hadith, Qibla, a Zakat calculator in Taka, and daily duas. Free, no ads, no tracking, works offline.",
+      "url": "https://apps.apple.com/app/id6767919573",
+      "downloadUrl": "https://apps.apple.com/app/id6767919573",
+      "inLanguage": ["bn", "ar", "en"],
+      "image": "https://wasilah.site/og-wasilah.jpg",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" },
+      "publisher": { "@type": "Organization", "name": "Aykiz Intelligence", "url": "https://aykizintelligence.com" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Wasilah", "item": "https://wasilah.site/" },
+        { "@type": "ListItem", "position": 2, "name": "Wasilah for iPhone", "item": "https://wasilah.site/ios" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Is Wasilah free on the App Store?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Wasilah is completely free on the App Store. There are no ads, no subscriptions, and no in-app purchases. It is built as sadaqah jariyah, a continuing charity, so it stays free." } },
+        { "@type": "Question", "name": "Does Wasilah work offline on iPhone?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Prayer times are calculated on your iPhone, so they work with no internet once your location is set. The Quran, Hadith, duas, 99 Names and the Salah and Wudu guides are bundled in the app and read offline. Audio recitation streams, so that part needs a connection." } },
+        { "@type": "Question", "name": "Is Wasilah only for Bangladesh?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Wasilah is built Bangla-first for Muslims in Bangladesh, but it has worldwide city search covering tens of thousands of cities, so Bengali families in Saudi Arabia, the Gulf and beyond get correct local prayer times too." } },
+        { "@type": "Question", "name": "What data does Wasilah collect?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Wasilah does not collect personal data and does not track you. Your location is used on-device to compute prayer times and Qibla, and is not sent to us. See the privacy policy at wasilah.site/privacy." } },
+        { "@type": "Question", "name": "Which iPhones does Wasilah support?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Wasilah is designed for iPhone and runs on iOS 13 and later, in both light and dark mode." } }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
-<main class="wrap">
-  <p class="brand">Wasilah</p>
-  <div class="spinner" aria-hidden="true"></div>
-  <h1>Opening the App Store&hellip;</h1>
-  <p>If you are not redirected automatically, tap the button below to open Wasilah on the App Store.</p>
-  <a class="cta" href="https://apps.apple.com/app/id6767919573">Get it on the App Store</a>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="icon-apple" viewBox="0 0 24 24"><path d="M16.37 1.43c.04 1.06-.36 2.1-1.04 2.86-.71.8-1.86 1.41-2.95 1.33-.13-1.04.4-2.13 1.04-2.83.72-.8 1.95-1.4 2.95-1.36ZM19.6 17.6c-.5 1.15-.74 1.66-1.38 2.68-.9 1.42-2.17 3.2-3.74 3.21-1.4.01-1.76-.91-3.66-.9-1.9.01-2.29.92-3.69.9-1.57-.01-2.77-1.61-3.67-3.04C1.04 16.94.76 12 2.32 9.36c1.1-1.86 2.85-2.95 4.5-2.95 1.67 0 2.72.92 4.1.92 1.34 0 2.16-.92 4.1-.92 1.46 0 3.02.8 4.12 2.18-3.62 1.98-3.03 7.15.46 9.01Z"/></symbol>
+  <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12Z"/></symbol>
+  <symbol id="icon-instagram" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.86 5.86 0 0 0-2.13 1.38A5.86 5.86 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.74 1.46 1.38 2.13a5.86 5.86 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.86 5.86 0 0 0 2.13-1.38 5.86 5.86 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.86 5.86 0 0 0-1.38-2.13A5.86 5.86 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.41-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></symbol>
+  <symbol id="icon-linkedin" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45C23.21 24 24 23.23 24 22.28V1.72C24 .77 23.21 0 22.22 0Z"/></symbol>
+  <symbol id="icon-tiktok" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.3 0 .58.05.85.13V9.4a6.34 6.34 0 0 0-5.89 10.1 6.34 6.34 0 0 0 10.86-4.43V8.84a8.16 8.16 0 0 0 4.77 1.52V6.93c-.13.01-.26.01-.48-.01a4.85 4.85 0 0 1 0-.23Z"/></symbol>
+</svg>
+
+<header class="site-header" aria-label="Primary navigation">
+  <a class="brand" href="/" aria-label="Wasilah home">
+    <img class="brand-icon" src="/wasilah_icon_wobg.svg" alt="" width="40" height="40">
+    <img class="brand-logotype" src="/wasilah_logo_wobg.svg" alt="Wasilah" width="150" height="33">
+  </a>
+  <div class="header-actions">
+    <nav class="header-nav" aria-label="Wasilah sections">
+      <a href="/#features">Features</a>
+      <a href="/#screens">Screens</a>
+      <a href="/android">For Android</a>
+      <a href="/#faq">FAQ</a>
+    </nav>
+    <a class="header-cta" href="https://apps.apple.com/app/id6767919573" target="_blank" rel="noopener">Get on App Store</a>
+  </div>
+</header>
+
+<main id="main">
+  <nav class="pg pg-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Wasilah</a> &nbsp;/&nbsp; <span>Wasilah for iPhone</span>
+  </nav>
+
+  <section class="pg pg-hero">
+    <div>
+      <p class="pg-eyebrow"><svg aria-hidden="true"><use href="#icon-apple"></use></svg> Designed for iPhone</p>
+      <h1 class="pg-h1">The Bangla Islamic app, <span class="accent">made for your iPhone.</span></h1>
+      <p class="pg-lede">Accurate Bangladesh prayer times, the full Quran with Bangla translation, Hadith, Qibla, Zakat and duas. One calm, ad-free home for your day of worship.</p>
+      <div class="pg-actions">
+        <a class="store-badge" href="https://apps.apple.com/app/id6767919573" target="_blank" rel="noopener" aria-label="Download Wasilah on the App Store">
+          <img src="/App_Store.svg" alt="Download on the App Store" width="216" height="62" loading="eager">
+        </a>
+        <a class="pg-altlink" href="/android">Using Android instead?</a>
+      </div>
+      <div class="pg-meta">
+        <span class="pg-pill">Free forever</span>
+        <span class="pg-pill">No ads</span>
+        <span class="pg-pill">No tracking</span>
+        <span class="pg-pill">Works offline</span>
+      </div>
+    </div>
+    <div class="pg-device">
+      <img src="/shots/home.jpg" alt="Wasilah home screen on iPhone showing live Bangladesh prayer times and a countdown to the next Salah" width="660" height="1433" loading="eager">
+    </div>
+  </section>
+
+  <div class="pg-divider"></div>
+
+  <article class="pg pg-prose">
+    <h2>A whole day of worship, in one quiet app</h2>
+    <p><span class="lead-in">Wasilah began with a simple frustration.</span> Most Islamic apps for iPhone are loud. They are heavy with banner ads, they nag for subscriptions, and the Bangla, when there is any, reads like it was run through a machine. For a Bengali Muslim who just wants to know when Maghrib is, or to read a few ayahs after Fajr, that noise gets in the way of the very thing the app is meant to protect: a moment of stillness with Allah.</p>
+    <p>Wasilah is the answer to that. It is a Bangla-first Islamic companion, built in Bangladesh, that puts the five daily prayers, the Quran, Hadith, the Qibla and your Zakat in one place and then gets out of your way. There is nothing to buy. There are no ads. Nothing watches what you read. The app was built as <em>sadaqah jariyah</em>, a charity that keeps giving, so it will stay free for as long as it exists.</p>
+    <p>This page is about Wasilah on iPhone specifically: how it feels on iOS, what it does, and why a small, free app has become part of the daily routine for Bengali families who pray.</p>
+
+    <h2>Prayer times you can actually trust</h2>
+    <p><span class="lead-in">The heart of Wasilah is your prayer schedule.</span> When you open the app it shows the five daily prayers for your exact location, the time remaining until the next one, and a clear strip showing the window you are currently in. On Fridays it correctly shows Jumu'ah in place of Dhuhr, because the people who pray notice when an app gets that wrong.</p>
+    <p>Times are computed on your iPhone using established calculation methods, not pulled blindly from a single server. That matters for two reasons. First, the figures stay correct even when you have no signal, which is the reality in a lot of Bangladesh. Second, you are not at the mercy of an API going down at Maghrib. Sehri and Iftar timings are there during Ramadan, and when the Adhan time arrives Wasilah can notify you and play a clean, gentle call to prayer rather than a jarring alarm.</p>
+    <p>If you travel, or if your family is spread between Dhaka and the Gulf, Wasilah carries a worldwide city database. You can search tens of thousands of cities and the app handles the time zone correctly, so a manual pick in Riyadh computes the right times in Riyadh, not in Bangladesh.</p>
+
+    <h2>The Quran, in the language you think in</h2>
+    <p><span class="lead-in">Reading the Quran should not require a perfect grasp of Arabic.</span> Wasilah carries the full Quran with the Arabic text alongside Bangla and English translation, so you can read the words of Allah and understand them in the language you actually think in. The reading view is built to be calm: generous spacing, a typeface chosen so Bangla renders cleanly on every iPhone, and a light and dark mode that follows your system setting.</p>
+    <p>Recitation audio is there when you want to listen, verse by verse, and the text itself is bundled in the app so you can read on the bus, in the masjid, or anywhere the signal drops. The same care extends to the Hadith collection, a curated set of authentic narrations presented in Arabic, Bangla and English together.</p>
+
+    <h2>Everything else a Muslim reaches for</h2>
+    <p>Beyond prayer and Quran, Wasilah gathers the smaller tools you reach for across a normal week, so you are not juggling five different apps:</p>
+
+    <div class="pg-features">
+      <div class="feat"><span class="feat-icon" style="--ic:url(/icons/qibla.svg)"></span><h3>Qibla compass</h3><p>Point your iPhone and find the direction of the Kaaba. A tap opens directions to mosques near you.</p></div>
+      <div class="feat"><span class="feat-icon" style="--ic:url(/icons/zakat.svg)"></span><h3>Zakat calculator</h3><p>Work out your Zakat in Bangladeshi Taka, with the nisab handled for you. No spreadsheets.</p></div>
+      <div class="feat"><span class="feat-icon" style="--ic:url(/icons/salah.svg)"></span><h3>Salah guide</h3><p>A step-by-step guide to praying, in Bangla, Arabic and English, for anyone still learning.</p></div>
+      <div class="feat"><span class="feat-icon" style="--ic:url(/icons/wudu.svg)"></span><h3>Wudu guide</h3><p>The steps of ablution laid out simply, so the basics are always one tap away.</p></div>
+      <div class="feat"><span class="feat-icon" style="--ic:url(/icons/dua.svg)"></span><h3>Daily duas</h3><p>Everyday supplications and adhkar in Arabic with Bangla meaning, for morning, evening and in between.</p></div>
+      <div class="feat"><span class="feat-icon" style="--ic:url(/icons/allah.svg)"></span><h3>99 Names of Allah</h3><p>Asma ul Husna, each name with its meaning in three languages, to read and reflect on.</p></div>
+      <div class="feat"><span class="feat-icon" style="--ic:url(/icons/hijri-calendar.svg)"></span><h3>Hijri calendar</h3><p>The Islamic date alongside the Gregorian one, so you never miss a sacred day.</p></div>
+      <div class="feat"><span class="feat-icon" style="--ic:url(/icons/kaaba.svg)"></span><h3>Hajj &amp; Umrah</h3><p>A plain-language guide to the rites, for the journey of a lifetime or for learning ahead of it.</p></div>
+    </div>
+
+    <h2>Built the way iPhone apps should be built</h2>
+    <p><span class="lead-in">Wasilah is designed for iPhone, not ported to it.</span> It uses Apple's own systems for location and notifications, follows your light or dark setting, and respects iOS conventions so it feels native rather than borrowed from another platform. It runs on iOS 13 and later, which covers iPhones going back many years, because not everyone is on the newest device.</p>
+    <p>On privacy, the App Store nutrition label tells the honest story: Wasilah does not collect data and does not track you. Your location is read on the device to work out prayer times and the Qibla, and it stays on the device. There is no analytics profile being quietly assembled about your worship. For a religious app, that felt non-negotiable.</p>
+
+    <h2>For Bangladesh, and for Bengalis everywhere</h2>
+    <p><span class="lead-in">Wasilah is unapologetically Bangla-first.</span> It is built in Bangladesh for the people praying here, where the call to prayer is part of the air. But it is just as much for the Bengali driver in Jeddah, the nurse in Riyadh, the family in London who want their children to pray with words they understand. Wherever you are, the prayer times follow your location and the language stays close to home.</p>
+    <p class="pg-arabic">رَبَّنَا تَقَبَّلْ مِنَّا</p>
+    <p>"Our Lord, accept this from us." If Wasilah helps even one person pray on time, the effort behind it has already done its work.</p>
+  </article>
+
+  <div class="pg-divider"></div>
+
+  <section class="pg" style="padding: clamp(40px,6vw,72px) 0;">
+    <div class="pg-section-head">
+      <p class="section-label">See it first</p>
+      <h2>A look inside Wasilah on iPhone</h2>
+      <p>The same calm, Bangla-first experience, screen by screen.</p>
+    </div>
+    <ul class="appstore-strip" aria-label="Wasilah app screenshots on iPhone">
+      <li><img src="/shots/home.jpg" alt="Wasilah home screen on iPhone with live Bangladesh prayer times and next Salah countdown" width="660" height="1433" loading="lazy"></li>
+      <li><img src="/shots/salah.jpg" alt="Wasilah step-by-step Salah guide in Bangla, Arabic and English on iPhone" width="660" height="1433" loading="lazy"></li>
+      <li><img src="/shots/quran.jpg" alt="Wasilah Quran reader on iPhone with Arabic, English and Bangla translation, offline and free" width="660" height="1433" loading="lazy"></li>
+      <li><img src="/shots/hadith.jpg" alt="Wasilah Hadith collection in Arabic, English and Bangla on iPhone" width="660" height="1433" loading="lazy"></li>
+      <li><img src="/shots/asma.jpg" alt="Wasilah 99 Names of Allah, Asma ul Husna, with meanings in three languages" width="660" height="1433" loading="lazy"></li>
+      <li><img src="/shots/duas.jpg" alt="Wasilah daily duas and adhkar in Bangla and Arabic on iPhone" width="660" height="1433" loading="lazy"></li>
+      <li><img src="/shots/more.jpg" alt="Wasilah Zakat calculator in Taka, duas and Hajj and Umrah guide on iPhone" width="660" height="1433" loading="lazy"></li>
+    </ul>
+  </section>
+
+  <div class="pg-divider"></div>
+
+  <section class="pg pg-faq" aria-labelledby="faq-title">
+    <div class="pg-section-head"><h2 id="faq-title">Questions, answered</h2></div>
+    <details open><summary>Is Wasilah free on the App Store?</summary><p>Yes, completely. There are no ads, no subscriptions, and no in-app purchases. Wasilah is built as sadaqah jariyah, a continuing charity, so it stays free for everyone.</p></details>
+    <details><summary>Does Wasilah work offline on iPhone?</summary><p>Prayer times are calculated on your iPhone, so once your location is set they work with no internet. The Quran text, Hadith, duas, the 99 Names and the Salah and Wudu guides are all bundled and read offline. Recitation audio streams, so that part needs a connection.</p></details>
+    <details><summary>Is Wasilah only for people in Bangladesh?</summary><p>No. It is built Bangla-first for Bangladesh, but its worldwide city search covers tens of thousands of cities and handles time zones correctly. Bengali families in Saudi Arabia, the Gulf and beyond get accurate local prayer times.</p></details>
+    <details><summary>What does Wasilah do with my data?</summary><p>Nothing is collected and nothing is tracked. Your location is used on the device to compute prayer times and the Qibla, and it never leaves your iPhone. You can read the full <a href="/privacy/">privacy policy</a> any time.</p></details>
+    <details><summary>Which iPhones and iOS versions are supported?</summary><p>Wasilah runs on iOS 13 and later, in both light and dark mode, so it works on iPhones going back several years.</p></details>
+    <details><summary>I use Android. Is there a version for me?</summary><p>Yes. Wasilah is on Google Play with the same features, including home-screen widgets. See the <a href="/android">Wasilah for Android</a> page.</p></details>
+  </section>
+
+  <div class="pg-divider"></div>
+
+  <section class="pg pg-cta">
+    <h2>Bring a calmer day of worship to your iPhone.</h2>
+    <p>Free, no ads, no tracking. Download Wasilah and let it quietly keep your prayers on time.</p>
+    <div class="pg-actions">
+      <a class="store-badge" href="https://apps.apple.com/app/id6767919573" target="_blank" rel="noopener" aria-label="Download Wasilah on the App Store">
+        <img src="/App_Store.svg" alt="Download on the App Store" width="216" height="62" loading="lazy">
+      </a>
+    </div>
+  </section>
 </main>
-<script>
-  // Backup redirect in case meta refresh is blocked
-  setTimeout(function () {
-    window.location.replace("https://apps.apple.com/app/id6767919573");
-  }, 50);
-</script>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a class="footer-brand" href="/" aria-label="Wasilah home">
+      <img src="/wasilah_logo_wobg.svg" alt="Wasilah" width="144" height="32">
+    </a>
+    <p class="footer-tagline">An Islamic companion for Bangladesh, and Bengali-speaking Muslims everywhere.</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <p class="footer-nav-title">Explore</p>
+      <a href="/#features">Features</a>
+      <a href="/ios">For iPhone</a>
+      <a href="/android">For Android</a>
+      <a href="/blog/prayer-times-bangladesh/">Prayer times in Bangladesh</a>
+      <a href="/blog/zakat-bangla-taka/">Zakat in Bangladeshi Taka</a>
+      <a href="/privacy/">Privacy policy</a>
+      <a href="/terms/">Terms &amp; conditions</a>
+    </nav>
+  </div>
+  <nav class="footer-social" aria-label="Wasilah on social media">
+    <a class="footer-social-link" href="https://www.facebook.com/wasilah.site" target="_blank" rel="noopener" aria-label="Wasilah on Facebook"><svg aria-hidden="true"><use href="#icon-facebook"></use></svg></a>
+    <a class="footer-social-link" href="https://www.instagram.com/wasilah.site" target="_blank" rel="noopener" aria-label="Wasilah on Instagram"><svg aria-hidden="true"><use href="#icon-instagram"></use></svg></a>
+    <a class="footer-social-link" href="https://www.linkedin.com/company/wasilah-site" target="_blank" rel="noopener" aria-label="Wasilah on LinkedIn"><svg aria-hidden="true"><use href="#icon-linkedin"></use></svg></a>
+    <a class="footer-social-link" href="https://www.tiktok.com/@wasilah.site" target="_blank" rel="noopener" aria-label="Wasilah on TikTok"><svg aria-hidden="true"><use href="#icon-tiktok"></use></svg></a>
+  </nav>
+  <div class="footer-bottom">
+    <span>© 2026 Wasilah. All rights reserved.</span>
+    <span>Made with care for the Ummah.</span>
+    <span>A project by <a href="https://aykizintelligence.com" target="_blank" rel="noopener" style="color:inherit;text-underline-offset:2px">Aykiz Intelligence</a></span>
+  </div>
+</footer>
 </body>
 </html>
