@@ -148,14 +148,14 @@
         <h1>Privacy Policy</h1>
         <div class="legal-meta">
           <strong>Effective date:</strong> 20 May 2026<br>
-          <strong>Last updated:</strong> 2 June 2026<br>
+          <strong>Last updated:</strong> 10 June 2026<br>
           <strong>App:</strong> Wasilah · <strong>Package:</strong> site.wasilah.wasilah<br>
           <strong>Operator:</strong> Miraz Mullick (sole developer, "<em>we</em>", "<em>us</em>", "<em>our</em>")<br>
           <strong>Website:</strong> https://wasilah.site
         </div>
 
         <div class="legal-callout">
-          <p><strong>Before the legalese.</strong> I'm Miraz — I built Wasilah for my own family in Dhaka. The app has no backend of its own. There are no Wasilah servers, no Wasilah accounts, and no remote push. The short version: your location is used on your device only, and uninstalling removes everything stored on your device. Wasilah contains no advertising, analytics, or attribution SDK on either platform, and does not use your device's advertising ID. The long version that follows is the legal one Apple and Google require.</p>
+          <p><strong>Before the legalese.</strong> I'm Miraz — I built Wasilah for my own family in Dhaka. The app has no backend of its own. There are no Wasilah servers, no Wasilah accounts, and no remote push. The short version: your location is used on your device only, and uninstalling removes everything stored on your device. The Android build does include the Meta (Facebook) SDK so I can see whether the small ad campaigns I run on Meta are reaching Muslims who would actually use Wasilah; the iOS build does not include it. What that SDK sends and what it does not is detailed in section 3.6 below. The long version that follows is the legal one Apple and Google require.</p>
         </div>
 
         <h2>1. Introduction</h2>
@@ -170,10 +170,11 @@
             <tr><td>Crash and diagnostic data (Apple MetricKit)</td><td>To detect and fix bugs that crash or destabilise the app</td><td>Locally in the app's caches directory. iOS aggregates anonymous payloads on its own schedule; opt-out is available from Settings</td></tr>
             <tr><td>App preferences (e.g. bookmarks, calculation method, language, theme)</td><td>To remember your settings between launches</td><td>Locally on your device only</td></tr>
             <tr><td>Quran content cache</td><td>To let you re-open surahs you have already viewed without an internet connection</td><td>Locally on your device in a SQLite database</td></tr>
+            <tr><td>Install event, app-open event, Android Advertising ID, anonymous Meta attribution metadata (<strong>Android build only</strong>)</td><td>So Meta can attribute installs that come from Wasilah ad campaigns and measure whether those campaigns are reaching the right people</td><td>Transmitted to Meta via the Facebook SDK on Android. Not present on iOS. See section 3.6 for the exact list of fields</td></tr>
           </table>
         </div>
         <div class="legal-callout">
-          <p><strong>What we do not collect.</strong> We do not collect your name, email address, phone number, contacts, photos, payment information, or any account credentials. Wasilah does not require you to create an account. We do not show advertisements inside the app, and we do not generate or transmit any push notification token. Wasilah contains no advertising, analytics, or attribution SDK on either platform, and does not read or transmit your device's advertising ID.</p>
+          <p><strong>What we do not collect.</strong> We do not collect your name, email address, phone number, contacts, photos, payment information, or any account credentials. Wasilah does not require you to create an account. We do not show advertisements inside the app, and we do not generate or transmit any push notification token. The Android build does include the Meta SDK for app-install attribution only (no in-app event tracking, no profile building inside Wasilah); the precise scope is in section 3.6.</p>
         </div>
 
         <h2>3. Information we collect</h2>
@@ -210,8 +211,24 @@
         </ul>
         <p>Both endpoints are open public APIs that do not require an account or identifier from you.</p>
 
-        <h3>3.6 No advertising, analytics, or attribution SDKs</h3>
-        <p>Wasilah contains no advertising, analytics, or attribution SDK on either Android or iOS. The app does not read or transmit your device's advertising ID, does not track installs or app-open events, and does not send any data to Meta, Google Analytics, Firebase, or any comparable service. Earlier Android builds briefly included Meta's <code>facebook_app_events</code> package for ad-campaign install attribution; it has been removed, and no equivalent has replaced it.</p>
+        <h3>3.6 Meta (Facebook) SDK for app-install attribution (Android only)</h3>
+        <p>The Android build of Wasilah includes the Meta SDK, specifically the native <code>facebook-core</code> Android library. <strong>The iOS build does not include it</strong> &mdash; the SDK is linked directly into the Android app rather than through a cross-platform plugin, precisely so nothing Meta-related ships on iOS. The SDK exists in the Android app for one purpose: so Meta can attribute installs that come from Wasilah ad campaigns and so I can measure whether those campaigns are reaching Muslims who actually open the app.</p>
+        <p><strong>What the SDK sends to Meta on Android:</strong></p>
+        <ul>
+          <li>The fact that you installed Wasilah, fired once when the SDK initialises after install.</li>
+          <li>The fact that you opened Wasilah, logged automatically by the SDK as an app-activation event each time the app launches or returns to the foreground.</li>
+          <li>Your Android Advertising ID, if the operating system supplies one and you have not opted out. Meta uses this for attribution and ad measurement.</li>
+          <li>Anonymous device and SDK metadata that Meta uses for attribution: device model, OS version, app version, locale, and an anonymous Meta-side attribution identifier.</li>
+        </ul>
+        <p><strong>What the SDK does not send to Meta:</strong></p>
+        <ul>
+          <li>Your name, email, phone number, or account information. Wasilah does not collect any of these in the first place.</li>
+          <li>Your device location, latitude, longitude, or city.</li>
+          <li>Anything from your prayer tracker, bookmarks, Quran reading history, dhikr counts, or app settings.</li>
+          <li>Any in-app events beyond install and app-open. The app code does not call the SDK for any prayer, Quran, tracker, or settings action.</li>
+        </ul>
+        <p>You can opt out of the Android Advertising ID at any time. Go to <strong>Android Settings &rarr; Privacy &rarr; Ads</strong> (or <strong>Settings &rarr; Google &rarr; Ads</strong> on some devices) and select "Delete advertising ID." After that the Meta SDK can still see the install and app-open events but cannot tie them to an identifier Meta can match across other apps.</p>
+        <p>Meta's processing of the data described above is governed by <a href="https://www.facebook.com/privacy/policy/">Meta's Privacy Policy</a>. The Meta App ID associated with this integration is <code>2554090355008071</code>.</p>
 
         <h2>4. How we use your information</h2>
         <ul>
@@ -219,9 +236,10 @@
           <li>To fetch and stream Quran text, translation, and recitation audio</li>
           <li>To schedule prayer-time reminders and other local notifications you have opted into</li>
           <li>To detect, diagnose, and fix bugs and crashes via Apple MetricKit (opt-out)</li>
+          <li>To measure, on the Android build only, whether ad campaigns we run on Meta result in installs that actually open the app (install + app-open events via the Meta SDK; see section 3.6)</li>
           <li>To comply with legal obligations</li>
         </ul>
-        <p>Wasilah does not show advertisements inside the app, contains no advertising or attribution SDK, and does not use your in-app data (location, prayer tracker, bookmarks, Quran activity, dhikr counts) for advertising or marketing.</p>
+        <p>Wasilah does not show advertisements inside the app. The Meta SDK on Android is used only for install attribution as described in section 3.6, not to serve ads to you and not to profile your in-app behaviour. We do not use your in-app data (location, prayer tracker, bookmarks, Quran activity, dhikr counts) for advertising or marketing.</p>
 
         <h2>5. Legal bases for processing</h2>
         <p>For users in the EEA, UK, and similar jurisdictions:</p>
@@ -238,6 +256,7 @@
             <tr><th>Recipient</th><th>Role</th><th>Region</th></tr>
             <tr><td>AlQuran.cloud</td><td>Quran text and translation</td><td>Operated globally</td></tr>
             <tr><td>islamic.network</td><td>Quran audio streaming</td><td>Operated globally</td></tr>
+            <tr><td>Meta Platforms, Inc. (Facebook)</td><td>App-install attribution and ad measurement, <strong>Android build only</strong> (see section 3.6)</td><td>United States; operated globally</td></tr>
           </table>
         </div>
         <p>We may also disclose data if required to do so by law, regulation, or court order, or to protect the rights, property, or safety of users or the public.</p>
@@ -281,6 +300,7 @@
             <tr><td>Schedule exact alarms / Use exact alarms</td><td>Trigger prayer-time notifications at the precise time computed for your location</td></tr>
             <tr><td>Receive boot completed</td><td>Re-arm scheduled prayer notifications after the device restarts</td></tr>
             <tr><td>Vibrate, wake lock</td><td>Subtle haptic feedback and brief screen wake on notifications</td></tr>
+            <tr><td>Use advertising ID (Android <code>com.google.android.gms.permission.AD_ID</code>)</td><td>Read by the Meta SDK on Android only, for app-install attribution (see section 3.6). You can revoke it at any time from Android Settings &rarr; Privacy &rarr; Ads. iOS does not request this permission.</td></tr>
           </table>
         </div>
 
