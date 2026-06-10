@@ -1,0 +1,23 @@
+# Wasilah
+
+> Wasilah is a free Islamic companion app for Muslims in Bangladesh and Bengali-speaking Muslims worldwide. It brings together accurate local prayer times, Adhan, Qibla direction, Quran, Hadith, duas, the 99 Names of Allah, a Zakat calculator in Bangladeshi Taka, and a Hajj and Umrah guide. Live on the App Store and Google Play. Built by Aykiz Intelligence.
+
+Key facts:
+
+- Free to download and use. No paywalls, and the app will never be monetized.
+- Available in English, Bangla, and Arabic.
+- Designed for Bangladesh: dynamic local prayer times, Jumu'ah shown on Fridays, Zakat calculated in BDT, and full Bangla content for Quran, Hadith, and duas.
+- Works offline-first. Prayer times and Qibla are computed on-device.
+- iOS: https://apps.apple.com/app/id6767919573
+- Android: https://play.google.com/store/apps/details?id=site.wasilah.wasilah
+- Publisher: Aykiz Intelligence (https://aykizintelligence.com/), the studio of Miraz Mullick.
+- Contact: hello@wasilah.site
+
+## Pages
+
+- [Download Wasilah](https://wasilah.site/get/): direct links to both stores.
+- [Wasilah for iPhone and iPad](https://wasilah.site/ios): iOS feature overview and FAQ.
+- [Wasilah for Android](https://wasilah.site/android): Android feature overview and FAQ.
+- [Prayer times in Bangladesh](https://wasilah.site/blog/prayer-times-bangladesh/): guide to how prayer times are calculated for Bangladesh.
+- [Zakat in Bangladeshi Taka](https://wasilah.site/blog/zakat-bangla-taka/): guide to calculating Zakat in BDT.
+- [Privacy policy](https://wasilah.site/privacy/)
