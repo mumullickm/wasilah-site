@@ -16,8 +16,8 @@ Key facts:
 ## Pages
 
 - [Download Wasilah](https://wasilah.site/get/): direct links to both stores.
-- [Wasilah for iPhone and iPad](https://wasilah.site/ios): iOS feature overview and FAQ.
-- [Wasilah for Android](https://wasilah.site/android): Android feature overview and FAQ.
+- [Wasilah for iPhone and iPad](https://wasilah.site/ios/): iOS feature overview and FAQ.
+- [Wasilah for Android](https://wasilah.site/android/): Android feature overview and FAQ.
 - [Prayer times in Bangladesh](https://wasilah.site/blog/prayer-times-bangladesh/): guide to how prayer times are calculated for Bangladesh.
 - [Zakat in Bangladeshi Taka](https://wasilah.site/blog/zakat-bangla-taka/): guide to calculating Zakat in BDT.
 - [Privacy policy](https://wasilah.site/privacy/)
