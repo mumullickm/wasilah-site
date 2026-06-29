@@ -11,7 +11,7 @@ Key facts:
 - iOS: https://apps.apple.com/app/id6767919573
 - Android: https://play.google.com/store/apps/details?id=site.wasilah.wasilah
 - Publisher: Aykiz Intelligence (https://aykizintelligence.com/), the studio of Miraz Mullick.
-- Contact: hello@wasilah.site
+- Contact: hello@wasilah.site (general and support), privacy@wasilah.site (privacy), legal@wasilah.site (legal).
 
 ## Pages
 
@@ -21,3 +21,33 @@ Key facts:
 - [Prayer times in Bangladesh](https://wasilah.site/blog/prayer-times-bangladesh/): guide to how prayer times are calculated for Bangladesh.
 - [Zakat in Bangladeshi Taka](https://wasilah.site/blog/zakat-bangla-taka/): guide to calculating Zakat in BDT.
 - [Privacy policy](https://wasilah.site/privacy/)
+
+## Social
+
+- Facebook: https://www.facebook.com/wasilah.site
+- Instagram: https://www.instagram.com/wasilah.site
+- LinkedIn: https://www.linkedin.com/company/wasilah-site
+- TikTok: https://www.tiktok.com/@wasilah.site
+
+## FAQ
+
+Q: Is Wasilah free?
+A: Yes. Wasilah is free to download and use, with no ads in the prayer or Quran experience, and it will never be monetized.
+
+Q: What does Wasilah include?
+A: Accurate local prayer times, Adhan, Qibla direction, the full Quran, Hadith, duas, the 99 Names of Allah, a Zakat calculator in Bangladeshi Taka (BDT), and a Hajj and Umrah guide.
+
+Q: What languages does Wasilah support?
+A: English, Bangla, and Arabic, with full Bangla content for Quran, Hadith, and duas.
+
+Q: Who is Wasilah for?
+A: Muslims in Bangladesh and Bengali-speaking Muslims worldwide. It is designed for Bangladesh, with dynamic local prayer times, Jumu'ah shown on Fridays, and Zakat in BDT.
+
+Q: Does Wasilah work offline?
+A: Yes. Prayer times and Qibla are computed on-device and work offline once your location is set; Quran, Hadith, duas, the 99 Names, and the guides are bundled in the app. Audio recitation streams, so that part needs a connection.
+
+Q: What data does Wasilah collect?
+A: Wasilah does not collect personal data and does not track you. Your location is used on-device to compute prayer times and Qibla and is not sent anywhere. See https://wasilah.site/privacy/.
+
+Q: How do I download Wasilah?
+A: Free on the App Store (https://apps.apple.com/app/id6767919573) and Google Play (https://play.google.com/store/apps/details?id=site.wasilah.wasilah), or via https://wasilah.site/get/.

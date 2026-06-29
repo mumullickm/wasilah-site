@@ -46,6 +46,21 @@
       .legal-step { background: rgba(255, 255, 255, 0.04); border-radius: 10px; padding: 22px 26px; margin: 14px 0; border: 1px solid rgba(255, 255, 255, 0.08); }
       .legal-step h3 { margin-top: 0; }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to delete your Wasilah data",
+      "description": "Wasilah stores everything on-device and operates no backend. To delete all data Wasilah holds about you, uninstall the app.",
+      "inLanguage": "en",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Uninstall the app", "text": "Long-press the Wasilah icon and choose Remove App then Delete App (iOS) or Uninstall (Android). This removes the app sandbox, which contains every piece of data the app stored." },
+        { "@type": "HowToStep", "position": 2, "name": "Opt out of MetricKit (iOS only, optional)", "text": "Before uninstalling, open Settings then Diagnostics then Crash reports in the app and toggle it off to stop new diagnostic payloads. MetricKit data lives only in the app sandbox and is removed on uninstall." },
+        { "@type": "HowToStep", "position": 3, "name": "Network-provider records", "text": "Quran text and translation (AlQuran.cloud) and recitation audio (islamic.network) are third-party services with their own records; see their terms." }
+      ],
+      "publisher": { "@type": "Organization", "name": "Aykiz Intelligence", "url": "https://aykizintelligence.com/" }
+    }
+    </script>
   </head>
   <body>
     <main class="legal-page">
