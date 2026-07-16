@@ -20,6 +20,12 @@ Key facts:
 - [Wasilah for Android](https://wasilah.site/android/): Android feature overview and FAQ.
 - [Prayer times in Bangladesh](https://wasilah.site/blog/prayer-times-bangladesh/): guide to how prayer times are calculated for Bangladesh.
 - [Zakat in Bangladeshi Taka](https://wasilah.site/blog/zakat-bangla-taka/): guide to calculating Zakat in BDT.
+- [Tahajjud prayer guide (Bangla)](https://wasilah.site/blog/tahajjud-namaz-niyom/): how and when to pray Tahajjud, in Bangla.
+- [Istikhara prayer and dua (Bangla)](https://wasilah.site/blog/istikhara-namaz-niyom/): how to perform Salatul Istikhara, in Bangla.
+- [Ayatul Kursi virtues (Bangla)](https://wasilah.site/blog/ayatul-kursi-fazilat/): meaning, virtues and daily practice of Ayatul Kursi, in Bangla.
+- [Jumu'ah day deeds (Bangla)](https://wasilah.site/blog/jumar-diner-amol/): Sunnah acts and virtues of Friday, in Bangla.
+- [Learn salah for beginners (Bangla)](https://wasilah.site/blog/namaz-shikhar-niyom/): step-by-step guide to learning the prayer, in Bangla.
+- [Darood Sharif virtues (Bangla)](https://wasilah.site/blog/darood-sharif-fazilat/): virtues and etiquette of sending salawat, in Bangla.
 - [Privacy policy](https://wasilah.site/privacy/)
 
 ## Social
