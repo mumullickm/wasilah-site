@@ -10,7 +10,13 @@
   "theme_color": "#004B49",
   "lang": "en-BD",
   "dir": "ltr",
-  "categories": ["lifestyle", "education", "religion", "books", "reference"],
+  "categories": [
+    "lifestyle",
+    "education",
+    "religion",
+    "books",
+    "reference"
+  ],
   "icons": [
     {
       "src": "wasilah_icon_wobg.svg",
@@ -40,6 +46,19 @@
       "name": "99 Names of Allah",
       "short_name": "99 Names",
       "url": "/#names-segment"
+    }
+  ],
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "site.wasilah.wasilah",
+      "url": "https://play.google.com/store/apps/details?id=site.wasilah.wasilah"
+    },
+    {
+      "platform": "itunes",
+      "id": "6767919573",
+      "url": "https://apps.apple.com/app/id6767919573"
     }
   ]
 }
