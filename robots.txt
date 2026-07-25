@@ -39,5 +39,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /_
 
 Sitemap: https://wasilah.site/sitemap.xml

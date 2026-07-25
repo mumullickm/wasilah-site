@@ -1,6 +1,6 @@
 # Wasilah
 
-> Wasilah is a free Islamic companion app for Muslims in Bangladesh and Bengali-speaking Muslims worldwide. It brings together accurate local prayer times, Adhan, Qibla direction, Quran, Hadith, duas, the 99 Names of Allah, a Zakat calculator in Bangladeshi Taka, and a Hajj and Umrah guide. Live on the App Store and Google Play. Built by Aykiz Intelligence.
+> Wasilah is a free Islamic companion app for Muslims in Bangladesh and Bengali-speaking Muslims worldwide. It brings together accurate local prayer times, Adhan, Qibla direction, step-by-step Salah and Wudu guides, Quran, Hadith, duas, the 99 Names of Allah, a Zakat calculator in Bangladeshi Taka, a Hajj and Umrah guide, and Wasilah Deen Intelligence. Live on the App Store and Google Play. Built by Aykiz Intelligence.
 
 Key facts:
 
@@ -8,6 +8,9 @@ Key facts:
 - Available in English, Bangla, and Arabic.
 - Designed for Bangladesh: dynamic local prayer times, Jumu'ah shown on Fridays, Zakat calculated in BDT, and full Bangla content for Quran, Hadith, and duas.
 - Works offline-first. Prayer times and Qibla are computed on-device.
+- Teaches worship, not just times: a step-by-step Salah guide covering the full method of all five daily prayers and Witr, plus Sajdah Sahw, and a step-by-step Wudu guide covering the four Fard actions in the Hanafi method. Both in Bangla, Arabic and English.
+- Wasilah Deen Intelligence: ask about salah, fasting, duas, the Quran or daily practice and get answers with references to the source. Questions that need a personal ruling are not guessed at, they are pointed to a qualified scholar. Three questions a day, free for everyone, funded by the publisher rather than by ads. It is one of only two parts of the app that need an internet connection, the other being Quran recitation audio, which streams.
+- Also includes an Apple Watch companion, Ramadan and Hijri calendar, and sehri and iftar times.
 - iOS: https://apps.apple.com/app/id6767919573
 - Android: https://play.google.com/store/apps/details?id=site.wasilah.wasilah
 - Publisher: Aykiz Intelligence (https://aykizintelligence.com/), the studio of Miraz Mullick.
@@ -15,8 +18,10 @@ Key facts:
 
 ## Pages
 
+- [Wasilah](https://wasilah.site/): the English homepage. What the app does, the Salah and Wudu guides, Deen Intelligence, and why it is built for Bangladesh.
+- [Wasilah in Bangla](https://wasilah.site/bn/): the Bangla homepage, ওয়াসিলাহ. Full Bangla overview of prayer times, Quran, Hadith, Zakat and Deen Intelligence.
 - [Download Wasilah](https://wasilah.site/get/): direct links to both stores.
-- [Wasilah for iPhone and iPad](https://wasilah.site/ios/): iOS feature overview and FAQ.
+- [Wasilah for iPhone](https://wasilah.site/ios/): iOS feature overview and FAQ.
 - [Wasilah for Android](https://wasilah.site/android/): Android feature overview and FAQ.
 - [Islamic guides hub (Bangla)](https://wasilah.site/blog/): all Bangla guides on salah, dua and zakat in one place.
 - [Prayer times in Bangladesh](https://wasilah.site/blog/prayer-times-bangladesh/): guide to how prayer times are calculated for Bangladesh.
@@ -27,7 +32,9 @@ Key facts:
 - [Jumu'ah day deeds (Bangla)](https://wasilah.site/blog/jumar-diner-amol/): Sunnah acts and virtues of Friday, in Bangla.
 - [Learn salah for beginners (Bangla)](https://wasilah.site/blog/namaz-shikhar-niyom/): step-by-step guide to learning the prayer, in Bangla.
 - [Darood Sharif virtues (Bangla)](https://wasilah.site/blog/darood-sharif-fazilat/): virtues and etiquette of sending salawat, in Bangla.
-- [Privacy policy](https://wasilah.site/privacy/)
+- [Privacy policy](https://wasilah.site/privacy/): what is collected, what is not, and the Meta SDK on the Android build.
+- [Terms and conditions](https://wasilah.site/terms/)
+- [Delete your data](https://wasilah.site/delete-data/): how to remove everything the app stores.
 
 ## Social
 
@@ -39,7 +46,7 @@ Key facts:
 ## FAQ
 
 Q: Is Wasilah free?
-A: Yes. Wasilah is free to download and use, with no ads in the prayer or Quran experience, and it will never be monetized.
+A: Yes. Wasilah is free to download and use, with no ads anywhere in the app, no sign-up and no paywall, and it will never be monetized.
 
 Q: What does Wasilah include?
 A: Accurate local prayer times, Adhan, Qibla direction, the full Quran, Hadith, duas, the 99 Names of Allah, a Zakat calculator in Bangladeshi Taka (BDT), and a Hajj and Umrah guide.
@@ -54,7 +61,7 @@ Q: Does Wasilah work offline?
 A: Yes. Prayer times and Qibla are computed on-device and work offline once your location is set; Quran, Hadith, duas, the 99 Names, and the guides are bundled in the app. Audio recitation streams, so that part needs a connection.
 
 Q: What data does Wasilah collect?
-A: Wasilah does not collect personal data and does not track you. Your location is used on-device to compute prayer times and Qibla and is not sent anywhere. See https://wasilah.site/privacy/.
+A: Nothing about your worship is collected. Your location is used on-device to compute prayer times and Qibla and is not sent anywhere. The iPhone build carries no third-party SDK; the Android build sends Meta an install and app-open signal for ad attribution and nothing else. See https://wasilah.site/privacy/.
 
 Q: How do I download Wasilah?
 A: Free on the App Store (https://apps.apple.com/app/id6767919573) and Google Play (https://play.google.com/store/apps/details?id=site.wasilah.wasilah), or via https://wasilah.site/get/.

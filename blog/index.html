@@ -35,7 +35,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/site.css?v=iphone17pm-20260525d" />
+    <link rel="stylesheet" href="/site.css?v=rebuild-20260725" />
 
     <script type="application/ld+json">
     {
@@ -46,7 +46,7 @@
       "description": "নামাজ, দোয়া, যাকাত ও আমল নিয়ে সহজ বাংলায় নির্ভরযোগ্য ইসলামিক গাইড।",
       "inLanguage": "bn-BD",
       "isPartOf": {"@type": "WebSite", "name": "Wasilah", "url": "https://wasilah.site/"},
-      "publisher": {"@type": "Organization", "name": "Wasilah", "logo": {"@type": "ImageObject", "url": "https://wasilah.site/wasilah_icon.png"}},
+      "publisher": {"@id": "https://wasilah.site/#organization"},
       "mainEntity": {
         "@type": "ItemList",
         "itemListElement": [
@@ -89,6 +89,16 @@
       .hub-cta .cta-row a { display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px; background: var(--gold); color: var(--emerald-900); font-weight: 700; border-radius: var(--r-pill); transition: background .2s, transform .2s; }
       .hub-cta .cta-row a:hover { background: var(--gold-bright); transform: translateY(-1px); }
     </style>
+      <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://wasilah.site/#organization",
+      "name": "Wasilah",
+      "url": "https://wasilah.site/",
+      "logo": {"@type": "ImageObject", "url": "https://wasilah.site/wasilah_icon.png"}
+    }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#guides">মূল লেখায় যান</a>
@@ -99,7 +109,7 @@
         <img class="brand-logotype" src="/wasilah_logo_wobg.svg" alt="Wasilah" width="150" height="33">
       </a>
       <div class="header-actions">
-        <a class="header-cta" href="/android/" target="_blank" rel="noopener">অ্যাপ নিন</a>
+        <a class="header-cta" href="/get/" rel="noopener">অ্যাপ নিন</a>
       </div>
     </header>
 

@@ -12,3 +12,7 @@ wasilah_logo.svg
 node_modules/
 .env
 Wasilah_offline.html
+
+# Local render/probe/measurement scratch files. Never deployed.
+_*
+*/_*

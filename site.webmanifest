@@ -33,19 +33,19 @@
   ],
   "shortcuts": [
     {
-      "name": "Prayer times",
-      "short_name": "Salah",
-      "url": "/#salah-segment"
+      "name": "Get the app",
+      "short_name": "Get",
+      "url": "/get/"
     },
     {
-      "name": "Quran",
-      "short_name": "Quran",
-      "url": "/#quran-segment"
+      "name": "What you get",
+      "short_name": "Features",
+      "url": "/#features"
     },
     {
-      "name": "99 Names of Allah",
-      "short_name": "99 Names",
-      "url": "/#names-segment"
+      "name": "Wasilah in Bangla",
+      "short_name": "বাংলা",
+      "url": "/bn/"
     }
   ],
   "prefer_related_applications": true,

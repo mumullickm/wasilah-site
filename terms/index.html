@@ -5,20 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6767919573">
 <link rel="manifest" href="/site.webmanifest">
-    <title>Terms and Conditions — Wasilah</title>
+    <title>Terms and Conditions: Wasilah</title>
     <meta name="description" content="Wasilah's terms and conditions: how the app may be used, religious-content disclaimers, third-party services, intellectual property, and liability limits.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#004B49">
     <link rel="canonical" href="https://wasilah.site/terms/">
     <link rel="icon" href="/wasilah_icon_wobg.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/wasilah_icon.png">
-    <meta property="og:title" content="Terms and Conditions — Wasilah">
+    <meta property="og:title" content="Terms and Conditions, Wasilah">
     <meta property="og:description" content="The terms governing your use of the Wasilah app.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://wasilah.site/terms/">
-    <meta property="og:image" content="https://wasilah.site/Slider.png">
-    <link rel="stylesheet" href="/styles.css?v=trim-20260504">
+    <meta property="og:image" content="https://wasilah.site/og-wasilah.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Wasilah, a free Islamic companion app for Bangladesh.">
+    <link rel="stylesheet" href="/site.css?v=rebuild-20260725">
     <style>
+      /* Ported from the retired legacy sheet: these two tokens were the only
+         things these pages still needed from it. Mapped onto the site palette. */
+      .legal-page { --muted: var(--ink-dim); --gold-mid: var(--gold-bright); }
+      /* the old sheet made the header position:fixed; there is no header here */
+      .legal-page { padding: 72px 0 100px; }
+
       .legal-page { padding: 140px 0 120px; }
       .legal-shell {
         max-width: 760px;
@@ -34,10 +43,10 @@
         margin: 0 0 14px;
       }
       .legal-shell h1 {
-        font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+        font-family: var(--font);
         font-size: clamp(40px, 5vw, 56px);
         line-height: 1.05;
-        font-weight: 500;
+        font-weight: 700;
         color: #fff;
         margin: 0 0 18px;
         letter-spacing: -0.01em;
@@ -52,10 +61,10 @@
       }
       .legal-meta strong { color: #fff; font-weight: 600; }
       .legal-shell h2 {
-        font-family: "Cormorant Garamond", Georgia, serif;
+        font-family: var(--font);
         font-size: 26px;
         line-height: 1.2;
-        font-weight: 500;
+        font-weight: 700;
         color: var(--gold-mid);
         margin: 56px 0 14px;
         letter-spacing: -0.005em;
@@ -109,7 +118,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "Terms and Conditions — Wasilah",
+      "headline": "Terms and Conditions, Wasilah",
       "description": "Wasilah's terms and conditions: how the app may be used, religious-content disclaimers, third-party services, intellectual property, and liability limits.",
       "inLanguage": "en",
       "datePublished": "2026-05-20",

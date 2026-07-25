@@ -5,27 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6767919573">
 <link rel="manifest" href="/site.webmanifest">
-    <title>Request data deletion — Wasilah</title>
+    <title>Request data deletion: Wasilah</title>
     <meta name="description" content="How to delete any data Wasilah holds about you. Wasilah is privacy-first; everything is stored on-device and removes when you uninstall the app.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#004B49">
     <link rel="canonical" href="https://wasilah.site/delete-data/">
     <link rel="icon" href="/wasilah_icon_wobg.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/wasilah_icon.png">
-    <meta property="og:title" content="Request data deletion — Wasilah">
+    <meta property="og:title" content="Request data deletion, Wasilah">
     <meta property="og:description" content="How to delete any data Wasilah holds about you.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://wasilah.site/delete-data/">
-    <meta property="og:image" content="https://wasilah.site/Slider.png">
-    <link rel="stylesheet" href="/styles.css?v=trim-20260504">
+    <meta property="og:image" content="https://wasilah.site/og-wasilah.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Wasilah, a free Islamic companion app for Bangladesh.">
+    <link rel="stylesheet" href="/site.css?v=rebuild-20260725">
     <style>
+      /* Ported from the retired legacy sheet: these two tokens were the only
+         things these pages still needed from it. Mapped onto the site palette. */
+      .legal-page { --muted: var(--ink-dim); --gold-mid: var(--gold-bright); }
+      /* the old sheet made the header position:fixed; there is no header here */
+      .legal-page { padding: 72px 0 100px; }
+
       .legal-page { padding: 140px 0 120px; }
       .legal-shell { max-width: 760px; margin: 0 auto; padding: 0 max(20px, 4vw); }
       .legal-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-mid); font-weight: 600; margin: 0 0 14px; }
-      .legal-shell h1 { font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif; font-size: clamp(40px, 5vw, 56px); line-height: 1.05; font-weight: 500; color: #fff; margin: 0 0 18px; letter-spacing: -0.01em; }
+      .legal-shell h1 { font-family: var(--font); font-size: clamp(40px, 5vw, 56px); line-height: 1.05; font-weight: 700; color: #fff; margin: 0 0 18px; letter-spacing: -0.01em; }
       .legal-meta { color: var(--muted); font-size: 14.5px; line-height: 1.7; border-left: 2px solid var(--gold); padding: 6px 0 6px 16px; margin: 0 0 48px; }
       .legal-meta strong { color: #fff; font-weight: 600; }
-      .legal-shell h2 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 26px; line-height: 1.2; font-weight: 500; color: var(--gold-mid); margin: 56px 0 14px; letter-spacing: -0.005em; }
+      .legal-shell h2 { font-family: var(--font); font-size: 26px; line-height: 1.2; font-weight: 700; color: var(--gold-mid); margin: 56px 0 14px; letter-spacing: -0.005em; }
       .legal-shell h3 { font-size: 17px; font-weight: 600; color: #fff; margin: 28px 0 10px; }
       .legal-shell p, .legal-shell li { color: rgba(255, 255, 255, 0.86); font-size: 16px; line-height: 1.75; }
       .legal-shell p { margin: 0 0 16px; }
@@ -80,7 +89,7 @@
 
         <div class="legal-callout">
           <p><strong>The fastest method: uninstall the app.</strong></p>
-          <p>As of version 1.1.0, all data the app remembers — preferences, bookmarks, downloaded Quran audio cache, cached prayer-time inputs, locally-stored crash diagnostics — lives in your device's app sandbox. Uninstalling Wasilah removes the sandbox and with it every byte of that data. There is no server-side profile to clean up.</p>
+          <p>As of version 1.1.0, all data the app remembers, preferences, bookmarks, downloaded Quran audio cache, cached prayer-time inputs, locally-stored crash diagnostics, lives in your device's app sandbox. Uninstalling Wasilah removes the sandbox and with it every byte of that data. There is no server-side profile to clean up.</p>
         </div>
 
         <h2>What we hold and where it lives</h2>
@@ -95,24 +104,24 @@
         </div>
         <p>We do <strong>not</strong> hold names, email addresses, phone numbers, contacts, photos, payment information, push notification tokens, or any account credentials. Wasilah does not connect to any backend service that we operate.</p>
 
-        <h2>How to delete — step by step</h2>
+        <h2>How to delete: step by step</h2>
 
         <div class="legal-step">
-          <h3>Step 1 — Uninstall the app</h3>
+          <h3>Step 1, Uninstall the app</h3>
           <p>Long-press the Wasilah icon on your home screen and choose <strong>Remove App &rarr; Delete App</strong> (iOS) or <strong>Uninstall</strong> (Android). This removes the app's sandbox, which contains every piece of data the app ever stored about your usage.</p>
         </div>
 
         <div class="legal-step">
-          <h3>Step 2 — (iOS only, optional) opt out of MetricKit before uninstall</h3>
+          <h3>Step 2, (iOS only, optional) opt out of MetricKit before uninstall</h3>
           <p>If you want to stop new diagnostic payloads from being collected before you uninstall, open <strong>Settings &rarr; Diagnostics &rarr; Crash reports</strong> in the app and toggle it off. MetricKit is Apple's first-party telemetry framework and runs at the operating-system level; data it collects is stored only inside the app's sandbox and is removed when you uninstall.</p>
         </div>
 
         <div class="legal-step">
-          <h3>Step 3 — Network-provider records (out of our hands)</h3>
+          <h3>Step 3, Network-provider records (out of our hands)</h3>
           <p>The app makes HTTPS requests to two third-party providers whose own server logs may briefly record your IP address according to their privacy policies:</p>
           <ul>
-            <li><strong>AlQuran.cloud</strong> — for Quran text and translation. See <a href="https://alquran.cloud/terms-and-conditions">alquran.cloud/terms-and-conditions</a>.</li>
-            <li><strong>islamic.network</strong> — for Quran recitation audio.</li>
+            <li><strong>AlQuran.cloud</strong>, for Quran text and translation. See <a href="https://alquran.cloud/terms-and-conditions">alquran.cloud/terms-and-conditions</a>.</li>
+            <li><strong>islamic.network</strong>, for Quran recitation audio.</li>
           </ul>
           <p>We do not control these logs and we do not receive a copy of them. To request deletion of any record those providers may hold, contact them directly via the links above.</p>
         </div>

@@ -13,14 +13,16 @@
 <meta name="apple-itunes-app" content="app-id=6767919573">
 <link rel="manifest" href="/site.webmanifest">
 <title>Wasilah for iPhone - Prayer Times, Quran &amp; Qibla in Bangla on the App Store</title>
-<meta name="description" content="Wasilah on the App Store: accurate Bangladesh prayer times, the full Quran with Bangla translation, Hadith, Qibla, Zakat and duas. Designed for iPhone. Free, no ads, no tracking, works offline.">
+<meta name="description" content="Wasilah on the App Store: accurate Bangladesh prayer times, the full Quran with Bangla translation, Hadith, Qibla, Zakat and duas. Designed for iPhone. Free, no ads, no sign-up, works offline.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#004B49">
 
+<link rel="alternate" href="https://wasilah.site/ios/" hreflang="en">
 <link rel="canonical" href="https://wasilah.site/ios/">
 
 <meta property="og:title" content="Wasilah for iPhone - Islamic prayer times, Quran and Qibla in Bangla">
 <meta property="og:description" content="Accurate Bangladesh prayer times, the full Quran with Bangla translation, Hadith, Qibla, Zakat and duas. Designed for iPhone. Free, no ads, works offline.">
+<meta property="og:locale" content="en_BD">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://wasilah.site/ios/">
 <meta property="og:site_name" content="Wasilah">
@@ -36,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600&family=Amiri&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/site.css?v=rebuild-20260725">
 
 <style>
   .pg { max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); }
@@ -131,35 +133,97 @@
       "name": "Wasilah",
       "operatingSystem": "iOS 13.0 or later",
       "applicationCategory": "LifestyleApplication",
-      "description": "Wasilah is a Bangla-first Islamic companion for iPhone: accurate Bangladesh prayer times, the full Quran with Bangla and English translation, Hadith, Qibla, a Zakat calculator in Taka, and daily duas. Free, no ads, no tracking, works offline.",
+      "description": "Wasilah is a Bangla-first Islamic companion for iPhone: accurate Bangladesh prayer times, the full Quran with Bangla and English translation, Hadith, Qibla, a Zakat calculator in Taka, and daily duas. Free, no ads, no sign-up, works offline.",
       "url": "https://apps.apple.com/app/id6767919573",
       "downloadUrl": "https://apps.apple.com/app/id6767919573",
-      "inLanguage": ["bn", "ar", "en"],
+      "inLanguage": [
+        "bn",
+        "ar",
+        "en"
+      ],
       "image": "https://wasilah.site/og-wasilah.jpg",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" },
-      "publisher": { "@type": "Organization", "name": "Aykiz Intelligence", "url": "https://aykizintelligence.com" }
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BDT"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aykiz Intelligence",
+        "url": "https://aykizintelligence.com"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Wasilah", "item": "https://wasilah.site/" },
-        { "@type": "ListItem", "position": 2, "name": "Wasilah for iPhone", "item": "https://wasilah.site/ios/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Wasilah",
+          "item": "https://wasilah.site/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Wasilah for iPhone",
+          "item": "https://wasilah.site/ios/"
+        }
       ]
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "Is Wasilah free on the App Store?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Wasilah is completely free on the App Store. There are no ads, no subscriptions, and no in-app purchases. It is built as sadaqah jariyah, a continuing charity, so it stays free." } },
-        { "@type": "Question", "name": "Does Wasilah work offline on iPhone?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Prayer times are calculated on your iPhone, so they work with no internet once your location is set. The Quran, Hadith, duas, 99 Names and the Salah and Wudu guides are bundled in the app and read offline. Audio recitation streams, so that part needs a connection." } },
-        { "@type": "Question", "name": "Is Wasilah only for Bangladesh?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Wasilah is built Bangla-first for Muslims in Bangladesh, but it has worldwide city search covering tens of thousands of cities, so Bengali families in Saudi Arabia, the Gulf and beyond get correct local prayer times too." } },
-        { "@type": "Question", "name": "What data does Wasilah collect?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Wasilah does not collect personal data and does not track you. Your location is used on-device to compute prayer times and Qibla, and is not sent to us. See the privacy policy at wasilah.site/privacy." } },
-        { "@type": "Question", "name": "Which iPhones does Wasilah support?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Wasilah is designed for iPhone and runs on iOS 13 and later, in both light and dark mode." } }
-      ]
+        {
+          "@type": "Question",
+          "name": "Does Wasilah work offline on iPhone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prayer times are calculated on your iPhone, so once your location is set they work with no internet. The Quran text, Hadith, duas, the 99 Names and the Salah and Wudu guides are all bundled and read offline. Recitation audio streams, so that part needs a connection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Wasilah only for people in Bangladesh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is built Bangla-first for Bangladesh, but its worldwide city search covers tens of thousands of cities and handles time zones correctly. Bengali families in Saudi Arabia, the Gulf and beyond get accurate local prayer times."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Wasilah Deen Intelligence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It answers questions about salah, fasting, duas, the Quran and daily practice, with references to where the answer comes from. When a question needs a personal ruling it does not guess, it points you to a qualified scholar. Three questions a day, free for everyone. It needs an internet connection, unlike almost everything else in the app."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Wasilah do with my data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nothing about your worship is collected. Your location is used on the device to compute prayer times and the Qibla, and it never leaves your iPhone. The iPhone build carries no third-party SDK. You can read the full privacy policy any time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which iPhones and iOS versions are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wasilah runs on iOS 13 and later, in both light and dark mode, so it works on iPhones going back several years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I use Android. Is there a version for me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Wasilah is on Google Play with the same features, including home-screen widgets. See the Wasilah for Android page."
+          }
+        }
+      ],
+      "@id": "https://wasilah.site/ios/#faq",
+      "inLanguage": "en"
     }
   ]
 }
@@ -183,8 +247,8 @@
   </a>
   <div class="header-actions">
     <nav class="header-nav" aria-label="Wasilah sections">
-      <a href="/#features">Features</a>
-      <a href="/#screens">Screens</a>
+      <a href="/#features">What you get</a>
+      <a href="/#deen-intelligence">Deen Intelligence</a>
       <a href="/android/">For Android</a>
       <a href="/#faq">FAQ</a>
     </nav>
@@ -211,12 +275,12 @@
       <div class="pg-meta">
         <span class="pg-pill">Free forever</span>
         <span class="pg-pill">No ads</span>
-        <span class="pg-pill">No tracking</span>
+        <span class="pg-pill">No sign-up</span>
         <span class="pg-pill">Works offline</span>
       </div>
     </div>
     <div class="pg-device">
-      <img src="/shots/home.jpg" alt="Wasilah home screen on iPhone showing live Bangladesh prayer times and a countdown to the next Salah" width="660" height="1433" loading="eager">
+      <picture><source type="image/webp" srcset="/shots/home@half.webp 330w, /shots/home.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/home.jpg" alt="Wasilah home screen on iPhone showing live Bangladesh prayer times and a countdown to the next Salah" width="660" height="1433" loading="eager"></picture>
     </div>
   </section>
 
@@ -249,11 +313,12 @@
       <div class="feat"><span class="feat-icon" style="--ic:url(/icons/allah.svg)"></span><h3>99 Names of Allah</h3><p>Asma ul Husna, each name with its meaning in three languages, to read and reflect on.</p></div>
       <div class="feat"><span class="feat-icon" style="--ic:url(/icons/hijri-calendar.svg)"></span><h3>Hijri calendar</h3><p>The Islamic date alongside the Gregorian one, so you never miss a sacred day.</p></div>
       <div class="feat"><span class="feat-icon" style="--ic:url(/icons/kaaba.svg)"></span><h3>Hajj &amp; Umrah</h3><p>A plain-language guide to the rites, for the journey of a lifetime or for learning ahead of it.</p></div>
+      <div class="feat"><span class="feat-icon" style="--ic:url(/icons/allah.svg)"></span><h3>Deen Intelligence</h3><p>Ask about salah, fasting, duas or the Quran and get an answer with references. Anything needing a personal ruling goes to a qualified scholar, not a guess. Three questions a day, free.</p></div>
     </div>
 
     <h2>Built the way iPhone apps should be built</h2>
     <p><span class="lead-in">Wasilah is designed for iPhone, not ported to it.</span> It uses Apple's own systems for location and notifications, follows your light or dark setting, and respects iOS conventions so it feels native rather than borrowed from another platform. It runs on iOS 13 and later, which covers iPhones going back many years, because not everyone is on the newest device.</p>
-    <p>On privacy, the App Store nutrition label tells the honest story: Wasilah does not collect data and does not track you. Your location is read on the device to work out prayer times and the Qibla, and it stays on the device. There is no analytics profile being quietly assembled about your worship. For a religious app, that felt non-negotiable.</p>
+    <p>On privacy, the iPhone build links no third-party SDK at all. Your location is read on the device to work out prayer times and the Qibla, and it stays on the device. Nothing about your worship is collected or sent anywhere. The full detail is in the <a href="/privacy/">privacy policy</a>.</p>
 
     <h2>For Bangladesh, and for Bengalis everywhere</h2>
     <p><span class="lead-in">Wasilah is unapologetically Bangla-first.</span> It is built in Bangladesh for the people praying here, where the call to prayer is part of the air. But it is just as much for the Bengali driver in Jeddah, the nurse in Riyadh, the family in London who want their children to pray with words they understand. Wherever you are, the prayer times follow your location and the language stays close to home.</p>
@@ -270,13 +335,13 @@
       <p>The same calm, Bangla-first experience, screen by screen.</p>
     </div>
     <ul class="appstore-strip" aria-label="Wasilah app screenshots on iPhone">
-      <li><img src="/shots/home.jpg" alt="Wasilah home screen on iPhone with live Bangladesh prayer times and next Salah countdown" width="660" height="1433" loading="lazy"></li>
-      <li><img src="/shots/salah.jpg" alt="Wasilah step-by-step Salah guide in Bangla, Arabic and English on iPhone" width="660" height="1433" loading="lazy"></li>
-      <li><img src="/shots/quran.jpg" alt="Wasilah Quran reader on iPhone with Arabic, English and Bangla translation, offline and free" width="660" height="1433" loading="lazy"></li>
-      <li><img src="/shots/hadith.jpg" alt="Wasilah Hadith collection in Arabic, English and Bangla on iPhone" width="660" height="1433" loading="lazy"></li>
-      <li><img src="/shots/asma.jpg" alt="Wasilah 99 Names of Allah, Asma ul Husna, with meanings in three languages" width="660" height="1433" loading="lazy"></li>
-      <li><img src="/shots/duas.jpg" alt="Wasilah daily duas and adhkar in Bangla and Arabic on iPhone" width="660" height="1433" loading="lazy"></li>
-      <li><img src="/shots/more.jpg" alt="Wasilah Zakat calculator in Taka, duas and Hajj and Umrah guide on iPhone" width="660" height="1433" loading="lazy"></li>
+      <li><picture><source type="image/webp" srcset="/shots/home@half.webp 330w, /shots/home.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/home.jpg" alt="Wasilah home screen on iPhone with live Bangladesh prayer times and next Salah countdown" width="660" height="1433" loading="lazy"></picture></li>
+      <li><picture><source type="image/webp" srcset="/shots/salah@half.webp 330w, /shots/salah.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/salah.jpg" alt="Wasilah step-by-step Salah guide in Bangla, Arabic and English on iPhone" width="660" height="1433" loading="lazy"></picture></li>
+      <li><picture><source type="image/webp" srcset="/shots/quran@half.webp 330w, /shots/quran.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/quran.jpg" alt="Wasilah Quran reader on iPhone with Arabic, English and Bangla translation, offline and free" width="660" height="1433" loading="lazy"></picture></li>
+      <li><picture><source type="image/webp" srcset="/shots/hadith@half.webp 330w, /shots/hadith.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/hadith.jpg" alt="Wasilah Hadith collection in Arabic, English and Bangla on iPhone" width="660" height="1433" loading="lazy"></picture></li>
+      <li><picture><source type="image/webp" srcset="/shots/asma@half.webp 330w, /shots/asma.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/asma.jpg" alt="Wasilah 99 Names of Allah, Asma ul Husna, with meanings in three languages" width="660" height="1433" loading="lazy"></picture></li>
+      <li><picture><source type="image/webp" srcset="/shots/duas@half.webp 330w, /shots/duas.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/duas.jpg" alt="Wasilah daily duas and adhkar in Bangla and Arabic on iPhone" width="660" height="1433" loading="lazy"></picture></li>
+      <li><picture><source type="image/webp" srcset="/shots/more@half.webp 330w, /shots/more.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/more.jpg" alt="Wasilah Zakat calculator in Taka, duas and Hajj and Umrah guide on iPhone" width="660" height="1433" loading="lazy"></picture></li>
     </ul>
   </section>
 
@@ -287,7 +352,8 @@
     <details open><summary>Is Wasilah free on the App Store?</summary><p>Yes, completely. There are no ads, no subscriptions, and no in-app purchases. Wasilah is built as sadaqah jariyah, a continuing charity, so it stays free for everyone.</p></details>
     <details><summary>Does Wasilah work offline on iPhone?</summary><p>Prayer times are calculated on your iPhone, so once your location is set they work with no internet. The Quran text, Hadith, duas, the 99 Names and the Salah and Wudu guides are all bundled and read offline. Recitation audio streams, so that part needs a connection.</p></details>
     <details><summary>Is Wasilah only for people in Bangladesh?</summary><p>No. It is built Bangla-first for Bangladesh, but its worldwide city search covers tens of thousands of cities and handles time zones correctly. Bengali families in Saudi Arabia, the Gulf and beyond get accurate local prayer times.</p></details>
-    <details><summary>What does Wasilah do with my data?</summary><p>Nothing is collected and nothing is tracked. Your location is used on the device to compute prayer times and the Qibla, and it never leaves your iPhone. You can read the full <a href="/privacy/">privacy policy</a> any time.</p></details>
+    <details><summary>What is Wasilah Deen Intelligence?</summary><p>It answers questions about salah, fasting, duas, the Quran and daily practice, with references to where the answer comes from. When a question needs a personal ruling it does not guess, it points you to a qualified scholar. Three questions a day, free for everyone. It needs an internet connection, unlike almost everything else in the app.</p></details>
+    <details><summary>What does Wasilah do with my data?</summary><p>Nothing about your worship is collected. Your location is used on the device to compute prayer times and the Qibla, and it never leaves your iPhone. The iPhone build carries no third-party SDK. You can read the full <a href="/privacy/">privacy policy</a> any time.</p></details>
     <details><summary>Which iPhones and iOS versions are supported?</summary><p>Wasilah runs on iOS 13 and later, in both light and dark mode, so it works on iPhones going back several years.</p></details>
     <details><summary>I use Android. Is there a version for me?</summary><p>Yes. Wasilah is on Google Play with the same features, including home-screen widgets. See the <a href="/android/">Wasilah for Android</a> page.</p></details>
   </section>
@@ -296,7 +362,7 @@
 
   <section class="pg pg-cta">
     <h2>Bring a calmer day of worship to your iPhone.</h2>
-    <p>Free, no ads, no tracking. Download Wasilah and let it quietly keep your prayers on time.</p>
+    <p>Free, no ads, no sign-up. Download Wasilah and let it quietly keep your prayers on time.</p>
     <div class="pg-actions">
       <a class="store-badge" href="https://apps.apple.com/app/id6767919573" target="_blank" rel="noopener" aria-label="Download Wasilah on the App Store">
         <img src="/App_Store.svg" alt="Download on the App Store" width="216" height="62" loading="lazy">
@@ -313,7 +379,7 @@
     <p class="footer-tagline">An Islamic companion for Bangladesh, and Bengali-speaking Muslims everywhere.</p>
     <nav class="footer-nav" aria-label="Footer navigation">
       <p class="footer-nav-title">Explore</p>
-      <a href="/#features">Features</a>
+      <a href="/#features">What you get</a>
       <a href="/ios/">For iPhone</a>
       <a href="/android/">For Android</a>
       <a href="/blog/prayer-times-bangladesh/">Prayer times in Bangladesh</a>

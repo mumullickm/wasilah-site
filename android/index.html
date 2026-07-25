@@ -10,17 +10,18 @@
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="apple-itunes-app" content="app-id=6767919573">
 <link rel="manifest" href="/site.webmanifest">
 <title>Wasilah for Android - Prayer Times, Quran &amp; Qibla in Bangla on Google Play</title>
-<meta name="description" content="Wasilah on Google Play: accurate Bangladesh prayer times, home-screen widgets, the full Quran with Bangla translation, Hadith, Qibla, Zakat and duas. Free, no ads, no tracking, works offline.">
+<meta name="description" content="Wasilah on Google Play: accurate Bangladesh prayer times, home-screen widgets, the full Quran with Bangla translation, Hadith, Qibla, Zakat and duas. Free, no ads, no sign-up, works offline.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#004B49">
 
+<link rel="alternate" href="https://wasilah.site/android/" hreflang="en">
 <link rel="canonical" href="https://wasilah.site/android/">
 
 <meta property="og:title" content="Wasilah for Android - Islamic prayer times, Quran and Qibla in Bangla">
 <meta property="og:description" content="Accurate Bangladesh prayer times, home-screen widgets, the full Quran with Bangla translation, Hadith, Qibla, Zakat and duas. Free, no ads, works offline.">
+<meta property="og:locale" content="en_BD">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://wasilah.site/android/">
 <meta property="og:site_name" content="Wasilah">
@@ -36,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600&family=Amiri&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/site.css?v=rebuild-20260725">
 
 <style>
   .pg { max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); }
@@ -131,35 +132,97 @@
       "name": "Wasilah",
       "operatingSystem": "Android",
       "applicationCategory": "LifestyleApplication",
-      "description": "Wasilah is a Bangla-first Islamic companion for Android: accurate Bangladesh prayer times, home-screen widgets, the full Quran with Bangla and English translation, Hadith, Qibla, a Zakat calculator in Taka, and daily duas. Free, no ads, no tracking, works offline.",
+      "description": "Wasilah is a Bangla-first Islamic companion for Android: accurate Bangladesh prayer times, home-screen widgets, the full Quran with Bangla and English translation, Hadith, Qibla, a Zakat calculator in Taka, and daily duas. Free, no ads, no sign-up, works offline.",
       "url": "https://play.google.com/store/apps/details?id=site.wasilah.wasilah",
       "downloadUrl": "https://play.google.com/store/apps/details?id=site.wasilah.wasilah",
-      "inLanguage": ["bn", "ar", "en"],
+      "inLanguage": [
+        "bn",
+        "ar",
+        "en"
+      ],
       "image": "https://wasilah.site/og-wasilah.jpg",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" },
-      "publisher": { "@type": "Organization", "name": "Aykiz Intelligence", "url": "https://aykizintelligence.com" }
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BDT"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aykiz Intelligence",
+        "url": "https://aykizintelligence.com"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Wasilah", "item": "https://wasilah.site/" },
-        { "@type": "ListItem", "position": 2, "name": "Wasilah for Android", "item": "https://wasilah.site/android/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Wasilah",
+          "item": "https://wasilah.site/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Wasilah for Android",
+          "item": "https://wasilah.site/android/"
+        }
       ]
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "Is Wasilah free on Google Play?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Wasilah is completely free on Google Play. There are no ads, no subscriptions, and no in-app purchases. It is built as sadaqah jariyah, a continuing charity, so it stays free." } },
-        { "@type": "Question", "name": "Does Wasilah have a home-screen widget on Android?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Wasilah includes home-screen widgets in a compact and a full size, so your next prayer time and countdown sit on your Android home screen without opening the app." } },
-        { "@type": "Question", "name": "Does Wasilah work offline on Android?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Prayer times are calculated on your device, so they work with no internet once your location is set. The Quran, Hadith, duas, 99 Names and the Salah and Wudu guides are bundled and read offline. Audio recitation streams, so that part needs a connection." } },
-        { "@type": "Question", "name": "Does the Bangla text display correctly on my phone?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Wasilah bundles a Bangla font and renders text the same way on every Android device, so the Bangla and Arabic never break into missing-character boxes the way they can in other apps." } },
-        { "@type": "Question", "name": "What data does Wasilah collect?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Wasilah does not collect personal data and does not track you. Your location is used on-device to compute prayer times and Qibla. See the privacy policy at wasilah.site/privacy." } }
-      ]
+        {
+          "@type": "Question",
+          "name": "Does Wasilah have a home-screen widget?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. There are widgets in two sizes: a compact one showing your next prayer and countdown, and a full one showing the day's schedule. Add it from your home screen the way you add any Android widget."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Wasilah work offline on Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prayer times are calculated on your device, so once your location is set they work with no internet. The Quran text, Hadith, duas, the 99 Names and the Salah and Wudu guides are all bundled and read offline. Recitation audio streams, so that part needs a connection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will the Bangla text display properly on my phone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Wasilah bundles its own Bangla font and renders text the same on every Android device, so the Bangla and Arabic never break into missing-character boxes the way they can in other apps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Wasilah Deen Intelligence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It answers questions about salah, fasting, duas, the Quran and daily practice, with references to where the answer comes from. When a question needs a personal ruling it does not guess, it points you to a qualified scholar. Three questions a day, free for everyone. It needs an internet connection, unlike almost everything else in the app."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Wasilah do with my data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nothing about your worship is collected. Your location is used on the device to compute prayer times and the Qibla, and it never leaves your phone. The Android build does send Meta an install and app-open event for ad attribution, and nothing else. You can read the full privacy policy any time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I use an iPhone. Is there a version for me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Wasilah is on the App Store with the same features. See the Wasilah for iPhone page."
+          }
+        }
+      ],
+      "@id": "https://wasilah.site/android/#faq",
+      "inLanguage": "en"
     }
   ]
 }
@@ -183,8 +246,8 @@
   </a>
   <div class="header-actions">
     <nav class="header-nav" aria-label="Wasilah sections">
-      <a href="/#features">Features</a>
-      <a href="/#screens">Screens</a>
+      <a href="/#features">What you get</a>
+      <a href="/#deen-intelligence">Deen Intelligence</a>
       <a href="/ios/">For iPhone</a>
       <a href="/#faq">FAQ</a>
     </nav>
@@ -211,12 +274,12 @@
       <div class="pg-meta">
         <span class="pg-pill">Free forever</span>
         <span class="pg-pill">No ads</span>
-        <span class="pg-pill">No tracking</span>
+        <span class="pg-pill">No sign-up</span>
         <span class="pg-pill">Home-screen widget</span>
       </div>
     </div>
     <div class="pg-device">
-      <img src="/shots/home.jpg" alt="Wasilah home screen on Android showing live Bangladesh prayer times and a countdown to the next Salah" width="660" height="1433" loading="eager">
+      <picture><source type="image/webp" srcset="/shots/home@half.webp 330w, /shots/home.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/home.jpg" alt="Wasilah home screen on Android showing live Bangladesh prayer times and a countdown to the next Salah" width="660" height="1433" loading="eager"></picture>
     </div>
   </section>
 
@@ -252,11 +315,12 @@
       <div class="feat"><span class="feat-icon" style="--ic:url(/icons/allah.svg)"></span><h3>99 Names of Allah</h3><p>Asma ul Husna, each name with its meaning in three languages, to read and reflect on.</p></div>
       <div class="feat"><span class="feat-icon" style="--ic:url(/icons/hijri-calendar.svg)"></span><h3>Hijri calendar</h3><p>The Islamic date alongside the Gregorian one, so you never miss a sacred day.</p></div>
       <div class="feat"><span class="feat-icon" style="--ic:url(/icons/kaaba.svg)"></span><h3>Hajj &amp; Umrah</h3><p>A plain-language guide to the rites, for the journey of a lifetime or for learning ahead of it.</p></div>
+      <div class="feat"><span class="feat-icon" style="--ic:url(/icons/allah.svg)"></span><h3>Deen Intelligence</h3><p>Ask about salah, fasting, duas or the Quran and get an answer with references. Anything needing a personal ruling goes to a qualified scholar, not a guess. Three questions a day, free.</p></div>
     </div>
 
     <h2>Light on your phone, honest about your data</h2>
     <p><span class="lead-in">Wasilah is meant to sit quietly in the background of your life.</span> It runs across a wide range of Android phones and versions, not just the newest ones, because most people are not on the latest device. The interface follows a clean, readable layout with a light and dark mode, and the text scales sensibly so it stays legible for older eyes.</p>
-    <p>On privacy, the Play Store data-safety section tells the honest story: Wasilah does not collect personal data and does not track you. Your location is read on the device to work out prayer times and the Qibla, and it stays on the device. There is no advertising profile being quietly assembled about your worship. For a religious app, that felt non-negotiable.</p>
+    <p>On privacy, the Play Store data-safety section tells the honest story. Nothing about your worship is collected. Your location is read on the device to work out prayer times and the Qibla, and it stays on the device. The one thing this build does send is an install and app-open signal to Meta, so I can tell whether the small ad campaigns I run are reaching people who actually use the app. Nothing from your prayers or your reading goes with it, and you can turn the advertising ID off in Android settings. The full detail is in section 3.6 of the <a href="/privacy/">privacy policy</a>.</p>
 
     <h2>For Bangladesh, and for Bengalis everywhere</h2>
     <p><span class="lead-in">Wasilah is unapologetically Bangla-first.</span> It is built in Bangladesh for the people praying here, where the call to prayer is part of the air. But it is just as much for the Bengali driver in Jeddah, the nurse in Riyadh, the family in London who want their children to pray with words they understand. Wherever you are, the prayer times follow your location and the language stays close to home.</p>
@@ -273,13 +337,13 @@
       <p>The same calm, Bangla-first experience, screen by screen.</p>
     </div>
     <ul class="appstore-strip" aria-label="Wasilah app screenshots on Android">
-      <li><img src="/shots/home.jpg" alt="Wasilah home screen on Android with live Bangladesh prayer times and next Salah countdown" width="660" height="1433" loading="lazy"></li>
-      <li><img src="/shots/salah.jpg" alt="Wasilah step-by-step Salah guide in Bangla, Arabic and English on Android" width="660" height="1433" loading="lazy"></li>
-      <li><img src="/shots/quran.jpg" alt="Wasilah Quran reader on Android with Arabic, English and Bangla translation, offline and free" width="660" height="1433" loading="lazy"></li>
-      <li><img src="/shots/hadith.jpg" alt="Wasilah Hadith collection in Arabic, English and Bangla on Android" width="660" height="1433" loading="lazy"></li>
-      <li><img src="/shots/asma.jpg" alt="Wasilah 99 Names of Allah, Asma ul Husna, with meanings in three languages" width="660" height="1433" loading="lazy"></li>
-      <li><img src="/shots/duas.jpg" alt="Wasilah daily duas and adhkar in Bangla and Arabic on Android" width="660" height="1433" loading="lazy"></li>
-      <li><img src="/shots/more.jpg" alt="Wasilah Zakat calculator in Taka, duas and Hajj and Umrah guide on Android" width="660" height="1433" loading="lazy"></li>
+      <li><picture><source type="image/webp" srcset="/shots/home@half.webp 330w, /shots/home.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/home.jpg" alt="Wasilah home screen on Android with live Bangladesh prayer times and next Salah countdown" width="660" height="1433" loading="lazy"></picture></li>
+      <li><picture><source type="image/webp" srcset="/shots/salah@half.webp 330w, /shots/salah.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/salah.jpg" alt="Wasilah step-by-step Salah guide in Bangla, Arabic and English on Android" width="660" height="1433" loading="lazy"></picture></li>
+      <li><picture><source type="image/webp" srcset="/shots/quran@half.webp 330w, /shots/quran.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/quran.jpg" alt="Wasilah Quran reader on Android with Arabic, English and Bangla translation, offline and free" width="660" height="1433" loading="lazy"></picture></li>
+      <li><picture><source type="image/webp" srcset="/shots/hadith@half.webp 330w, /shots/hadith.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/hadith.jpg" alt="Wasilah Hadith collection in Arabic, English and Bangla on Android" width="660" height="1433" loading="lazy"></picture></li>
+      <li><picture><source type="image/webp" srcset="/shots/asma@half.webp 330w, /shots/asma.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/asma.jpg" alt="Wasilah 99 Names of Allah, Asma ul Husna, with meanings in three languages" width="660" height="1433" loading="lazy"></picture></li>
+      <li><picture><source type="image/webp" srcset="/shots/duas@half.webp 330w, /shots/duas.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/duas.jpg" alt="Wasilah daily duas and adhkar in Bangla and Arabic on Android" width="660" height="1433" loading="lazy"></picture></li>
+      <li><picture><source type="image/webp" srcset="/shots/more@half.webp 330w, /shots/more.webp 660w" sizes="(max-width: 700px) 60vw, 330px"><img src="/shots/more.jpg" alt="Wasilah Zakat calculator in Taka, duas and Hajj and Umrah guide on Android" width="660" height="1433" loading="lazy"></picture></li>
     </ul>
   </section>
 
@@ -291,7 +355,8 @@
     <details><summary>Does Wasilah have a home-screen widget?</summary><p>Yes. There are widgets in two sizes: a compact one showing your next prayer and countdown, and a full one showing the day's schedule. Add it from your home screen the way you add any Android widget.</p></details>
     <details><summary>Does Wasilah work offline on Android?</summary><p>Prayer times are calculated on your device, so once your location is set they work with no internet. The Quran text, Hadith, duas, the 99 Names and the Salah and Wudu guides are all bundled and read offline. Recitation audio streams, so that part needs a connection.</p></details>
     <details><summary>Will the Bangla text display properly on my phone?</summary><p>Yes. Wasilah bundles its own Bangla font and renders text the same on every Android device, so the Bangla and Arabic never break into missing-character boxes the way they can in other apps.</p></details>
-    <details><summary>What does Wasilah do with my data?</summary><p>Nothing is collected and nothing is tracked. Your location is used on the device to compute prayer times and the Qibla, and it never leaves your phone. You can read the full <a href="/privacy/">privacy policy</a> any time.</p></details>
+    <details><summary>What is Wasilah Deen Intelligence?</summary><p>It answers questions about salah, fasting, duas, the Quran and daily practice, with references to where the answer comes from. When a question needs a personal ruling it does not guess, it points you to a qualified scholar. Three questions a day, free for everyone. It needs an internet connection, unlike almost everything else in the app.</p></details>
+    <details><summary>What does Wasilah do with my data?</summary><p>Nothing about your worship is collected. Your location is used on the device to compute prayer times and the Qibla, and it never leaves your phone. The Android build does send Meta an install and app-open event for ad attribution, and nothing else. You can read the full <a href="/privacy/">privacy policy</a> any time.</p></details>
     <details><summary>I use an iPhone. Is there a version for me?</summary><p>Yes. Wasilah is on the App Store with the same features. See the <a href="/ios/">Wasilah for iPhone</a> page.</p></details>
   </section>
 
@@ -299,7 +364,7 @@
 
   <section class="pg pg-cta">
     <h2>Put your prayers on your home screen.</h2>
-    <p>Free, no ads, no tracking. Download Wasilah and let it quietly keep your prayers on time.</p>
+    <p>Free, no ads, no sign-up. Download Wasilah and let it quietly keep your prayers on time.</p>
     <div class="pg-actions">
       <a class="store-badge" href="https://play.google.com/store/apps/details?id=site.wasilah.wasilah" target="_blank" rel="noopener" aria-label="Get Wasilah on Google Play">
         <img src="/Google_Play.svg" alt="Get it on Google Play" width="216" height="62" loading="lazy">
@@ -316,7 +381,7 @@
     <p class="footer-tagline">An Islamic companion for Bangladesh, and Bengali-speaking Muslims everywhere.</p>
     <nav class="footer-nav" aria-label="Footer navigation">
       <p class="footer-nav-title">Explore</p>
-      <a href="/#features">Features</a>
+      <a href="/#features">What you get</a>
       <a href="/ios/">For iPhone</a>
       <a href="/android/">For Android</a>
       <a href="/blog/prayer-times-bangladesh/">Prayer times in Bangladesh</a>

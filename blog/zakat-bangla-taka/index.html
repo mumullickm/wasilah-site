@@ -35,7 +35,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/site.css?v=iphone17pm-20260525d" />
+    <link rel="stylesheet" href="/site.css?v=rebuild-20260725" />
 
     <script type="application/ld+json">
     {
@@ -45,7 +45,7 @@
       "description": "বাংলাদেশের জন্য যাকাত হিসাব, নিসাব, সোনা-রূপা ও ক্যাশের যাকাতের সম্পূর্ণ গাইড।",
       "inLanguage": "bn-BD",
       "author": {"@type": "Organization", "name": "Wasilah"},
-      "publisher": {"@type": "Organization", "name": "Wasilah", "logo": {"@type": "ImageObject", "url": "https://wasilah.site/wasilah_icon.png"}},
+      "publisher": {"@id": "https://wasilah.site/#organization"},
       "datePublished": "2026-05-25",
       "dateModified": "2026-07-25",
       "mainEntityOfPage": "https://wasilah.site/blog/zakat-bangla-taka/",
@@ -154,7 +154,17 @@
       ]
     }
     </script>
-</head>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://wasilah.site/#organization",
+      "name": "Wasilah",
+      "url": "https://wasilah.site/",
+      "logo": {"@type": "ImageObject", "url": "https://wasilah.site/wasilah_icon.png"}
+    }
+    </script>
+  </head>
   <body>
     <a class="skip-link" href="#article">মূল লেখায় যান</a>
 
@@ -164,13 +174,13 @@
         <img class="brand-logotype" src="/wasilah_logo_wobg.svg" alt="Wasilah" width="150" height="33">
       </a>
       <div class="header-actions">
-        <a class="header-cta" href="/android/" target="_blank" rel="noopener">অ্যাপ নিন</a>
+        <a class="header-cta" href="/get/" rel="noopener">অ্যাপ নিন</a>
       </div>
     </header>
 
     <main id="article">
       <article class="article-wrap">
-        <a class="article-back" href="/">← ওয়াসিলাহ হোম</a>
+        <a class="article-back" href="/bn/">← ওয়াসিলাহ হোম</a>
         <p class="article-eyebrow">যাকাত গাইড</p>
         <h1 class="article-h1">যাকাত হিসাব বাংলা টাকায়: একটি সম্পূর্ণ গাইড</h1>
         <p class="article-meta">আপডেটেড ২৫ মে ২০২৬ · ৫ মিনিটের পড়া</p>
