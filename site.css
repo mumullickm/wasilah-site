@@ -556,19 +556,8 @@ html[lang="bn"] .ethos-bn { display: none; }
    Lit Niche hero + restructured sections (2026-06-03)
    ============================================================ */
 
-/* ---- Hero: a procedural girih light field behind the calling words ---- */
-.hero-webgl {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  display: block;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 900ms var(--ease);
-}
-.hero-webgl.is-live { opacity: 1; }
+/* The girih light field that used to live inside the hero is now a
+   page-wide layer: see .page-webgl at the end of this file. */
 
 .hero.hero--niche {
   position: relative;
@@ -584,9 +573,9 @@ html[lang="bn"] .ethos-bn { display: none; }
   padding: clamp(104px, 15vh, 172px) clamp(24px, 4vw, 56px) clamp(72px, 12vh, 120px);
 }
 /* Restored 2026-07-25: this rule lived inside the deleted "Website 3.0" block.
-   The z-index is load-bearing. Without it the girih WebGL canvas (position:
-   absolute, z-index: 0) paints on top of the hero text, and the flex centring
-   is what keeps the max-width tagline and Bangla line centred in the stage. */
+   The z-index is load-bearing. Without it the hero text sits at the same level
+   as the page light field (z-index: 0), and the flex centring is what keeps the
+   max-width tagline and Bangla line centred in the stage. */
 .hero-stage {
   max-width: 900px;
   display: flex;
@@ -1110,30 +1099,26 @@ html[lang="bn"] .cap-tile p,
 html[lang="bn"] .di-facts li,
 html[lang="bn"] .footer-col a { line-height: 1.6; }
 
-/* ---- Page-wide girih -------------------------------------------
-   The khatam eight-point star, tiled behind the whole document.
-   Dense at the top and fading down the page, so the geometry carries
-   the brand without ever competing with body copy further down.
-   It is a real layer rather than a pseudo-element so the stacking is
-   explicit: girih at z-index 0, all content at 1.
-   Stroke alpha is capped at 0.20: above that, body copy landing on a
-   stroke drops under the 4.5:1 contrast floor (0.30 measured 3.45:1).
+/* ---- Page-wide light field --------------------------------------
+   The girih light field is no longer a hero decoration and no longer a
+   tiled SVG. One transparent WebGL layer sits behind the whole document
+   and fades out as the page scrolls down, so the geometry carries the
+   text and the bar layouts near the top and leaves the lower sections
+   on the plain emerald gradient.
+   The layer is fixed rather than document-height: a canvas as tall as
+   the document would cost an enormous framebuffer for the same result.
+   JS owns the opacity (reveal ramp x scroll fade), so there is no CSS
+   transition here that would lag behind a scroll.
    ---------------------------------------------------------------- */
-.page-girih {
-  position: absolute;
+.page-webgl {
+  position: fixed;
   inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
+  display: block;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='118' height='118' viewBox='0 0 118 118'><g fill='none' stroke='%23f1d592' stroke-opacity='0.20' stroke-width='1.25' stroke-linejoin='round'><rect x='27.5' y='27.5' width='63' height='63'/><rect x='27.5' y='27.5' width='63' height='63' transform='rotate%2845 59 59%29'/><path d='M59 0 L59 14 M59 104 L59 118 M0 59 L14 59 M104 59 L118 59'/><path d='M0 0 L27.5 27.5 M118 0 L90.5 27.5 M0 118 L27.5 90.5 M118 118 L90.5 90.5'/><path d='M59 34 L76.7 41.3 L84 59 L76.7 76.7 L59 84 L41.3 76.7 L34 59 L41.3 41.3 Z'/></g></svg>");
-  background-repeat: repeat;
-  background-size: 118px 118px;
-  /* dense at the top, gone by the footer */
-  -webkit-mask-image: linear-gradient(180deg,
-    rgba(0,0,0,1) 0%, rgba(0,0,0,.92) 8%, rgba(0,0,0,.62) 24%,
-    rgba(0,0,0,.36) 45%, rgba(0,0,0,.18) 66%, rgba(0,0,0,.07) 84%, rgba(0,0,0,0) 97%);
-          mask-image: linear-gradient(180deg,
-    rgba(0,0,0,1) 0%, rgba(0,0,0,.92) 8%, rgba(0,0,0,.62) 24%,
-    rgba(0,0,0,.36) 45%, rgba(0,0,0,.18) 66%, rgba(0,0,0,.07) 84%, rgba(0,0,0,0) 97%);
+  opacity: 0;
 }
 body { position: relative; }
 /* Everything real sits above the pattern. The header and the back-to-top
