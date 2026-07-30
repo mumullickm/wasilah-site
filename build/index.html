@@ -79,7 +79,7 @@
       <p>Five tools are available: <code>get_prayer_times</code>, <code>get_next_prayer</code>, <code>get_qibla</code>, <code>get_hijri_date</code>, and <code>get_quran_audio</code>. They also work in Claude Code and other MCP clients.</p>
 
       <h2>2. Free JSON API</h2>
-      <p>Plain HTTPS, JSON responses, CORS open, no key. Every location endpoint accepts a <code>city</code> name, or explicit <code>latitude</code>, <code>longitude</code> and <code>timezone</code>. Prayer endpoints also accept <code>method</code> and <code>asr</code>.</p>
+      <p>Plain HTTPS, JSON responses, CORS open, no key. Every location endpoint accepts a <code>city</code> name, explicit <code>latitude</code>, <code>longitude</code> and <code>timezone</code>, or <code>city=auto</code> to use the caller's own approximate location. Prayer endpoints also accept <code>method</code> and <code>asr</code>.</p>
 
       <div class="dev-endpoint">
         <h3>Prayer times</h3>
@@ -97,7 +97,7 @@
 }</code></pre>
         <table class="dev-tbl">
           <tr><th>Parameter</th><th>Values</th></tr>
-          <tr><td><code>city</code></td><td>Any city name, e.g. Dhaka, Madinah, London. Or use <code>latitude</code> + <code>longitude</code> + <code>timezone</code>.</td></tr>
+          <tr><td><code>city</code></td><td>Any city name, e.g. Dhaka, Madinah, London. Or <code>auto</code> for the caller's own location. Or use <code>latitude</code> + <code>longitude</code> + <code>timezone</code>.</td></tr>
           <tr><td><code>method</code></td><td>karachi (default), isna, mwl, makkah, egypt, tehran, gulf, kuwait, qatar, singapore, france, turkey, russia</td></tr>
           <tr><td><code>asr</code></td><td>auto (default), shafii, hanafi</td></tr>
           <tr><td><code>date</code></td><td>YYYY-MM-DD. Defaults to today in the location's timezone.</td></tr>
@@ -127,6 +127,10 @@
         <div class="dev-copyrow"><code>GET /api/quran-audio?surah=36</code><button class="dev-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev/api/quran-audio?surah=36">Copy</button></div>
         <pre><code>{ "surah": 36, "name": "Ya-Sin", "ayahs": 83, "reciter": "Mishary Rashid Alafasy",
   "audioUrl": "https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/36.mp3" }</code></pre>
+        <p>Three reciters have a single full-surah file and return <code>audioUrl</code>. The other nine are recorded ayah by ayah and return <code>ayahAudio</code> instead, with the numbering to build a playlist from. Some return both.</p>
+        <div class="dev-copyrow"><code>GET /api/reciters</code><button class="dev-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev/api/reciters">Copy</button></div>
+        <pre><code>{ "edition": "ar.husary", "name": "Mahmoud Khalil Al-Husary",
+  "fullSurah": false, "perAyah": true }</code></pre>
       </div>
 
       <h2>3. Embed a live widget</h2>
@@ -137,11 +141,14 @@
       <div class="dev-copyrow"><code>&lt;iframe src="https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka" width="360" height="440" style="border:0;border-radius:18px"&gt;&lt;/iframe&gt;</code><button class="dev-copy" type="button" data-copy='<iframe src="https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka" width="360" height="440" style="border:0;border-radius:18px"></iframe>'>Copy</button></div>
       <table class="dev-tbl">
         <tr><th>Parameter</th><th>Values</th></tr>
-        <tr><td><code>city</code></td><td>City name, or <code>lat</code> + <code>lon</code> + <code>tz</code> for exact coordinates.</td></tr>
+        <tr><td><code>city</code></td><td>City name, <code>auto</code> to show each visitor their own city, or <code>lat</code> + <code>lon</code> + <code>tz</code> for exact coordinates.</td></tr>
+        <tr><td><code>lang</code></td><td><code>en</code> (default), <code>bn</code> for Bangla, <code>ar</code> for Arabic. Arabic renders right to left.</td></tr>
         <tr><td><code>method</code></td><td>Calculation method (same list as the API). Default karachi.</td></tr>
         <tr><td><code>asr</code></td><td>auto, shafii, hanafi.</td></tr>
         <tr><td><code>theme</code></td><td><code>light</code> or dark (default).</td></tr>
+        <tr><td><code>format</code></td><td><code>12</code> or <code>24</code> hour clock. Defaults to 12 for English, 24 for Bangla and Arabic.</td></tr>
       </table>
+      <p>Set <code>city=auto</code> and one iframe serves every visitor their own city, so you do not need a separate embed per location. Auto responses are never cached.</p>
 
       <div class="dev-foot">
         <p>Read only, no personal data, no external calls. Prayer times use Wasilah's own on-device engine (PrayTimes.org algorithm). City data is a subset of <a href="https://www.geonames.org/" target="_blank" rel="noopener">GeoNames</a> (CC BY 4.0). Quran audio links point to the <a href="https://islamic.network" target="_blank" rel="noopener">islamic.network</a> CDN.</p>
