@@ -404,6 +404,7 @@
           <a href="#features">What you get</a>
           <a href="#deen-intelligence">Deen Intelligence</a>
           <a href="#why">Why Wasilah</a>
+          <a href="#build">Build</a>
           <a href="#faq">FAQ</a>
         </nav>
         <nav class="language-switch" aria-label="Language">
@@ -728,6 +729,65 @@
         </div>
       </section>
 
+      <section class="section build-section" id="build" aria-labelledby="build-title">
+        <style>
+          .build-section .build-grid { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); max-width: var(--wrap); margin: 34px auto 0; padding: 0 24px; }
+          @media (max-width: 900px) { .build-section .build-grid { grid-template-columns: 1fr; } }
+          .build-card { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--r-md); padding: 26px 24px; display: flex; flex-direction: column; }
+          .build-card h3 { color: var(--gold); font-size: 1.18rem; margin: 6px 0 8px; }
+          .build-card .build-eyebrow { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+          .build-card p { color: var(--ink-dim); font-size: 0.96rem; line-height: 1.55; margin: 0 0 16px; }
+          .build-card ol { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.5; margin: 0 0 16px; padding-left: 18px; }
+          .build-card ol li { margin-bottom: 5px; }
+          .build-code { display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.28); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-top: auto; }
+          .build-code code { color: var(--gold-bright); font-size: 0.82rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; overflow-x: auto; white-space: nowrap; flex: 1; }
+          .build-copy { flex-shrink: 0; background: rgba(241,213,146,0.14); color: var(--gold); border: 1px solid var(--card-border); border-radius: 8px; padding: 5px 10px; font: inherit; font-size: 0.78rem; cursor: pointer; }
+          .build-copy:hover { background: rgba(241,213,146,0.24); }
+          .build-preview { display: flex; justify-content: center; margin-top: 14px; }
+          .build-preview iframe { width: 100%; max-width: 320px; height: 430px; border: 0; border-radius: 16px; }
+          .build-more { text-align: center; margin-top: 26px; }
+          .build-more a { color: var(--gold); font-weight: 600; text-decoration: none; }
+          .build-more a:hover { text-decoration: underline; }
+        </style>
+        <div class="section-copy narrow">
+          <p class="section-label">Build with Wasilah</p>
+          <h2 id="build-title">Take Wasilah's prayer engine into your own tools.</h2>
+          <p>The same offline engine behind the app is open for anyone to use. Add it to Claude and other AI assistants, call it from your code, or drop live prayer times onto any website. Read only, no key, no cost. Sadaqah jariyah, so the reward reaches whoever builds on it too.</p>
+        </div>
+        <div class="build-grid">
+          <article class="build-card">
+            <span class="build-eyebrow">For Claude &amp; AI</span>
+            <h3>Add it as a connector</h3>
+            <p>A Model Context Protocol server. In Claude, open Settings, Connectors, Add custom connector, and paste the URL. Works in Claude and any MCP-compatible client.</p>
+            <div class="build-code"><code>https://wasilah-mcp.aykiz.workers.dev/mcp</code><button class="build-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev/mcp">Copy</button></div>
+          </article>
+          <article class="build-card">
+            <span class="build-eyebrow">For developers</span>
+            <h3>Free prayer API</h3>
+            <p>Plain HTTPS, JSON, no key. Prayer times, next prayer, Qibla, Hijri date and Quran audio for any city or coordinates, worldwide.</p>
+            <div class="build-code"><code>GET /api/prayer-times?city=Dhaka</code><button class="build-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev/api/prayer-times?city=Dhaka">Copy</button></div>
+          </article>
+          <article class="build-card">
+            <span class="build-eyebrow">For any website</span>
+            <h3>Embed a live widget</h3>
+            <p>Paste one line to show today's prayer times, updating live, on a masjid page, a blog, anywhere. Set the city, or coordinates.</p>
+            <div class="build-preview">
+              <iframe src="https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka&amp;theme=light" title="Wasilah prayer times widget for Dhaka" loading="lazy"></iframe>
+            </div>
+            <div class="build-code"><code>&lt;iframe src='…/embed?city=Dhaka'&gt;&lt;/iframe&gt;</code><button class="build-copy" type="button" data-copy="<iframe src='https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka' width='360' height='440' style='border:0;border-radius:18px'></iframe>">Copy</button></div>
+          </article>
+        </div>
+        <p class="build-more"><a href="/build/">Full developer docs, endpoints and options →</a></p>
+        <script>
+          document.querySelectorAll('.build-copy').forEach(function (b) {
+            b.addEventListener('click', function () {
+              navigator.clipboard.writeText(b.getAttribute('data-copy'));
+              var t = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = t; }, 1400);
+            });
+          });
+        </script>
+      </section>
+
       <section class="section faq-section" id="faq" aria-labelledby="faq-title">
         <div class="section-copy narrow">
           <p class="section-label">Questions</p>
@@ -813,6 +873,7 @@
             <a href="#features">What you get</a>
             <a href="#deen-intelligence">Deen Intelligence</a>
             <a href="#why">Why Wasilah</a>
+            <a href="#build">Build with Wasilah</a>
             <a href="#faq">FAQ</a>
           </div>
           <div class="footer-col">

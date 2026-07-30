@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-itunes-app" content="app-id=6767919573">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Build with Wasilah: free prayer times API, Claude connector, embed widget</title>
+    <meta name="description" content="Use Wasilah's prayer engine in your own tools, free. Add it to Claude as an MCP connector, call the JSON API for prayer times, Qibla, Hijri date and Quran audio, or embed a live prayer-times widget on any website. No key, read only, no cost.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#004B49">
+    <link rel="canonical" href="https://wasilah.site/build/">
+    <link rel="icon" href="/wasilah_icon_wobg.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/wasilah_icon.png">
+    <meta property="og:title" content="Build with Wasilah">
+    <meta property="og:description" content="Free prayer-times API, Claude connector, and an embeddable widget. Take Wasilah's engine into your own tools.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://wasilah.site/build/">
+    <meta property="og:image" content="https://wasilah.site/og-wasilah-v2.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Wasilah, a free Islamic companion app for Bangladesh.">
+    <link rel="stylesheet" href="/site.css?v=rebuild-20260725">
+    <style>
+      .dev-page { padding: 96px 0 120px; color: var(--ink); }
+      .dev-shell { max-width: 820px; margin: 0 auto; padding: 0 max(20px, 4vw); }
+      .dev-back { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-dim); text-decoration: none; font-size: 0.9rem; margin-bottom: 34px; }
+      .dev-back:hover { color: var(--gold); }
+      .dev-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 10px; }
+      .dev-page h1 { font-size: clamp(2rem, 5vw, 2.9rem); line-height: 1.08; margin: 0 0 18px; }
+      .dev-lede { color: var(--ink-dim); font-size: 1.08rem; line-height: 1.6; max-width: 62ch; }
+      .dev-page h2 { color: var(--gold); font-size: 1.5rem; margin: 56px 0 6px; }
+      .dev-page h3 { font-size: 1.05rem; margin: 26px 0 6px; }
+      .dev-page p { color: var(--ink-dim); line-height: 1.62; margin: 0 0 14px; }
+      .dev-page ol, .dev-page ul { color: var(--ink-dim); line-height: 1.6; padding-left: 20px; }
+      .dev-page li { margin-bottom: 6px; }
+      .dev-page a { color: var(--gold); }
+      pre { background: rgba(0,0,0,0.32); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; overflow-x: auto; margin: 0 0 16px; }
+      pre code { color: var(--gold-bright); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem; line-height: 1.55; white-space: pre; }
+      .dev-copyrow { display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.32); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin: 0 0 16px; }
+      .dev-copyrow code { color: var(--gold-bright); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem; flex: 1; overflow-x: auto; white-space: nowrap; }
+      .dev-copy { flex-shrink: 0; background: rgba(241,213,146,0.14); color: var(--gold); border: 1px solid var(--card-border); border-radius: 8px; padding: 5px 11px; font: inherit; font-size: 0.78rem; cursor: pointer; }
+      .dev-copy:hover { background: rgba(241,213,146,0.24); }
+      table.dev-tbl { width: 100%; border-collapse: collapse; margin: 0 0 16px; font-size: 0.9rem; }
+      table.dev-tbl th, table.dev-tbl td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); color: var(--ink-dim); vertical-align: top; }
+      table.dev-tbl th { color: var(--ink); font-weight: 600; }
+      .dev-endpoint { margin: 24px 0; }
+      .dev-endpoint h3 { color: var(--ink); }
+      .dev-preview { display: flex; justify-content: center; margin: 8px 0 18px; }
+      .dev-preview iframe { width: 100%; max-width: 360px; height: 440px; border: 0; border-radius: 16px; }
+      .dev-note { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--r-md); padding: 18px 20px; margin: 20px 0; }
+      .dev-foot { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--ink-faint); font-size: 0.85rem; }
+      .dev-foot a { color: var(--ink-dim); }
+    </style>
+  </head>
+  <body class="dev-page">
+    <main class="dev-shell">
+      <a class="dev-back" href="/">← Wasilah</a>
+
+      <p class="dev-eyebrow">Build with Wasilah</p>
+      <h1>Take Wasilah's prayer engine into your own tools.</h1>
+      <p class="dev-lede">The same offline engine behind the app is open for anyone to use, free. Add it to Claude and other AI assistants, call it from your code, or drop live prayer times onto any website. It is read only, needs no key, and makes no external calls. Wasilah is sadaqah jariyah, so the reward reaches whoever builds on it too.</p>
+
+      <div class="dev-note">
+        <strong>Base URL</strong>
+        <div class="dev-copyrow"><code>https://wasilah-mcp.aykiz.workers.dev</code><button class="dev-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev">Copy</button></div>
+        <p style="margin:0">No sign-up, no rate-limit key. Please be reasonable with volume. Source is open at <a href="https://github.com/mumullickm/wasilah-mcp" target="_blank" rel="noopener">github.com/mumullickm/wasilah-mcp</a>.</p>
+      </div>
+
+      <h2>1. Add it to Claude (MCP connector)</h2>
+      <p>Wasilah is a <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">Model Context Protocol</a> server, so Claude and any MCP-compatible client can call it directly in a conversation.</p>
+      <div class="dev-copyrow"><code>https://wasilah-mcp.aykiz.workers.dev/mcp</code><button class="dev-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev/mcp">Copy</button></div>
+      <ol>
+        <li>Open Claude, then Settings, then Connectors.</li>
+        <li>Choose <strong>Add custom connector</strong>.</li>
+        <li>Paste the URL above and save. There is no sign-in; it connects immediately.</li>
+        <li>In a chat, turn Wasilah on, then ask something like <em>"What time is Maghrib in Dhaka today?"</em> or <em>"Which way is the Qibla from London?"</em></li>
+      </ol>
+      <p>Five tools are available: <code>get_prayer_times</code>, <code>get_next_prayer</code>, <code>get_qibla</code>, <code>get_hijri_date</code>, and <code>get_quran_audio</code>. They also work in Claude Code and other MCP clients.</p>
+
+      <h2>2. Free JSON API</h2>
+      <p>Plain HTTPS, JSON responses, CORS open, no key. Every location endpoint accepts a <code>city</code> name, or explicit <code>latitude</code>, <code>longitude</code> and <code>timezone</code>. Prayer endpoints also accept <code>method</code> and <code>asr</code>.</p>
+
+      <div class="dev-endpoint">
+        <h3>Prayer times</h3>
+        <div class="dev-copyrow"><code>GET /api/prayer-times?city=Dhaka</code><button class="dev-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev/api/prayer-times?city=Dhaka">Copy</button></div>
+        <pre><code>{
+  "location": { "name": "Dhaka", "country": "Bangladesh", "timezone": "Asia/Dhaka" },
+  "date": "2026-07-30",
+  "method": "Karachi",
+  "asr": "Hanafi",
+  "jumuah": false,
+  "timings": {
+    "fajr": "04:04", "sunrise": "05:27", "dhuhr": "12:05",
+    "asr": "16:43", "maghrib": "18:43", "isha": "20:06"
+  }
+}</code></pre>
+        <table class="dev-tbl">
+          <tr><th>Parameter</th><th>Values</th></tr>
+          <tr><td><code>city</code></td><td>Any city name, e.g. Dhaka, Madinah, London. Or use <code>latitude</code> + <code>longitude</code> + <code>timezone</code>.</td></tr>
+          <tr><td><code>method</code></td><td>karachi (default), isna, mwl, makkah, egypt, tehran, gulf, kuwait, qatar, singapore, france, turkey, russia</td></tr>
+          <tr><td><code>asr</code></td><td>auto (default), shafii, hanafi</td></tr>
+          <tr><td><code>date</code></td><td>YYYY-MM-DD. Defaults to today in the location's timezone.</td></tr>
+        </table>
+      </div>
+
+      <div class="dev-endpoint">
+        <h3>Next prayer</h3>
+        <div class="dev-copyrow"><code>GET /api/next-prayer?city=Madinah</code><button class="dev-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev/api/next-prayer?city=Madinah">Copy</button></div>
+        <pre><code>{ "next": "Asr", "time": "17:07", "minutesUntil": 55, "method": "Karachi" }</code></pre>
+      </div>
+
+      <div class="dev-endpoint">
+        <h3>Qibla direction</h3>
+        <div class="dev-copyrow"><code>GET /api/qibla?city=London</code><button class="dev-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev/api/qibla?city=London">Copy</button></div>
+        <pre><code>{ "bearing": 119, "compass": "ESE", "target": "Kaaba, Makkah" }</code></pre>
+      </div>
+
+      <div class="dev-endpoint">
+        <h3>Hijri date</h3>
+        <div class="dev-copyrow"><code>GET /api/hijri</code><button class="dev-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev/api/hijri">Copy</button></div>
+        <pre><code>{ "gregorian": "2026-07-30", "hijri": { "day": 16, "monthName": "Safar", "year": 1448, "formatted": "16 Safar 1448 AH" } }</code></pre>
+      </div>
+
+      <div class="dev-endpoint">
+        <h3>Quran audio</h3>
+        <div class="dev-copyrow"><code>GET /api/quran-audio?surah=36</code><button class="dev-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev/api/quran-audio?surah=36">Copy</button></div>
+        <pre><code>{ "surah": 36, "name": "Ya-Sin", "ayahs": 83, "reciter": "Mishary Rashid Alafasy",
+  "audioUrl": "https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/36.mp3" }</code></pre>
+      </div>
+
+      <h2>3. Embed a live widget</h2>
+      <p>Paste one line to show today's prayer times on any website, a masjid page, a blog, anywhere. The countdown to the next prayer updates on its own.</p>
+      <div class="dev-preview">
+        <iframe src="https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka" title="Wasilah prayer times widget" loading="lazy"></iframe>
+      </div>
+      <div class="dev-copyrow"><code>&lt;iframe src="https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka" width="360" height="440" style="border:0;border-radius:18px"&gt;&lt;/iframe&gt;</code><button class="dev-copy" type="button" data-copy='<iframe src="https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka" width="360" height="440" style="border:0;border-radius:18px"></iframe>'>Copy</button></div>
+      <table class="dev-tbl">
+        <tr><th>Parameter</th><th>Values</th></tr>
+        <tr><td><code>city</code></td><td>City name, or <code>lat</code> + <code>lon</code> + <code>tz</code> for exact coordinates.</td></tr>
+        <tr><td><code>method</code></td><td>Calculation method (same list as the API). Default karachi.</td></tr>
+        <tr><td><code>asr</code></td><td>auto, shafii, hanafi.</td></tr>
+        <tr><td><code>theme</code></td><td><code>light</code> or dark (default).</td></tr>
+      </table>
+
+      <div class="dev-foot">
+        <p>Read only, no personal data, no external calls. Prayer times use Wasilah's own on-device engine (PrayTimes.org algorithm). City data is a subset of <a href="https://www.geonames.org/" target="_blank" rel="noopener">GeoNames</a> (CC BY 4.0). Quran audio links point to the <a href="https://islamic.network" target="_blank" rel="noopener">islamic.network</a> CDN.</p>
+        <p>Questions: <a href="mailto:hello@wasilah.site">hello@wasilah.site</a>. A project by <a href="https://aykizintelligence.com" target="_blank" rel="noopener">Aykiz Intelligence</a>. <a href="/">Back to Wasilah →</a></p>
+      </div>
+    </main>
+    <script>
+      document.querySelectorAll('.dev-copy').forEach(function (b) {
+        b.addEventListener('click', function () {
+          navigator.clipboard.writeText(b.getAttribute('data-copy'));
+          var t = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = t; }, 1400);
+        });
+      });
+    </script>
+  </body>
+</html>

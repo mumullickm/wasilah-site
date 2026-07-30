@@ -66,4 +66,15 @@ A: Nothing about your worship is collected. Your location is used on-device to c
 Q: How do I download Wasilah?
 A: Free on the App Store (https://apps.apple.com/app/id6767919573) and Google Play (https://play.google.com/store/apps/details?id=site.wasilah.wasilah), or via https://wasilah.site/get/.
 
+## Build with Wasilah (free for developers)
+
+Wasilah's prayer engine is open for anyone to use, free, read-only, no key, no external calls. Details at https://wasilah.site/build/.
+
+- Claude / AI connector (MCP): add https://wasilah-mcp.aykiz.workers.dev/mcp as a custom connector in Claude or any MCP-compatible client. Tools: get_prayer_times, get_next_prayer, get_qibla, get_hijri_date, get_quran_audio.
+- Free JSON API: https://wasilah-mcp.aykiz.workers.dev/api/prayer-times?city=Dhaka (also /api/next-prayer, /api/qibla, /api/hijri, /api/quran-audio). Accepts city or latitude/longitude/timezone, plus method and asr.
+- Embeddable widget: <iframe src="https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka"></iframe> shows live prayer times on any website.
+
+Q: Can I use Wasilah's prayer times in my own app or website?
+A: Yes, free. There is a Claude/MCP connector, a free JSON API, and an embeddable widget at https://wasilah.site/build/. Read only, no key, no cost, as sadaqah jariyah.
+
 Full page texts: https://wasilah.site/llms-full.txt
