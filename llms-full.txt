@@ -28,6 +28,13 @@ features that require an internet connection, the other being Quran recitation a
 
 The website is available in English at https://wasilah.site/ and in Bangla at https://wasilah.site/bn/.
 
+Aykiz Intelligence also publishes Misbah: Light in the Dark, a one-touch game in which the light you
+carry is the sight you have. It is free, with no ads, no sign-up and no in-app purchases, and it is rated
+4+. Misbah is a separate app from Wasilah and shares no data with it.
+Website: https://aykizintelligence.com/misbah ·
+iOS: https://apps.apple.com/app/id6781614427 ·
+Android: https://play.google.com/store/apps/details?id=com.mumullickm.misbah
+
 
 ---
 

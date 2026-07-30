@@ -441,6 +441,29 @@ img { display: block; max-width: 100%; }
 }
 .footer-social-link:hover { border-color: var(--card-border); background: rgba(241, 213, 146, 0.08); transform: translateY(-2px); }
 .footer-social-link svg { width: 17px; height: 17px; fill: var(--gold); }
+.footer-sibling {
+  max-width: var(--wrap);
+  margin: 32px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  transition: border-color 0.2s var(--ease), background 0.2s;
+}
+.footer-sibling:hover { border-color: var(--card-border); background: rgba(241, 213, 146, 0.05); }
+.footer-sibling img { width: 40px; height: 40px; border-radius: 10px; flex: none; }
+.footer-sibling-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.footer-sibling-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.footer-sibling-name { color: var(--ink-dim); font-size: 0.94rem; line-height: 1.45; }
+.footer-sibling-name b { color: var(--gold); font-weight: 600; }
 .footer-bottom {
   max-width: var(--wrap);
   margin: 36px auto 0;
@@ -501,6 +524,9 @@ img { display: block; max-width: 100%; }
 @media (max-width: 520px) {
   .trust-strip { justify-content: center; }
   .footer-bottom { justify-content: center; text-align: center; font-size: 0.9rem; }
+  /* the copy wraps to 3-4 lines here, so pin the icon to the first line instead of floating it mid-block */
+  .footer-sibling { align-items: flex-start; padding: 16px; }
+  .footer-sibling img { margin-top: 2px; }
   /* the CTA is the only persistent install control on a phone, so shrink it, never hide it */
   .header-cta { padding: 8px 14px; font-size: 0.82rem; }
   .brand-logotype { display: none; }
@@ -1084,6 +1110,7 @@ html[lang="bn"] .section-label,
 html[lang="bn"] .deliver-kicker,
 html[lang="bn"] .di-step-kicker,
 html[lang="bn"] .footer-nav-title,
+html[lang="bn"] .footer-sibling-label,
 html[lang="bn"] .di-ref-chip,
 .footer-col[lang="bn"] .footer-nav-title {
   letter-spacing: 0.06em;
@@ -1097,6 +1124,7 @@ html[lang="bn"] .guide-num { font-family: var(--font-bn); font-size: 0.72rem; }
 html[lang="bn"] .guide-steps em,
 html[lang="bn"] .cap-tile p,
 html[lang="bn"] .di-facts li,
+html[lang="bn"] .footer-sibling-name,
 html[lang="bn"] .footer-col a { line-height: 1.6; }
 
 /* ---- Page-wide light field --------------------------------------

@@ -77,4 +77,12 @@ Wasilah's prayer engine is open for anyone to use, free, read-only, no key, no e
 Q: Can I use Wasilah's prayer times in my own app or website?
 A: Yes, free. There is a Claude/MCP connector, a free JSON API, and an embeddable widget at https://wasilah.site/build/. Read only, no key, no cost, as sadaqah jariyah.
 
+## Also from the publisher
+
+Aykiz Intelligence also publishes Misbah: Light in the Dark, a one-touch game in which the light you carry is the sight you have. Free, no ads, no sign-up, no in-app purchases, rated 4+. It is a separate app from Wasilah and shares no data with it.
+
+- Website: https://aykizintelligence.com/misbah
+- iOS: https://apps.apple.com/app/id6781614427
+- Android: https://play.google.com/store/apps/details?id=com.mumullickm.misbah
+
 Full page texts: https://wasilah.site/llms-full.txt
