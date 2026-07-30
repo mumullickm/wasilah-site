@@ -743,8 +743,8 @@
           .build-code code { color: var(--gold-bright); font-size: 0.82rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; overflow-x: auto; white-space: nowrap; flex: 1; }
           .build-copy { flex-shrink: 0; background: rgba(241,213,146,0.14); color: var(--gold); border: 1px solid var(--card-border); border-radius: 8px; padding: 5px 10px; font: inherit; font-size: 0.78rem; cursor: pointer; }
           .build-copy:hover { background: rgba(241,213,146,0.24); }
-          .build-preview { display: flex; justify-content: center; margin-top: 14px; }
-          .build-preview iframe { width: 100%; max-width: 320px; height: 430px; border: 0; border-radius: 16px; }
+          .build-card .build-cta-btn { margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; background: var(--gold); color: #00302f; border: 0; border-radius: var(--r-pill); padding: 12px 16px; font: inherit; font-weight: 700; font-size: 0.92rem; text-decoration: none; }
+          .build-card .build-cta-btn:hover { background: var(--gold-bright); }
           .build-more { text-align: center; margin-top: 26px; }
           .build-more a { color: var(--gold); font-weight: 600; text-decoration: none; }
           .build-more a:hover { text-decoration: underline; }
@@ -771,15 +771,13 @@
             <span class="build-eyebrow">For any website</span>
             <h3>Embed a live widget</h3>
             <p>Paste one line to show today's prayer times, updating live, on a masjid page, a blog, anywhere. Set the city, or coordinates.</p>
-            <div class="build-preview">
-              <iframe src="https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka&amp;theme=light" title="Wasilah prayer times widget for Dhaka" loading="lazy"></iframe>
-            </div>
-            <div class="build-code"><code>&lt;iframe src='…/embed?city=Dhaka'&gt;&lt;/iframe&gt;</code><button class="build-copy" type="button" data-copy="<iframe src='https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka' width='360' height='440' style='border:0;border-radius:18px'></iframe>">Copy</button></div>
+            <a class="build-cta-btn" href="https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka" target="_blank" rel="noopener">See the live widget →</a>
           </article>
         </div>
         <p class="build-more"><a href="/build/">Full developer docs, endpoints and options →</a></p>
+
         <script>
-          document.querySelectorAll('.build-copy').forEach(function (b) {
+          document.querySelectorAll('#build .build-copy').forEach(function (b) {
             b.addEventListener('click', function () {
               navigator.clipboard.writeText(b.getAttribute('data-copy'));
               var t = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = t; }, 1400);
