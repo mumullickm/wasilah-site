@@ -32,6 +32,9 @@ Key facts:
 - [Jumu'ah day deeds (Bangla)](https://wasilah.site/blog/jumar-diner-amol/): Sunnah acts and virtues of Friday, in Bangla.
 - [Learn salah for beginners (Bangla)](https://wasilah.site/blog/namaz-shikhar-niyom/): step-by-step guide to learning the prayer, in Bangla.
 - [Darood Sharif virtues (Bangla)](https://wasilah.site/blog/darood-sharif-fazilat/): virtues and etiquette of sending salawat, in Bangla.
+- [Wasilah FAQ](https://wasilah.site/faq/): the full question and answer set, in English.
+- [Wasilah FAQ in Bangla](https://wasilah.site/bn/faq/): the same questions and answers, in Bangla.
+- [Legal centre](https://wasilah.site/legal/): the privacy summary in plain language, with the full policy, terms and data deletion.
 - [Privacy policy](https://wasilah.site/privacy/): what is collected, what is not, and the Meta SDK on the Android build.
 - [Terms and conditions](https://wasilah.site/terms/)
 - [Delete your data](https://wasilah.site/delete-data/): how to remove everything the app stores.

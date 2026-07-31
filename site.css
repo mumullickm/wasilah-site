@@ -105,6 +105,7 @@ img { display: block; max-width: 100%; }
   color: var(--gold);
 }
 .section-head h2,
+.section-copy h1,
 .section-copy h2,
 .ethos-inner h2 {
   font-size: clamp(1.9rem, 3.6vw, 2.85rem);
@@ -268,10 +269,215 @@ img { display: block; max-width: 100%; }
           mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6.2 11.3 3 8.1l1.1-1.1 2.1 2.1 5.6-5.6L13 4.6z'/%3E%3C/svg%3E") center/contain no-repeat;
 }
 
+/* ---- Next prayer bar --------------------------------------
+   One quiet bar under the store badges. Hidden until next-prayer.js has a
+   real time in it, so it never flashes an empty shell. ------------------- */
+.np-shell[hidden] { display: none; }
+/* The rim: three stacked conic gradients turning slowly behind the bar, each
+   clipped to the bar's shape and blurred by a different amount. Gold and
+   emerald only, so it reads as light moving along the edge rather than a
+   coloured border. */
+.np-shell {
+  --np-radius: var(--r-pill);
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 620px);
+  margin: 26px auto 0;
+}
+.np-glow {
+  position: absolute;
+  z-index: -1;
+  border-radius: var(--np-radius);
+  overflow: hidden;
+  pointer-events: none;
+}
+.np-glow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 760px;
+  height: 760px;
+  background-repeat: no-repeat;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: np-sweep 26s linear infinite;
+  will-change: transform;
+}
+/* widest and softest: the halo that lifts the bar off the page */
+.np-glow--halo { inset: -9px; filter: blur(9px); opacity: 0.75; }
+.np-glow--halo::before {
+  background-image: conic-gradient(#001a19, var(--gold) 5%, #001a19 34%, #001a19 50%, #2ec4a0 60%, #001a19 86%);
+}
+/* the middle wash that carries the colour */
+.np-glow--rim { inset: -3px; filter: blur(3px); }
+.np-glow--rim::before {
+  animation-duration: 34s;
+  animation-direction: reverse;
+  background-image: conic-gradient(rgba(0, 0, 0, 0), var(--gold-deep), rgba(0, 0, 0, 0) 11%, rgba(0, 0, 0, 0) 50%, #00746d, rgba(0, 0, 0, 0) 61%);
+}
+/* the crisp travelling highlight that sits on the edge itself */
+.np-glow--edge { inset: -1px; filter: blur(0.5px); }
+.np-glow--edge::before {
+  animation-duration: 20s;
+  background-image: conic-gradient(#0a2422, var(--gold-bright) 4%, #0a2422 13%, #0a2422 50%, #54e0a0 59%, #0a2422 64%);
+  filter: brightness(1.25);
+}
+/* it quickens under the cursor, then settles again */
+.np-shell:hover .np-glow::before { animation-duration: 9s; }
+.np-shell:hover .np-glow--rim::before { animation-duration: 12s; }
+
+@keyframes np-sweep {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .np-glow::before,
+  .np-shell:hover .np-glow::before { animation: none; transform: translate(-50%, -50%) rotate(58deg); }
+}
+
+.next-prayer {
+  position: relative;
+  padding: 16px 28px 17px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  overflow: hidden;
+  border-radius: var(--np-radius);
+  border: 1px solid rgba(241, 213, 146, 0.1);
+  background:
+    linear-gradient(100deg, rgba(241, 213, 146, 0.075), rgba(241, 213, 146, 0.02) 46%, rgba(255, 255, 255, 0.03)),
+    linear-gradient(180deg, rgba(0, 26, 25, 0.94), rgba(0, 20, 21, 0.97));
+  box-shadow:
+    0 22px 55px -32px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+  text-align: left;
+}
+/* the sheen that reads as glass rather than a flat panel */
+.next-prayer::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent);
+  pointer-events: none;
+}
+.np-eyebrow {
+  flex: 0 0 auto;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  white-space: nowrap;
+}
+.np-eyebrow .np-place {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: 0.16em;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: color 0.2s var(--ease);
+}
+/* the dotted rule is the only thing marking it as a control, which is as
+   loud as an optional location prompt should ever be */
+.np-place::after {
+  content: "";
+  display: block;
+  margin-top: 2px;
+  border-bottom: 1px dotted rgba(241, 213, 146, 0.4);
+  transition: border-color 0.2s var(--ease);
+}
+.np-place:hover,
+.np-place[data-np-mine="true"] { color: var(--gold); }
+.np-place:hover::after { border-bottom-color: var(--gold); }
+.np-place[data-np-mine="true"]::after { border-bottom-style: solid; border-bottom-color: var(--gold-deep); }
+.np-place[disabled] { cursor: progress; opacity: 0.7; }
+.np-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+  padding-left: 22px;
+  border-left: 1px solid var(--line);
+  line-height: 1.2;
+}
+.np-name {
+  font-size: 1.22rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+.np-at { font-size: 0.92rem; font-weight: 600; color: var(--gold); }
+.np-count {
+  flex: 0 0 auto;
+  font-size: 1.55rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+/* the seconds sit back a step, so the eye lands on hours and minutes */
+.np-secs { font-size: 0.72em; color: var(--gold-deep); }
+/* the hairline that fills as the current window runs out */
+.np-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgba(241, 213, 146, 0.1);
+}
+.np-track i {
+  display: block;
+  height: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, rgba(241, 213, 146, 0.25), var(--gold));
+  transition: transform 0.9s linear;
+}
+
+@media (max-width: 620px) {
+  .np-shell { --np-radius: var(--r-md); }
+  .next-prayer {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 16px;
+    padding: 16px 22px 18px;
+    text-align: center;
+  }
+  .np-eyebrow { flex: 1 0 100%; text-align: center; }
+  .np-main { padding-left: 0; border-left: 0; }
+  /* on one line the dotted rule sits under the word, not below the block */
+  .np-eyebrow .np-place {
+    display: inline;
+    border-bottom: 1px dotted rgba(241, 213, 146, 0.4);
+  }
+  .np-eyebrow .np-place::before { content: "· "; }
+  .np-eyebrow .np-place::after { display: none; }
+  .np-eyebrow .np-place:hover { border-bottom-color: var(--gold); }
+  .np-main { flex: 0 0 auto; }
+  .np-count { font-size: 1.32rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .np-track i { transition: none; }
+}
+
+html[lang="bn"] .np-name,
+html[lang="bn"] .np-eyebrow { font-family: var(--font-bn); }
+html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
+
 /* ---- Feature grid ----------------------------------------- */
 
 /* ---- Reasons / why ---------------------------------------- */
-.reasons { border-top: 1px solid var(--line-soft); }
 .reason-grid {
   max-width: var(--wrap);
   margin: 0 auto;
@@ -299,7 +505,6 @@ img { display: block; max-width: 100%; }
 .reason-bn { margin-top: 10px; color: var(--gold-deep); }
 
 /* ---- FAQ --------------------------------------------------- */
-.faq-section { border-top: 1px solid var(--line-soft); }
 .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
 .faq-list details {
   background: var(--card);
@@ -344,7 +549,7 @@ img { display: block; max-width: 100%; }
 .faq-list details p { padding: 0 22px 20px; color: var(--ink-dim); max-width: 64ch; font-size: 0.97rem; }
 
 /* ---- Trust / privacy -------------------------------------- */
-.trust-section { border-top: 1px solid var(--line-soft); padding-top: clamp(48px, 6vw, 88px); padding-bottom: clamp(48px, 6vw, 88px); }
+.trust-section { padding-top: clamp(48px, 6vw, 88px); padding-bottom: clamp(48px, 6vw, 88px); }
 .trust-grid { max-width: 720px; margin: 0 auto; }
 .footer-card {
   padding: clamp(22px, 2.6vw, 32px) clamp(24px, 3vw, 36px);
@@ -393,6 +598,36 @@ img { display: block; max-width: 100%; }
 }
 .contact-link:hover { border-color: var(--gold); }
 .contact-link--inline { display: inline-block; margin: 3px 14px 3px 0; font-size: 0.85rem; }
+
+/* ---- Legal hub -------------------------------------------- */
+.legal-hub-grid {
+  max-width: 720px;
+  margin: 22px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.legal-hub-card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 22px 22px 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  transition: border-color 0.2s var(--ease), background 0.25s var(--ease), transform 0.2s var(--ease);
+}
+.legal-hub-card:hover {
+  border-color: var(--card-border);
+  background: var(--card-2);
+  transform: translateY(-2px);
+}
+.legal-hub-card h2 { font-size: 1.05rem; font-weight: 700; color: #fff; }
+.legal-hub-card p { font-size: 0.85rem; line-height: 1.5; color: var(--ink-dim); }
+.legal-hub-card span { margin-top: auto; padding-top: 8px; font-size: 0.82rem; font-weight: 700; color: var(--gold); }
+@media (max-width: 700px) {
+  .legal-hub-grid { grid-template-columns: 1fr; }
+}
 
 /* ---- Footer ------------------------------------------------ */
 .site-footer {
@@ -641,7 +876,7 @@ html[lang="bn"] .ethos-bn { display: none; }
 
 
 /* ---- Sadaqah / ethos + share (merged) ---- */
-.ethos-section { text-align: center; border-top: 1px solid var(--line-soft); }
+.ethos-section { text-align: center; }
 .ethos-inner { max-width: 680px; margin: 0 auto; }
 .ethos-text { margin-top: 18px; color: var(--ink-dim); font-size: 1.08rem; line-height: 1.6; }
 .ethos-bn { margin-top: 10px; color: var(--gold-deep); }
@@ -869,7 +1104,6 @@ html[lang="bn"] .ethos-bn { display: none; }
 .di-refline { margin-top: 11px; display: flex; align-items: center; gap: 9px; flex-wrap: wrap; font-size: 0.85rem; color: var(--gold-deep); }
 
 /* ---- What you get: deliverables grid ---------------------- */
-.deliver-section { border-top: 1px solid var(--line-soft); }
 .deliver-grid {
   max-width: var(--wrap);
   margin: clamp(34px, 5vw, 54px) auto 0;
@@ -901,6 +1135,8 @@ html[lang="bn"] .ethos-bn { display: none; }
   margin-bottom: 20px;
 }
 .deliver-mark svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* the app's own icons are solid shapes, not strokes, so they render filled */
+.deliver-mark svg.is-fill { fill: currentColor; stroke: none; }
 .deliver-mark--gold { background: var(--gold); border-color: var(--gold); color: var(--emerald-900); }
 .deliver-mark--gold svg { fill: currentColor; stroke: none; }
 .deliver-kicker {
@@ -976,7 +1212,6 @@ html[lang="bn"] .ethos-bn { display: none; }
   max-width: var(--wrap);
   margin: clamp(38px, 5vw, 60px) auto 0;
   padding-top: clamp(30px, 4vw, 44px);
-  border-top: 1px solid var(--line-soft);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -984,6 +1219,8 @@ html[lang="bn"] .ethos-bn { display: none; }
   text-align: center;
 }
 .inapp-cta-text { font-size: clamp(1.05rem, 1.7vw, 1.3rem); font-weight: 600; color: #fff; }
+.inapp-cta h2 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); font-weight: 700; color: #fff; }
+.inapp-cta > p { max-width: 52ch; color: var(--ink-dim); }
 .inapp-cta .hero-cta-row { margin-top: 0; justify-content: center; }
 
 @media (max-width: 980px) {
@@ -998,7 +1235,6 @@ html[lang="bn"] .ethos-bn { display: none; }
 
 /* ---- Deen Intelligence ------------------------------------ */
 .di-section {
-  border-top: 1px solid var(--line-soft);
   background: radial-gradient(72% 62% at 50% 0%, rgba(241, 213, 146, 0.11), transparent 70%);
 }
 .di-inner {

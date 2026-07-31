@@ -173,7 +173,7 @@
         <h1>Privacy Policy</h1>
         <div class="legal-meta">
           <strong>Effective date:</strong> 20 May 2026<br>
-          <strong>Last updated:</strong> 10 June 2026<br>
+          <strong>Last updated:</strong> 31 July 2026<br>
           <strong>App:</strong> Wasilah · <strong>Package:</strong> site.wasilah.wasilah<br>
           <strong>Operator:</strong> Miraz Mullick (sole developer, "<em>we</em>", "<em>us</em>", "<em>our</em>")<br>
           <strong>Website:</strong> https://wasilah.site
@@ -195,6 +195,7 @@
             <tr><td>Crash and diagnostic data (Apple MetricKit)</td><td>To detect and fix bugs that crash or destabilise the app</td><td>Locally in the app's caches directory. iOS aggregates anonymous payloads on its own schedule; opt-out is available from Settings</td></tr>
             <tr><td>App preferences (e.g. bookmarks, calculation method, language, theme)</td><td>To remember your settings between launches</td><td>Locally on your device only</td></tr>
             <tr><td>Quran content cache</td><td>To let you re-open surahs you have already viewed without an internet connection</td><td>Locally on your device in a SQLite database</td></tr>
+            <tr><td>Website analytics cookies (<code>_ga</code>, <code>_ga_&lt;id&gt;</code>) and, only if you click to grant it, your browser location on wasilah.site</td><td>To count visits to the website in aggregate, and to show prayer times for where you are instead of for Dhaka</td><td>Analytics go to Google with your IP anonymised. Location coordinates are never transmitted: they stay in your browser's localStorage. See section 3.7</td></tr>
             <tr><td>Install event, app-open event, Android Advertising ID, anonymous Meta attribution metadata (<strong>Android build only</strong>)</td><td>So Meta can attribute installs that come from Wasilah ad campaigns and measure whether those campaigns are reaching the right people</td><td>Transmitted to Meta via the Facebook SDK on Android. Not present on iOS. See section 3.6 for the exact list of fields</td></tr>
           </table>
         </div>
@@ -255,6 +256,15 @@
         <p>You can opt out of the Android Advertising ID at any time. Go to <strong>Android Settings &rarr; Privacy &rarr; Ads</strong> (or <strong>Settings &rarr; Google &rarr; Ads</strong> on some devices) and select "Delete advertising ID." After that the Meta SDK can still see the install and app-open events but cannot tie them to an identifier Meta can match across other apps.</p>
         <p>Meta's processing of the data described above is governed by <a href="https://www.facebook.com/privacy/policy/">Meta's Privacy Policy</a>. The Meta App ID associated with this integration is <code>2554090355008071</code>.</p>
 
+
+        <h3>3.7 This website (wasilah.site)</h3>
+        <p>Sections 3.1 to 3.6 describe the mobile app. This section describes the website you are reading now, which is a separate surface with its own, smaller footprint.</p>
+        <p>The website has no accounts and no sign-in. It does not ask you for a name, an email address, or any other identifying detail, and there is no form on it that collects personal data.</p>
+        <p><strong>Analytics cookies.</strong> The site loads Google Tag Manager (container <code>GTM-TQ85L336</code>) and Google Analytics 4 (property <code>G-5342W4HQSG</code>). Google Analytics sets first-party cookies in your browser, named <code>_ga</code> and <code>_ga_&lt;id&gt;</code>, which distinguish one visitor from another so we can count visits and see which pages are read. IP anonymisation is enabled, so your address is truncated before it is stored. We use this only to understand traffic in aggregate. We do not use it for advertising, remarketing, or building a profile of you, and no advertising or social-media tracking pixel is loaded on this website. You can block these cookies in your browser settings or with any content blocker, and the site works normally without them.</p>
+        <p><strong>Fonts.</strong> Typefaces are loaded from Google Fonts. That request exposes your IP address and browser to Google in the same way any request for an image or a stylesheet would. It sets no cookie.</p>
+        <p><strong>The next-prayer bar.</strong> The prayer countdown on the home page is computed in your browser from the same astronomy the app uses. Nothing about it is fetched from a server. It opens on Dhaka, and the site does not ask for your location when the page loads. If you choose to click the place name and grant your browser's location permission, your coordinates are read once, used in that calculation on your own device, and never transmitted to us or to anyone else. So that you do not have to grant permission on every visit, the two numbers are saved in your browser's <code>localStorage</code> under the key <code>wasilah:next-prayer-place</code>. Unlike a cookie, <code>localStorage</code> is never attached to a network request and never leaves your device. Clicking the place name again, or clearing this site's data in your browser, removes it immediately.</p>
+        <p><strong>Hosting.</strong> The site is served as static files by GitHub Pages. Like any web host, GitHub processes the server logs inherent to delivering a page, including your IP address. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</p>
+
         <h2>4. How we use your information</h2>
         <ul>
           <li>To compute and display prayer times and Qibla direction (entirely on your device)</li>
@@ -281,6 +291,7 @@
             <tr><th>Recipient</th><th>Role</th><th>Region</th></tr>
             <tr><td>AlQuran.cloud</td><td>Quran text and translation</td><td>Operated globally</td></tr>
             <tr><td>islamic.network</td><td>Quran audio streaming</td><td>Operated globally</td></tr>
+            <tr><td>Google LLC (Analytics, Tag Manager, Fonts)</td><td>Aggregate website analytics and font delivery, <strong>website only</strong> (see section 3.7). Not present in the app</td><td>United States; operated globally</td></tr>
             <tr><td>Meta Platforms, Inc. (Facebook)</td><td>App-install attribution and ad measurement, <strong>Android build only</strong> (see section 3.6)</td><td>United States; operated globally</td></tr>
           </table>
         </div>
