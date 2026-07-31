@@ -273,67 +273,12 @@ img { display: block; max-width: 100%; }
    One quiet bar under the store badges. Hidden until next-prayer.js has a
    real time in it, so it never flashes an empty shell. ------------------- */
 .np-shell[hidden] { display: none; }
-/* The rim: three stacked conic gradients turning slowly behind the bar, each
-   clipped to the bar's shape and blurred by a different amount. Gold and
-   emerald only, so it reads as light moving along the edge rather than a
-   coloured border. */
 .np-shell {
   --np-radius: var(--r-pill);
   position: relative;
-  isolation: isolate;
   width: min(100%, 620px);
   margin: 26px auto 0;
 }
-.np-glow {
-  position: absolute;
-  z-index: -1;
-  border-radius: var(--np-radius);
-  overflow: hidden;
-  pointer-events: none;
-}
-.np-glow::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 760px;
-  height: 760px;
-  background-repeat: no-repeat;
-  transform: translate(-50%, -50%) rotate(0deg);
-  animation: np-sweep 26s linear infinite;
-  will-change: transform;
-}
-/* widest and softest: the halo that lifts the bar off the page */
-.np-glow--halo { inset: -9px; filter: blur(9px); opacity: 0.75; }
-.np-glow--halo::before {
-  background-image: conic-gradient(#001a19, var(--gold) 5%, #001a19 34%, #001a19 50%, #2ec4a0 60%, #001a19 86%);
-}
-/* the middle wash that carries the colour */
-.np-glow--rim { inset: -3px; filter: blur(3px); }
-.np-glow--rim::before {
-  animation-duration: 34s;
-  animation-direction: reverse;
-  background-image: conic-gradient(rgba(0, 0, 0, 0), var(--gold-deep), rgba(0, 0, 0, 0) 11%, rgba(0, 0, 0, 0) 50%, #00746d, rgba(0, 0, 0, 0) 61%);
-}
-/* the crisp travelling highlight that sits on the edge itself */
-.np-glow--edge { inset: -1px; filter: blur(0.5px); }
-.np-glow--edge::before {
-  animation-duration: 20s;
-  background-image: conic-gradient(#0a2422, var(--gold-bright) 4%, #0a2422 13%, #0a2422 50%, #54e0a0 59%, #0a2422 64%);
-  filter: brightness(1.25);
-}
-/* it quickens under the cursor, then settles again */
-.np-shell:hover .np-glow::before { animation-duration: 9s; }
-.np-shell:hover .np-glow--rim::before { animation-duration: 12s; }
-
-@keyframes np-sweep {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .np-glow::before,
-  .np-shell:hover .np-glow::before { animation: none; transform: translate(-50%, -50%) rotate(58deg); }
-}
-
 .next-prayer {
   position: relative;
   padding: 16px 28px 17px;
@@ -342,12 +287,13 @@ img { display: block; max-width: 100%; }
   gap: 22px;
   overflow: hidden;
   border-radius: var(--np-radius);
-  border: 1px solid rgba(241, 213, 146, 0.1);
+  border: 1px solid var(--card-border);
   background:
     linear-gradient(100deg, rgba(241, 213, 146, 0.075), rgba(241, 213, 146, 0.02) 46%, rgba(255, 255, 255, 0.03)),
     linear-gradient(180deg, rgba(0, 26, 25, 0.94), rgba(0, 20, 21, 0.97));
   box-shadow:
     0 22px 55px -32px rgba(0, 0, 0, 0.9),
+    0 0 40px -26px rgba(241, 213, 146, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
   -webkit-backdrop-filter: blur(14px);
           backdrop-filter: blur(14px);
@@ -1019,6 +965,17 @@ html[lang="bn"] .ethos-bn { display: none; }
   stroke-linejoin: round;
   margin-bottom: 14px;
 }
+/* The app's own icons are solid shapes on a 512 grid, not 24-unit strokes.
+   Drawn as strokes they all but vanish: stroke-width 2 of 512 is 0.1px at this
+   size. Filled, plus a hairline stroke to carry the outlines that are under a
+   pixel wide, and a little larger to earn their detail. */
+.cap-tile svg.is-fill {
+  width: 32px;
+  height: 32px;
+  fill: var(--gold);
+  stroke: var(--gold);
+  stroke-width: 4;
+}
 .cap-tile h3 { font-size: 1rem; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
 .cap-tile p { margin-top: 6px; font-size: 0.88rem; line-height: 1.42; color: var(--ink-dim); }
 
@@ -1135,8 +1092,6 @@ html[lang="bn"] .ethos-bn { display: none; }
   margin-bottom: 20px;
 }
 .deliver-mark svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-/* the app's own icons are solid shapes, not strokes, so they render filled */
-.deliver-mark svg.is-fill { fill: currentColor; stroke: none; }
 .deliver-mark--gold { background: var(--gold); border-color: var(--gold); color: var(--emerald-900); }
 .deliver-mark--gold svg { fill: currentColor; stroke: none; }
 .deliver-kicker {
