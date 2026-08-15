@@ -347,11 +347,36 @@ html[lang="bn"] .footer-col a { text-underline-offset: 0.4em; }
 }
 .store-button {
   display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
   position: relative;
   border-radius: 13px;
   transition: transform 0.2s var(--ease), filter 0.2s var(--ease);
 }
 .store-button .store-badge { height: var(--badge-h); width: auto; }
+/* the caption under each badge: Play carries its verified rating, the
+   App Store carries a fact until its storefront ratings thicken */
+.store-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink-dim);
+}
+.store-note--rating { color: var(--gold); }
+.store-note--rating::before {
+  content: "";
+  width: 11px;
+  height: 11px;
+  background: var(--gold);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 .9l2.1 4.4 4.9.7-3.5 3.4.8 4.8L8 11.9l-4.3 2.3.8-4.8L1 6l4.9-.7z'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 .9l2.1 4.4 4.9.7-3.5 3.4.8 4.8L8 11.9l-4.3 2.3.8-4.8L1 6l4.9-.7z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+/* the glow ring frames the badge art only, not the caption */
+.store-button::after { inset: 0 0 auto 0; height: var(--badge-h); }
 .store-button:not(.is-muted):hover { transform: translateY(-2px); filter: brightness(1.06); }
 /* the frame glows, never the badge art itself */
 .store-button::after {
@@ -831,7 +856,7 @@ html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
 }
 .footer-get .footer-nav-title { margin-bottom: 0; flex: 0 0 100%; }
 .footer-get .hero-cta-row { margin-top: 0; }
-.footer-get .store-badge { height: 44px; }
+.footer-get .store-button { --badge-h: 44px; }
 .footer-get .qr-card { margin-left: auto; }
 
 /* ---- QR bridge: desktop visitors carry the site to the phone.
@@ -1065,7 +1090,7 @@ html[lang="bn"] .ethos-bn { display: none; }
 .hero--niche .hero-cta-row { margin-top: 32px; justify-content: center; }
 .hero--niche .trust-strip { margin-top: 26px; justify-content: center; gap: 10px 26px; }
 @media (min-width: 761px) {
-  .hero--niche .store-button .store-badge { height: 70px; }
+  .hero--niche .store-button { --badge-h: 70px; }
 }
 
 
@@ -1479,20 +1504,7 @@ html[lang="bn"] .ethos-bn { display: none; }
   font-weight: 600;
   color: var(--ink-dim);
 }
-.inapp-cta-rating {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: var(--gold);
-}
-.inapp-cta-rating::before {
-  content: "";
-  width: 13px;
-  height: 13px;
-  background: var(--gold);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 .9l2.1 4.4 4.9.7-3.5 3.4.8 4.8L8 11.9l-4.3 2.3.8-4.8L1 6l4.9-.7z'/%3E%3C/svg%3E") center/contain no-repeat;
-          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 .9l2.1 4.4 4.9.7-3.5 3.4.8 4.8L8 11.9l-4.3 2.3.8-4.8L1 6l4.9-.7z'/%3E%3C/svg%3E") center/contain no-repeat;
-}
+/* the per-badge rating captions live on .store-note under each button */
 .inapp-cta-text { font-size: clamp(1.05rem, 1.7vw, 1.3rem); font-weight: 600; color: var(--ink-strong); }
 .inapp-cta h2 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); font-weight: 700; color: var(--ink-strong); }
 .inapp-cta > p { max-width: 52ch; color: var(--ink-dim); }
