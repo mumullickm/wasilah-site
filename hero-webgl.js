@@ -26,6 +26,10 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var small = window.matchMedia('(max-width: 720px)').matches;
 
+  // The core audience carries 2-3GB Androids. On those, the CSS gradient
+  // already reads finished; spend no battery on the field.
+  if (small && navigator.deviceMemory && navigator.deviceMemory <= 3) return;
+
   var vsrc =
     'attribute vec2 p; varying vec2 vUv;' +
     'void main(){ vUv = p * 0.5 + 0.5; gl_Position = vec4(p, 0.0, 1.0); }';
@@ -37,12 +41,14 @@
     'uniform float uTime;',
     'uniform float uArch;',
     'uniform float uScroll;',
-    'mat2 rot(float a){ float c = cos(a), s = sin(a); return mat2(c, -s, s, c); }',
-    'float starField(vec2 p, float scale){',
-    '  vec2 q = fract(p * scale) - 0.5;',
-    '  float sq = abs(max(abs(q.x), abs(q.y)) - 0.46);',
-    '  float dm = abs((abs(q.x) + abs(q.y)) - 0.62);',
-    '  return min(sq, dm);',
+    /* A true khatam: union the square and its 45-degree twin FIRST, then
+       take the outline. abs() before the min drew both full outlines
+       everywhere, which is why the old field read as lattice noise. */
+    'float khatam(vec2 p, float s){',
+    '  vec2 q = abs(fract(p * s) - 0.5);',
+    '  float sq = max(q.x, q.y) - 0.36;',
+    '  float dm = (q.x + q.y) * 0.7071 - 0.36;',
+    '  return abs(min(sq, dm));',
     '}',
     'void main(){',
     '  vec2 uv = (vUv - 0.5);',
@@ -56,9 +62,11 @@
     '  vec3 lampCol = vec3(0.000, 0.302, 0.286);',
     '  float t = uTime;',
     '  vec2 drift = vec2(sin(t * 0.03) * 0.05, t * 0.012);',
-    '  float a = starField(sp + drift, 3.0);',
-    '  float b = starField(sp * rot(0.7853) - drift * 0.6, 4.4);',
-    '  float star = min(a, b * 1.15);',
+    /* second layer at exactly 2x, offset half a cell, so the small stars
+       interlock in the interstices of the large ones instead of moireing */
+    '  float a = khatam(sp + drift, 3.0);',
+    '  float b = khatam(sp + drift * 0.6 + vec2(0.5 / 6.0), 6.0);',
+    '  float star = min(a, b * 1.2);',
     '  float core = smoothstep(0.018, 0.0, star);',
     '  float halo = smoothstep(0.10, 0.0, star) * 0.14;',
     '  vec2 lp = vec2(sin(t * 0.18) * 0.55, cos(t * 0.14) * 0.32 + 0.1);',

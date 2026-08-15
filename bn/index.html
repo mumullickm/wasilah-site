@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Amiri:wght@400;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700&family=Amiri:wght@400;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <meta property="og:title" content="ওয়াসিলাহ: নামাজের সময়সূচি, কুরআন, হাদিস ও কিবলা">
     <meta property="og:description" content="বাংলাদেশের জন্য তৈরি একটি বিনামূল্যের ইসলামিক অ্যাপ। নামাজের সময়, আজান, কিবলা, বাংলায় কুরআন ও হাদিস, টাকায় যাকাত এবং দীন ইন্টেলিজেন্স।">
@@ -41,7 +41,7 @@
     <meta name="twitter:description" content="বাংলাদেশের জন্য তৈরি একটি বিনামূল্যের ইসলামিক অ্যাপ। বিজ্ঞাপন নেই, অফলাইনেও চলে।">
     <meta name="twitter:image" content="https://wasilah.site/og-wasilah-v2.jpg">
     <meta name="twitter:image:alt" content="ওয়াসিলাহ: বাংলাদেশের জন্য বিনামূল্যের ইসলামিক অ্যাপ। নামাজের সময়, কুরআন, হাদিস ও কিবলা।">
-    <link rel="stylesheet" href="/site.css?v=rebuild-20260725">
+    <link rel="stylesheet" href="/site.css?v=perfect-20260815">
 
     <script type="application/ld+json">
       [
@@ -325,6 +325,17 @@
           <a class="lang-option is-active" href="/bn/" hreflang="bn" aria-current="page">বাংলা</a>
         </nav>
         <a class="header-cta" href="/get/" rel="noopener">অ্যাপ নিন</a>
+        <details class="mobile-nav">
+          <summary aria-label="মেনু">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </summary>
+          <nav aria-label="ওয়াসিলাহর অংশসমূহ">
+            <a href="#features">যা পাচ্ছেন</a>
+            <a href="#deen-intelligence">দীন ইন্টেলিজেন্স</a>
+            <a href="#why">কেন ওয়াসিলাহ</a>
+            <a href="/bn/faq/">প্রশ্ন</a>
+          </nav>
+        </details>
       </div>
     </header>
 
@@ -347,6 +358,7 @@
               <p class="np-eyebrow">পরবর্তী নামাজ<button type="button" class="np-place" data-np-place>ঢাকা</button></p>
               <p class="np-main">
                 <span class="np-name" data-np-name></span>
+                <span class="np-ar" lang="ar" data-np-ar></span>
                 <span class="np-at" data-np-at></span>
               </p>
               <p class="np-count"><span data-np-count></span><span class="np-secs" data-np-secs></span></p>
@@ -517,14 +529,28 @@
         </div>
 
         <div class="inapp-cta">
-          <p class="inapp-cta-text">বিনামূল্যে, এক মিনিটেই আপনার ফোনে।</p>
-          <div class="hero-cta-row">
-            <a class="store-button" href="https://apps.apple.com/app/id6767919573" target="_blank" rel="noopener" aria-label="অ্যাপ স্টোর থেকে ওয়াসিলাহ ডাউনলোড করুন">
-              <img class="store-badge" src="/App_Store.svg?v=20260606b" alt="অ্যাপ স্টোরে পাওয়া যাচ্ছে" width="200" height="60">
-            </a>
-            <a class="store-button" href="https://play.google.com/store/apps/details?id=site.wasilah.wasilah" target="_blank" rel="noopener" aria-label="গুগল প্লে থেকে ওয়াসিলাহ নিন">
-              <img class="store-badge" src="/Google_Play.svg?v=20260606b" alt="গুগল প্লেতে পাওয়া যাচ্ছে" width="200" height="60">
-            </a>
+          <div class="inapp-cta-main">
+            <p class="inapp-cta-text">বিনামূল্যে, এক মিনিটেই আপনার ফোনে।</p>
+            <div class="hero-cta-row">
+              <a class="store-button" href="https://apps.apple.com/app/id6767919573" target="_blank" rel="noopener" aria-label="অ্যাপ স্টোর থেকে ওয়াসিলাহ ডাউনলোড করুন">
+                <img class="store-badge" src="/App_Store.svg?v=20260606b" alt="অ্যাপ স্টোরে পাওয়া যাচ্ছে" width="200" height="60">
+              </a>
+              <a class="store-button" href="https://play.google.com/store/apps/details?id=site.wasilah.wasilah" target="_blank" rel="noopener" aria-label="গুগল প্লে থেকে ওয়াসিলাহ নিন">
+                <img class="store-badge" src="/Google_Play.svg?v=20260606b" alt="গুগল প্লেতে পাওয়া যাচ্ছে" width="200" height="60">
+              </a>
+            </div>
+            <p class="inapp-cta-meta">
+              <!-- rating read from the public Play listing 2026-08-15; update by hand, never script it -->
+              <span class="inapp-cta-rating">গুগল প্লে-তে ৪.৮</span>
+              <span class="inapp-cta-note">চিরকাল বিনামূল্যে। বিজ্ঞাপন নেই। সাইন-আপ নেই।</span>
+            </p>
+          </div>
+          <!-- QR generated offline; one code serves both locales (the URL is language-neutral). Regenerate if /get/ ever moves. -->
+          <div class="qr-card">
+            <svg class="qr-svg" viewBox="-2 -2 29 29" shape-rendering="crispEdges" role="img" aria-label="স্ক্যান করে ওয়াসিলাহ নিন">
+              <path id="qr-get-path" fill="#00211f" d="M0 0h7v1h-7zM8 0h4v1h-4zM14 0h1v1h-1zM18 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h1v1h-1zM10 1h1v1h-1zM12 1h3v1h-3zM16 1h1v1h-1zM18 1h1v1h-1zM24 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM13 2h2v1h-2zM16 2h1v1h-1zM18 2h1v1h-1zM20 2h3v1h-3zM24 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM10 3h4v1h-4zM18 3h1v1h-1zM20 3h3v1h-3zM24 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h2v1h-2zM11 4h1v1h-1zM16 4h1v1h-1zM18 4h1v1h-1zM20 4h3v1h-3zM24 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM9 5h3v1h-3zM14 5h1v1h-1zM16 5h1v1h-1zM18 5h1v1h-1zM24 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h7v1h-7zM9 7h1v1h-1zM12 7h5v1h-5zM0 8h1v1h-1zM3 8h6v1h-6zM10 8h3v1h-3zM14 8h1v1h-1zM16 8h2v1h-2zM20 8h1v1h-1zM22 8h3v1h-3zM2 9h1v1h-1zM4 9h1v1h-1zM7 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM14 9h3v1h-3zM19 9h5v1h-5zM1 10h7v1h-7zM9 10h2v1h-2zM15 10h1v1h-1zM17 10h3v1h-3zM21 10h1v1h-1zM24 10h1v1h-1zM1 11h1v1h-1zM3 11h1v1h-1zM7 11h4v1h-4zM14 11h1v1h-1zM16 11h1v1h-1zM18 11h2v1h-2zM21 11h4v1h-4zM0 12h2v1h-2zM4 12h1v1h-1zM6 12h3v1h-3zM10 12h1v1h-1zM12 12h1v1h-1zM14 12h1v1h-1zM16 12h1v1h-1zM18 12h1v1h-1zM24 12h1v1h-1zM0 13h4v1h-4zM5 13h1v1h-1zM8 13h1v1h-1zM14 13h4v1h-4zM20 13h1v1h-1zM23 13h1v1h-1zM0 14h3v1h-3zM6 14h3v1h-3zM11 14h2v1h-2zM14 14h2v1h-2zM18 14h1v1h-1zM20 14h5v1h-5zM0 15h1v1h-1zM2 15h1v1h-1zM4 15h2v1h-2zM8 15h1v1h-1zM11 15h1v1h-1zM16 15h2v1h-2zM19 15h1v1h-1zM21 15h2v1h-2zM24 15h1v1h-1zM0 16h1v1h-1zM2 16h9v1h-9zM12 16h2v1h-2zM15 16h6v1h-6zM22 16h2v1h-2zM8 17h5v1h-5zM16 17h1v1h-1zM20 17h1v1h-1zM22 17h2v1h-2zM0 18h7v1h-7zM8 18h1v1h-1zM10 18h2v1h-2zM16 18h1v1h-1zM18 18h1v1h-1zM20 18h1v1h-1zM24 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM8 19h2v1h-2zM11 19h1v1h-1zM13 19h1v1h-1zM15 19h2v1h-2zM20 19h1v1h-1zM23 19h2v1h-2zM0 20h1v1h-1zM2 20h3v1h-3zM6 20h1v1h-1zM8 20h2v1h-2zM11 20h2v1h-2zM14 20h7v1h-7zM0 21h1v1h-1zM2 21h3v1h-3zM6 21h1v1h-1zM8 21h1v1h-1zM11 21h2v1h-2zM14 21h1v1h-1zM16 21h3v1h-3zM23 21h2v1h-2zM0 22h1v1h-1zM2 22h3v1h-3zM6 22h1v1h-1zM9 22h1v1h-1zM11 22h2v1h-2zM16 22h2v1h-2zM20 22h5v1h-5zM0 23h1v1h-1zM6 23h1v1h-1zM11 23h1v1h-1zM14 23h1v1h-1zM17 23h1v1h-1zM19 23h2v1h-2zM22 23h3v1h-3zM0 24h7v1h-7zM8 24h2v1h-2zM11 24h1v1h-1zM16 24h1v1h-1zM18 24h1v1h-1zM21 24h1v1h-1zM24 24h1v1h-1z"/>
+            </svg>
+            <p>ফোন দিয়ে স্ক্যান করুন</p>
           </div>
         </div>
       </section>
@@ -684,6 +710,21 @@
           <svg aria-hidden="true"><use href="#icon-youtube"></use></svg>
         </a>
       </nav>
+      <div class="footer-get">
+        <p class="footer-nav-title">সাথে রাখুন ওয়াসিলাহ</p>
+        <div class="hero-cta-row">
+          <a class="store-button" href="https://apps.apple.com/app/id6767919573" target="_blank" rel="noopener" aria-label="অ্যাপ স্টোর থেকে ওয়াসিলাহ ডাউনলোড করুন">
+            <img class="store-badge" src="/App_Store.svg?v=20260606b" alt="অ্যাপ স্টোরে পাওয়া যাচ্ছে" width="200" height="60">
+          </a>
+          <a class="store-button" href="https://play.google.com/store/apps/details?id=site.wasilah.wasilah" target="_blank" rel="noopener" aria-label="গুগল প্লে থেকে ওয়াসিলাহ নিন">
+            <img class="store-badge" src="/Google_Play.svg?v=20260606b" alt="গুগল প্লেতে পাওয়া যাচ্ছে" width="200" height="60">
+          </a>
+        </div>
+        <div class="qr-card">
+          <svg class="qr-svg" viewBox="-2 -2 29 29" shape-rendering="crispEdges" role="img" aria-label="স্ক্যান করে ওয়াসিলাহ নিন"><use href="#qr-get-path"></use></svg>
+          <p>ফোন দিয়ে স্ক্যান করুন</p>
+        </div>
+      </div>
       <a class="footer-sibling" href="https://aykizintelligence.com/misbah" target="_blank" rel="noopener">
         <img src="/misbah-icon.png" alt="" width="40" height="40" loading="lazy" decoding="async">
         <span class="footer-sibling-text">
@@ -702,8 +743,8 @@
       <svg aria-hidden="true"><use href="#icon-arrow-up"></use></svg>
     </button>
 
-    <script src="/script.js?v=rebuild-20260725" defer></script>
-    <script src="/hero-webgl.js?v=field-20260726" defer></script>
-    <script src="/next-prayer.js?v=20260731" defer></script>
+    <script src="/script.js?v=perfect-20260815" defer></script>
+    <script src="/hero-webgl.js?v=khatam-20260815" defer></script>
+    <script src="/next-prayer.js?v=20260815" defer></script>
   </body>
 </html>

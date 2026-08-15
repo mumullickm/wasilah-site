@@ -43,7 +43,11 @@
         locale: 'en-US'
       };
 
+  // the prayer's own name, in the language of the salah itself
+  var AR_NAMES = { fajr: 'فجر', dhuhr: 'ظهر', asr: 'عصر', maghrib: 'مغرب', isha: 'عشاء' };
+
   var nameEl = root.querySelector('[data-np-name]');
+  var arEl = root.querySelector('[data-np-ar]');
   var atEl = root.querySelector('[data-np-at]');
   var countEl = root.querySelector('[data-np-count]');
   var secsEl = root.querySelector('[data-np-secs]');
@@ -194,8 +198,15 @@
     var prev = times[idx - 1];
 
     if (current !== next.at) {
+      // crossfade the identity on a flip, but not on the very first paint
+      if (current !== null) {
+        root.classList.remove('np-swap');
+        void root.offsetWidth; // restart the animation
+        root.classList.add('np-swap');
+      }
       current = next.at;
       nameEl.textContent = COPY.names[next.key];
+      if (arEl) arEl.textContent = AR_NAMES[next.key] || '';
       atEl.textContent = timeFormat.format(new Date(next.at));
       root.setAttribute('data-np-current', next.key);
     }

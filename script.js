@@ -80,9 +80,15 @@ function initScrollReveals() {
 
   document.body.classList.add("motion-ready");
 
-  targets.forEach((target, index) => {
+  // Stagger per parent, not per page: each grid choreographs its own
+  // children, so a card never waits on a counter from another section.
+  const parentCounts = new Map();
+  targets.forEach((target) => {
     target.classList.add("reveal");
-    target.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 70}ms`);
+    const parent = target.parentElement;
+    const index = parentCounts.get(parent) || 0;
+    parentCounts.set(parent, index + 1);
+    target.style.setProperty("--reveal-delay", `${Math.min(index, 5) * 60}ms`);
   });
 
   const revealAll = () => targets.forEach((target) => target.classList.add("is-visible"));
@@ -144,7 +150,17 @@ function initBackToTop() {
   onScroll(() => button.classList.toggle("is-visible", window.scrollY > 600));
 
   button.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  });
+}
+
+/* ---- Mobile nav disclosure -------------------------------- */
+function initMobileNav() {
+  const nav = document.querySelector(".mobile-nav");
+  if (!nav) return;
+  nav.addEventListener("click", (event) => {
+    if (event.target.closest("a")) nav.removeAttribute("open");
   });
 }
 
@@ -182,6 +198,7 @@ function init() {
   applyStoreLinks();
   initStickyHeader();
   initBackToTop();
+  initMobileNav();
   initYearStamp();
   initCopyLink();
   initScrollReveals();

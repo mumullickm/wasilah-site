@@ -16,6 +16,7 @@
   --gold-deep: #d8b974;
 
   --ink: #eef1ea;
+  --ink-strong: #f6f3e9; /* heading ink, warmed to sit with the gold instead of fluorescing */
   --ink-dim: rgba(238, 241, 234, 0.66);
   --ink-faint: rgba(238, 241, 234, 0.58);
 
@@ -25,19 +26,37 @@
   --card-2: rgba(255, 255, 255, 0.055);
   --card-border: rgba(241, 213, 146, 0.16);
 
+  /* One material, lit from above, matching the field fading top to bottom.
+     Border alpha is the elevation scale: 0 = resting, 1 = raised, 2 = flagship. */
+  --surface-1: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.024) 62%);
+  --surface-1-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.038) 62%);
+  --edge-top: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+  --border-0: rgba(241, 213, 146, 0.09);
+  --border-1: rgba(241, 213, 146, 0.15);
+  --border-2: rgba(241, 213, 146, 0.22);
+
   --r-sm: 14px;
   --r-md: 22px;
   --r-lg: 32px;
   --r-pill: 999px;
 
-  --shadow-card: 0 24px 60px -28px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 18px 44px -26px rgba(0, 0, 0, 0.55), 0 0 36px -24px rgba(241, 213, 146, 0.28);
   --shadow-device: 0 50px 90px -30px rgba(0, 0, 0, 0.7), 0 12px 28px -12px rgba(0, 0, 0, 0.55);
 
   --font: "Urbanist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-ar: "Amiri", serif;
   --font-bn: "Noto Sans Bengali", var(--font);
 
+  /* the tracked-caps device, two steps only */
+  --kicker: 0.72rem;
+  --kicker-sm: 0.66rem;
+  --track: 0.2em;
+  --track-sm: 0.16em;
+
+  --badge-h: 56px;
+
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* entrances only; hovers keep --ease */
   --wrap: 1160px;
 }
 
@@ -65,6 +84,11 @@ body {
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 img { display: block; max-width: 100%; }
+
+/* Editorial rag: headings balance their lines, running copy avoids orphans.
+   Progressive enhancement; engines without it render exactly as before. */
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
 :lang(bn), .hero-bn, .tour-bn, .reason-bn { font-family: var(--font-bn); }
 ::selection { background: var(--gold); color: var(--emerald-900); }
 
@@ -98,12 +122,31 @@ img { display: block; max-width: 100%; }
   text-align: center;
 }
 .section-label {
-  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: var(--kicker);
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: var(--track);
   text-transform: uppercase;
   color: var(--gold);
 }
+/* The rub mark: a hairline ending in a small diamond, flanking every eyebrow.
+   Component detail on the label itself, not a second decorative surface. */
+.section-label::before,
+.section-label::after {
+  content: "";
+  flex: 0 0 26px;
+  height: 9px;
+  background: var(--gold-deep);
+  -webkit-mask:
+    linear-gradient(#000, #000) left center / calc(100% - 11px) 1px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4 0 8 4 4 8 0 4z'/%3E%3C/svg%3E") right center / 7px 7px no-repeat;
+          mask:
+    linear-gradient(#000, #000) left center / calc(100% - 11px) 1px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4 0 8 4 4 8 0 4z'/%3E%3C/svg%3E") right center / 7px 7px no-repeat;
+}
+.section-label::after { transform: scaleX(-1); }
 .section-head h2,
 .section-copy h1,
 .section-copy h2,
@@ -113,11 +156,13 @@ img { display: block; max-width: 100%; }
   line-height: 1.12;
   letter-spacing: -0.02em;
   margin: 14px 0 0;
-  color: #fff;
+  color: var(--ink-strong);
 }
 .section-sub {
   margin-top: 16px;
   font-size: 1.05rem;
+  max-width: 62ch;
+  margin-inline: auto;
   color: var(--ink-dim);
 }
 .section-copy {
@@ -126,7 +171,7 @@ img { display: block; max-width: 100%; }
   text-align: center;
 }
 .section-copy.narrow { max-width: 680px; }
-.section-copy p { margin-top: 14px; color: var(--ink-dim); }
+.section-copy p { margin-top: 14px; max-width: 62ch; margin-inline: auto; color: var(--ink-dim); }
 /* the eyebrow is a <p> too, so it needs to out-specify the rule above */
 .section-copy .section-label { margin-top: 0; color: var(--gold); }
 
@@ -142,13 +187,23 @@ img { display: block; max-width: 100%; }
   padding: 14px clamp(20px, 4vw, 40px);
   background: rgba(0, 36, 34, 0.55);
   border-bottom: 1px solid transparent;
-  transition: background 0.3s var(--ease), border-color 0.3s var(--ease), backdrop-filter 0.3s;
+  transition: border-color 0.3s var(--ease);
 }
-.site-header.is-scrolled {
+/* The blur lives on a pseudo whose OPACITY fades: none-to-blur(14px) cannot
+   interpolate, so animating the filter itself made the glass snap on. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(0, 33, 31, 0.9);
-  backdrop-filter: blur(14px);
-  border-bottom-color: var(--line);
+  -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
 }
+.site-header.is-scrolled { border-bottom-color: var(--line); }
+.site-header.is-scrolled::before { opacity: 1; }
 .brand { display: flex; align-items: center; gap: 11px; }
 .brand-icon { width: 38px; height: 38px; }
 .brand-logotype { height: 30px; width: auto; }
@@ -158,9 +213,20 @@ img { display: block; max-width: 100%; }
   font-size: 0.92rem;
   font-weight: 600;
   color: var(--ink-dim);
-  transition: color 0.2s var(--ease);
 }
-.header-nav a:hover { color: var(--gold); }
+/* text links carry a fading underline, one device sitewide */
+.header-nav a,
+.footer-nav a,
+.footer-col a {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.32em;
+  transition: color 0.2s var(--ease), text-decoration-color 0.25s var(--ease);
+}
+.header-nav a:hover { color: var(--gold); text-decoration-color: var(--gold); }
+html[lang="bn"] .header-nav a,
+html[lang="bn"] .footer-col a { text-underline-offset: 0.4em; }
 .language-switch {
   display: flex;
   border: 1px solid var(--card-border);
@@ -180,7 +246,53 @@ img { display: block; max-width: 100%; }
   cursor: pointer;
   transition: background 0.2s var(--ease), color 0.2s var(--ease);
 }
-.lang-option.is-active { background: var(--gold); color: var(--emerald-900); }
+/* quiet inset, not a second gold pill: install owns the only saturated pill */
+.lang-option.is-active {
+  background: rgba(241, 213, 146, 0.13);
+  color: var(--gold);
+  box-shadow: inset 0 0 0 1px rgba(241, 213, 146, 0.35);
+}
+
+/* ---- Mobile nav: a calm disclosure, no overlay -------------- */
+.mobile-nav { display: none; }
+@media (max-width: 860px) {
+  .mobile-nav { display: block; position: relative; }
+  .mobile-nav summary {
+    list-style: none;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border-1);
+    border-radius: 50%;
+    color: var(--gold);
+    cursor: pointer;
+    transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
+  }
+  .mobile-nav summary::-webkit-details-marker { display: none; }
+  .mobile-nav[open] summary { background: rgba(241, 213, 146, 0.1); border-color: var(--border-2); }
+  .mobile-nav nav {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    min-width: 230px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    background: rgba(0, 33, 31, 0.97);
+    border: 1px solid var(--border-1);
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow-card);
+  }
+  .mobile-nav nav a {
+    padding: 12px 14px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ink-dim);
+    border-radius: 10px;
+  }
+  .mobile-nav nav a:hover { color: var(--gold); background: rgba(241, 213, 146, 0.07); }
+}
 .header-cta {
   white-space: nowrap;
   font-weight: 700;
@@ -206,12 +318,19 @@ img { display: block; max-width: 100%; }
   100% { box-shadow: 0 0 0 0 rgba(84, 224, 160, 0); }
 }
 #hero-title {
+  /* SETTLED hero display. This is the ONLY sizing rule for the h1;
+     do not re-add sizes elsewhere. */
   margin: 26px 0 0;
   font-size: clamp(3.2rem, 9vw, 7rem);
   font-weight: 700;
   line-height: 0.98;
   letter-spacing: -0.045em;
-  color: #fff;
+  color: var(--ink-strong);
+}
+/* On real phones the 3.2rem floor breaks "Stay close to Allah." into an
+   accidental widow. English only: the Bangla headline is two lines on purpose. */
+@media (max-width: 460px) {
+  html:not([lang="bn"]) #hero-title { font-size: clamp(1.85rem, 9vw, 2.6rem); }
 }
 
 .hero-bn {
@@ -232,8 +351,22 @@ img { display: block; max-width: 100%; }
   border-radius: 13px;
   transition: transform 0.2s var(--ease), filter 0.2s var(--ease);
 }
-.store-button .store-badge { height: 56px; width: auto; }
+.store-button .store-badge { height: var(--badge-h); width: auto; }
 .store-button:not(.is-muted):hover { transform: translateY(-2px); filter: brightness(1.06); }
+/* the frame glows, never the badge art itself */
+.store-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 13px;
+  box-shadow: 0 0 0 1px rgba(241, 213, 146, 0);
+  transition: box-shadow 0.25s var(--ease);
+  pointer-events: none;
+}
+.store-button:not(.is-muted):hover::after,
+.store-button:not(.is-muted):focus-visible::after {
+  box-shadow: 0 0 0 1px rgba(241, 213, 146, 0.4), 0 14px 34px -14px rgba(241, 213, 146, 0.35);
+}
 .store-button:not(.is-muted):active,
 .header-cta:active,
 .di-cta:active,
@@ -278,6 +411,11 @@ img { display: block; max-width: 100%; }
   position: relative;
   width: min(100%, 620px);
   margin: 26px auto 0;
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+/* the bar arrives, it does not pop (no-op where @starting-style is unsupported) */
+@starting-style {
+  .np-shell { opacity: 0; transform: translateY(10px); }
 }
 .next-prayer {
   position: relative;
@@ -286,8 +424,9 @@ img { display: block; max-width: 100%; }
   align-items: center;
   gap: 22px;
   overflow: hidden;
+  font-variant-numeric: tabular-nums;
   border-radius: var(--np-radius);
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border-2);
   background:
     linear-gradient(100deg, rgba(241, 213, 146, 0.075), rgba(241, 213, 146, 0.02) 46%, rgba(255, 255, 255, 0.03)),
     linear-gradient(180deg, rgba(0, 26, 25, 0.94), rgba(0, 20, 21, 0.97));
@@ -311,9 +450,9 @@ img { display: block; max-width: 100%; }
 }
 .np-eyebrow {
   flex: 0 0 auto;
-  font-size: 0.6rem;
+  font-size: var(--kicker-sm);
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--track-sm);
   line-height: 1.5;
   text-transform: uppercase;
   color: var(--gold-deep);
@@ -358,8 +497,17 @@ img { display: block; max-width: 100%; }
   font-size: 1.22rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: var(--ink-strong);
 }
+/* the name of the prayer in the language of the prayer */
+.np-ar {
+  font-family: var(--font-ar);
+  font-size: 1.02rem;
+  line-height: 1;
+  color: var(--gold);
+}
+.np-ar:empty { display: none; }
+@media (max-width: 400px) { .np-ar { display: none; } }
 .np-at { font-size: 0.92rem; font-weight: 600; color: var(--gold); }
 .np-count {
   flex: 0 0 auto;
@@ -367,10 +515,19 @@ img { display: block; max-width: 100%; }
   font-weight: 300;
   letter-spacing: 0.02em;
   line-height: 1;
-  color: #fff;
+  color: var(--ink-strong);
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1;
 }
+/* Bengali digits do not exist in Urbanist; route them through Noto so the
+   countdown stops falling into a random OS fallback and jittering. */
+html[lang="bn"] .np-count,
+html[lang="bn"] .np-at { font-family: var(--font-bn); }
+/* prayer flip: the identity crossfades, the glass stays still */
+.next-prayer.np-swap .np-name,
+.next-prayer.np-swap .np-ar,
+.next-prayer.np-swap .np-at { animation: np-fade 0.35s var(--ease-out); }
+@keyframes np-fade { from { opacity: 0; transform: translateY(4px); } }
 /* the seconds sit back a step, so the eye lands on hours and minutes */
 .np-secs { font-size: 0.72em; color: var(--gold-deep); }
 /* the hairline that fills as the current window runs out */
@@ -433,9 +590,10 @@ html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
 }
 .reason-card {
   padding: 32px 30px;
-  background: var(--card);
-  border: 1px solid var(--line);
+  background: var(--surface-1);
+  border: 1px solid var(--border-0);
   border-radius: var(--r-md);
+  box-shadow: var(--edge-top);
 }
 .reason-card h3 {
   font-size: 1.3rem;
@@ -453,13 +611,25 @@ html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
 /* ---- FAQ --------------------------------------------------- */
 .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
 .faq-list details {
-  background: var(--card);
-  border: 1px solid var(--line);
+  background: var(--surface-1);
+  border: 1px solid var(--border-0);
   border-radius: var(--r-md);
+  box-shadow: var(--edge-top);
   transition: border-color 0.2s var(--ease), background 0.25s var(--ease);
 }
-.faq-list details:hover { border-color: var(--card-border); }
-.faq-list details[open] { border-color: var(--card-border); background: var(--card-2); }
+.faq-list details:hover { border-color: var(--border-1); }
+.faq-list details[open] { border-color: var(--border-1); background: var(--surface-1-hover); }
+/* the answer, the thing the visitor asked to see, opens with motion where
+   the engine can; elsewhere it opens instantly, exactly as before */
+@supports (interpolate-size: allow-keywords) {
+  .faq-list details { interpolate-size: allow-keywords; }
+  .faq-list details::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition: block-size 0.3s var(--ease-out), content-visibility 0.3s allow-discrete;
+  }
+  .faq-list details[open]::details-content { block-size: auto; }
+}
 .faq-list summary {
   display: flex;
   justify-content: space-between;
@@ -468,7 +638,7 @@ html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
   padding: 18px 22px;
   font-size: 1.02rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--ink-strong);
   cursor: pointer;
   list-style: none;
 }
@@ -499,9 +669,10 @@ html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
 .trust-grid { max-width: 720px; margin: 0 auto; }
 .footer-card {
   padding: clamp(22px, 2.6vw, 32px) clamp(24px, 3vw, 36px);
-  background: var(--card);
-  border: 1px solid var(--line);
+  background: var(--surface-1);
+  border: 1px solid var(--border-0);
   border-radius: var(--r-md);
+  box-shadow: var(--edge-top);
 }
 .footer-card-mark {
   width: 40px;
@@ -516,7 +687,10 @@ html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
 }
 .footer-card-mark svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
 .footer-card .section-label { display: block; }
-.footer-card h2 { font-size: 1.3rem; font-weight: 700; color: #fff; margin: 6px 0 10px; }
+/* block context: the flex-sized flank hairlines would stretch full width here */
+.footer-card .section-label::before,
+.footer-card .section-label::after { display: none; }
+.footer-card h2 { font-size: 1.3rem; font-weight: 700; color: var(--ink-strong); margin: 6px 0 10px; }
 .footer-card > p { color: var(--ink-dim); font-size: 0.92rem; }
 .privacy-list { margin: 14px 0; display: flex; flex-direction: column; gap: 7px; }
 .privacy-list li {
@@ -558,17 +732,19 @@ html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
   flex-direction: column;
   gap: 7px;
   padding: 22px 22px 20px;
-  background: var(--card);
-  border: 1px solid var(--line);
+  background: var(--surface-1);
+  border: 1px solid var(--border-0);
   border-radius: var(--r-md);
-  transition: border-color 0.2s var(--ease), background 0.25s var(--ease), transform 0.2s var(--ease);
+  box-shadow: var(--edge-top);
+  transition: border-color 0.2s var(--ease), background 0.25s var(--ease), transform 0.2s var(--ease), box-shadow 0.25s var(--ease);
 }
 .legal-hub-card:hover {
-  border-color: var(--card-border);
-  background: var(--card-2);
+  border-color: var(--border-1);
+  background: var(--surface-1-hover);
   transform: translateY(-2px);
+  box-shadow: var(--edge-top), 0 14px 30px -22px rgba(0, 0, 0, 0.5), 0 0 26px -20px rgba(241, 213, 146, 0.2);
 }
-.legal-hub-card h2 { font-size: 1.05rem; font-weight: 700; color: #fff; }
+.legal-hub-card h2 { font-size: 1.05rem; font-weight: 700; color: var(--ink-strong); }
 .legal-hub-card p { font-size: 0.85rem; line-height: 1.5; color: var(--ink-dim); }
 .legal-hub-card span { margin-top: auto; padding-top: 8px; font-size: 0.82rem; font-weight: 700; color: var(--gold); }
 @media (max-width: 700px) {
@@ -596,15 +772,15 @@ html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
 .footer-tagline { margin-top: 16px; color: var(--ink-dim); max-width: 36ch; }
 .footer-nav { display: flex; flex-direction: column; gap: 10px; }
 .footer-nav-title {
-  font-size: 0.72rem;
+  font-size: var(--kicker);
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--track);
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 4px;
 }
-.footer-nav a { color: var(--ink-dim); font-size: 0.95rem; transition: color 0.2s var(--ease); }
-.footer-nav a:hover { color: var(--gold); }
+.footer-nav a { color: var(--ink-dim); font-size: 0.95rem; }
+.footer-nav a:hover { color: var(--gold); text-decoration-color: var(--gold); }
 .footer-social {
   max-width: var(--wrap);
   margin: 40px auto 0;
@@ -637,11 +813,41 @@ html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
 .footer-sibling img { width: 40px; height: 40px; border-radius: 10px; flex: none; }
 .footer-sibling-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .footer-sibling-label {
-  font-size: 0.7rem;
+  font-size: var(--kicker-sm);
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: var(--track-sm);
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--ink-dim);
+}
+
+/* ---- Footer install row: the last word belongs to Wasilah --- */
+.footer-get {
+  max-width: var(--wrap);
+  margin: 40px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 18px 32px;
+  flex-wrap: wrap;
+}
+.footer-get .footer-nav-title { margin-bottom: 0; flex: 0 0 100%; }
+.footer-get .hero-cta-row { margin-top: 0; }
+.footer-get .store-badge { height: 44px; }
+.footer-get .qr-card { margin-left: auto; }
+
+/* ---- QR bridge: desktop visitors carry the site to the phone.
+   One inline SVG, generated offline, zero external calls. ----- */
+.qr-card { display: none; }
+@media (hover: hover) and (min-width: 761px) {
+  .qr-card { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .qr-svg {
+    width: 108px;
+    height: 108px;
+    padding: 8px;
+    background: var(--ink);
+    border-radius: var(--r-sm);
+    box-shadow: 0 0 0 1px rgba(241, 213, 146, 0.2), 0 14px 30px -18px rgba(0, 0, 0, 0.6);
+  }
+  .qr-card p { font-size: 0.8rem; font-weight: 600; color: var(--ink-dim); }
 }
 .footer-sibling-name { color: var(--ink-dim); font-size: 0.94rem; line-height: 1.45; }
 .footer-sibling-name b { color: var(--gold); font-weight: 600; }
@@ -681,11 +887,13 @@ html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
 .back-to-top.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .back-to-top svg { width: 19px; height: 19px; fill: none; stroke: var(--emerald-900); stroke-width: 2.4; }
 
-/* ---- Scroll reveal ---------------------------------------- */
+/* ---- Scroll reveal ----------------------------------------
+   Entrances are felt, not seen: a short decel drift, staggered
+   per parent so each grid choreographs itself. */
 .motion-ready .reveal {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transform: translateY(16px);
+  transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
 }
 .motion-ready .reveal.is-visible { opacity: 1; transform: none; }
@@ -694,13 +902,29 @@ html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
 @media (max-width: 980px) {
   .hero-bn { max-width: 46ch; }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-top { grid-template-columns: 1fr; }
+  /* the area map must restack too, or the two-column areas silently
+     squeeze the brand into a sliver next to the link columns */
+  .footer-top { grid-template-columns: 1fr; grid-template-areas: "brand" "tagline" "cols"; }
+  .footer-cols { margin-top: 30px; }
 }
 @media (max-width: 860px) {
   .header-nav { display: none; }
 }
 @media (max-width: 760px) {
   .reason-grid { grid-template-columns: 1fr; }
+  /* controls phones actually use grow to a full thumb target, without
+     growing their visuals. Selectors are strengthened on purpose: the
+     base rules for these live LATER in the cascade (footer columns) or
+     in the #build inline style block, and would win a specificity tie. */
+  .lang-option { padding: 9px 14px; }
+  .footer-cols .footer-col a { padding: 11px 0; }
+  .build-section .build-copy { padding: 9px 14px; }
+  .np-eyebrow .np-place { padding: 12px 8px; margin: -12px -8px; }
+}
+@media (max-width: 660px) {
+  /* phone floors: desktop-scale section minimums inflate the scroll */
+  .section { padding-top: 56px; padding-bottom: 56px; }
+  .section-head, .section-copy { margin-bottom: 30px; }
 }
 @media (max-width: 520px) {
   .trust-strip { justify-content: center; }
@@ -710,7 +934,9 @@ html[lang="bn"] .np-eyebrow { letter-spacing: 0.12em; }
   .footer-sibling img { margin-top: 2px; }
   /* the CTA is the only persistent install control on a phone, so shrink it, never hide it */
   .header-cta { padding: 8px 14px; font-size: 0.82rem; }
-  .brand-logotype { display: none; }
+  /* the official lockup survives, the icon yields: never icon-plus-typed-text */
+  .brand-icon { display: none; }
+  .brand-logotype { display: block; height: 24px; }
   .guide-steps em { font-size: 0.94rem; line-height: 1.5; }
   .guide-more { font-size: 0.92rem; }
   .cap-tile p { font-size: 0.94rem; }
@@ -792,19 +1018,41 @@ html[lang="bn"] .ethos-bn { display: none; }
   z-index: 1;
 }
 
+/* The sacred opening line is the first typographic act on the page.
+   Set with honor: optical size, air for the harakat, full gold, and the
+   rub mark hairlines flanking it. Tracking stays 0: Arabic never tracks. */
 .hero-bismillah {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
   font-family: var(--font-ar);
-  font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  font-size: clamp(1.45rem, 2.8vw, 1.9rem);
+  line-height: 2;
+  letter-spacing: 0;
   color: var(--gold);
+  text-shadow: 0 0 24px rgba(241, 213, 146, 0.25);
   direction: rtl;
   margin-bottom: clamp(14px, 3vw, 22px);
-  opacity: 0.92;
 }
+.hero-bismillah::before,
+.hero-bismillah::after {
+  content: "";
+  flex: 0 0 clamp(28px, 5vw, 52px);
+  height: 9px;
+  background: var(--gold-deep);
+  -webkit-mask:
+    linear-gradient(#000, #000) left center / calc(100% - 11px) 1px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4 0 8 4 4 8 0 4z'/%3E%3C/svg%3E") right center / 7px 7px no-repeat;
+          mask:
+    linear-gradient(#000, #000) left center / calc(100% - 11px) 1px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4 0 8 4 4 8 0 4z'/%3E%3C/svg%3E") right center / 7px 7px no-repeat;
+}
+/* rtl flips the flex direction, so ::before sits right; mirror it, not ::after */
+.hero-bismillah::before { transform: scaleX(-1); }
 .hero--niche .hero-display {
-  font-size: clamp(2.6rem, 7vw, 5rem);
-  line-height: 1;
-  letter-spacing: -0.035em;
-  color: #fff;
+  /* sizing lives on #hero-title, the single source; only the ink is set here */
+  color: var(--ink-strong);
 }
 .hero--niche .hero-tagline {
   margin-top: 20px;
@@ -822,7 +1070,14 @@ html[lang="bn"] .ethos-bn { display: none; }
 
 
 /* ---- Sadaqah / ethos + share (merged) ---- */
-.ethos-section { text-align: center; }
+/* held in its own pool of light where the field has faded to nothing;
+   a lighting gradient on the body surface, same device di-section uses */
+.ethos-section {
+  text-align: center;
+  padding-bottom: clamp(56px, 6vw, 84px);
+  background: radial-gradient(56% 64% at 50% 40%, rgba(241, 213, 146, 0.055), transparent 72%);
+}
+.build-section { padding-top: clamp(56px, 6vw, 84px); }
 .ethos-inner { max-width: 680px; margin: 0 auto; }
 .ethos-text { margin-top: 18px; color: var(--ink-dim); font-size: 1.08rem; line-height: 1.6; }
 .ethos-bn { margin-top: 10px; color: var(--gold-deep); }
@@ -879,14 +1134,18 @@ html[lang="bn"] .ethos-bn { display: none; }
   display: flex;
   flex-direction: column;
   padding: 28px 26px 26px;
-  background: linear-gradient(180deg, rgba(0, 95, 91, 0.26), rgba(255, 255, 255, 0.03));
-  border: 1px solid var(--line-soft);
+  /* flagship hairline: a border that catches the light at the top and
+     fades out, drawn with the padding-box/border-box double background */
+  border: 1px solid transparent;
+  background:
+    linear-gradient(180deg, rgba(0, 95, 91, 0.26), rgba(255, 255, 255, 0.03)) padding-box,
+    linear-gradient(180deg, rgba(241, 213, 146, 0.30), rgba(241, 213, 146, 0.06) 75%) border-box;
   border-radius: var(--r-lg);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-card), var(--edge-top);
 }
 .guide-card-head { display: flex; align-items: center; gap: 13px; padding-bottom: 18px; border-bottom: 1px solid var(--line-soft); }
 .guide-card-head .deliver-mark { margin-bottom: 0; flex: 0 0 auto; width: 42px; height: 42px; }
-.guide-card-head h3 { font-size: 1.16rem; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
+.guide-card-head h3 { font-size: 1.16rem; font-weight: 700; color: var(--ink-strong); letter-spacing: -0.01em; }
 .guide-card-head p { font-size: 0.8rem; color: var(--gold-deep); margin-top: 2px; }
 
 .guide-chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 18px 0 20px; align-content: flex-start; }
@@ -922,7 +1181,7 @@ html[lang="bn"] .ethos-bn { display: none; }
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
-.guide-steps strong { display: block; color: #fff; font-weight: 600; font-size: 0.97rem; line-height: 1.3; }
+.guide-steps strong { display: block; color: var(--ink-strong); font-weight: 600; font-size: 0.97rem; line-height: 1.3; }
 .guide-steps em { display: block; font-style: normal; color: var(--ink-dim); font-size: 0.87rem; line-height: 1.4; margin-top: 3px; }
 .guide-more { margin-top: 16px; font-size: 0.86rem; color: var(--gold-deep); font-style: italic; }
 .guide-langs { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line-soft); display: flex; gap: 8px; flex-wrap: wrap; }
@@ -949,18 +1208,31 @@ html[lang="bn"] .ethos-bn { display: none; }
 }
 .cap-tile {
   padding: 22px 20px 20px;
-  background: var(--card);
-  border: 1px solid var(--line-soft);
+  background: var(--surface-1);
+  border: 1px solid var(--border-0);
   border-radius: var(--r-md);
-  transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease);
+  box-shadow: var(--edge-top);
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
-.cap-tile:hover { border-color: var(--card-border); background: var(--card-2); transform: translateY(-3px); }
+.cap-tile:hover {
+  border-color: var(--border-1);
+  background: var(--surface-1-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--edge-top), 0 14px 30px -22px rgba(0, 0, 0, 0.5), 0 0 26px -20px rgba(241, 213, 146, 0.2);
+}
+/* every glyph sits in the same bordered well: one icon language, and the
+   tile's top-left stops reading as a lost speck in dead space */
 .cap-tile svg {
-  width: 26px;
-  height: 26px;
+  width: 46px;
+  height: 46px;
+  padding: 11px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: rgba(241, 213, 146, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 0 0 1px rgba(241, 213, 146, 0.10);
   fill: none;
   stroke: var(--gold);
-  stroke-width: 2;
+  stroke-width: 2.6;
   stroke-linecap: round;
   stroke-linejoin: round;
   margin-bottom: 14px;
@@ -968,15 +1240,14 @@ html[lang="bn"] .ethos-bn { display: none; }
 /* The app's own icons are solid shapes on a 512 grid, not 24-unit strokes.
    Drawn as strokes they all but vanish: stroke-width 2 of 512 is 0.1px at this
    size. Filled, plus a hairline stroke to carry the outlines that are under a
-   pixel wide, and a little larger to earn their detail. */
+   pixel wide, and a little more room inside the well to earn their detail. */
 .cap-tile svg.is-fill {
-  width: 32px;
-  height: 32px;
+  padding: 8px;
   fill: var(--gold);
   stroke: var(--gold);
   stroke-width: 4;
 }
-.cap-tile h3 { font-size: 1rem; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
+.cap-tile h3 { font-size: 1rem; font-weight: 700; color: var(--ink-strong); letter-spacing: -0.01em; }
 .cap-tile p { margin-top: 6px; font-size: 0.88rem; line-height: 1.42; color: var(--ink-dim); }
 
 .cap-extras {
@@ -1038,13 +1309,13 @@ html[lang="bn"] .ethos-bn { display: none; }
 .di-step--halt .di-glyph { background: var(--gold); border-color: var(--gold); color: var(--emerald-900); }
 .di-step-body { padding-top: 3px; }
 .di-step-kicker {
-  font-size: 0.66rem;
+  font-size: var(--kicker-sm);
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--track-sm);
   text-transform: uppercase;
   color: var(--gold-deep);
 }
-.di-step-body h3 { margin: 6px 0 8px; font-size: 1.08rem; font-weight: 700; color: #fff; line-height: 1.28; }
+.di-step-body h3 { margin: 6px 0 8px; font-size: 1.08rem; font-weight: 700; color: var(--ink-strong); line-height: 1.28; }
 .di-step-body p { color: var(--ink-dim); font-size: 0.95rem; line-height: 1.5; }
 .di-step-body p.di-step-kicker { font-size: 0.66rem; line-height: 1.4; color: var(--gold-deep); }
 .di-quote {
@@ -1053,7 +1324,7 @@ html[lang="bn"] .ethos-bn { display: none; }
   border-left: 2px solid var(--gold-deep);
   border-radius: 0 12px 12px 0;
   background: rgba(241, 213, 146, 0.07);
-  color: #fff;
+  color: var(--ink-strong);
   font-weight: 600;
   font-size: 0.95rem;
   line-height: 1.4;
@@ -1070,15 +1341,17 @@ html[lang="bn"] .ethos-bn { display: none; }
 }
 .deliver-card {
   padding: 30px 26px 28px;
-  background: var(--card);
-  border: 1px solid var(--line-soft);
+  background: var(--surface-1);
+  border: 1px solid var(--border-0);
   border-radius: var(--r-md);
-  transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease);
+  box-shadow: var(--edge-top);
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 .deliver-card:hover {
-  border-color: var(--card-border);
-  background: var(--card-2);
+  border-color: var(--border-1);
+  background: var(--surface-1-hover);
   transform: translateY(-3px);
+  box-shadow: var(--edge-top), 0 14px 30px -22px rgba(0, 0, 0, 0.5), 0 0 26px -20px rgba(241, 213, 146, 0.2);
 }
 .deliver-mark {
   width: 46px;
@@ -1095,9 +1368,9 @@ html[lang="bn"] .ethos-bn { display: none; }
 .deliver-mark--gold { background: var(--gold); border-color: var(--gold); color: var(--emerald-900); }
 .deliver-mark--gold svg { fill: currentColor; stroke: none; }
 .deliver-kicker {
-  font-size: 0.68rem;
+  font-size: var(--kicker-sm);
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--track-sm);
   text-transform: uppercase;
   color: var(--gold-deep);
 }
@@ -1108,7 +1381,7 @@ html[lang="bn"] .ethos-bn { display: none; }
   font-weight: 700;
   line-height: 1.22;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: var(--ink-strong);
 }
 .deliver-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .deliver-card li {
@@ -1130,7 +1403,9 @@ html[lang="bn"] .ethos-bn { display: none; }
           mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6.2 11.3 3 8.1l1.1-1.1 2.1 2.1 5.6-5.6L13 4.6z'/%3E%3C/svg%3E") center/contain no-repeat;
 }
 
-/* The Deen Intelligence highlight spans the full row */
+/* The Deen Intelligence highlight spans the full row.
+   Flagship treatment: fading gradient hairline, radial re-aimed to the
+   top corner so its light agrees with the page's overhead source. */
 .deliver-card--di {
   grid-column: 1 / -1;
   display: flex;
@@ -1138,12 +1413,21 @@ html[lang="bn"] .ethos-bn { display: none; }
   align-items: center;
   gap: 24px 30px;
   padding: 30px 32px;
+  border: 1px solid transparent;
   background:
-    radial-gradient(80% 140% at 8% 50%, rgba(241, 213, 146, 0.15), transparent 68%),
-    var(--card-2);
-  border-color: var(--card-border);
+    radial-gradient(130% 180% at 10% 0%, rgba(241, 213, 146, 0.14), transparent 62%) padding-box,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)) padding-box,
+    linear-gradient(180deg, rgba(241, 213, 146, 0.30), rgba(241, 213, 146, 0.07)) border-box;
 }
-.deliver-card--di:hover { transform: none; }
+.deliver-card--di:hover {
+  transform: none;
+  background:
+    radial-gradient(130% 180% at 10% 0%, rgba(241, 213, 146, 0.14), transparent 62%) padding-box,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)) padding-box,
+    linear-gradient(180deg, rgba(241, 213, 146, 0.30), rgba(241, 213, 146, 0.07)) border-box;
+  border-color: transparent;
+  box-shadow: var(--edge-top);
+}
 .deliver-card--di .deliver-mark { margin-bottom: 0; flex: 0 0 auto; }
 .deliver-di-copy { flex: 1 1 340px; }
 .deliver-card--di h3 { margin: 6px 0 10px; font-size: clamp(1.25rem, 2.1vw, 1.6rem); }
@@ -1164,17 +1448,53 @@ html[lang="bn"] .ethos-bn { display: none; }
 .deliver-di-link:hover { background: var(--gold); color: var(--emerald-900); transform: translateY(-2px); }
 
 .inapp-cta {
-  max-width: var(--wrap);
+  max-width: 860px;
   margin: clamp(38px, 5vw, 60px) auto 0;
-  padding-top: clamp(30px, 4vw, 44px);
+  padding: clamp(30px, 4vw, 44px) clamp(22px, 4vw, 48px) clamp(26px, 3.6vw, 38px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px 48px;
+  text-align: center;
+  border: 1px solid var(--border-0);
+  border-radius: var(--r-lg);
+  background:
+    radial-gradient(120% 130% at 50% 0%, rgba(241, 213, 146, 0.07), transparent 60%),
+    var(--surface-1);
+  box-shadow: var(--edge-top);
+}
+.inapp-cta-main {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  text-align: center;
 }
-.inapp-cta-text { font-size: clamp(1.05rem, 1.7vw, 1.3rem); font-weight: 600; color: #fff; }
-.inapp-cta h2 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); font-weight: 700; color: #fff; }
+.inapp-cta-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 22px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink-dim);
+}
+.inapp-cta-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--gold);
+}
+.inapp-cta-rating::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background: var(--gold);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 .9l2.1 4.4 4.9.7-3.5 3.4.8 4.8L8 11.9l-4.3 2.3.8-4.8L1 6l4.9-.7z'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 .9l2.1 4.4 4.9.7-3.5 3.4.8 4.8L8 11.9l-4.3 2.3.8-4.8L1 6l4.9-.7z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.inapp-cta-text { font-size: clamp(1.05rem, 1.7vw, 1.3rem); font-weight: 600; color: var(--ink-strong); }
+.inapp-cta h2 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); font-weight: 700; color: var(--ink-strong); }
 .inapp-cta > p { max-width: 52ch; color: var(--ink-dim); }
 .inapp-cta .hero-cta-row { margin-top: 0; justify-content: center; }
 
@@ -1208,7 +1528,7 @@ html[lang="bn"] .ethos-bn { display: none; }
   font-weight: 700;
   line-height: 1.12;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: var(--ink-strong);
 }
 .di-text { color: var(--ink-dim); font-size: 1.06rem; line-height: 1.58; max-width: 46ch; margin-bottom: 14px; }
 .di-bn { margin-top: 4px; color: var(--gold-deep); font-size: 1rem; }
@@ -1230,7 +1550,7 @@ html[lang="bn"] .ethos-bn { display: none; }
   border-radius: 50%;
   background: var(--gold);
 }
-.di-facts strong { color: #fff; font-weight: 700; }
+.di-facts strong { color: var(--ink-strong); font-weight: 700; }
 .di-cta {
   display: inline-block;
   padding: 14px 30px;
