@@ -151,7 +151,7 @@
             "price": "0",
             "priceCurrency": "BDT"
           },
-          "softwareVersion": "1.7.2",
+          "softwareVersion": "1.7.5",
           "downloadUrl": [
             "https://apps.apple.com/app/id6767919573",
             "https://play.google.com/store/apps/details?id=site.wasilah.wasilah"
@@ -159,6 +159,62 @@
           "publisher": {
             "@id": "https://wasilah.site/#organization"
           }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://wasilah.site/bn/#quick-faq",
+          "inLanguage": "bn",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "ঢাকার বাইরে আমার এলাকার জন্য নামাজের সময় কি নির্ভুল?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "হ্যাঁ। নামাজের সময় আপনার ফোনেই, আপনার সঠিক অবস্থান থেকে হিসাব করা হয়, কোনো সার্ভার বা একক শহরের টেবিল থেকে নয়। ডিফল্ট পদ্ধতি University of Islamic Sciences, করাচি এবং হানাফি আসর, যা ইসলামিক ফাউন্ডেশন বাংলাদেশের সময়সূচির সাথে মিলে যায়।"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "ওয়াসিলাহ কিবলা কীভাবে খুঁজে বের করে?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "আপনার ফোনের নিজস্ব অবস্থান থেকে, ফোনেই হিসাব করা হয়। এই অবস্থানের তথ্য কখনো ফোনের বাইরে যায় না।"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "ওয়াসিলাহ কোন হিজরি ক্যালেন্ডার ব্যবহার করে?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "উম্মুল কুরা ক্যালেন্ডার, সৌদি আরব যে প্রকাশিত টেবিল ব্যবহার করে সেটিই, তাই রমজান, ঈদ ও অন্যান্য ইসলামিক তারিখ বিশ্বের অধিকাংশ মুসলিমের পালন করা তারিখের সাথে মিলে যায়।"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "ওয়াসিলাহ আমার কী তথ্য সংগ্রহ করে?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "আপনার ইবাদত সংক্রান্ত কিছুই না। লোকেশন শুধু ফোনেই নামাজের সময় ও কিবলার জন্য ব্যবহার হয়, কোথাও পাঠানো হয় না। আইফোন সংস্করণে কোনো তৃতীয় পক্ষের এসডিকে নেই; অ্যান্ড্রয়েড সংস্করণ থেকে বিজ্ঞাপন অ্যাট্রিবিউশনের জন্য শুধু ইনস্টল ও অ্যাপ-ওপেন সিগন্যাল মেটাতে যায়, আর কিছু না।"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "ওয়াসিলাহ কি সত্যিই বিনামূল্যে?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "হ্যাঁ, চিরকালের জন্য। কোনো বিজ্ঞাপন নেই, সাইন-আপ নেই, পেওয়াল নেই। এটি সদকায়ে জারিয়া হিসেবে তৈরি, কখনো মুদ্রিকরণ করা হবে না।"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "ওয়াসিলাহ কি সব জেলায় কাজ করে, শুধু ঢাকায় নয়?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "হ্যাঁ। এটি নির্দিষ্ট একটি টেবিলের বদলে আপনার ফোনের নিজস্ব অবস্থান থেকে হিসাব করে, তাই বাংলাদেশের যেকোনো জায়গায়, আর বিশ্বের ২৪৪টি দেশের ৮৩,০০০ শহরেও এটি নিজে থেকে সঠিক থাকে।"
+              }
+            }
+          ]
         }
       ]
     </script>
@@ -318,6 +374,7 @@
           <a href="#features">যা পাচ্ছেন</a>
           <a href="#deen-intelligence">দীন ইন্টেলিজেন্স</a>
           <a href="#why">কেন ওয়াসিলাহ</a>
+          <a href="#build">বিল্ড</a>
           <a href="/bn/faq/">প্রশ্ন</a>
         </nav>
         <nav class="language-switch" aria-label="ভাষা">
@@ -333,6 +390,7 @@
             <a href="#features">যা পাচ্ছেন</a>
             <a href="#deen-intelligence">দীন ইন্টেলিজেন্স</a>
             <a href="#why">কেন ওয়াসিলাহ</a>
+            <a href="#build">বিল্ড</a>
             <a href="/bn/faq/">প্রশ্ন</a>
           </nav>
         </details>
@@ -654,6 +712,107 @@
         </div>
       </section>
 
+      <section class="section build-section" id="build" aria-labelledby="build-title">
+        <style>
+          .build-section .build-grid { display: grid; gap: 18px; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: var(--wrap); margin: 34px auto 0; padding: 0; }
+          @media (max-width: 900px) { .build-section .build-grid { grid-template-columns: minmax(0, 1fr); } }
+          .build-card { background: var(--surface-1); border: 1px solid var(--border-0); border-radius: var(--r-md); box-shadow: var(--edge-top); padding: 26px 24px; display: flex; flex-direction: column; }
+          .build-card h3 { color: var(--gold); font-size: 1.18rem; margin: 6px 0 8px; }
+          .build-card .build-eyebrow { font-size: var(--kicker-sm); font-weight: 700; letter-spacing: var(--track-sm); text-transform: uppercase; color: var(--gold-deep); }
+          .build-card p { color: var(--ink-dim); font-size: 0.96rem; line-height: 1.55; margin: 0 0 16px; }
+          .build-code { display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.28); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-top: auto; }
+          .build-code code { color: var(--gold-bright); font-size: 0.82rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; overflow-x: auto; white-space: nowrap; flex: 1; min-width: 0; }
+          .build-copy { flex-shrink: 0; background: rgba(241,213,146,0.14); color: var(--gold); border: 1px solid var(--card-border); border-radius: 8px; padding: 5px 10px; font: inherit; font-size: 0.78rem; cursor: pointer; }
+          .build-copy:hover { background: rgba(241,213,146,0.24); }
+          .build-card .build-cta-btn { margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; background: var(--gold); color: #00302f; border: 0; border-radius: var(--r-pill); padding: 12px 16px; font: inherit; font-weight: 700; font-size: 0.92rem; text-decoration: none; }
+          .build-card .build-cta-btn:hover { background: var(--gold-bright); }
+          .build-more { text-align: center; margin-top: 26px; }
+          .build-more a { color: var(--gold); font-weight: 600; text-decoration: none; }
+          .build-more a:hover { text-decoration: underline; }
+        </style>
+        <div class="section-copy narrow">
+          <p class="section-label">ওয়াসিলাহ দিয়ে তৈরি করুন</p>
+          <h2 id="build-title">ওয়াসিলাহর নামাজের ইঞ্জিন এবার আপনার নিজের টুলেও।</h2>
+          <p>অ্যাপের পেছনের একই অফলাইন ইঞ্জিন যে কেউ ব্যবহার করতে পারে, বিনামূল্যে। Claude ও অন্য AI অ্যাসিস্ট্যান্টে যোগ করুন, নিজের কোড থেকে কল করুন, অথবা যেকোনো ওয়েবসাইটে লাইভ নামাজের সময় বসিয়ে দিন। শুধু পড়া, কোনো চাবি লাগে না, কোনো খরচ নেই। সদকায়ে জারিয়া, তাই এর ওপর যারা কিছু বানায় তাদের কাছেও সওয়াব পৌঁছায়।</p>
+        </div>
+        <div class="build-grid">
+          <article class="build-card">
+            <span class="build-eyebrow">Claude ও AI-র জন্য</span>
+            <h3>কানেক্টর হিসেবে যোগ করুন</h3>
+            <p>একটি Model Context Protocol সার্ভার। Claude-এ Settings, Connectors, Add custom connector-এ গিয়ে এই URL পেস্ট করুন। Claude ও যেকোনো MCP-সাপোর্টেড ক্লায়েন্টে কাজ করে।</p>
+            <div class="build-code"><code>https://wasilah-mcp.aykiz.workers.dev/mcp</code><button class="build-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev/mcp">কপি</button></div>
+          </article>
+          <article class="build-card">
+            <span class="build-eyebrow">ডেভেলপারদের জন্য</span>
+            <h3>ফ্রি প্রেয়ার API</h3>
+            <p>সাধারণ HTTPS, JSON, কোনো চাবি লাগে না। বিশ্বের যেকোনো শহর বা কো-অর্ডিনেটের জন্য নামাজের সময়, পরের নামাজ, কিবলা, হিজরি তারিখ ও কুরআন অডিও।</p>
+            <div class="build-code"><code>GET /api/prayer-times?city=Dhaka</code><button class="build-copy" type="button" data-copy="https://wasilah-mcp.aykiz.workers.dev/api/prayer-times?city=Dhaka">কপি</button></div>
+          </article>
+          <article class="build-card">
+            <span class="build-eyebrow">যেকোনো ওয়েবসাইটের জন্য</span>
+            <h3>লাইভ উইজেট বসান</h3>
+            <p>এক লাইন পেস্ট করে মসজিদের পেজে, ব্লগে, যেকোনো জায়গায় আজকের নামাজের সময় লাইভ দেখান। শহর বা কো-অর্ডিনেট বসিয়ে নিন।</p>
+            <a class="build-cta-btn" href="https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka&amp;lang=bn" target="_blank" rel="noopener">লাইভ উইজেট দেখুন →</a>
+          </article>
+        </div>
+        <p class="build-more"><a href="/build/">সম্পূর্ণ ডেভেলপার ডকুমেন্টেশন →</a></p>
+
+        <script>
+          document.querySelectorAll('#build .build-copy').forEach(function (b) {
+            b.addEventListener('click', function () {
+              navigator.clipboard.writeText(b.getAttribute('data-copy'));
+              var t = b.textContent; b.textContent = 'কপি হয়েছে'; setTimeout(function () { b.textContent = t; }, 1400);
+            });
+          });
+        </script>
+      </section>
+
+      <section class="section faq-section" id="quick-faq" aria-labelledby="quick-faq-title">
+        <style>
+          .faq-section .quick-faq-list { max-width: var(--wrap); margin: 30px auto 0; display: flex; flex-direction: column; gap: 10px; }
+          .faq-section details { background: var(--surface-1); border: 1px solid var(--border-0); border-radius: var(--r-md); box-shadow: var(--edge-top); padding: 4px 22px; }
+          .faq-section summary { cursor: pointer; list-style: none; padding: 16px 0; font-weight: 700; color: var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+          .faq-section summary::-webkit-details-marker { display: none; }
+          .faq-section summary::after { content: '+'; color: var(--gold); font-size: 1.3rem; flex-shrink: 0; }
+          .faq-section details[open] summary::after { content: '\2212'; }
+          .faq-section details p { color: var(--ink-dim); font-size: 0.95rem; line-height: 1.6; margin: 0 0 18px; }
+          .faq-section .quick-faq-more { text-align: center; margin-top: 24px; }
+          .faq-section .quick-faq-more a { color: var(--gold); font-weight: 600; text-decoration: none; }
+          .faq-section .quick-faq-more a:hover { text-decoration: underline; }
+        </style>
+        <div class="section-copy narrow">
+          <p class="section-label">সাধারণ জিজ্ঞাসা</p>
+          <h2 id="quick-faq-title">ডাউনলোডের আগে সংক্ষিপ্ত উত্তর।</h2>
+        </div>
+        <div class="quick-faq-list">
+          <details>
+            <summary>ঢাকার বাইরে আমার এলাকার জন্য নামাজের সময় কি নির্ভুল?</summary>
+            <p>হ্যাঁ। নামাজের সময় আপনার ফোনেই, আপনার সঠিক অবস্থান থেকে হিসাব করা হয়, কোনো সার্ভার বা একক শহরের টেবিল থেকে নয়। ডিফল্ট পদ্ধতি University of Islamic Sciences, করাচি এবং হানাফি আসর, যা ইসলামিক ফাউন্ডেশন বাংলাদেশের সময়সূচির সাথে মিলে যায়।</p>
+          </details>
+          <details>
+            <summary>ওয়াসিলাহ কিবলা কীভাবে খুঁজে বের করে?</summary>
+            <p>আপনার ফোনের নিজস্ব অবস্থান থেকে, ফোনেই হিসাব করা হয়। এই অবস্থানের তথ্য কখনো ফোনের বাইরে যায় না।</p>
+          </details>
+          <details>
+            <summary>ওয়াসিলাহ কোন হিজরি ক্যালেন্ডার ব্যবহার করে?</summary>
+            <p>উম্মুল কুরা ক্যালেন্ডার, সৌদি আরব যে প্রকাশিত টেবিল ব্যবহার করে সেটিই, তাই রমজান, ঈদ ও অন্যান্য ইসলামিক তারিখ বিশ্বের অধিকাংশ মুসলিমের পালন করা তারিখের সাথে মিলে যায়।</p>
+          </details>
+          <details>
+            <summary>ওয়াসিলাহ আমার কী তথ্য সংগ্রহ করে?</summary>
+            <p>আপনার ইবাদত সংক্রান্ত কিছুই না। লোকেশন শুধু ফোনেই নামাজের সময় ও কিবলার জন্য ব্যবহার হয়, কোথাও পাঠানো হয় না। আইফোন সংস্করণে কোনো তৃতীয় পক্ষের এসডিকে নেই; অ্যান্ড্রয়েড সংস্করণ থেকে বিজ্ঞাপন অ্যাট্রিবিউশনের জন্য শুধু ইনস্টল ও অ্যাপ-ওপেন সিগন্যাল মেটাতে যায়, আর কিছু না।</p>
+          </details>
+          <details>
+            <summary>ওয়াসিলাহ কি সত্যিই বিনামূল্যে?</summary>
+            <p>হ্যাঁ, চিরকালের জন্য। কোনো বিজ্ঞাপন নেই, সাইন-আপ নেই, পেওয়াল নেই। এটি সদকায়ে জারিয়া হিসেবে তৈরি, কখনো মুদ্রিকরণ করা হবে না।</p>
+          </details>
+          <details>
+            <summary>ওয়াসিলাহ কি সব জেলায় কাজ করে, শুধু ঢাকায় নয়?</summary>
+            <p>হ্যাঁ। এটি নির্দিষ্ট একটি টেবিলের বদলে আপনার ফোনের নিজস্ব অবস্থান থেকে হিসাব করে, তাই বাংলাদেশের যেকোনো জায়গায়, আর বিশ্বের ২৪৪টি দেশের ৮৩,০০০ শহরেও এটি নিজে থেকে সঠিক থাকে।</p>
+          </details>
+        </div>
+        <p class="quick-faq-more"><a href="/bn/faq/">সব প্রশ্ন দেখুন →</a></p>
+      </section>
+
     </main>
 
     <footer class="site-footer">
@@ -669,6 +828,7 @@
             <a href="#features">যা পাচ্ছেন</a>
             <a href="#deen-intelligence">দীন ইন্টেলিজেন্স</a>
             <a href="#why">কেন ওয়াসিলাহ</a>
+            <a href="#build">ওয়াসিলাহ দিয়ে তৈরি করুন</a>
             <a href="/bn/faq/">প্রশ্ন</a>
           </div>
           <div class="footer-col">

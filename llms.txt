@@ -8,6 +8,7 @@ Key facts:
 - Available in English, Bangla, and Arabic.
 - Designed for Bangladesh: dynamic local prayer times, Jumu'ah shown on Fridays, Zakat calculated in BDT, and full Bangla content for Quran, Hadith, and duas.
 - Works offline-first. Prayer times and Qibla are computed on-device.
+- Hijri dates use the Umm al-Qura calendar, the same published table Saudi Arabia uses.
 - Teaches worship, not just times: a step-by-step Salah guide covering the full method of all five daily prayers and Witr, plus Sajdah Sahw, and a step-by-step Wudu guide covering the four Fard actions in the Hanafi method. Both in Bangla, Arabic and English.
 - Wasilah Deen Intelligence: ask about salah, fasting, duas, the Quran or daily practice and get answers with references to the source. Questions that need a personal ruling are not guessed at, they are pointed to a qualified scholar. Three questions a day, free for everyone, funded by the publisher rather than by ads. It is one of only two parts of the app that need an internet connection, the other being Quran recitation audio, which streams.
 - Also includes an Apple Watch companion, Ramadan and Hijri calendar, and sehri and iftar times.
@@ -23,6 +24,7 @@ Key facts:
 - [Download Wasilah](https://wasilah.site/get/): direct links to both stores.
 - [Wasilah for iPhone](https://wasilah.site/ios/): iOS feature overview and FAQ.
 - [Wasilah for Android](https://wasilah.site/android/): Android feature overview and FAQ.
+- [Build with Wasilah](https://wasilah.site/build/): the free prayer-times API, Claude/MCP connector, and embeddable widget.
 - [Islamic guides hub (Bangla)](https://wasilah.site/blog/): all Bangla guides on salah, dua and zakat in one place.
 - [Prayer times in Bangladesh](https://wasilah.site/blog/prayer-times-bangladesh/): guide to how prayer times are calculated for Bangladesh.
 - [Zakat in Bangladeshi Taka](https://wasilah.site/blog/zakat-bangla-taka/): guide to calculating Zakat in BDT.
@@ -74,7 +76,8 @@ A: Free on the App Store (https://apps.apple.com/app/id6767919573) and Google Pl
 
 Wasilah's prayer engine is open for anyone to use, free, read-only, no key, no external calls. Details at https://wasilah.site/build/.
 
-- Claude / AI connector (MCP): add https://wasilah-mcp.aykiz.workers.dev/mcp as a custom connector in Claude or any MCP-compatible client. Tools: get_prayer_times, get_next_prayer, get_qibla, get_hijri_date, get_quran_audio.
+- Claude / AI connector (MCP): add https://wasilah-mcp.aykiz.workers.dev/mcp as a custom connector in Claude or any MCP-compatible client. Also listed in the official MCP Registry. Tools: get_prayer_times, get_next_prayer, get_qibla, get_hijri_date, get_quran_audio, get_ifb_district_offset.
+- get_ifb_district_offset returns Islamic Foundation Bangladesh's own published sehri-end and iftar time offsets from Dhaka, for 63 of 64 districts (Joypurhat is unresolved in IFB's own tables). These are IFB's published values surfaced for reference, not silently applied to the calculated prayer times.
 - Free JSON API: https://wasilah-mcp.aykiz.workers.dev/api/prayer-times?city=Dhaka (also /api/next-prayer, /api/qibla, /api/hijri, /api/quran-audio, /api/reciters). Accepts city or latitude/longitude/timezone, plus method and asr. Use city=auto to resolve the caller's own approximate location.
 - Embeddable widget: <iframe src="https://wasilah-mcp.aykiz.workers.dev/embed?city=Dhaka"></iframe> shows live prayer times on any website. Add lang=bn or lang=ar for Bangla or Arabic (Arabic renders right to left), theme=light, format=12 or 24, and city=auto so one embed shows every visitor their own city.
 

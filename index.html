@@ -154,7 +154,7 @@
             "price": "0",
             "priceCurrency": "BDT"
           },
-          "softwareVersion": "1.7.2",
+          "softwareVersion": "1.7.5",
           "downloadUrl": [
             "https://apps.apple.com/app/id6767919573",
             "https://play.google.com/store/apps/details?id=site.wasilah.wasilah"
@@ -168,6 +168,62 @@
             "name": "Miraz Mullick",
             "url": "https://aykizintelligence.com/"
           }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://wasilah.site/#quick-faq",
+          "inLanguage": "en",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Are Wasilah's prayer times accurate outside Dhaka?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Prayer times are worked out on your phone from your exact location, not fetched from a server or read off a single city's table, using the University of Islamic Sciences Karachi method with Hanafi Asr, which matches the Islamic Foundation Bangladesh timetable."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does Wasilah find the Qibla?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "From your phone's own location, calculated on the device. That location never leaves your phone."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which Hijri calendar does Wasilah use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Umm al-Qura calendar, the same published table Saudi Arabia uses, so Ramadan, Eid and other Islamic dates line up with the dates most of the Muslim world observes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What data does Wasilah collect?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nothing about your worship. Your location is used on-device for prayer times and Qibla and is never sent anywhere. The iPhone build carries no third-party SDK; the Android build sends Meta an install and app-open signal for ad attribution and nothing else."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is Wasilah really free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, forever. No ads, no sign-up, no paywall. It is built as sadaqah jariyah and will never be monetized."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Wasilah work in every district, not just the capital?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Because it calculates from your device's own location rather than one fixed table, it adjusts automatically wherever you are in Bangladesh, and in 83,000 cities across 244 countries."
+              }
+            }
+          ]
         }
       ]
     </script>
@@ -749,6 +805,52 @@
             });
           });
         </script>
+      </section>
+
+      <section class="section faq-section" id="quick-faq" aria-labelledby="quick-faq-title">
+        <style>
+          .faq-section .quick-faq-list { max-width: var(--wrap); margin: 30px auto 0; display: flex; flex-direction: column; gap: 10px; }
+          .faq-section details { background: var(--surface-1); border: 1px solid var(--border-0); border-radius: var(--r-md); box-shadow: var(--edge-top); padding: 4px 22px; }
+          .faq-section summary { cursor: pointer; list-style: none; padding: 16px 0; font-weight: 700; color: var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+          .faq-section summary::-webkit-details-marker { display: none; }
+          .faq-section summary::after { content: '+'; color: var(--gold); font-size: 1.3rem; flex-shrink: 0; }
+          .faq-section details[open] summary::after { content: '\2212'; }
+          .faq-section details p { color: var(--ink-dim); font-size: 0.95rem; line-height: 1.6; margin: 0 0 18px; }
+          .faq-section .quick-faq-more { text-align: center; margin-top: 24px; }
+          .faq-section .quick-faq-more a { color: var(--gold); font-weight: 600; text-decoration: none; }
+          .faq-section .quick-faq-more a:hover { text-decoration: underline; }
+        </style>
+        <div class="section-copy narrow">
+          <p class="section-label">Questions, answered</p>
+          <h2 id="quick-faq-title">Quick answers before you download.</h2>
+        </div>
+        <div class="quick-faq-list">
+          <details>
+            <summary>Are Wasilah's prayer times accurate outside Dhaka?</summary>
+            <p>Yes. Prayer times are worked out on your phone from your exact location, not fetched from a server or read off a single city's table, using the University of Islamic Sciences Karachi method with Hanafi Asr, which matches the Islamic Foundation Bangladesh timetable.</p>
+          </details>
+          <details>
+            <summary>How does Wasilah find the Qibla?</summary>
+            <p>From your phone's own location, calculated on the device. That location never leaves your phone.</p>
+          </details>
+          <details>
+            <summary>Which Hijri calendar does Wasilah use?</summary>
+            <p>The Umm al-Qura calendar, the same published table Saudi Arabia uses, so Ramadan, Eid and other Islamic dates line up with the dates most of the Muslim world observes.</p>
+          </details>
+          <details>
+            <summary>What data does Wasilah collect?</summary>
+            <p>Nothing about your worship. Your location is used on-device for prayer times and Qibla and is never sent anywhere. The iPhone build carries no third-party SDK; the Android build sends Meta an install and app-open signal for ad attribution and nothing else.</p>
+          </details>
+          <details>
+            <summary>Is Wasilah really free?</summary>
+            <p>Yes, forever. No ads, no sign-up, no paywall. It is built as sadaqah jariyah and will never be monetized.</p>
+          </details>
+          <details>
+            <summary>Does Wasilah work in every district, not just the capital?</summary>
+            <p>Yes. Because it calculates from your device's own location rather than one fixed table, it adjusts automatically wherever you are in Bangladesh, and in 83,000 cities across 244 countries.</p>
+          </details>
+        </div>
+        <p class="quick-faq-more"><a href="/faq/">See the full FAQ →</a></p>
       </section>
 
     </main>
